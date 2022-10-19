@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+[![Screen-Shot-2022-10-19-at-2-27-37-PM.png](https://i.postimg.cc/T1Y7Ys78/Screen-Shot-2022-10-19-at-2-27-37-PM.png)](https://postimg.cc/ftpj88Q5)
 
 ## API Documentation
 
