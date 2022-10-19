@@ -1,7 +1,5 @@
-# AirBNB_Project
-DB SCHEMA
-[![Screen-Shot-2022-10-19-at-2-27-37-PM.png](https://i.postimg.cc/T1Y7Ys78/Screen-Shot-2022-10-19-at-2-27-37-PM.png)](https://postimg.cc/ftpj88Q5)
-
+Database Schema Design
+<insert database schema design here>
 
 API Documentation
 USER AUTHENTICATION/AUTHORIZATION
@@ -12,7 +10,9 @@ Request: endpoints that require authentication
 Error Response: Require authentication
 Status Code: 401
 
-Headers:Content-Type: application/json
+Headers:
+
+Content-Type: application/json
 Body:
 
 {
@@ -26,28 +26,34 @@ Request: endpoints that require proper authorization
 Error Response: Require proper authorization
 Status Code: 403
 
-Headers:Content-Type: application/json
+Headers:
+
+Content-Type: application/json
 Body:
 
 {
   "message": "Forbidden",
   "statusCode": 403
 }
-
 Get the Current User
 Returns the information about the current user that is logged in.
+
 Require Authentication: true
 
 Request
 
-Method: GET
-URL: /users
+Method: ?
+URL: ?
 Body: none
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "firstName": "John",
@@ -55,26 +61,35 @@ Body:
   "email": "john.smith@gmail.com",
   "username": "JohnSmith"
 }
-
 Log In a User
 Logs in a current user with valid credentials and returns the current user's information.
+
 Require Authentication: false
 
 Request
 
-Method:POST
-URL: /users   --come back and change
-Headers:Content-Type: application/json
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "credential": "john.smith@gmail.com",
   "password": "secret password"
 }
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "firstName": "John",
@@ -83,20 +98,28 @@ Body:
   "username": "JohnSmith",
   "token": ""
 }
-
 Error Response: Invalid credentials
+
 Status Code: 401
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Invalid credentials",
   "statusCode": 401
 }
-
 Error response: Body validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation error",
   "statusCode": 400,
@@ -105,16 +128,22 @@ Body:
     "password": "Password is required"
   }
 }
-
-
 Sign Up a User
 Creates a new user, logs them in as the current user, and returns the current user's information.
+
 Require Authentication: false
+
 Request
-Method: POST
-URL: /users   
-Headers:Content-Type: application/json
+
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "firstName": "John",
   "lastName": "Smith",
@@ -122,11 +151,15 @@ Body:
   "username": "JohnSmith",
   "password": "secret password"
 }
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "firstName": "John",
@@ -135,12 +168,15 @@ Body:
   "username": "JohnSmith",
   "token": ""
 }
-
-
 Error response: User already exists with the specified email
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "User already exists",
   "statusCode": 403,
@@ -148,12 +184,15 @@ Body:
     "email": "User with that email already exists"
   }
 }
-
-
 Error response: User already exists with the specified username
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "User already exists",
   "statusCode": 403,
@@ -161,12 +200,15 @@ Body:
     "username": "User with that username already exists"
   }
 }
-
-
 Error response: Body validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation error",
   "statusCode": 400,
@@ -177,25 +219,26 @@ Body:
     "lastName": "Last Name is required"
   }
 }
-
 SPOTS
 Get all Spots
 Returns all the spots.
+
 Require Authentication: false
 
 Request
 
-Method: GET
-URL: /spots
+Method: ?
+URL: ?
 Body: none
-
-
 Successful Response
+
 Status Code: 200
-Headers:{
-    Content-Type: application/json
-    }
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "Spots": [
     {
@@ -217,20 +260,23 @@ Body:
     }
   ]
 }
-
 Get all Spots owned by the Current User
 Returns all the spots owned (created) by the current user.
 
 Require Authentication: true
 
 Request
-Method: GET
-URL: /spots/:userId
-Body: none
 
+Method: ?
+URL: ?
+Body: none
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
 
 {
@@ -254,21 +300,23 @@ Body:
     }
   ]
 }
-
-
 Get details of a Spot from an id
 Returns the details of a spot specified by its id.
 
 Require Authentication: false
 
 Request
-Method: GET
-URL: /spots/:spotId
-Body: none
 
+Method: ?
+URL: ?
+Body: none
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
 
 {
@@ -305,27 +353,35 @@ Body:
     "lastName": "Smith"
   }
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
-
 Create a Spot
 Creates and returns a new spot.
 
 Require Authentication: true
 
 Request
-Method: POST
-URL: /spots
-Headers:Content-Type: application/json
+
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "address": "123 Disney Lane",
   "city": "San Francisco",
@@ -338,9 +394,14 @@ Body:
   "price": 123
 }
 Successful Response
+
 Status Code: 201
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "ownerId": 1,
@@ -356,11 +417,15 @@ Body:
   "createdAt": "2021-11-19 20:39:36",
   "updatedAt": "2021-11-19 20:39:36"
 }
-
 Error Response: Body validation error
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation Error",
   "statusCode": 400,
@@ -376,7 +441,6 @@ Body:
     "price": "Price per day is required"
   }
 }
-
 Add an Image to a Spot based on the Spot's id
 Create and return a new image for a spot specified by id.
 
@@ -385,37 +449,47 @@ Require Authentication: true
 Require proper authorization: Spot must belong to the current user
 
 Request
-Method:POST
-URL: /spots/:spotId/images
 
-Headers:Content-Type: application/json
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "url": "image url",
   "preview": true
 }
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "url": "image url",
   "preview": true
 }
-
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
-
 Edit a Spot
 Updates and returns an existing spot.
 
@@ -424,10 +498,16 @@ Require Authentication: true
 Require proper authorization: Spot must belong to the current user
 
 Request
-Method: PUT
-URL: /spots/:spotId
-Headers:Content-Type: application/json
+
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "address": "123 Disney Lane",
   "city": "San Francisco",
@@ -442,8 +522,12 @@ Body:
 Successful Response
 
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "ownerId": 1,
@@ -459,11 +543,15 @@ Body:
   "createdAt": "2021-11-19 20:39:36",
   "updatedAt": "2021-11-20 10:06:40"
 }
-
 Error Response: Body validation error
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation Error",
   "statusCode": 400,
@@ -479,17 +567,19 @@ Body:
     "price": "Price per day is required"
   }
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
-
 Delete a Spot
 Deletes an existing spot.
 
@@ -498,29 +588,36 @@ Require Authentication: true
 Require proper authorization: Spot must belong to the current user
 
 Request
-Method: DELETE
-URL: /spots/:spotId
-Body: none
 
+Method: ?
+URL: ?
+Body: none
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Successfully deleted",
   "statusCode": 200
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
-
 REVIEWS
 Get all Reviews of the Current User
 Returns all the reviews written by the current user.
@@ -528,14 +625,19 @@ Returns all the reviews written by the current user.
 Require Authentication: true
 
 Request
-Method: GET
-URL: /users/:userId/reviews
-Body: none
 
+Method: ?
+URL: ?
+Body: none
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "Reviews": [
     {
@@ -573,22 +675,25 @@ Body:
     }
   ]
 }
-
-
 Get all Reviews by a Spot's id
 Returns all the reviews that belong to a spot specified by id.
 
 Require Authentication: false
 
 Request
-Method: GET
-URL: /spots/:spotId/reviews
-Body: none
 
+Method: ?
+URL: ?
+Body: none
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "Reviews": [
     {
@@ -613,35 +718,48 @@ Body:
     }
   ]
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
 Create a Review for a Spot based on the Spot's id
 Create and return a new review for a spot specified by id.
 
 Require Authentication: true
 
 Request
-Method: POST
-URL: /spots/:spotId
-Headers:Content-Type: application/json
+
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "review": "This was an awesome spot!",
   "stars": 5,
 }
-
 Successful Response
+
 Status Code: 201
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "userId": 1,
@@ -651,11 +769,15 @@ Body:
   "createdAt": "2021-11-19 20:39:36",
   "updatedAt": "2021-11-19 20:39:36"
 }
-
 Error Response: Body validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation error",
   "statusCode": 400,
@@ -664,87 +786,123 @@ Body:
     "stars": "Stars must be an integer from 1 to 5",
   }
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
 Error response: Review from the current user already exists for the Spot
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "User already has a review for this spot",
   "statusCode": 403
 }
-
 Add an Image to a Review based on the Review's id
 Create and return a new image for a review specified by id.
 
 Require Authentication: true
+
 Require proper authorization: Review must belong to the current user
 
 Request
-Method: PUT
-URL: /reviews/:reviewId
-Headers:Content-Type: application/json
+
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "url": "image url"
 }
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "url": "image url"
 }
-
 Error response: Couldn't find a Review with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Review couldn't be found",
   "statusCode": 404
 }
-
 Error response: Cannot add any more images because there is a maximum of 10 images per resource
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Maximum number of images for this resource was reached",
   "statusCode": 403
 }
-
-
 Edit a Review
 Update and return an existing review.
+
 Require Authentication: true
+
 Require proper authorization: Review must belong to the current user
 
 Request
-Method: PATCH
-URL: /reviews/:reviewId
-Headers:Content-Type: application/json
+
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "review": "This was an awesome spot!",
   "stars": 5,
 }
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "userId": 1,
@@ -754,11 +912,15 @@ Body:
   "createdAt": "2021-11-19 20:39:36",
   "updatedAt": "2021-11-20 10:06:40"
 }
-
 Error Response: Body validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation error",
   "statusCode": 400,
@@ -767,63 +929,77 @@ Body:
     "stars": "Stars must be an integer from 1 to 5",
   }
 }
-
-
 Error response: Couldn't find a Review with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Review couldn't be found",
   "statusCode": 404
 }
-
-
 Delete a Review
 Delete an existing review.
+
 Require Authentication: true
+
 Require proper authorization: Review must belong to the current user
 
 Request
-Method: DELETE
-URL: /review/:reviewId
-Body: none
 
+Method: ?
+URL: ?
+Body: none
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Successfully deleted",
   "statusCode": 200
 }
-
-
 Error response: Couldn't find a Review with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Review couldn't be found",
   "statusCode": 404
 }
-
-
 BOOKINGS
 Get all of the Current User's Bookings
 Return all the bookings that the current user has made.
+
 Require Authentication: true
 
 Request
 
-Method: GET
-URL: /bookings
+Method: ?
+URL: ?
 Body: none
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "Bookings": [
     {
@@ -850,22 +1026,25 @@ Body:
     }
   ]
 }
-
-
 Get all Bookings for a Spot based on the Spot's id
 Return all the bookings for a spot specified by id.
+
 Require Authentication: true
 
 Request
 
-Method: GET
-URL: /spots/:spotid/bookings
+Method: ?
+URL: ?
 Body: none
-
 Successful Response: If you ARE NOT the owner of the spot.
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "Bookings": [
     {
@@ -875,11 +1054,15 @@ Body:
     }
   ]
 }
-
 Successful Response: If you ARE the owner of the spot.
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "Bookings": [
     {
@@ -898,36 +1081,47 @@ Body:
     }
   ]
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
 Create a Booking from a Spot based on the Spot's id
 Create and return a new booking from a spot specified by id.
+
 Require Authentication: true
+
 Require proper authorization: Spot must NOT belong to the current user
 
 Request
 
-Method: POST
+Method: ?
 
-URL: /spots/:spotId/bookings
+URL: ?
+
 Body:
+
 {
   "startDate": "2021-11-19",
   "endDate": "2021-11-20"
 }
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "spotId": 1,
@@ -937,11 +1131,15 @@ Body:
   "createdAt": "2021-11-19 20:39:36",
   "updatedAt": "2021-11-19 20:39:36"
 }
-
 Error response: Body validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation error",
   "statusCode": 400,
@@ -949,20 +1147,28 @@ Body:
     "endDate": "endDate cannot be on or before startDate"
   }
 }
-
 Error response: Couldn't find a Spot with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot couldn't be found",
   "statusCode": 404
 }
-
 Error response: Booking conflict
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Sorry, this spot is already booked for the specified dates",
   "statusCode": 403,
@@ -971,29 +1177,37 @@ Body:
     "endDate": "End date conflicts with an existing booking"
   }
 }
-
-
 Edit a Booking
 Update and return an existing booking.
+
 Require Authentication: true
+
 Require proper authorization: Booking must belong to the current user
 
 Request
 
-Method: PUT
-URL: /bookings/:bookingId
-Headers:Content-Type: application/json
+Method: ?
+
+URL: ?
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "startDate": "2021-11-19",
   "endDate": "2021-11-20"
 }
-
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "id": 1,
   "spotId": 1,
@@ -1003,11 +1217,15 @@ Body:
   "createdAt": "2021-11-19 20:39:36",
   "updatedAt": "2021-11-20 10:06:40"
 }
-
 Error response: Body validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation error",
   "statusCode": 400,
@@ -1015,31 +1233,41 @@ Body:
     "endDate": "endDate cannot come before startDate"
   }
 }
-
-
 Error response: Couldn't find a Booking with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Booking couldn't be found",
   "statusCode": 404
 }
-
-
 Error response: Can't edit a booking that's past the end date
-Status Code: 40
-Headers:Content-Type: application/json
+
+Status Code: 403
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Past bookings can't be modified",
   "statusCode": 403
 }
-
 Error response: Booking conflict
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Sorry, this spot is already booked for the specified dates",
   "statusCode": 403,
@@ -1048,114 +1276,143 @@ Body:
     "endDate": "End date conflicts with an existing booking"
   }
 }
-
 Delete a Booking
 Delete an existing booking.
+
 Require Authentication: true
+
 Require proper authorization: Booking must belong to the current user or the Spot must belong to the current user
 
 Request
 
-Method: DELETE
-URL: /bookings/:bookingId
+Method: ?
+URL: ?
 Body: none
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Successfully deleted",
   "statusCode": 200
 }
-
 Error response: Couldn't find a Booking with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Booking couldn't be found",
   "statusCode": 404
 }
-
 Error response: Bookings that have been started can't be deleted
+
 Status Code: 403
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Bookings that have been started can't be deleted",
   "statusCode": 403
 }
-
-
 IMAGES
 Delete a Spot Image
 Delete an existing image for a Spot.
+
 Require Authentication: true
+
 Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: DELETE
-URL: /spots/:spotId/images/:imageId
+Method: ?
+URL: ?
 Body: none
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Successfully deleted",
   "statusCode": 200
 }
-
 Error response: Couldn't find a Spot Image with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Spot Image couldn't be found",
   "statusCode": 404
 }
-
 Delete a Review Image
 Delete an existing image for a Review.
+
 Require Authentication: true
+
 Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: DELETE
-URL: /reviews/:reviewId/images/:imageId
+Method: ?
+URL: ?
 Body: none
-
 Successful Response
+
 Status Code: 200
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Successfully deleted",
   "statusCode": 200
 }
-
 Error response: Couldn't find a Review Image with the specified id
+
 Status Code: 404
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Review Image couldn't be found",
   "statusCode": 404
 }
-
-
 Add Query Filters to Get All Spots
 Return spots filtered by query parameters.
+
 Require Authentication: false
 
 Request
 
-Method: GET
-URL: /spots?
+Method: ?
+URL: ?
 Query Parameters
 page: integer, minimum: 0, maximum: 10, default: 0
 size: integer, minimum: 0, maximum: 20, default: 20
@@ -1166,12 +1423,15 @@ maxLng: decimal, optional
 minPrice: decimal, optional, minimum: 0
 maxPrice: decimal, optional, minimum: 0
 Body: none
-
 Successful Response
+
 Status Code: 200
+
 Headers:
+
 Content-Type: application/json
 Body:
+
 {
   "Spots":[
     {
@@ -1194,11 +1454,15 @@ Body:
   "page": 2,
   "size": 25
 }
-
 Error Response: Query parameter validation errors
+
 Status Code: 400
-Headers:Content-Type: application/json
+
+Headers:
+
+Content-Type: application/json
 Body:
+
 {
   "message": "Validation Error",
   "statusCode": 400,
