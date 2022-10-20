@@ -2,7 +2,8 @@
 const bcrypt = require('bcryptjs');
 
 const {
-  Model
+  Model,
+  Validator
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -64,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
       validate:{
         len:[4,30],
         isNotEmail(username){
-          if(validator.isEmail(username)){
+          if(Validator.isEmail(username)){
             throw new Error ('cannot be an email')
           }
         }
