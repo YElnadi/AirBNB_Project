@@ -29,7 +29,15 @@ router.post(
     }
   );
 
-
+// Log out
+//DELETE /api/session ogout route will remove the token cookie from the response and return a JSON success message.
+router.delete(
+    '/',
+    (_req, res) => {
+      res.clearCookie('token');
+      return res.json({ message: 'success' });
+    }
+  );
 
 
 
