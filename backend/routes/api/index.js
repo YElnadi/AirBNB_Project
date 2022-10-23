@@ -13,6 +13,10 @@ router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
   });
 
+  router.get('/test2', function(req, res) {
+    res.json({ "anothertest2": "hello" });
+  });
+
 
 
 //test user auth middlewares
