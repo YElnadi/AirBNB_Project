@@ -6,6 +6,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const routes = require('./routes');
 const { ValidationError } = require('sequelize');
 
 
@@ -53,18 +54,14 @@ app.use(
 
 
 // backend/app.js
-const routes = require('./routes');
+//const routes = require('./routes');
 
 // ...
 
 app.use(routes); // Connect all the routes
 
-// backend/app.js
-// ...
 
-// backend/app.js
-// ...
-// Catch unhandled requests and forward to error handler. // error handlers must come after app.use(routes)
+// Catch unhandled requests and forward to error handler. // error handlers must come after app.use(routes) //catch requests that does not have any route handler set up for it  
 app.use((_req, _res, next) => {
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
@@ -74,6 +71,7 @@ app.use((_req, _res, next) => {
 });
 
 
+//catch any error that are generated from express validator middleware 
 app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
@@ -82,6 +80,7 @@ app.use((err, _req, _res, next) => {
   }
   next(err);
 });
+
 
 // Error formatter last error handler in the file
 app.use((err, _req, res, _next) => {

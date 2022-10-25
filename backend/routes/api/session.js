@@ -26,6 +26,7 @@ router.post(
       const { credential, password } = req.body;
   
       const user = await User.login({ credential, password });
+      console.log("user:", user)
   
       if (!user) {
         const err = new Error('Login failed');
@@ -36,6 +37,8 @@ router.post(
       }
   
       await setTokenCookie(res, user);
+      console.log("user:", user)
+
   
       return res.json({
         user
@@ -44,7 +47,7 @@ router.post(
   );
 
 // Log out
-//DELETE /api/session ogout route will remove the token cookie from the response and return a JSON success message.
+//DELETE /api/session logout route will remove the token cookie from the response and return a JSON success message.
 router.delete(
     '/',
     (_req, res) => {
