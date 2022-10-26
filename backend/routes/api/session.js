@@ -9,7 +9,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const validateLogin = [
     check('credential')
-      .exists({ checkFalsy: true })
+      //.exists({ checkFalsy: true })
       .notEmpty()
       .withMessage('Please provide a valid email or username.'),
     check('password')
@@ -26,23 +26,21 @@ router.post(
       const { credential, password } = req.body;
   
       const user = await User.login({ credential, password });
-      console.log("user:", user)
   
       if (!user) {
-        const err = new Error('Login failed');
+        const err = new Error('Invalid credentials');
         err.status = 401;
         err.title = 'Login failed';
-        err.errors = ['The provided credentials were invalid.'];
+        //err.errors = ['The provided credentials were invalid.'];
         return next(err);
       }
   
-      await setTokenCookie(res, user);
-      console.log("user:", user)
-
-  
-      return res.json({
-        user
-      });
+      const token = await setTokenCookie(res, user);
+      let retuser = user.toJSON()
+      retuser.token = token
+      return res.json(
+        retuser
+      );
     }
   );
 
