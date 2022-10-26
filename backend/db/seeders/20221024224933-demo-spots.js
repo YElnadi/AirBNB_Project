@@ -14,6 +14,7 @@ module.exports = {
     */
    return queryInterface.bulkInsert("Spots",[
      {
+      ownerId:1,
       address:"123 Disney Lane",
       city:"San Francisco",
       state:"California",
@@ -25,6 +26,7 @@ module.exports = {
       price:123,
      },
      {
+      ownerId:2,
       address:"123 Disney Lane",
       city:"San Francisco",
       state:"California",
@@ -36,6 +38,7 @@ module.exports = {
       price:123,
      },
     {
+      ownerId:3,
       address:"123 Disney Lane",
       city:"San Francisco",
       state:"California",
@@ -47,6 +50,7 @@ module.exports = {
       price:123,
     },
     {
+      ownerId:4,
       address:"123 Disney Lane",
       city:"San Francisco",
       state:"California",
@@ -58,6 +62,7 @@ module.exports = {
       price:123,
     },
     {
+      ownerId:5,
       address:"123 Disney Lane",
       city:"San Francisco",
       state:"California",

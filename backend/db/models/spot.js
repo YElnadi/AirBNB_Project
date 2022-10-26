@@ -51,7 +51,14 @@ module.exports = (sequelize, DataTypes) => {
     lng: DataTypes.DECIMAL,
     name: {
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      validate:{
+        checkLength(name){
+          if(name.length > 50){
+            throw new Error ('length must be less than 50')
+          }
+        }
+      }
     },
     description: DataTypes.STRING,
     price: DataTypes.DECIMAL
