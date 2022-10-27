@@ -96,7 +96,7 @@ router.post('/', validateSpotData, requireAuth, async (req, res) => {
     res.json(newSpot)
 })
 
-//add and image to a spot based on spot id
+//add an image to a spot based on spot id
 router.post('/:spotId/images', requireAuth, async (req, res) => {
     const { url, preview } = req.body
 
@@ -130,6 +130,52 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 })
 
 
+//get spots of current user 
+router.get('/current',requireAuth, async(req,res)=>{
+    const spots = await Spot.findAll({
+        where:{
+            ownerId:req.user.id
+        },
+        // include: [
+        //     {
+        //         model: SpotImage,
+        //         as: 'SpotImages',
+        //         where: {
+        //             preview: true
+        //         },
+        //         attributes: [],
+        //         required: false
+        //     },
+        //     {
+        //     model: Review,
+        //     as: 'Reviews',
+        //     attributes: [],
+        // },
+        // ],
+        attributes: {
+            include:
+                [
+                    [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
+                    
+                    [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
+
+                    // [
+                    //     sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
+                    // ],
+                    // [
+                    //     sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
+                    // ],
+                ]
+                
+
+        },
+        group: ['Spot.id']
+
+        
+    })
+
+    res.json({spots})
+})
 
 
 
