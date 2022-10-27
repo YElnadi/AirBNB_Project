@@ -41,33 +41,37 @@ const validateSpotData = [
 //get all spots 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
-        include: [{
-            model: Review,
-            as: 'Reviews',
-            attributes: [],
-        },
-        {
-            model: SpotImage,
-            as: 'SpotImages',
-            where: {
-                preview: true
-            },
-            attributes: []
-        }
-        ],
+        // include: [{
+        //     model: Review,
+        //     as: 'Reviews',
+        //     attributes: [],
+        // },
+        // {
+        //     model: SpotImage,
+        //     as: 'SpotImages',
+        //     where: {
+        //         preview: true
+        //     },
+        //     attributes: []
+        // }
+        // ],
         attributes: {
             include:
-                [
-                    [
-                        sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
-                    ],
-                    [
-                        sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
-                    ],
-                ]
+            [
+            //         [
+            //             sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
+            //         ],
+            //         [
+            //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
+            //         ],
+                
+            [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
+
+                    [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
+            ]
 
         },
-        group: ['Spot.id', 'SpotImages.url']
+        group: ['Spot.id']
 
     })
     //console.log("spots",spots)
@@ -129,7 +133,6 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
 })
 
-
 //get spots of current user 
 router.get('/current',requireAuth, async(req,res)=>{
     const spots = await Spot.findAll({
@@ -156,7 +159,7 @@ router.get('/current',requireAuth, async(req,res)=>{
             include:
                 [
                     [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
-                    
+
                     [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
 
                     // [
