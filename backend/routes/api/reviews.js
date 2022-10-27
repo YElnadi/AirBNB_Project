@@ -26,22 +26,67 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         url,
         reviewId: req.params.reviewId
     })
-    if(reviewAddedImg.id >= 10){
+    if (reviewAddedImg.id >= 10) {
         res.status(403)
         res.json({
             "message": "Maximum number of images for this resource was reached",
             "statusCode": 403
-          })
-          return
+        })
+        return
     }
     console.log('reviewaddedimg:', reviewAddedImg)
-    res.json({ id:reviewAddedImg.id, url})
+    res.json({ id: reviewAddedImg.id, url })
 
 
-    
+
 
 })
 
+
+//Get all Reviews of the Current User
+router.get('/current', async (req, res) => {
+    const Reviews = await Review.findAll({
+        where: {
+            userId: req.user.id
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'lastName']
+            },
+            {
+                model: Spot,
+                include: [{
+                        model:SpotImage,
+                        as:'SpotImages',
+                        where:{
+                            preview: true
+                        },
+                        attributes:[]
+                        
+                    }],
+                    attributes:{
+                        include:
+                     [
+                    //                 [
+                    //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
+                    //         ],
+                    //     ]
+                    // }
+                    [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage']
+        ]},},
+            
+            {
+                model: ReviewImage,
+                attributes: ['id', 'url']
+            },
+            
+        ],
+
+    })
+    res.json({ Reviews })
+
+})
 
 
 
