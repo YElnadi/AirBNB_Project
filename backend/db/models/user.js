@@ -1,5 +1,8 @@
 'use strict';
 const bcrypt = require('bcryptjs');
+// const {Review} = require('../models/review')
+// const{Spot} = require('../models/spot')
+// const{Booking} = require('../models/booking')
 
 const {
   Model,
@@ -63,7 +66,6 @@ module.exports = (sequelize, DataTypes) => {
           onDelete:"CASCADE"
         }
       )
-
       User.hasMany(
         models.Spot,
         {

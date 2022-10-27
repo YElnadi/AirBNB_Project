@@ -14,23 +14,28 @@ module.exports = {
     */
      return queryInterface.bulkInsert('SpotImages', [
        {
-         url:"image url",
+         spotId:1,
+         url:"spot image url1",
          preview:true
        },
        {
-        url:"image url",
+        spotId:2,
+        url:"spot image url2",
         preview:true
        },
        {
-        url:"image url",
+        spotId:3,
+        url:"spot image url3",
         preview:true
        },
        {
-        url:"image url",
+        spotId:4,
+        url:"spot image url14",
         preview:true
        },
        {
-        url:"image url",
+        spotId:5,
+        url:"spot image url5",
         preview:true
        }
      ])

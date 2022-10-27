@@ -1,4 +1,5 @@
 'use strict';
+const {Review} = require('../models')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -14,19 +15,24 @@ module.exports = {
     */
      return queryInterface.bulkInsert("ReviewImages", [
        {
-         url:"image url"
+         reviewId:1,
+         url:"review image url1"
        },
        {
-        url:"image url"
+        reviewId:2,
+        url:"review image url2"
        },
        {
-        url:"image url"
+        reviewId:3,
+        url:"review image url3"
        },
        {
-        url:"image url"
+        reviewId:4,
+        url:"review image url4"
        },
        {
-        url:"image url"
+        reviewId:5,
+        url:"review image url5"
        }
      ])
   },

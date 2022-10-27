@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const { Spot, User,SpotImage, Review} = require('../../db/models');
+const { Spot, User,SpotImage, Review, sequelize} = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -40,11 +40,37 @@ const validateSpotData = [
 
 //get all spots 
 router.get('/', async (req,res)=>{
-    const spots = await Spot.findAll({
-        include:[{
-            model:Review,
-        }]
+    const spots = await Spot.findAll({ 
+    include:[{
+            model:Review, 
+            as:'Reviews',
+            attributes:[],
+        },
+        {
+            model:SpotImage,
+            as:'SpotImages',
+            where:{
+                preview:true
+            },
+            attributes:[]
+        }
+    ],
+    attributes:{
+        include:
+            [
+                [
+                    sequelize.fn('AVG', sequelize.col('Reviews.stars')),'avgRating'
+                ],
+                [
+                    sequelize.fn('MAX', sequelize.col('SpotImages.url')),'previewImage'
+                ],
+            ]
+        
+    },
+    group:['Spot.id','SpotImages.url']
+
     })
+    //console.log("spots",spots)
     res.json({spots})
 })
 
