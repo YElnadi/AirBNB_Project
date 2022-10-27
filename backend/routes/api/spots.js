@@ -128,7 +128,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             url,
             preview,
         })
-        res.json({ id: spotId.id, url, preview })
+        res.json({ id: newSpotImage.id, url, preview })
     }
     else {
         res.status(400)
@@ -193,8 +193,8 @@ router.get('/current', requireAuth, async (req, res) => {
 
 //get details for a spot from spot id
 router.get('/:spotId', async (req, res) => {
-    const spotId = await Spot.findByPk(req.params.spotId)
-    if (spotId) {
+    const spot = await Spot.findByPk(req.params.spotId)
+    if (spot) {
         const details = await Spot.findOne({
             where: {
                 id: req.params.spotId
@@ -279,25 +279,30 @@ router.post('/:spotId/reviews',requireAuth,validateReview, async(req,res)=>{
             id: req.params.spotId
         }
     })    
-    if(spotId){
-        const newReview = await Review.create({
-            review,
-            stars,
-            spotId:req.params.spotId,
-            userId
-        })
-
-        //console.log('review:', newReview)
-        res.status(201)
-        res.json(newReview)
-    
-    }else{
+    if(!spotId){
+        
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
           })
+        return;
     }
+        
+    const newReview = await Review.create({
+        review,
+        stars,
+        spotId:req.params.spotId,
+        userId
+    })
+
+    
+
+
+
+    //console.log('review:', newReview)
+    res.status(201)
+    res.json(newReview)
     
     
     

@@ -24,7 +24,12 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull:false
     },
-    url: DataTypes.STRING
+    url: {
+      type:DataTypes.STRING,
+      validate:{
+        max:10
+      }
+    }
   }, {
     sequelize,
     modelName: 'ReviewImage',
