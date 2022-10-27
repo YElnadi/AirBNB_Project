@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const { Spot, SpotImage, User, Review, sequelize } = require('../../db/models');
+const { Spot, SpotImage, User, Review,ReviewImage, sequelize } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -51,33 +51,33 @@ const validateReview =[
 //get all spots 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
-        // include: [{
-        //     model: Review,
-        //     as: 'Reviews',
-        //     attributes: [],
-        // },
-        // {
-        //     model: SpotImage,
-        //     as: 'SpotImages',
-        //     where: {
-        //         preview: true
-        //     },
-        //     attributes: []
-        // }
-        // ],
+        include: [{
+            model: Review,
+            as: 'Reviews',
+            attributes: [],
+        },
+        {
+            model: SpotImage,
+            as: 'SpotImages',
+            // where: {
+            //     preview: true
+            // },
+            attributes: []
+        }
+        ],
         attributes: {
             include:
                 [
-                    //         [
-                    //             sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
-                    //         ],
-                    //         [
-                    //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
-                    //         ],
+                            [
+                                sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
+                            ],
+                            [
+                                sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
+                            ],
 
-                    [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
+                    // [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
 
-                    [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
+                    // [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
                 ]
 
         },
@@ -199,7 +199,7 @@ router.get('/:spotId', async (req, res) => {
             where: {
                 id: req.params.spotId
             },
-            include: [
+            include:[
                 {
                     model: SpotImage,
                     attributes: ['id', 'url', 'preview']
@@ -295,23 +295,46 @@ router.post('/:spotId/reviews',requireAuth,validateReview, async(req,res)=>{
         spotId:req.params.spotId,
         userId
     })
-
-    
-
-
-
     //console.log('review:', newReview)
     res.status(201)
     res.json(newReview)
-    
-    
+
     
 })
 
 
 
+//Get all Reviews by a Spot's id
+router.get('/:spotId/reviews', async (req, res)=>{
+    const spot = await Spot.findByPk(req.params.spotId)
+    if(!spot){
+        res.status(404)
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+          })
+          return;
+    }
+    const Reviews = await Review.findAll({
+        where:
+        {
+            spotId:spot.id
+        },
+            include:[
+            {
+                model:User,
+                attributes:['id','firstName','lastName']
+            },
+            {
+                model:ReviewImage,
+                attributes:['id','url']
+            },
+        ],
+        
+    })
+    res.json({Reviews})
 
-
+})
 
 
 
