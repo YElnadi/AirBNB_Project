@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const { Spot, SpotImage, Review, sequelize } = require('../../db/models');
+const { Spot, SpotImage, User, Review, sequelize } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -57,18 +57,18 @@ router.get('/', async (req, res) => {
         // ],
         attributes: {
             include:
-            [
-            //         [
-            //             sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
-            //         ],
-            //         [
-            //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
-            //         ],
-                
-            [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
+                [
+                    //         [
+                    //             sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
+                    //         ],
+                    //         [
+                    //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
+                    //         ],
+
+                    [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
 
                     [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
-            ]
+                ]
 
         },
         group: ['Spot.id']
@@ -108,36 +108,36 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     //const {spotId} = req.params.spotId
     //console.log('spotId:',req.params.spotId)
     const spotId = await Spot.findOne({
-        where:{
-            id:req.params.spotId
+        where: {
+            id: req.params.spotId
         }
     })
-    if(spotId){
+    if (spotId) {
         const newSpotImage = await SpotImage.create({
-        spotId:req.params.spotId,
-        url,
-        preview,
-    })
-    res.json({id:spotId.id, url, preview})
+            spotId: req.params.spotId,
+            url,
+            preview,
+        })
+        res.json({ id: spotId.id, url, preview })
     }
-    else{
+    else {
         res.status(400)
         res.json(
             {
                 "message": "Spot couldn't be found",
                 "statusCode": 404
-              }
+            }
         )
     }
-    
+
 
 })
 
 //get spots of current user 
-router.get('/current',requireAuth, async(req,res)=>{
+router.get('/current', requireAuth, async (req, res) => {
     const spots = await Spot.findAll({
-        where:{
-            ownerId:req.user.id
+        where: {
+            ownerId: req.user.id
         },
         // include: [
         //     {
@@ -169,19 +169,49 @@ router.get('/current',requireAuth, async(req,res)=>{
                     //     sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
                     // ],
                 ]
-                
+
 
         },
         group: ['Spot.id']
 
-        
+
     })
 
-    res.json({spots})
+    res.json({ spots })
 })
 
 
+//get details for a spot from spot id
+router.get('/:spotId', async (req, res) => {
+    const spotId = await Spot.findByPk(req.params.spotId)
+    if(spotId){
+        const details = await Spot.findOne({
+        where: {
+            id: req.params.spotId
+        },
+        include: [
+            {
+                model:SpotImage,
+                attributes:['id','url','preview']
+            },
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'lastName']
+            }
+            
+        ]
 
+    })
+    res.json(details)
+    }else {
+        res.status(404)
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+          })
+    }
+    
+})
 
 
 
