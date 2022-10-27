@@ -6,7 +6,15 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const review = require('../../db/models/review');
 
-
+const validateReview =[
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage('Review text is required'),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .withMessage('Stars must be an integer from 1 to 5'),
+    handleValidationErrors
+]
 
 
 //Add an Image to a Review based on the Review's id
@@ -89,7 +97,27 @@ router.get('/current', async (req, res) => {
 })
 
 
-
+//edit a review 
+router.put('/:reviewId',requireAuth,validateReview, async(req,res)=>{
+    const {review, stars} = req.body
+    const Reviews = await Review.findByPk(req.params.reviewId)
+    if(!Reviews){
+        res.status(404)
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+          })
+          return;
+    }
+    if(review !== undefined){
+        Reviews.review = review
+    }
+    if(stars !== undefined){
+        Reviews.stars = stars
+    }
+    await Reviews.save()
+        res.json(Reviews)
+})
 
 
 
