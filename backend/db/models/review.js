@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false},
     userId: {
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:false,
+      unique:true
     },
     review: DataTypes.STRING,
     stars: DataTypes.INTEGER
