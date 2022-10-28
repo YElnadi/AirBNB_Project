@@ -10,7 +10,7 @@ const user = require('../../db/models/user');
 
 //Get all of the Current User's Bookings
 router.get('/current', requireAuth, async (req, res) => {
-    const bookings = await Booking.findAll({
+    const Bookings = await Booking.findAll({
         where: {
             userId: req.user.id
         },
@@ -26,7 +26,9 @@ router.get('/current', requireAuth, async (req, res) => {
                 attributes: {
                     include: [
                         [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage']
-                    ]
+                    ],
+                    exclude:["createdAt","updatedAt"]
+
                 },
                 group: ['Spot.id']
             }
@@ -34,7 +36,7 @@ router.get('/current', requireAuth, async (req, res) => {
         ],
     })
 
-    res.json({ bookings })
+    res.json({ Bookings })
 })
 
 

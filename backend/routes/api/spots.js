@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
     if (Number.isNaN(page)) page = 1;
     if (Number.isNaN(size)) size = 20;
 
-    const spots = await Spot.findAll({
+    const Spots = await Spot.findAll({
         include: [{
             model: Review,
             as: 'Reviews',
@@ -92,7 +92,7 @@ router.get('/', async (req, res) => {
 
     })
     //console.log("spots",spots)
-    res.json({ spots, page, size })
+    res.json({ Spots, page, size })
 })
 
 
@@ -152,7 +152,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
 //get spots of current user 
 router.get('/current', requireAuth, async (req, res) => {
-    const spots = await Spot.findAll({
+    const Spots = await Spot.findAll({
         where: {
             ownerId: req.user.id
         },
@@ -194,7 +194,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
     })
 
-    res.json({ spots })
+    res.json({ Spots })
 })
 
 
