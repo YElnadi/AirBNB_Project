@@ -6,6 +6,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const booking = require('../../db/models/booking');
 const { Op } = require("Sequelize");
+const user = require('../../db/models/user');
 
 
 
@@ -543,21 +544,82 @@ router.post('/:spotId/bookings', requireAuth, async(req,res)=>{
     
 })
 
-
-
 checkDateIntersect = function(start1, end1, start2, end2){
     return start1 < end2 && start2 < end1;
 }
 
+
+
+
 //Get all Bookings for a Spot based on the Spot's id
 router.get('/:spotId/bookings', requireAuth, async(req,res)=>{
     const spot = await Spot.findByPk(req.params.spotId)
-    const allBookings = await Booking.findAll({
+    if(!spot){
+        res.status(404)
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+          })
+          return;
+    }
+    if(Spot.ownerId === req.user.id){
+        const Bookings = await Booking.findAll({
         where:{
-            spotId:Spot.ownerId
-        }
+            spotId:spot.id,   
+        },
+        include:[
+                    {
+                        model:User,
+                        attributes:['id', 'firstName', 'lastName']
+                    }
+                ]
+
     })
+    res.json({Bookings})
+    } else {
+        const Bookings = await Booking.findAll({
+            where:{
+                spotId:spot.id,   
+            },
+            attributes:['id','startDate','endDate']
+        })
+        res.json({Bookings})
+    }
+    
+
+    // if(User.id!==req.user.id){
+    //     const Bookings = await Booking.findAll({
+    //     where:{
+    //         // userId:
+    //         //     {[Op.ne]:req.user.id } 
+    //         // ,
+    //         spotId:spot.id
+    //     },
+    //     attributes:['spotId','endDate','startDate']
+        
+    // })
+    // return res.json({Bookings})
+    // }
+    // const allBookings = await Booking.findAll({
+    //     where:{
+    //         userId:req.user.id,
+    //         spotId:spot.id
+    //     },
+    //     include:[
+    //         {
+    //             model:User,
+    //             attributes:['id', 'firstName', 'lastName']
+    //         }
+    //     ], 
+    // })
+    // res.json({allBookings}) 
+    
+
+    
 })
+
+
+
 
 
 module.exports = router;
