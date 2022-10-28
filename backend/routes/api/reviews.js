@@ -29,10 +29,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         })
         return;
     }
-    const reviewAddedImg = await ReviewImage.create({
-        url,
-        reviewId: req.params.reviewId
-    })
+   
     if (reviewAddedImg.id >= 10) {
         res.status(403)
         res.json({
@@ -41,6 +38,10 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         })
         return
     }
+    const reviewAddedImg = await ReviewImage.create({
+        url,
+        reviewId: req.params.reviewId
+    })
     console.log('reviewaddedimg:', reviewAddedImg)
     res.json({ id: reviewAddedImg.id, url })
 

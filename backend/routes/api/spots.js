@@ -221,9 +221,15 @@ router.get('/:spotId', async (req, res) => {
             {
                 model: User,
                 attributes: ['id', 'firstName', 'lastName']
-            }
+            },
+        ],
+        // attributes:{
+        //     include:[
+        //         [sequelize.literal('(SELECT avg(reviews.stars) from "Reviews" reviews where reviews."spotId"="Spot".id)'), 'avgRating'],
 
-        ]
+        //         [sequelize.literal('(SELECT COUNT(spotimages.url) from "SpotImages" spotimages  where spotimages."spotId"="Spot".id)'), 'previewImage'],
+        //     ]
+        // }
 
     })
     res.json(details)
