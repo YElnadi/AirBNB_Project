@@ -21,7 +21,6 @@ const validateReview = [
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const { url } = req.body
     const review = await Review.findByPk(req.params.reviewId)
-    console.log('review:', review)
     if (!review) {
         res.status(404)
         res.json({

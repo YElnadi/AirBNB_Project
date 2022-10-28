@@ -382,10 +382,18 @@ router.post('/:spotId/bookings', requireAuth, async(req,res)=>{
     const userStartDate = new Date (startDate)
     const userEndDate = new Date (endDate)
 
+    var hasConflict = false;
     // Object.keys(obj).forEach(function(key) {
     //     console.log(obj[key]);
     bookings.forEach(booking =>  {
         if(checkDateIntersect(booking.startDate, booking.endDate, userStartDate, userEndDate)){
+
+          hasConflict = true;
+          return;           
+        }
+    })
+
+    if (hasConflict){
         res.status(403)
         res.json({
             "message": "Sorry, this spot is already booked for the specified dates",
@@ -395,9 +403,8 @@ router.post('/:spotId/bookings', requireAuth, async(req,res)=>{
               "endDate": "End date conflicts with an existing booking"
             }
           }) 
-          return;           
-        }
-    })
+          return;
+    }
 
     if(endDate <= startDate ){
         res.status(400)
