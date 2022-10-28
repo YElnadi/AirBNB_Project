@@ -6,7 +6,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const review = require('../../db/models/review');
 
-const validateReview =[
+const validateReview = [
     check('review')
         .exists({ checkFalsy: true })
         .withMessage('Review text is required'),
@@ -65,30 +65,32 @@ router.get('/current', async (req, res) => {
             {
                 model: Spot,
                 include: [{
-                        model:SpotImage,
-                        as:'SpotImages',
-                        where:{
-                            preview: true
-                        },
-                        attributes:[]
-                        
-                    }],
-                    attributes:{
-                        include:
-                     [
-                    //                 [
-                    //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
-                    //         ],
-                    //     ]
-                    // }
-                    [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage']
-        ]},},
-            
+                    model: SpotImage,
+                    as: 'SpotImages',
+                    where: {
+                        preview: true
+                    },
+                    attributes: []
+
+                }],
+                attributes: {
+                    include:
+                        [
+                            //                 [
+                            //             sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
+                            //         ],
+                            //     ]
+                            // }
+                            [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage']
+                        ]
+                },
+            },
+
             {
                 model: ReviewImage,
                 attributes: ['id', 'url']
             },
-            
+
         ],
 
     })
@@ -98,30 +100,54 @@ router.get('/current', async (req, res) => {
 
 
 //edit a review 
-router.put('/:reviewId',requireAuth,validateReview, async(req,res)=>{
-    const {review, stars} = req.body
+router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
+    const { review, stars } = req.body
     const Reviews = await Review.findByPk(req.params.reviewId)
-    if(!Reviews){
+    if (!Reviews) {
         res.status(404)
         res.json({
             "message": "Review couldn't be found",
             "statusCode": 404
-          })
-          return;
+        })
+        return;
     }
-    if(review !== undefined){
+    if (review !== undefined) {
         Reviews.review = review
     }
-    if(stars !== undefined){
+    if (stars !== undefined) {
         Reviews.stars = stars
     }
     await Reviews.save()
-        res.json(Reviews)
+    res.json(Reviews)
 })
 
 
 
+//delete a review 
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+    const review = await Review.findOne({
+        where: {
+            id: req.params.reviewId
+        }
+    })
+    console.log('review:',review)
 
+    if (!review) {
+        res.status(404)
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        })
+        return;
+    }
+
+    await review.destroy()
+    res.status(200)
+    res.json({
+        "message": "Successfully deleted",
+        "statusCode": 200
+    })
+})
 
 
 

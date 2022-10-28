@@ -102,30 +102,6 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         await bookings.save()
         res.json(bookings)
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     checkDateIntersect = function (start1, end1, start2, end2) {
         return start1 < end2 && start2 < end1;
     }
@@ -133,7 +109,47 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
 
 
+//delete a booking
+router.delete('/:bookingId', requireAuth, async (req, res) => {
+    const booking = await Booking.findOne({
+        where: {
+            id: req.params.bookingId
+        }
+    })
 
+    if (!booking) {
+        res.status(404)
+        res.json({
+            "message": "booking couldn't be found",
+            "statusCode": 404
+        })
+        return;
+    }
+    const spot = await Spot.findOne({
+        where: {
+            id: booking.spotId
+        }
+    })
+
+    const userId = req.user.id;
+    if (spot.ownerId !== userId){
+        res.status(403)
+        res.json(
+            {
+                "message": "User does not own the corresponding booking",
+                "statusCode": 403
+            }
+        )
+        return;
+    }
+
+    await booking.destroy()
+    res.status(200)
+    res.json({
+        "message": "Successfully deleted",
+        "statusCode": 200
+    })
+})
 
 
 

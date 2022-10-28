@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type:DataTypes.INTEGER,
       allowNull:false,
-      unique:true
+      //unique:true
     },
     review: DataTypes.STRING,
     stars: DataTypes.INTEGER

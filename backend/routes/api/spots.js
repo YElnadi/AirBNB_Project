@@ -126,15 +126,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             id: req.params.spotId
         }
     })
-    if (spotId) {
-        const newSpotImage = await SpotImage.create({
-            spotId: req.params.spotId,
-            url,
-            preview,
-        })
-        res.json({ id: newSpotImage.id, url, preview })
-    }
-    else {
+    if (!spotId) {
         res.status(400)
         res.json(
             {
@@ -142,7 +134,15 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
                 "statusCode": 404
             }
         )
-    }
+        return;
+        }        
+
+    const newSpotImage = await SpotImage.create({
+        spotId: req.params.spotId,
+        url,
+        preview,
+    })
+    res.json({ id: newSpotImage.id, url, preview })
 
 
 })
@@ -198,32 +198,32 @@ router.get('/current', requireAuth, async (req, res) => {
 //get details for a spot from spot id
 router.get('/:spotId', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
-    if (spot) {
-        const details = await Spot.findOne({
-            where: {
-                id: req.params.spotId
-            },
-            include:[
-                {
-                    model: SpotImage,
-                    attributes: ['id', 'url', 'preview']
-                },
-                {
-                    model: User,
-                    attributes: ['id', 'firstName', 'lastName']
-                }
-
-            ]
-
-        })
-        res.json(details)
-    } else {
+    if (!spot) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
-    }
+        return;
+    }        
+    const details = await Spot.findOne({
+        where: {
+            id: req.params.spotId
+        },
+        include:[
+            {
+                model: SpotImage,
+                attributes: ['id', 'url', 'preview']
+            },
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'lastName']
+            }
+
+        ]
+
+    })
+    res.json(details)
 
 })
 
@@ -562,20 +562,21 @@ router.get('/:spotId/bookings', requireAuth, async(req,res)=>{
           })
           return;
     }
-    if(Spot.ownerId === req.user.id){
+
+    if(spot.ownerId === req.user.id){
         const Bookings = await Booking.findAll({
-        where:{
-            spotId:spot.id,   
-        },
-        include:[
+            where:{
+                spotId:spot.id,   
+            },
+            include:[
                     {
                         model:User,
                         attributes:['id', 'firstName', 'lastName']
                     }
                 ]
 
-    })
-    res.json({Bookings})
+        })
+        res.json({Bookings})
     } else {
         const Bookings = await Booking.findAll({
             where:{
@@ -617,7 +618,49 @@ router.get('/:spotId/bookings', requireAuth, async(req,res)=>{
 
     
 })
+//delete a spot
 
+router.delete('/:spotId',requireAuth, async(req, res)=> {
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId
+        }
+    })
+
+    if (!spot) {
+        
+            res.status(400)
+            res.json(
+                {
+                    "message": "Spot couldn't be found",
+                    "statusCode": 404
+                }
+            )
+        
+        return;
+    }
+
+    const userId = req.user.id;
+    if (spot.ownerId !== userId){
+        res.status(403)
+        res.json(
+            {
+                "message": "User does not own the corresponding spot",
+                "statusCode": 403
+            }
+        )
+        return;
+    }
+
+    await spot.destroy()
+    res.status(200)
+    res.json(
+        {
+            "message": "Successfully deleted",
+            "statusCode": 200
+          }
+    )
+})
 
 
 
