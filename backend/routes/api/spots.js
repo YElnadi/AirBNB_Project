@@ -662,6 +662,7 @@ router.delete('/:spotId',requireAuth, async(req, res)=> {
     )
 })
 
+//Add Query Filters to Get All Spots
 
 
 
