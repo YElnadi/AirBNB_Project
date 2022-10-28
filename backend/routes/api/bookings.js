@@ -5,7 +5,6 @@ const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const booking = require('../../db/models/booking');
-const { Op } = require("Sequelize");
 const user = require('../../db/models/user');
 
 
@@ -26,7 +25,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 }],
                 attributes: {
                     include: [
-                        [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage']
+                        [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage']
                     ]
                 },
                 group: ['Spot.id']
@@ -125,14 +124,9 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
         })
         return;
     }
-    const spot = await Spot.findOne({
-        where: {
-            id: booking.spotId
-        }
-    })
 
     const userId = req.user.id;
-    if (spot.ownerId !== userId){
+    if (booking.userId !== userId){
         res.status(403)
         res.json(
             {

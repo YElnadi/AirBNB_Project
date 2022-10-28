@@ -5,7 +5,6 @@ const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const booking = require('../../db/models/booking');
-const { Op } = require("Sequelize");
 const user = require('../../db/models/user');
 
 
@@ -54,6 +53,14 @@ const validateReview =[
 
 //get all spots 
 router.get('/', async (req, res) => {
+    let { page, size } = req.query;
+
+    page = parseInt(page);
+    size = parseInt(size);
+  
+    if (Number.isNaN(page)) page = 1;
+    if (Number.isNaN(size)) size = 20;
+
     const spots = await Spot.findAll({
         include: [{
             model: Review,
@@ -72,24 +79,20 @@ router.get('/', async (req, res) => {
         attributes: {
             include:
                 [
-                            [
-                                sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
-                            ],
-                            [
-                                sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'
-                            ],
+                    [sequelize.literal('(SELECT avg("Reviews".stars) from "Reviews" where "Reviews"."spotId"="Spot".id)'), 'avgRating'],
 
-                    // [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
-
-                    // [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
+                    [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage'],
                 ]
 
         },
-        group: ['Spot.id']
+        group: ['Spot.id'],
+        limit: size,
+        offset: size * (page - 1),
+
 
     })
     //console.log("spots",spots)
-    res.json({ spots })
+    res.json({ spots, page, size })
 })
 
 
@@ -172,9 +175,9 @@ router.get('/current', requireAuth, async (req, res) => {
         attributes: {
             include:
                 [
-                    [sequelize.literal('(SELECT avg(Reviews.stars) from Reviews where Reviews.spotId=Spot.id)'), 'avgRating'],
+                    [sequelize.literal('(SELECT avg(reviews.stars) from "Reviews" reviews where reviews."spotId"="Spot".id)'), 'avgRating'],
 
-                    [sequelize.literal('(SELECT MAX(SpotImages.url) from SpotImages where SpotImages.spotId=Spot.id)'), 'previewImage'],
+                    [sequelize.literal('(SELECT MAX(spotimages.url) from "SpotImages" spotimages  where spotimages."spotId"="Spot".id)'), 'previewImage'],
 
                     // [
                     //     sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
