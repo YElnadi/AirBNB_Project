@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const { Spot, SpotImage, User,Booking, Review,ReviewImage, sequelize } = require('../../db/models');
+const { Spot, SpotImage, User,Booking, Review,ReviewImage, sequelize, Sequelize } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -51,17 +51,77 @@ const validateReview =[
     handleValidationErrors
 ]
 
+ //const validateQueryParams = [
+    // check('page')
+    //     .exists({ checkFalsy: true })
+    //     //.optional()
+    //     .withMessage('Page must be greater than or equal to 1'),
+    // check('size')
+    //     .exists({ checkFalsy: true })
+    //    // .optional()
+    //     .withMessage('Size must be greater than or equal to 1'),
+    // check('maxLat')
+    //     .exists({ checkFalsy: true })
+    //     //.optional()
+    //     .withMessage('Maximum latitude is invalid'),
+    // check('minLat')
+    //     .exists({ checkFalsy: true })
+    //     //.optional()
+    //     .withMessage('Minimum latitude is invalid'),
+    // check('maxLng')
+    //     .exists({ checkFalsy: true })
+    //     //.optional()
+    //     .withMessage('Maximum longitude is invalid'),
+    // check('minLng')
+    //     .exists({ checkFalsy: true })
+    //     //.optional()
+    //     .withMessage('Minimum longitude is invalid'),
+    // check('minPrice')
+    //     .exists({ checkFalsy: true })
+    //     //.optional()
+    //     .withMessage('Maximum price must be greater than or equal to 0'),
+//     check('price')
+//         //.exists({ checkFalsy: false })
+//         //.isInt({min:0})
+//         //.escape()
+//         // .optional()
+//         // .customSanitizer(price=>{
+//         //     const sanitizedLink = linkSanitizer(price)
+//         //     return sanitizedLink;
+//         // }),
+//         //.notEmpty()
+//        //.withMessage('Minimum price must be greater than or equal to 0'),
+//     handleValidationErrors
+//  ]
+
+
+    
+;
+
 //get all spots 
 router.get('/', async (req, res) => {
-    let { page, size } = req.query;
+let { page, size} = req.query;
 
     page = parseInt(page);
     size = parseInt(size);
+    
   
     if (Number.isNaN(page)) page = 1;
     if (Number.isNaN(size)) size = 20;
+    //query params
+    const where ={}
+    const {maxLat,minLat,maxLng,minLng,minPrice,maxPrice} = req.query
+    if(maxLat) where.lat = {[Sequelize.Op.lte]:parseFloat(maxLat)}
+    if(minLat) where.lat = {[Sequelize.Op.gte]:parseFloat(minLat)}
+    if(maxLng) where.lng = {[Sequelize.Op.lte]:parseFloat(maxLng)}
+    if(minLng) where.lng = {[Sequelize.Op.gte]:parseFloat(minLng)}
+    if(maxPrice) where.price = {[Sequelize.Op.lte]:parseFloat(maxPrice)}
+    if(minPrice) where.price = {[Sequelize.Op.gte]:parseFloat(minPrice)}
 
     const Spots = await Spot.findAll({
+        where:{
+            ...where
+        },
         include: [{
             model: Review,
             as: 'Reviews',
@@ -152,6 +212,17 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
 //get spots of current user 
 router.get('/current', requireAuth, async (req, res) => {
+    // const userId = req.user.id;
+    // if (Spot.ownerId !== userId){
+    //     res.status(403)
+    //     res.json(
+    //         {
+    //             "message": "User does not own the corresponding spot",
+    //             "statusCode": 403
+    //         }
+    //     )
+    //     return;
+    // }
     const Spots = await Spot.findAll({
         where: {
             ownerId: req.user.id
