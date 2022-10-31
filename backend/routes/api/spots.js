@@ -79,11 +79,11 @@ const validateReview =[
     check('minPrice')
         .optional()
         .trim()
-        .isDecimal()
+        .isInt({min:0})
         .withMessage('Minimum price must be greater than or equal to 0'),
     check('maxPrice')
         .optional()
-        .isDecimal({min:0})
+        .isInt({min:0})
        .withMessage('Maximum price must be greater than or equal to 0'),
     handleValidationErrors
  ]
