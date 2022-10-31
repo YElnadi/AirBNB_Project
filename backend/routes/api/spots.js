@@ -51,7 +51,7 @@ const validateReview =[
     handleValidationErrors
 ]
 
- //const validateQueryParams = [
+ const validateQueryParams = [
     // check('page')
     //     .exists({ checkFalsy: true })
     //     //.optional()
@@ -80,26 +80,16 @@ const validateReview =[
     //     .exists({ checkFalsy: true })
     //     //.optional()
     //     .withMessage('Maximum price must be greater than or equal to 0'),
-//     check('price')
-//         //.exists({ checkFalsy: false })
-//         //.isInt({min:0})
-//         //.escape()
-//         // .optional()
-//         // .customSanitizer(price=>{
-//         //     const sanitizedLink = linkSanitizer(price)
-//         //     return sanitizedLink;
-//         // }),
-//         //.notEmpty()
-//        //.withMessage('Minimum price must be greater than or equal to 0'),
-//     handleValidationErrors
-//  ]
-
-
-    
+    check('maxPrice')
+        .optional()
+        .isInt({min:0})
+       .withMessage('Maximum price must be greater than or equal to 0'),
+    handleValidationErrors
+ ]
 ;
 
 //get all spots 
-router.get('/', async (req, res) => {
+router.get('/', validateQueryParams, async (req, res) => {
 let { page, size} = req.query;
 
     page = parseInt(page);
@@ -139,7 +129,7 @@ let { page, size} = req.query;
         attributes: {
             include:
                 [
-                    [sequelize.literal('(SELECT avg("Reviews".stars) from "Reviews" where "Reviews"."spotId"="Spot".id)'), 'avgRating'],
+                    [sequelize.literal('(CAST((SELECT avg ("Reviews".stars) from "Reviews" where "Reviews"."spotId"="Spot".id) AS DECIMAL(10,2)))'), 'avgRating'],
 
                     [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage'],
                 ]
