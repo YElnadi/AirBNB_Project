@@ -52,37 +52,38 @@ const validateReview =[
 ]
 
  const validateQueryParams = [
-    // check('page')
-    //     .exists({ checkFalsy: true })
-    //     //.optional()
-    //     .withMessage('Page must be greater than or equal to 1'),
-    // check('size')
-    //     .exists({ checkFalsy: true })
-    //    // .optional()
-    //     .withMessage('Size must be greater than or equal to 1'),
-    // check('maxLat')
-    //     .exists({ checkFalsy: true })
-    //     //.optional()
-    //     .withMessage('Maximum latitude is invalid'),
-    // check('minLat')
-    //     .exists({ checkFalsy: true })
-    //     //.optional()
-    //     .withMessage('Minimum latitude is invalid'),
-    // check('maxLng')
-    //     .exists({ checkFalsy: true })
-    //     //.optional()
-    //     .withMessage('Maximum longitude is invalid'),
-    // check('minLng')
-    //     .exists({ checkFalsy: true })
-    //     //.optional()
-    //     .withMessage('Minimum longitude is invalid'),
-    // check('minPrice')
-    //     .exists({ checkFalsy: true })
-    //     //.optional()
-    //     .withMessage('Maximum price must be greater than or equal to 0'),
+    check('page')
+        .optional()
+        .isInt()
+        .withMessage('Page must be greater than or equal to 1'),
+    check('size')
+        .optional()
+        .isInt()
+        .withMessage('Size must be greater than or equal to 1'),
+    check('maxLat')
+        .optional()
+        .isDecimal()
+        .withMessage('Maximum latitude is invalid'),
+    check('minLat')
+        .optional()
+        .isDecimal()
+        .withMessage('Minimum latitude is invalid'),
+    check('maxLng') 
+        .optional()
+        .isDecimal()
+        .withMessage('Maximum longitude is invalid'),
+    check('minLng')
+        .optional()
+        .isFloat()
+        .withMessage('Minimum longitude is invalid'),
+    check('minPrice')
+        .optional()
+        .trim()
+        .isDecimal()
+        .withMessage('Minimum price must be greater than or equal to 0'),
     check('maxPrice')
         .optional()
-        .isInt({min:0})
+        .isDecimal({min:0})
        .withMessage('Maximum price must be greater than or equal to 0'),
     handleValidationErrors
  ]
