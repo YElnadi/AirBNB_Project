@@ -74,16 +74,16 @@ const validateReview =[
         .withMessage('Maximum longitude is invalid'),
     check('minLng')
         .optional()
-        .isFloat()
+        .isDecimal()
         .withMessage('Minimum longitude is invalid'),
     check('minPrice')
         .optional()
         .trim()
-        .isInt({min:0})
+        .isDecimal({min:0})
         .withMessage('Minimum price must be greater than or equal to 0'),
     check('maxPrice')
         .optional()
-        .isInt({min:0})
+        .isDecimal({min:0})
        .withMessage('Maximum price must be greater than or equal to 0'),
     handleValidationErrors
  ]
