@@ -17,9 +17,10 @@ router.get('/current', requireAuth, async (req, res) => {
         include: [
             {
                 model: Spot,
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt']
-                }, include: [{
+                // attributes: {
+                //     exclude: ['createdAt', 'updatedAt','description']
+                // }, 
+                include: [{
                     model: SpotImage,
                     attributes: []
                 }],
@@ -27,7 +28,7 @@ router.get('/current', requireAuth, async (req, res) => {
                     include: [
                         [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage']
                     ],
-                    exclude:["createdAt","updatedAt"]
+                    exclude:["createdAt","updatedAt","description"]
 
                 },
                 group: ['Spot.id']
