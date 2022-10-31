@@ -144,6 +144,18 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
         })
         return;
     }
+    const userId = req.user.id;
+    if (review.userId !== userId){
+        res.status(403)
+        res.json(
+            {
+                "message": "User does not own the corresponding spot",
+                "statusCode": 403
+            }
+        )
+        return;
+    }
+
 
     await review.destroy()
     res.status(200)
