@@ -129,7 +129,7 @@ let { page, size} = req.query;
         attributes: {
             include:
                 [
-                    [sequelize.literal('(CAST((SELECT avg ("Reviews".stars) from "Reviews" where "Reviews"."spotId"="Spot".id) AS DECIMAL(3,2)))'), 'avgRating'],
+                    [sequelize.literal('(CAST((SELECT avg ("Reviews".stars) from "Reviews" where "Reviews"."spotId"="Spot".id) AS DECIMAL(7,2)))'), 'avgRating'],
 
                     [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage'],
                 ]
