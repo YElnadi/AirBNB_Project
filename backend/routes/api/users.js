@@ -88,14 +88,14 @@ router.post(  //api/users
             "username": "User with that username already exists"
           }
         })
-      }
+      }                        
     }
     const user = await User.signup({ email, username, password, firstName, lastName });
     var token = await setTokenCookie(res, user);
     let retuser = user.toJSON();
     retuser.token = token;
     return res.json(
-      retuser
+      {"user":retuser}
     );
   }
 

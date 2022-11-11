@@ -43,7 +43,7 @@ router.post(
       let retuser = user.toJSON()
       retuser.token = token
       return res.json(
-        retuser
+        {"user":retuser}
       );
     }
   );
@@ -67,9 +67,9 @@ router.get(
       //console.log("user", user)
       
       if (user) {
-        return res.json(
-          user.toSafeObject()
-        );
+        return res.json({
+          "user":user.toSafeObject()
+      });
       } else return res.json({});
     }
   );

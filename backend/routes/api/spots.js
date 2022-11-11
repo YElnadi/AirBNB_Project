@@ -450,9 +450,7 @@ router.post('/:spotId/bookings', requireAuth, async(req,res)=>{
     const userStartDate = new Date (startDate)
     const userEndDate = new Date (endDate)
 
-    var hasConflict = false;
-    // Object.keys(obj).forEach(function(key) {
-    //     console.log(obj[key]);
+    let hasConflict = false;
     bookings.forEach(booking =>  {
         if(checkDateIntersect(booking.startDate, booking.endDate, userStartDate, userEndDate)){
 
@@ -755,7 +753,6 @@ router.delete('/:spotId',requireAuth, async(req, res)=> {
     )
 })
 
-//Add Query Filters to Get All Spots
 
 
 
