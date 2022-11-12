@@ -8,6 +8,7 @@ const REMOVE_USER = 'session/removeUser';
 
 //ACTIONS------------------------------------------
 const setUser = (user) => {
+    console.log("user", user)
     return {
       type: SET_USER,
       payload: user,
@@ -31,6 +32,7 @@ export const login = (user) => async (dispatch) => {
       }),
     });
     const data = await response.json();
+    console.log("in login")
     dispatch(setUser(data.user));
     return response;
   };
@@ -44,6 +46,8 @@ export const login = (user) => async (dispatch) => {
   };
 
 
+  
+
 
   //REDUCERS-----------------------------------------------
 
@@ -51,10 +55,12 @@ export const login = (user) => async (dispatch) => {
   
   const sessionReducer = (state = initialState, action) => {
     let newState;
+    console.log("in sessionReducer", action,"\nstate", state)
     switch (action.type) {
       case SET_USER:
         newState = Object.assign({}, state);
         newState.user = action.payload;
+        console.log("in sessionReducer newState", newState)
         return newState;
       case REMOVE_USER:
         newState = Object.assign({}, state);
