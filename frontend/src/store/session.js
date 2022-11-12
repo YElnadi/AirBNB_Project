@@ -45,8 +45,35 @@ export const login = (user) => async (dispatch) => {
     return response;
   };
 
+  export const signup = (user) => async (dispatch) => {
+    console.log("in signup user")
+    const { username, email, password, firstName, lastName} = user;
+    const response = await csrfFetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        firstName,
+        lastName
+      }),
+    });
+    const data = await response.json();
+    dispatch(setUser(data));
+    console.log("response++++++:", response)
+    return response;
+  };
 
   
+  
+  // window.store.dispatch(window.sessionActions.signup({
+  //   username: 'NewUser',
+  //   email: 'new@user.io',
+  //   password: 'password',
+  //   firstName:'Demo',
+  //   lastName:'User'
+  // }));
+
 
 
   //REDUCERS-----------------------------------------------
@@ -60,7 +87,6 @@ export const login = (user) => async (dispatch) => {
       case SET_USER:
         newState = Object.assign({}, state);
         newState.user = action.payload;
-        console.log("in sessionReducer newState", newState)
         return newState;
       case REMOVE_USER:
         newState = Object.assign({}, state);
@@ -72,3 +98,7 @@ export const login = (user) => async (dispatch) => {
   };
   
   export default sessionReducer;
+
+
+
+  
