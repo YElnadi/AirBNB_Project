@@ -58,13 +58,14 @@ const restoreUser = (req, res, next)=>{
 //requireAuth
 //if there is no current user return an error
 const requireAuth = function(req, res,next) {
-    if(req.user) return next();
-
-    // const err = new Error ('Unauthorized');
-    // err.title = 'Unauthorized';
-    // err.errors = ['Unauthorized'];
-    // err.status = 401;
-    return next(res.json({"user":null}));
+    if(req.user) {
+        return next();
+    }
+    const err = new Error('Unauthorized');
+    err.title = 'Unauthorized';
+    err.errors = ['Unauthorized'];
+    err.status = 401;
+    return next(err);
 }
 
 

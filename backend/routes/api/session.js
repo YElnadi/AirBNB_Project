@@ -61,18 +61,18 @@ router.delete(
 // Restore session user
 router.get(
     '/',
-    restoreUser,requireAuth,
+    restoreUser,
     (req, res) => {
       const { user } = req;
-      //console.log("user", user)
-      
-      if (user) {
+
+      if (user){
         return res.json({
           "user":user.toSafeObject()
-      });
-      } else return res.json({});
-    }
-  );
+        })
+      } else {
+        return res.json({"user":null});
+      }
+    });
 
 
   
