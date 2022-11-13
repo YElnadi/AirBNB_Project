@@ -75,8 +75,8 @@ export const login = (user) => async (dispatch) => {
   
   
   // window.store.dispatch(window.sessionActions.signup({
-  //   username: 'NewUser',
-  //   email: 'new@user.io',
+  //   username: 'New1User',
+  //   email: 'new1@user.io',
   //   password: 'password',
   //   firstName:'Demo',
   //   lastName:'User'
