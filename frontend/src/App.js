@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Home from './components/Home/home'
 import Header from './components/Header/header'
 import CreateSpotForm from "./components/CreateSpotForm/CreateSpot";
+import CurrentUserSpots from "./components/GetCurrentUserSpots/CurrentUserSpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path='/api/spots'>
             <CreateSpotForm />
+          </Route>
+          <Route path='/api/spots/currrent'>
+            <CurrentUserSpots/>
           </Route>
         </Switch>
       )}

@@ -21,14 +21,6 @@ const CreateSpot = () => {
     const [lat, setLatitude] = useState('')
     const [showForm, setShowForm] = useState(false);
 
-    const sessionUser = useSelector(state => state.session.user);
-    if(sessionUser){
-        
-    }
-
-
-    
-
 
     const handleSubmit = async (e) =>{
         e.preventDefault();

@@ -3,6 +3,8 @@ import { csrfFetch } from './csrf';
 //ACTIONS------------------
 const GETSPOTS ='get/SPOTS';
 const ADDSPOT = 'create/SPOT'
+const CURRENTUSERSPOTS = 'get/CURRENTSPOTS'
+
 
 // export const getAllSpots =(spots)=>({
 //     type:GETSPOTS,
@@ -12,6 +14,10 @@ const ADDSPOT = 'create/SPOT'
 export const addSpot = (spot) =>({
     type:ADDSPOT,
     spot
+})
+
+export const getCurrentSpots = () =>({
+    type:CURRENTUSERSPOTS
 })
 
 
@@ -47,7 +53,14 @@ export const createSpot = newSpot => async dispatch =>{
 
 
 
-
+export const getCurrentUserSpots = () => async dispatch=>{
+    const response = await csrfFetch('/api/spots/current');
+    if(response.ok){
+        const currentSpots = await response.json()
+        dispatch(getCurrentSpots(currentSpots))
+        return currentSpots;
+    }
+}
 
 
 
@@ -89,6 +102,8 @@ export default function SpotsReducers (state=initState, action){
                     ...action.spot
                 }
             }
+        case CURRENTUSERSPOTS:
+            
         default:
             return state; 
     }}
