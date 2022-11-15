@@ -1,6 +1,18 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
+import{useSelector} from 'react-redux'
+import{useState} from 'react'
 import './header.css'
 const Header = () => {
+
+// const [showForm, setShowForm] = useState(false);
+// const sessionUser = useSelector(state => state.session.user);
+//     const openForm = ()=>{
+//         if(sessionUser){
+//             setShowForm(true)
+//         }
+//     }
+
+
   return (
     <div className='header'>
         <img className='header__icon'
@@ -16,7 +28,7 @@ const Header = () => {
         </div>
 
         <div className='header__right'>
-            <p>Become a host</p>
+            <NavLink to ='/api/spots' style={{textDecoration:'none'}}><p style={{color:'black'}}>Become a host</p></NavLink>
             <i className="fa-solid fa-globe"></i>
             <i className="fa-solid fa-circle-user"></i>
 
