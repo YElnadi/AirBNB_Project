@@ -5,10 +5,11 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Home from './components/Home/home'
 import Header from './components/Header/header'
 import CreateSpotForm from "./components/CreateSpotForm/CreateSpot";
 import CurrentUserSpots from "./components/GetCurrentUserSpots/CurrentUserSpots";
+import GetAllSpots from './components/GetAllSpots/GetSpots'
+import GetSpots from "./components/GetAllSpots/GetSpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,23 +26,23 @@ function App() {
   
     */ 
     <>
-    <Header />
+      <Header />
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
-            <Home />
+          <Route  path="/">
+            <GetSpots />
           </Route>
-          <Route path="/login">
+          <Route  path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route path="/signup"> 
             <SignupFormPage />
           </Route>
-          <Route path='/api/spots'>
+          <Route exact path='/api/spots'>
             <CreateSpotForm />
           </Route>
-          <Route path='/api/spots/currrent'>
+          <Route exact path='/api/spots/current'>
             <CurrentUserSpots/>
           </Route>
         </Switch>

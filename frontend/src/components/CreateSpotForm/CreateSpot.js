@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {createSpot} from '../../store/spots'
 
-
-
-
 const CreateSpot = () => {
     
     const history = useHistory()
@@ -40,7 +37,7 @@ const CreateSpot = () => {
         let createdSpot;
         createdSpot = await dispatch(createSpot(spotDetails))
         if(createdSpot){
-            history.push(`/api/spots/current`)
+           history.push(`/api/spots/current`)
             reset();
         }
     }

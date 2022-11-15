@@ -11,7 +11,7 @@ import SpotsReducers from './spots';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    SpotsReducers
+    spotStates:SpotsReducers
 
 });
 

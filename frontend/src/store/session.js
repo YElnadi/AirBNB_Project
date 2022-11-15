@@ -90,7 +90,7 @@ export const login = (user) => async (dispatch) => {
   
   const sessionReducer = (state = initialState, action) => {
     let newState;
-    console.log("in sessionReducer", action,"\nstate", state)
+    //console.log("in sessionReducer", action,"\nstate", state)
     switch (action.type) {
       case SET_USER:
         newState = Object.assign({}, state);
