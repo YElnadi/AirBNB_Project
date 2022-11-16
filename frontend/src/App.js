@@ -11,6 +11,7 @@ import CurrentUserSpots from "./components/GetCurrentUserSpots/CurrentUserSpots"
 import GetAllSpots from './components/GetAllSpots/GetSpots'
 import GetSpots from "./components/GetAllSpots/GetSpots";
 import SpotCard from "./components/GetAllSpots/SpotCard";
+import SpotDetails from "./components/GetAllSpots/SpotDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,8 +47,8 @@ function App() {
           <Route exact path='/api/spots/current'>
             <CurrentUserSpots/>
           </Route>
-          <Route exact path='/api/spot/:spotId'>
-            <SpotCard/>
+          <Route path='/api/spots/:spotId'>
+            <SpotDetails/>
           </Route>
         </Switch>
       )}

@@ -2,8 +2,11 @@ import { csrfFetch } from './csrf';
 
 //ACTIONS------------------
 const LOAD_SPOTS ='get/SPOTS';
-const ADDSPOT = 'create/SPOT'
-const CURRENTUSERSPOTS = 'get/CURRENTSPOTS'
+const ADDSPOT = 'create/SPOT';
+const SINGLESPOT ='get/SingleSpot';
+//const LOAD_USERSPOTS= 'get/userSpots';
+const UPDATE_SPOT ='put/spot'
+//const CURRENTUSERSPOTS = 'get/CURRENTSPOTS'
 
 export const loadSpots = (spots) =>({
     type:LOAD_SPOTS,
@@ -16,9 +19,24 @@ export const addSpot = (spot) =>({
     spot
 })
 
-export const getCurrentSpots = () =>({
-    type:CURRENTUSERSPOTS
+export const singleSpotDetails = (spotDetails) =>({
+    type:SINGLESPOT,
+    spotDetails
 })
+
+// export const loadUserSpots = (spots) =>({
+//     type:LOAD_USERSPOTS,
+//     spots
+// })
+
+export const updateSpot = spot =>({
+    type:UPDATE_SPOT,
+    spot
+})
+
+// export const getCurrentSpots = () =>({
+//     type:CURRENTUSERSPOTS
+// })
 
 
 
@@ -62,14 +80,49 @@ export const createSpot = newSpot => async dispatch =>{
     }
 }
 
-export const getCurrentUserSpots = () => async dispatch=>{
-    const response = await csrfFetch('/api/spots/current');
+export const fetchSingleSpot = (spotId) => async dispatch =>{
+    const response = await csrfFetch(`/api/spots/${spotId}`)
     if(response.ok){
-        const currentSpots = await response.json()
-        dispatch(getCurrentSpots(currentSpots))
-        return currentSpots;
+        const spotDetails = await response.json()
+        dispatch(singleSpotDetails(spotDetails))
     }
 }
+
+// export const getCurrentUserSpots = () =>async dispatch =>{
+//     const response = await csrfFetch(`/api/spots/current`)
+//     if(response.ok){
+//         const userSpots = await response.json()
+//         dispatch(loadUserSpots(spots))
+//         return userSpots
+//     }
+
+// }
+
+export const updateASpot = (spot, spotId) =>async dispatch =>{
+    const response = await csrfFetch(`/api/spots/${spotId}`,{
+        method:'PUT',
+        header:{
+            'Contetn-Type':'application/json'
+        }
+    })
+    if(response.ok){
+        const updatedSpot = await response.json()
+        dispatch(updateASpot(updatedSpot))
+        return updatedSpot
+    }
+}
+
+
+
+
+// export const getCurrentUserSpots = () => async dispatch=>{
+//     const response = await csrfFetch('/api/spots/current');
+//     if(response.ok){
+//         const currentSpots = await response.json()
+//         dispatch(getCurrentSpots(currentSpots))
+//         return currentSpots;
+//     }
+// }
 
 
 
@@ -87,7 +140,7 @@ const sortList = (spots) =>{
     }).map((spot)=>spot.id)
 }
 //REDUCERS--------------------
-const initState = {spots:{}}
+const initState = {spots:{}, singleSpot:{}}
 export default function SpotsReducers (state=initState, action){
     switch(action.type){
 
@@ -119,8 +172,17 @@ export default function SpotsReducers (state=initState, action){
             //         ...action.spot
             //     }
             }
-        case CURRENTUSERSPOTS:
-
+        case SINGLESPOT:
+            return {
+                ...state,
+                singleSpot:action.spotDetails
+            }
+        case UPDATE_SPOT:{
+            const newState = {...state}
+            newState.singleSpot = action.spot
+            return newState;
+        }
+       
         default:
             return state; 
     }}

@@ -1,19 +1,23 @@
 import './SpotsCards.css'
 import { NavLink, useHistory } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import GetOneSpot from './GetOneSpot';
+import SpotDetails from '../../components/GetAllSpots/SpotDetails'
+
+
 const SpotCard = ({previewImage,state,country,price,city,id,avgRating}) => {
 const history = useHistory()
-// const clickHandler = () =>{
-//     history.push(`api/spots/1`)
-//    //<NavLink to= {`api/spots/${id}`}></NavLink>
-// }
+const handelClick = (e) =>{
+    history.push(`api/spots/${id}`)
+   //<NavLink to= {`api/spots/${id}`}></NavLink>
+}
   return (
     <div className='spot-card'>
-        {
+        {/* {<>
             <NavLink to = {`/api/spots/${id}`}><img src={previewImage} className='spot-image'/></NavLink>
-        }
-       { /*<img src={previewImage} className='spot-image'/>*/}
+            <SpotDetails />
+        </> */}
+        
+        <img src={previewImage} className='spot-image' onClick={handelClick}/>
         <ul className='card-info'>
             <li>
                 <h3>{city},{state}</h3>
@@ -23,6 +27,7 @@ const history = useHistory()
         <div className='spot-rating'>
         <p><i class="fa-solid fa-star"></i>{`${avgRating}`}</p>
         </div>
+        
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import{useSelector} from 'react-redux'
 import{useState} from 'react'
 import './header.css'
+import ProfileButton from '../Navigation/ProfileButton';
 const Header = () => {
 
 // const [showForm, setShowForm] = useState(false);
@@ -11,6 +12,8 @@ const Header = () => {
 //             setShowForm(true)
 //         }
 //     }
+
+
 
 
   return (
@@ -30,7 +33,7 @@ const Header = () => {
         <div className='header__right'>
             <NavLink to ='/api/spots' style={{textDecoration:'none'}}><p style={{color:'black'}}>Become a host</p></NavLink>
             <i className="fa-solid fa-globe"></i>
-            <i className="fa-solid fa-circle-user"></i>
+            <i className="fa-solid fa-circle-user" ></i>
 
         </div>
       
