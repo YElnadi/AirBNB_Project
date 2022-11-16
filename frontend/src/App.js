@@ -10,6 +10,7 @@ import CreateSpotForm from "./components/CreateSpotForm/CreateSpot";
 import CurrentUserSpots from "./components/GetCurrentUserSpots/CurrentUserSpots";
 import GetAllSpots from './components/GetAllSpots/GetSpots'
 import GetSpots from "./components/GetAllSpots/GetSpots";
+import SpotCard from "./components/GetAllSpots/SpotCard";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route  path="/">
+          <Route  exact path="/">
             <GetSpots />
           </Route>
           <Route  path="/login">
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route exact path='/api/spots/current'>
             <CurrentUserSpots/>
+          </Route>
+          <Route exact path='/api/spot/:spotId'>
+            <SpotCard/>
           </Route>
         </Switch>
       )}
