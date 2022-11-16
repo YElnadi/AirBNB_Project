@@ -3,10 +3,10 @@ import { csrfFetch } from './csrf';
 //ACTIONS------------------
 const LOAD_SPOTS ='get/SPOTS';
 const ADDSPOT = 'create/SPOT';
-const SINGLESPOT ='get/SingleSpot';
+const SINGLESPOT ='get/SingleSpotbyId';
 //const LOAD_USERSPOTS= 'get/userSpots';
 const UPDATE_SPOT ='put/spot'
-//const CURRENTUSERSPOTS = 'get/CURRENTSPOTS'
+const DELETE = 'spot/DELETE'
 
 export const loadSpots = (spots) =>({
     type:LOAD_SPOTS,
@@ -34,24 +34,16 @@ export const updateSpot = spot =>({
     spot
 })
 
-// export const getCurrentSpots = () =>({
-//     type:CURRENTUSERSPOTS
-// })
+export const deleteSpot = spotId =>({
+    type:DELETE,
+    spotId
+})
 
 
 
 
 
 //ACTION THUNKS -------------------------------------
-
-// export const getSpots = () => async dispatch =>{
-//     const response = await fetch('/api/spots');
-//     if(response.ok){
-//         const spotList = await response.json()
-//         dispatch(getAllSpots(spotList))
-//         return spotList
-//     }
-// }
 
 //getAllSpotsThunkAction
 export const getSpots = () => async (dispatch) =>{
@@ -112,33 +104,18 @@ export const updateASpot = (spot, spotId) =>async dispatch =>{
     }
 }
 
-
-
-
-// export const getCurrentUserSpots = () => async dispatch=>{
-//     const response = await csrfFetch('/api/spots/current');
-//     if(response.ok){
-//         const currentSpots = await response.json()
-//         dispatch(getCurrentSpots(currentSpots))
-//         return currentSpots;
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-const sortList = (spots) =>{
-    return spots.sort((spotA, spotB)=>{
-        return spotA.number - spotB.number;
-    }).map((spot)=>spot.id)
+export const deleteASpot = (spotId) => async (dispatch) =>{
+    const response = await  csrfFetch(`/api/spots/${spotId}`,{
+        method:'DELTET'
+    })
+    if(response.ok){
+        //const deletedSpot = await response.json()
+        dispatch(deleteASpot(spotId))
+    }
 }
+
+
+
 //REDUCERS--------------------
 const initState = {spots:{}, singleSpot:{}}
 export default function SpotsReducers (state=initState, action){
@@ -154,23 +131,7 @@ export default function SpotsReducers (state=initState, action){
         case ADDSPOT:{
             const newState = {...state, spots:{...state.spots}}
             newState.spots[action.spot.id] = action.spot
-            return newState;
-            // if(!state[action.spot.id]){
-            //     const newState = {
-            //         ...state, 
-            //         [action.spot.id]:action.spot
-            //     };
-            //     const spotList = newState.spots.map(id=>newState[id]);
-            //     spotList.push(action.spot)
-            //     newState.spots = sortList(spotList)
-            //     return newState;
-            // }
-            // return {
-            //     ...state,
-            //     [action.spot.id]:{
-            //         ...state[action.spot.id],
-            //         ...action.spot
-            //     }
+            return newState;   
             }
         case SINGLESPOT:
             return {
@@ -182,6 +143,11 @@ export default function SpotsReducers (state=initState, action){
             newState.singleSpot = action.spot
             return newState;
         }
+        case DELETE:
+            return{
+                ...state,
+                spots:state.spots.filter(spot=>spot.id !== action.spotId)
+            }
        
         default:
             return state; 
