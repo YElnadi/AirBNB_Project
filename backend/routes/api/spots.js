@@ -98,7 +98,7 @@ let { page, size} = req.query;
     
   
     if (Number.isNaN(page)) page = 1;
-    if (Number.isNaN(size)) size = 20;
+    if (Number.isNaN(size)) size = 50;
     //query params
     const where ={}
     const {maxLat,minLat,maxLng,minLng,minPrice,maxPrice} = req.query
