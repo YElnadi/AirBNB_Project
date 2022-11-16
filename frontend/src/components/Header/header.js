@@ -31,7 +31,7 @@ const Header = () => {
         </div>
 
         <div className='header__right'>
-            <NavLink to ='/api/spots' style={{textDecoration:'none'}}><p style={{color:'black'}}>Become a host</p></NavLink>
+            <NavLink to ='/spots' style={{textDecoration:'none'}}><p style={{color:'black'}}>Become a host</p></NavLink>
             <i className="fa-solid fa-globe"></i>
             <i className="fa-solid fa-circle-user" ></i>
 

@@ -4,7 +4,7 @@ import { csrfFetch } from './csrf';
 const LOAD_SPOTS ='get/SPOTS';
 const ADDSPOT = 'create/SPOT';
 const SINGLESPOT ='get/SingleSpotbyId';
-//const LOAD_USERSPOTS= 'get/userSpots';
+const LOAD_USERSPOTS= 'get/userSpots';
 const UPDATE_SPOT ='put/spot'
 const DELETE = 'spot/DELETE'
 
@@ -24,10 +24,10 @@ export const singleSpotDetails = (spotDetails) =>({
     spotDetails
 })
 
-// export const loadUserSpots = (spots) =>({
-//     type:LOAD_USERSPOTS,
-//     spots
-// })
+export const loadUserSpots = (spots) =>({
+    type:LOAD_USERSPOTS,
+    spots
+})
 
 export const updateSpot = spot =>({
     type:UPDATE_SPOT,
@@ -67,8 +67,19 @@ export const createSpot = newSpot => async dispatch =>{
     })
     if(response.ok){
         const newAddedSpot = await response.json();
+        const res = await csrfFetch(`/api/spots/${newAddedSpot.id}/images`,{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json' 
+            },
+            body:JSON.stringify({url:newSpot.imageUrl, preview:true})
+        })
+        if(res.ok){
+            //newAddedSpot.previewImage
+        console.log('newAddedSpot:',newAddedSpot)
         dispatch(addSpot(newAddedSpot));
         return newAddedSpot;
+        }
     }
 }
 
@@ -80,15 +91,15 @@ export const fetchSingleSpot = (spotId) => async dispatch =>{
     }
 }
 
-// export const getCurrentUserSpots = () =>async dispatch =>{
-//     const response = await csrfFetch(`/api/spots/current`)
-//     if(response.ok){
-//         const userSpots = await response.json()
-//         dispatch(loadUserSpots(spots))
-//         return userSpots
-//     }
+export const getCurrentUserSpots = () =>async dispatch =>{
+    const response = await csrfFetch(`/api/spots/current`)
+    if(response.ok){
+        const userSpots = await response.json()
+        dispatch(loadUserSpots(userSpots))
+        return userSpots
+    }
 
-// }
+}
 
 export const updateASpot = (spot, spotId) =>async dispatch =>{
     const response = await csrfFetch(`/api/spots/${spotId}`,{
@@ -122,14 +133,14 @@ export default function SpotsReducers (state=initState, action){
     switch(action.type){
 
         case LOAD_SPOTS:
-            const newState={spots:{}}
+            const newState={spots:{}, singleSpot:{} }
             action.spots.forEach(spot =>{
                 newState.spots[spot.id] = spot
             });
             return newState;
 
         case ADDSPOT:{
-            const newState = {...state, spots:{...state.spots}}
+            const newState = {...state}
             newState.spots[action.spot.id] = action.spot
             return newState;   
             }
@@ -148,6 +159,16 @@ export default function SpotsReducers (state=initState, action){
                 ...state,
                 spots:state.spots.filter(spot=>spot.id !== action.spotId)
             }
+        case LOAD_USERSPOTS:{
+            const newState = {
+                spots:{...state.spots},
+                singleSpot:{
+                    ...state.singleSpot
+                }
+            }
+            newState.spots = action.spots
+            return newState
+        }
        
         default:
             return state; 

@@ -12,7 +12,6 @@ const GetSpots = () => {
     const allSpots = useSelector(state=>state.spotStates.spots)
     console.log('allSpots',allSpots)
     const spots = Object.values(allSpots)
-    
 
 
     useEffect(()=>{

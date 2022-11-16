@@ -7,7 +7,7 @@ import SpotDetails from '../../components/GetAllSpots/SpotDetails'
 const SpotCard = ({previewImage,state,country,price,city,id,avgRating}) => {
 const history = useHistory()
 const handelClick = (e) =>{
-    history.push(`api/spots/${id}`)
+    history.push(`/spots/${id}`)
    //<NavLink to= {`api/spots/${id}`}></NavLink>
 }
   return (

@@ -41,13 +41,13 @@ function App() {
           <Route path="/signup"> 
             <SignupFormPage />
           </Route>
-          <Route exact path='/api/spots'>
+          <Route exact path='/spots'>
             <CreateSpotForm />
           </Route>
-          <Route exact path='/api/spots/current'>
+          <Route exact path='/spots/current'>
             <CurrentUserSpots/>
           </Route>
-          <Route path='/api/spots/:spotId'>
+          <Route path='/spots/:spotId'>
             <SpotDetails/>
           </Route>
         </Switch>

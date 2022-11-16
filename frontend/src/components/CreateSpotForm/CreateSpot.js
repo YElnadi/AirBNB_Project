@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import {createSpot} from '../../store/spots'
 
 const CreateSpot = () => {
@@ -14,9 +14,14 @@ const CreateSpot = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
-    const [lng, setLongitude] = useState('')
-    const [lat, setLatitude] = useState('')
-    const [showForm, setShowForm] = useState(false);
+    const [imageUrl, setImageUrl] = useState('')
+    
+    const sessionUser = useSelector(state => state.session.user);
+
+    if(!sessionUser){
+        history.push('/')
+        window.alert('must be logged in')
+    }
 
 
     const handleSubmit = async (e) =>{
@@ -30,14 +35,15 @@ const CreateSpot = () => {
             name,
             description,
             price,
-            lng,
-            lat
+            lng:1,
+            lat:1,
+            imageUrl
         }
 
         let createdSpot;
         createdSpot = await dispatch(createSpot(spotDetails))
         if(createdSpot){
-           history.push(`/api/spots/current`)
+           history.push(`/`)
             reset();
         }
     }
@@ -48,13 +54,14 @@ const CreateSpot = () => {
         setState('');
         setCountry('');
         setDescription('');
-        setLatitude('');
-        setLongitude('');
         setName('');
         setPrice('');
+        setImageUrl('');
+
 
     }
 
+    
     
 
   return (
@@ -110,18 +117,11 @@ const CreateSpot = () => {
             placeholder='Enter Price'
             />
             <input
-            type='number'
-            value={lat}
-            onChange={(e)=>setLatitude(e.target.value)}
+            type='text'
+            value={imageUrl}
+            onChange={(e)=>setImageUrl(e.target.value)}
             required
-            placeholder='Enter Latitiude'
-            />
-            <input
-            type='number'
-            value={lng}
-            onChange={(e)=>setLongitude(e.target.value)}
-            required
-            placeholder='Enter Longitude'
+            placeholder='Enter an Image'
             />
             <button type='submit'> Create a Spot</button>
 

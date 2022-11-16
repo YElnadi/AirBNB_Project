@@ -42,10 +42,10 @@ function ProfileButton({ user }) {
             <button onClick={logout}>Log Out</button>
           </li>
           <li>
-            <NavLink to='/api/spots'> Create a Spot</NavLink>
+            <NavLink to='/spots'> Create a Spot</NavLink>
           </li>
           <li>
-            <NavLink to='/api/spots/current'>Your Spots</NavLink>
+            <NavLink to='/spots/current'>Your Spots</NavLink>
           </li>
         </ul>
       )}
