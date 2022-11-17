@@ -11,11 +11,11 @@ const SpotDetails = () => {
   // console.log('spots', spots)
   // const spotDetails = Object.values(spots)
   // console.log('spotDetails',spotDetails)
-  const spot = useSelector(state=>state.spotStates.spots)
+const spot = useSelector(state=>state.spotStates.singleSpot)
 
 
   useEffect(()=>{
-    dispatch(getSpots())
+    dispatch(fetchSingleSpot(spotId))
 },[dispatch])
 
 console.log('spot',spot)

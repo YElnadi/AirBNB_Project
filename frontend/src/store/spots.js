@@ -117,7 +117,7 @@ export const updateASpot = (spot, spotId) =>async dispatch =>{
 
 export const deleteASpot = (spotId) => async (dispatch) =>{
     const response = await  csrfFetch(`/api/spots/${spotId}`,{
-        method:'DELTET'
+        method:'DELETE'
     })
     if(response.ok){
         //const deletedSpot = await response.json()
@@ -154,11 +154,17 @@ export default function SpotsReducers (state=initState, action){
             newState.singleSpot = action.spot
             return newState;
         }
-        case DELETE:
-            return{
+        case DELETE:{
+            const newState = {
                 ...state,
-                spots:state.spots.filter(spot=>spot.id !== action.spotId)
-            }
+                spots:{...state.spots},
+                singleSpot:{...state.singleSpot}
+            };
+            delete newState.spots[action.spotId]
+            delete newState.singleSpot[action.spotId]
+            return newState;
+        }
+            
         case LOAD_USERSPOTS:{
             const newState = {
                 spots:{...state.spots},

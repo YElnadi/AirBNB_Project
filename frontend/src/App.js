@@ -12,6 +12,7 @@ import GetAllSpots from './components/GetAllSpots/GetSpots'
 import GetSpots from "./components/GetAllSpots/GetSpots";
 import SpotCard from "./components/GetAllSpots/SpotCard";
 import SpotDetails from "./components/GetAllSpots/SpotDetails";
+import EditSpotForm from "./components/EditSpot/EditSpotForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          
           <Route  exact path="/">
             <GetSpots />
           </Route>
@@ -47,9 +49,17 @@ function App() {
           <Route exact path='/spots/current'>
             <CurrentUserSpots/>
           </Route>
-          <Route path='/spots/:spotId'>
+          <Route exact path='/spots/:spotId'>
             <SpotDetails/>
           </Route>
+          <Route exact path='/spots/:spotId/edit'>
+            <EditSpotForm/>
+          </Route>
+          
+          <Route>
+            Page Not Found
+          </Route>
+         
         </Switch>
       )}
     </>

@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCurrentUserSpots } from "../../store/spots";
 import UserSpotCards from "./UserSpotCards";
+import { useHistory } from "react-router-dom";
 const CurrentUserSpots = () => {
+  const history = useHistory()
   const currentUser = useSelector(state=>state.session.user)
   console.log('currentUserId',currentUser.id)
   const spots = useSelector(state =>state.spotStates.spots)
@@ -15,6 +17,10 @@ const CurrentUserSpots = () => {
   console.log('currentUser:', currentUser)
   const dispatch = useDispatch()
 
+//   const sessionUser = useSelector(state => state.session.user);
+//   if(!sessionUser.logout){
+//     history.push('/')
+// }
 
   useEffect(()=>{
     dispatch(getCurrentUserSpots())
