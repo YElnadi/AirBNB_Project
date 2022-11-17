@@ -65,14 +65,14 @@ const CreateSpot = () => {
     
 
   return (
-    <div>
+    <section>
         <form onSubmit={handleSubmit}>
             <input
             type='text'
+            placeholder="Enter Address"
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
             required
-            placeholder='Enter Address'
             />
             <input
             type='text'
@@ -127,7 +127,7 @@ const CreateSpot = () => {
 
         </form>
       
-    </div>
+    </section>
   );
 }
 

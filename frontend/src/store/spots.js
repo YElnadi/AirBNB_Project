@@ -1,12 +1,14 @@
 import { csrfFetch } from './csrf';
 
 //ACTIONS------------------
-const LOAD_SPOTS ='get/SPOTS';
-const ADDSPOT = 'create/SPOT';
-const SINGLESPOT ='get/SingleSpotbyId';
-const LOAD_USERSPOTS= 'get/userSpots';
-const UPDATE_SPOT ='put/spot'
-const DELETE = 'spot/DELETE'
+const LOAD_SPOTS ='GET/spots';
+const ADDSPOT = 'POST/spot';
+const SINGLESPOT ='GET/SingleSpotbyId';
+const LOAD_USERSPOTS= 'GET/userSpots';
+const UPDATE_SPOT ='PUT/spot'
+const DELETE = 'DELETE/spot'
+const ADD_IMAGE = 'POST/imageBySpotId'
+const DELETE_IMAGE = 'DELETE/spotImageById'
 
 export const loadSpots = (spots) =>({
     type:LOAD_SPOTS,
@@ -14,17 +16,17 @@ export const loadSpots = (spots) =>({
 })
 
 
-export const addSpot = (spot) =>({
+export const addSpot = spot =>({
     type:ADDSPOT,
     spot
 })
 
-export const singleSpotDetails = (spotDetails) =>({
+export const singleSpotDetails = spotDetails =>({
     type:SINGLESPOT,
     spotDetails
 })
 
-export const loadUserSpots = (spots) =>({
+export const loadUserSpots = spots =>({
     type:LOAD_USERSPOTS,
     spots
 })
@@ -39,6 +41,15 @@ export const deleteSpot = spotId =>({
     spotId
 })
 
+export const addImage = image =>({
+    type:ADD_IMAGE,
+    image
+})
+
+export const deleteImage = imageId =>({
+    type:DELETE_IMAGE,
+    imageId
+})
 
 
 
@@ -94,9 +105,9 @@ export const fetchSingleSpot = (spotId) => async dispatch =>{
 export const getCurrentUserSpots = () =>async dispatch =>{
     const response = await csrfFetch(`/api/spots/current`)
     if(response.ok){
-        const userSpots = await response.json()
-        dispatch(loadUserSpots(userSpots))
-        return userSpots
+        const data = await response.json()
+        dispatch(loadSpots(data.Spots))
+        return data
     }
 
 }
@@ -105,22 +116,15 @@ export const updateASpot = (spot, spotId) =>async dispatch =>{
     const response = await csrfFetch(`/api/spots/${spotId}`,{
         method:'PUT',
         header:{
-            'Contetn-Type':'application/json'
-        }
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(spot)
     })
     if(response.ok){
         const updatedSpot = await response.json()
-        const res = await csrfFetch(`/api/spots/${updatedSpot.id}/images`,{
-            method:'POST',
-            headers:{
-            'Content-Type': 'application/json' 
-            },
-            body:JSON.stringify({url:spot.imageUrl, preview:true})
-        })
-        if(res.ok){
         dispatch(updateASpot(updatedSpot))
-        return updatedSpot
-        }
+        return updatedSpot;
+        
     }
 }
 
@@ -130,9 +134,38 @@ export const deleteASpot = (spotId) => async (dispatch) =>{
     })
     if(response.ok){
         //const deletedSpot = await response.json()
-        dispatch(deleteASpot(spotId))
+        dispatch(deleteSpot(spotId))
     }
 }
+
+export const addImageBySpotId = (image,spotId) => async (dispatch) =>{
+    const response = await csrfFetch(`/api/spots/${spotId}/images`,{
+        method:'POST',
+            headers:{
+            'Content-Type': 'application/json' 
+            },
+            body:JSON.stringify(image)
+    })
+    if(response.ok){
+        const newImage = response.json()
+        dispatch(addImageBySpotId(newImage))
+        return newImage
+    }
+}
+
+export const deleteSpotImageById = (imageId) =>  async(dispatch) =>{
+    const response = await csrfFetch(`/api/spot-images/${imageId}`,{
+        method:'DELETE'
+    })
+    if(response.ok){
+        const deletedImage = await response.json();
+        dispatch(deleteImage(deleteImage))
+        return deletedImage;
+    }
+}
+
+
+
 
 
 
@@ -155,7 +188,7 @@ export default function SpotsReducers (state=initState, action){
             }
         case SINGLESPOT:
             return {
-                ...state,
+                spots:{},
                 singleSpot:action.spotDetails
             }
         case UPDATE_SPOT:{
@@ -170,20 +203,10 @@ export default function SpotsReducers (state=initState, action){
                 singleSpot:{...state.singleSpot}
             };
             delete newState.spots[action.spotId]
-            delete newState.singleSpot[action.spotId]
+             newState.singleSpot = {}
             return newState;
         }
             
-        case LOAD_USERSPOTS:{
-            const newState = {
-                spots:{...state.spots},
-                singleSpot:{
-                    ...state.singleSpot
-                }
-            }
-            newState.spots = action.spots
-            return newState
-        }
        
         default:
             return state; 

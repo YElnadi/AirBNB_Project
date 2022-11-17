@@ -10,11 +10,11 @@ const CurrentUserSpots = () => {
   const history = useHistory()
   const currentUser = useSelector(state=>state.session.user)
   console.log('currentUserId',currentUser.id)
-  const spots = useSelector(state =>state.spotStates.spots)
-  console.log('spots', spots)
-  const userSpots = spots.Spots
+  const userSpots = useSelector(state =>state.spotStates.spots)
+  //console.log('spots', spots)
+  //const userSpots = spots.Spots
   // console.log('spots', spots.Spots)
-  console.log('currentUser:', currentUser)
+  //console.log('currentUser:', currentUser)
   const dispatch = useDispatch()
 
 //   const sessionUser = useSelector(state => state.session.user);
@@ -28,15 +28,15 @@ const CurrentUserSpots = () => {
   // console.log(spots)
   // console.log(spots.length)
   // if(spots === undefined || spots === null || spots.Spots === undefined || currentUser.id !== spots.Spots[0].ownerId) return null
-  if(!Object.values(spots).length) return null
-  console.log('userSpots',userSpots[0].name)
+  if(!Object.values(userSpots).length) return null
+  //console.log('userSpots',userSpots[0].name)
 
   return (
     <div>
       <h1>current user spots</h1>
 
       {
-        userSpots.map(userSpot=>(
+        Object.values(userSpots).map(userSpot=>(
           <UserSpotCards key={userSpot.id} {...userSpot}/>
   
         ))

@@ -1,0 +1,26 @@
+.logo{
+    object-fit:contain;
+    height:30px;
+    margin-left: 20px;
+    margin: 20px;
+}
+
+.nav{
+    display:flex;
+    text-decoration: none;
+    padding-right: 0rem;
+    margin-left: 10px;
+    margin:20px;
+    color:black;
+    float:right;
+    transition: transform 100ms ease-in;
+
+}
+.nav:hover{
+    transform: scale(1.07);
+}
+
+
+ul{
+    overflow: hidden;
+}

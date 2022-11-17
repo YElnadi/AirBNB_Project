@@ -29,48 +29,71 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="signupFrm">
+    <form  className='form' onSubmit={handleSubmit}>
+    <h1 className="title">Sign up</h1>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+
+      <div className="inputContainer">
+      <label className="label">
         Email
-        <input
-          type="text"
+        <input className="input"
+          type="text" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder="Email"
+         
         />
       </label>
-      <label>
+      </div>
+
+      <div className="inputContainer">
+      <label className="label">
         Username
-        <input
+        <input className='input'
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          placeholder="Username"
         />
       </label>
-      <label>
+      </div>
+
+      <div className="inputContainer">
+      <label className="label">
         Password
-        <input
+        <input className='input'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          placeholder="Password"
+
         />
       </label>
-      <label>
+      </div>
+
+      <div className="inputContainer">
+      <label className="label">
         Confirm Password
-        <input
+        <input className='input'
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          placeholder="Confirm Password"
+
         />
       </label>
-      <button type="submit">Sign Up</button>
+      </div>
+
+      <button type="submit" className="">Sign Up</button>
     </form>
+    </div>
   );
 }
 

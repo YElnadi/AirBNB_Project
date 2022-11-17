@@ -2,3 +2,27 @@ h4{
 display: inline;
 
 }
+.spot-image {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    background-color:white;
+    color: white;
+    object-fit:cover;
+  }
+  .spot-card {
+    display: inline-block;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow:hidden;
+    /* border: 2px solid hotpink; */
+    width: 300px;
+    margin:30px;
+    transition: transform 100ms ease-in;
+    cursor:pointer;
+    
+}

@@ -1,11 +1,11 @@
 import './UserSpotCards.css'
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteASpot } from '../../store/spots';
 import EditSpotForm from '../EditSpot/EditSpotForm';
 
 
-const UserSpotCards = ({name, address, city,id, country, description,previewImage}) => {
+const UserSpotCards = ({name, address, city,id, country, description,previewImage,price}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     console.log('id', id)
@@ -15,20 +15,21 @@ const UserSpotCards = ({name, address, city,id, country, description,previewImag
     const handelDelete = async (e)=>{
         e.preventDefault()
         await dispatch(deleteASpot(id))
-        history.push('/')
     }
     const handelEdit = () =>{
         history.push(`/spots/${id}/edit`)
     }
   return (
     <div className='spot-card'>
-        <img src={previewImage} className='spot-image' onClick={handelClick} />
+        <img src={previewImage} alt='upload' className='spot-image' onClick={handelClick} />
         <div className='card-info'>
         <div>{name}</div>
         <div>{address}</div>
         <div>{city}</div>
         <div>{country}</div>
         <div>{description}</div>
+        <div>{price}</div>
+
         <div>
             <button onClick={handelEdit}>Edit</button>
         </div>

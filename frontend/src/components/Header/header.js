@@ -32,8 +32,8 @@ const Header = () => {
 
         <div className='header__right'>
             <NavLink to ='/spots' style={{textDecoration:'none'}}><p style={{color:'black'}}>Become a host</p></NavLink>
-            <i className="fa-solid fa-globe"></i>
-            <i className="fa-solid fa-circle-user" ></i>
+            {/* <i className="fa-solid fa-globe"></i> */}
+            {/* <i className="fa-solid fa-circle-user" ></i> */}
 
         </div>
       

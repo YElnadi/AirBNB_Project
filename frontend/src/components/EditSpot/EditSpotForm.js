@@ -31,7 +31,6 @@ const EditSpotForm = () => {
   const updateName = (e) => setName(e.target.value)
   const updateDescription = (e) => setDescription(e.target.value)
   const updatePrice = (e) => setPrice(e.target.value)
-  const updateImageUrl = (e) => setImageUrl(e.target.value)
 
   
 
@@ -56,6 +55,8 @@ const EditSpotForm = () => {
         city,
         name,
         price,
+        lat:50,
+        lng:50,
         description,
         imageUrl
     }
@@ -76,7 +77,6 @@ const EditSpotForm = () => {
     setName('')
     setPrice('')
     setState('')
-    setImageUrl('')
   }
 
 
@@ -132,13 +132,6 @@ const EditSpotForm = () => {
             onChange={updatePrice}
             required
             placeholder='Price'
-            />
-            <input
-            type='text'
-            value={imageUrl}
-            onChange={updateImageUrl}
-            required
-            placeholder='Image'
             />
             <button type='submit'> Update</button>
             <button onClick={reset}>Cancel</button>

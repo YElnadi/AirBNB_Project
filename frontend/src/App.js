@@ -29,7 +29,7 @@ function App() {
   
     */ 
     <>
-      <Header />
+     
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>

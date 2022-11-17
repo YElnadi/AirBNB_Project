@@ -20,7 +20,7 @@ const GetSpots = () => {
 
   return (
     <div>
-        <h1>Spots List</h1>
+        
         <ol>
             {spots.map(spot=>(
                 <SpotCard key={spot.id}{...spot}/>
