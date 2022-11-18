@@ -32,11 +32,16 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div className='profile-button'>
-      <i className="fa-solid fa-circle-user" onClick={openMenu} ></i>
+      <div >
+      <NavLink to ='/'><img 
+        src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg"
+        alt='Airbnb logo' className='logo'/></NavLink>
+        <div class='drop-down'>
+        <div className='profile-button'>
+      <i className="fa-solid fa-circle-user "  onClick={openMenu} ></i>
       </div>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <ul className="">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
@@ -49,7 +54,11 @@ function ProfileButton({ user }) {
             <NavLink to='/spots/current'>Your Spots</NavLink>
           </li>
         </ul>
+        
       )}
+        </div>
+        </div>
+
     </>
   );
 }

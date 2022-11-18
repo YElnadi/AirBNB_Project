@@ -1,0 +1,24 @@
+.spots--container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    padding-left:0px;
+    padding-right: 0px;
+}
+
+.spot--card--image{
+    height: 300px;
+    width: 300px;
+    color: white;
+    object-fit:cover;
+}
+
+.spot--card{
+    width:300px;
+    padding:30px;
+}
+
+.spot--price{
+    padding-top:8px;
+    padding-bottom:10px
+}

@@ -20,9 +20,9 @@ const UserSpotCards = ({name, address, city,id, country, description,previewImag
         history.push(`/spots/${id}/edit`)
     }
   return (
-    <div className='spot-card'>
-        <img src={previewImage} alt='upload' className='spot-image' onClick={handelClick} />
-        <div className='card-info'>
+    <div >
+        <img src={previewImage} alt='upload' onClick={handelClick} />
+        <div >
         <div>{name}</div>
         <div>{address}</div>
         <div>{city}</div>

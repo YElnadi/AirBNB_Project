@@ -1,8 +1,8 @@
 .logo{
     object-fit:contain;
     height:30px;
-    margin-left: 20px;
-    margin: 20px;
+    margin-left: 25px;
+    margin-top:15px
 }
 
 .nav{
@@ -24,3 +24,29 @@
 ul{
     overflow: hidden;
 }
+
+.profile-button{
+  border: none;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  padding: 10px;
+  margin-left:95px
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: left;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f1f1f1;
+    width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    float:right;
+  }

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from '../LoginFormModel';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -10,38 +11,25 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-     
       <ProfileButton user={sessionUser} />
-      
-      </>
     );
   } else {
     sessionLinks = (
-      <div>
-  
-       <NavLink to ='/'><img 
-        src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg"
-        alt='Airbnb logo' className='logo'/></NavLink>
-       
-        <NavLink to="/login" className="nav">Log In</NavLink>
-        <NavLink to="/signup" className='nav'>Sign Up</NavLink>
-        
-      </div>
+      <>
+        <LoginFormModal />
+        <NavLink to="/signup">Sign Up</NavLink>
+      </>
     );
   }
 
   return (
     <ul>
-      <div >
-        <NavLink exact to="/" className='nav'>
-          Home
-          </NavLink>
+      <li>
+        <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
-      </div>
+      </li>
     </ul>
   );
 }
-
 
 export default Navigation;

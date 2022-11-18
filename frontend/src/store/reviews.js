@@ -121,7 +121,7 @@ export default function ReviewReducers (state=initState, action){
 
         }
         case LOAD_REVIEWS:{
-            const newState=
+            let newState=
             {
                  
                 spot:{},
@@ -130,9 +130,13 @@ export default function ReviewReducers (state=initState, action){
             action.reviews.forEach(review =>{
                 newState.spot[review.id] = review
             })
-            if(!action.reviews) return newState.review
-            return newState;
+            if(!action.reviews) {
+                return newState.review
+            }else {
+                return newState;
 
+            }
+            
         }
             
             

@@ -23,7 +23,7 @@ console.log('spot',spot)
 if(!spot.SpotImages) return null;
   return (
     <>
-    <div className="spot-card">
+    <div >
       <h1>Spot Details</h1>
       <h1>{spot.name}</h1>
       <h4 ><i class="fa-solid fa-star" ></i>{`${spot.avgStarRating}`} </h4>

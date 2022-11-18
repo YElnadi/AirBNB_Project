@@ -21,6 +21,8 @@ const CreateReview = () => {
     //console.log('sessionUserId',sessionUser.id)
     const spot = useSelector(state=>state.spotStates.spots)
    // console.log('spot', spot)
+   const allReviews = useSelector(state=>state.reviews.spot)
+   console.log('allReviews', allReviews)
 
     const reset = ()=>{
         setReview('')
@@ -32,12 +34,12 @@ const CreateReview = () => {
             review,
             stars
         }
-        let newReview
+        let newReview 
         newReview = await dispatch(createSpotReview(spotId, payload))
-        console.log('newReview+++++++',newReview)
+       
         if(newReview){
             dispatch(getReviewsBySpotId(spotId))
-            //reset();
+            reset();
             //history.push(`/spots/${spotId}`)
         }else{
             window.alert('cant submit review')
@@ -49,9 +51,6 @@ const CreateReview = () => {
         if(!review) errors.push('Please enter a review')
         setValidationErrors(errors)
     },[review])
-
-
-
 
     return (
         <div >
@@ -73,7 +72,6 @@ const CreateReview = () => {
                 onChange={(e)=>setStars(e.target.value)}
                 />
                 <button  disabled={validationErrors.length>0}>Submit</button>
-                <button >Delete</button>
             </form>
         </div>
     );
