@@ -4,6 +4,9 @@ import { fetchSingleSpot, getSpots } from "../../store/spots";
 import { useParams } from "react-router-dom";
 import './SpotDetails.css'
 import CreateReview from "../Reviews/CreateReview";
+import ReviewsCard from "../Reviews/ReviewsCard";
+import ReviewsSingleSpot from "../Reviews/ReviewsSingleSpot";
+
 
 const SpotDetails = () => {
   const {spotId} = useParams()
@@ -33,6 +36,12 @@ if(!spot.SpotImages) return null;
       <h2>Located in {spot.address}</h2>
     </div>
     <CreateReview/>
+    <ReviewsSingleSpot/>
+    <ReviewsCard spot={spotId}/>
+
+
+   
+
 
     </>
   );

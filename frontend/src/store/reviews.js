@@ -38,7 +38,7 @@ export const getUserReviews = () =>async (disPatch) =>{
     const response = await csrfFetch(`/api/reviews/current`)
     if(response.ok){
         const reviews = await response.json()
-        disPatch(getReviews(reviews))
+        disPatch(getReviews(reviews.Reviews))
     }
 }
 
@@ -70,10 +70,11 @@ export const deleteSpotReview = (reviewId) => async (dispatch) =>{
     }
 }
 
-export const getReviewsBySpotId = (spotId) => async (dispatch) =>{
+export const getReviewsBySpotId = (spotId) => async (dispatch) =>{ console.log('get all reviews by spot id')
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`)
     if(response.ok){
         const reviews = await response.json()
+        console.log('reviews from db', reviews)
         dispatch(loadReviews(reviews))
         return reviews
     }else 
@@ -86,11 +87,12 @@ export const getReviewsBySpotId = (spotId) => async (dispatch) =>{
 
 //REDUCERS
 let initState = {spot:{}, user:{}}
-export default function ReviewReducers (state=initState, action){
+export default function ReviewReducers (state= {spot:{}, user:{}}, action){
     switch (action.type) {
         case GET_REVIEWS:{
+            console.log('GET_REVIEWS')
             const newState = {
-                user:{}
+               user:{}
             };
             action.userId.forEach(review => {
                 newState.user[review.id] = review
@@ -127,11 +129,12 @@ export default function ReviewReducers (state=initState, action){
                 spot:{},
                 user:{}
             }
-            action.reviews.forEach(review =>{
+            Object.values(action.reviews).forEach(review =>{
+                console.log('object values action reviews ',Object.values(action.reviews)) 
                 newState.spot[review.id] = review
             })
             if(!action.reviews) {
-                return newState.review
+                return newState.reviews
             }else {
                 return newState;
 

@@ -6,16 +6,24 @@ import { useParams } from "react-router-dom";
 import { getCurrentUserSpots } from "../../store/spots";
 import UserSpotCards from "./UserSpotCards";
 import { useHistory } from "react-router-dom";
+import { getReviewsBySpotId } from "../../store/reviews";
+import ReviewsSingleSpot from "../Reviews/ReviewsSingleSpot";
 const CurrentUserSpots = () => {
   const history = useHistory()
-  const currentUser = useSelector(state=>state.session.user)
-  console.log('currentUserId',currentUser.id)
-  const userSpots = useSelector(state =>state.spotStates.spots)
+  const sessionUser= useSelector(state=>state.session.user)
+  //console.log('currentUserId',currentUser.id)
+  const userSpots = useSelector(state =>Object.values(state.spotStates.spots))
+  
+  console.log('userSpot',userSpots)
   //console.log('spots', spots)
   //const userSpots = spots.Spots
   // console.log('spots', spots.Spots)
   //console.log('currentUser:', currentUser)
   const dispatch = useDispatch()
+
+  if(!sessionUser){
+    history.push('/')
+  }
 
 //   const sessionUser = useSelector(state => state.session.user);
 //   if(!sessionUser.logout){
@@ -37,12 +45,12 @@ const CurrentUserSpots = () => {
 
       {
         Object.values(userSpots).map(userSpot=>(
-          <UserSpotCards key={userSpot.id} {...userSpot}/>
+          <UserSpotCards key={userSpot.id} userSpot={userSpot}/>
   
         ))
         
       }
-    
+     <ReviewsSingleSpot userSpots={userSpots}/> 
     </div>
   );
 }

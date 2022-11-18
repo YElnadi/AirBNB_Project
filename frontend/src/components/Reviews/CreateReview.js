@@ -6,23 +6,27 @@ import { useEffect } from 'react';
 import { createSpotReview } from '../../store/reviews';
 import { useSelector } from 'react-redux';
 import { getReviewsBySpotId } from '../../store/reviews';
-import { getCurrentUserSpots } from '../../store/spots';
+import { fetchSingleSpot, getCurrentUserSpots } from '../../store/spots';
 import { deleteSpotReview } from '../../store/reviews';
+import ReviewsCard from './ReviewsCard';
+
 const CreateReview = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { spotId } = useParams()
-    //console.log('spotId', spotId)
+    console.log('spotId', spotId)
     const [review, setReview] = useState('');
     const [stars, setStars] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
     //const [comments, setComments] = useState([])
-    const sessionUser = useSelector(state => state.session.user)
-    //console.log('sessionUserId',sessionUser.id)
-    const spot = useSelector(state=>state.spotStates.spots)
-   // console.log('spot', spot)
-   const allReviews = useSelector(state=>state.reviews.spot)
-   console.log('allReviews', allReviews)
+    //const sessionUser = useSelector(state => state.session.user)
+    //console.log('sessionUserId',sessionUser)
+    
+    const spot = useSelector(state=>Object.values(state.spotStates.spots))
+    console.log('spotss', spot)
+   const allReviews = useSelector(state=>Object.values(state.reviews.spot))
+   console.log('AllReviews',allReviews)
+   //console.log('allReviews', allReviews)
 
     const reset = ()=>{
         setReview('')
@@ -36,13 +40,9 @@ const CreateReview = () => {
         }
         let newReview 
         newReview = await dispatch(createSpotReview(spotId, payload))
-       
-        if(newReview){
-            dispatch(getReviewsBySpotId(spotId))
-            reset();
-            //history.push(`/spots/${spotId}`)
-        }else{
-            window.alert('cant submit review')
+        reset();
+        if(!newReview){
+           window.alert('cant submit review')
         }
     }
 
@@ -73,6 +73,7 @@ const CreateReview = () => {
                 />
                 <button  disabled={validationErrors.length>0}>Submit</button>
             </form>
+
         </div>
     );
 }

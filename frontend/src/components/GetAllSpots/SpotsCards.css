@@ -1,6 +1,6 @@
-.spot-image {
+.card--image {
     display: flex;
-    justify-content: center;
+    justify-content:center;
     flex-direction: row;
     align-items: center;
     height: 300px;
@@ -9,6 +9,7 @@
     background-color:white;
     color: white;
     object-fit:cover;
+    
   }
 
   .card-info {
@@ -18,21 +19,18 @@
     padding:0px;
     padding-top:0px; 
 }
-.spot-card {
-    display: flex;
-    flex-direction: column;
-
-    flex-wrap: wrap;
+.card {
+    margin:20px;
+    border-radius: 10px;
     overflow:hidden;
-    /* border: 2px solid hotpink; */
-    /* width: 500px; */
-    margin:-20px;
+    flex-wrap:wrap;
+    
     transition: transform 100ms ease-in;
-    cursor:pointer;
+    cursor:pointer;  
     
 }
 
-.spot-card:hover{
+.card:hover{
     transform: scale(1.07);
 }
 
@@ -42,5 +40,21 @@
     
     
 }
+.spot--price{
+margin-left: 30px;
+}
 
+.spot--city--state{
+    margin-left: 30px;
+    margin-bottom: 10px;
 
+} 
+.spot--card--info{
+    display:flex;
+    font-size: small;
+
+}
+
+.spot--average--star{
+
+}
