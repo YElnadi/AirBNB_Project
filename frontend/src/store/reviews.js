@@ -122,23 +122,16 @@ export default function ReviewReducers (state= {spot:{}, user:{}}, action){
             return newState;
 
         }
+
         case LOAD_REVIEWS:{
+            console.log('actionreviews',action.reviews)
             let newState=
             {
                  
-                spot:{},
-                user:{}
+                spot:action.reviews.Reviews,
+                user:[]
             }
-            Object.values(action.reviews).forEach(review =>{
-                console.log('object values action reviews ',Object.values(action.reviews)) 
-                newState.spot[review.id] = review
-            })
-            if(!action.reviews) {
-                return newState.reviews
-            }else {
-                return newState;
-
-            }
+           return newState;
             
         }
             

@@ -17,7 +17,7 @@ const ReviewsSingleSpot = () => {
 
 
 
-    
+
     useEffect(()=>{
         dispatch(getReviewsBySpotId(spotId))
 
@@ -26,7 +26,7 @@ const ReviewsSingleSpot = () => {
    return (
     <div>
       <h1>Reviews single spot</h1>
-      <ReviewsCard reviews={allReviews}/>
+      <ReviewsCard allReviews={allReviews}/>
     </div>
   );
 }
