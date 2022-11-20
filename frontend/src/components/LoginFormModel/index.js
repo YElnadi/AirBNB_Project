@@ -9,19 +9,23 @@ function LoginFormModal() {
   const history = useHistory();
 
   return (
-    <>
-      <button onClick={() => 
+    <div className='conatiner'>
+      <div className='navbar'>
+        <div >
+      <button className='bar--list'onClick={() => 
         {
           setShowModal(true)
           history.push('/')
         } 
-        } style={{}}>Log In</button>
+        } >Log In</button>
+        </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />
         </Modal>
       )}
-    </>
+      </div>
+    </div>
   );
 }
 

@@ -1,4 +1,8 @@
 import { useState } from "react";
+import LoginFormModal from "../LoginFormModel";
+import SignupFormModal from "../SignUpFormModel";
+import './Navigation.css'
+
 const DropDownMenu = () => {
     const [state, setState] = useState(false)
     const showDropdown = () =>{
@@ -9,17 +13,21 @@ const DropDownMenu = () => {
     }
 
   return (
-    <div>
-      <div className='dropDown' onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
-        {state? <ul onMouseEnter={showDropdown} >
-            <li>1s Value</li>
-            <li>2nd Value</li>
-            <li>3rd Value</li>
-            <li>4th Value</li>
-            <li>5th Value</li>
-
-        </ul>: null}
+    <div style={{marginBottom:20, marginRight:20,border:1, border:'solid' ,border:'black'}}>
+      <div style={{position:'absolute'}} onClick={showDropdown} onMouseLeave={hideDropdown}>
+        <div className='nav--bar'>
+      <i class="fa-solid fa-bars"></i>
       </div>
+        {state? <div onMouseEnter={showDropdown} >
+          <div className='menu--select'>
+            <div style={{paddingBottom:5, paddingTop:20}} ><LoginFormModal /></div>
+            <div style={{paddingBottom:5, paddingTop:20}}><SignupFormModal /></div>
+          </div>
+           
+
+        </div>: null}
+      </div>
+    
     </div>
   );
 }

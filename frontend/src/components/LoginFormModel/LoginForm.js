@@ -25,35 +25,45 @@ function LoginForm() {
   }
   const handleDemo = async (e) => {
     e.preventDefault();
-    await dispatch(sessionActions.login({ credential: 'FakeUser4' , password: 'password5' }))
-    return 
+    await dispatch(sessionActions.login({ credential: 'FakeUser4', password: 'password4' }))
+    return
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-      <button type="submit" onClick={handleDemo}>Demo User</button>
-    </form>
+   
+    <>
+      <form  onSubmit={handleSubmit} className='center'>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        {/* <div>
+        <img src='img_avatar2.png' alt='Avatar' class='avatar'></img>
+      </div> */}
+        <div className='text_field'>
+          <label>Username or Email
+          <input
+            type="text"
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+          />
+           </label>
+        </div>
+
+        <div className='text_field'>
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+        </div>
+        <button type="submit">Log In</button>
+        <button type="submit" onClick={handleDemo}>Demo User</button>
+      </form>
+      </>
+ 
   );
 }
 

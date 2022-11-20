@@ -40,20 +40,23 @@ function ProfileButton({ user }) {
         <div class='drop-down'>
         <div className='profile-button  navbar' >
       <i className="fa-solid fa-circle-user" 
-      onClick={openMenu} style={{position:'absolute'}}></i>
+      onClick={openMenu}></i>
       </div>
       {showMenu && (
-        <ul className="">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
+        <div style={{position:'absolute', backgroundColor:'white'}}>
+          <div>Hello, {user.username}</div>
+          <div>{user.email}</div>
+          <div>
             <button onClick={logout}>Log Out</button>
-          </li>
+          </div>
 
-          <li>
+          <div>
             <NavLink to='/spots/current'>Your Spots</NavLink>
-          </li>
-        </ul>
+          </div>
+          <div>
+            <NavLink to='/spots'>Airbnb your home</NavLink>
+          </div>
+        </div>
         
       )}
         </div>

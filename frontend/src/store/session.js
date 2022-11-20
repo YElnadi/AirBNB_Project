@@ -33,7 +33,7 @@ export const login = (user) => async (dispatch) => {
     });
     const data = await response.json();
     console.log("in login")
-    dispatch(setUser(data.user));
+    dispatch(setUser(data));
     return response;
   };
 

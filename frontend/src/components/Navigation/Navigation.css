@@ -40,7 +40,7 @@ ul{
 .dropdown {
     position: relative;
     display: inline-block;
-    float: left;
+    overflow:hidden;
   }
 
   .dropdown-content {
@@ -59,11 +59,15 @@ ul{
     color:red
   }
 
-  .bars{
-    display:flex;
-    justify-content:flex-end;
-    width:100%
-  
+  .nav--bar{
+    cursor:'pointer'; width:30;
+    transition: transform 100ms ease-in;
+
+  }
+  .nav--bar:hover{
+    transform: scale(1.07);
+
+
   }
   .navbar{
     display:flex;
@@ -80,21 +84,51 @@ nav{
   padding-left:4%;
   padding-right:4%;
   box-sizing:border-box;
-  height:auto
+  height:auto;
+  margin: right 50px
 }
 
 .airbnb--your--home{
   text-decoration: none;
   color:black;
-  font-size:17px;  
+  font-size:16px;  
   border:1px solid white;
   cursor: pointer;
   padding:20px;
-  border-top: 30px;
-  height:70px
+  border-top: 50px;
+  margin:20px;
+  border-radius:40px
 }
 
 .airbnb--your--home:hover{
   background-color: rgb(209, 207, 207);
 }
 
+.menu{
+  color:black;
+  cursor: pointer;
+  border-top: 30px;
+  border-radius:40px;
+  margin-right: 10px;
+  flex:1
+}
+.menu--select{
+  display:flex;
+  flex-direction: column;
+  border:1px solid white;
+  border-radius: 10%;
+  background-color: white;
+  box-shadow: 1px 1px 2px 1px gray;;
+}
+.bar--list{
+border:none;
+padding:10px;
+cursor: pointer;
+border-radius: 10px;
+transition: transform 100ms ease-in;
+
+}
+.bar--list:hover{
+  transform: scale(1.07);
+
+}

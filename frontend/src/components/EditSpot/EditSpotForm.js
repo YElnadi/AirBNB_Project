@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { updateASpot } from "../../store/spots";
+import { fetchSingleSpot, updateASpot } from "../../store/spots";
 
 
 const EditSpotForm = () => {
@@ -13,6 +13,22 @@ const EditSpotForm = () => {
   //console.log('spotId', spotId)
   const currentSpot = useSelector(state=>state.spotStates.singleSpot)
   //console.log('currentSpot',currentSpot)
+
+
+  useEffect(()=>{
+    dispatch(fetchSingleSpot(spotId))
+  },[dispatch,spotId])
+
+  useEffect(()=>{
+    setAddress(currentSpot?.address)
+    setCity(currentSpot?.city)
+    setState(currentSpot?.state)
+    setCountry(currentSpot?.country)
+    setName(currentSpot?.name)
+    setDescription(currentSpot?.description)
+    setPrice(currentSpot?.price)
+
+  },[currentSpot])
 
   const [address, setAddress] = useState('')
   const [state, setState] = useState('')

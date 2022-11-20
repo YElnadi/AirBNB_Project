@@ -31,7 +31,7 @@ const ReviewsSingleSpot = ({spotId}) => {
 
    return (
     <div>
-      <h1>Reviews single spot</h1>
+      <h2 style={{margin:20}}>Reviews </h2>
       { 
       allReviews.map(review=>(
           <ReviewsCard key={review.id} 

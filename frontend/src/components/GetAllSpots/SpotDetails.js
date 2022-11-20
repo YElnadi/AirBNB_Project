@@ -50,12 +50,12 @@ const SpotDetails = () => {
   return (
     <>
       <div >
-        <h1>Spot Details</h1>
+        {/* <h1>Spot Details</h1> */}
         <h1 style={{ marginLeft: 20 }}>{spot.name}</h1>
         <div className='rating--location'>
-          <div style={{ marginLeft: 10 }}><i class="fa-solid fa-star" ></i>{avg()} </div>
+          <div style={{ marginLeft: 10 }}><i class="fa-solid fa-star" ></i>{avg()}  </div>
           <div>
-            <h4 style={{ marginLeft: 20 }}>{spot.city}, {spot.state}, {spot.country} </h4>
+            <h4 style={{ marginLeft: 20 }}> {spot.city}, {spot.state}, {spot.country} </h4>
           </div>
         </div>
         <div>
