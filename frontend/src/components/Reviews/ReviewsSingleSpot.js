@@ -12,13 +12,13 @@ const ReviewsSingleSpot = ({spotId}) => {
     console.log('spotId++++++++',spotId)
     //const {spotId} = useParams();
     //console.log('spotIDDDDDD', spotId)
-    const allReviews = useSelector(state=>state.reviews.spot)
+    var allReviews = useSelector(state=>state.reviews.spot)
     console.log('allReviews in single',allReviews)
     
-    const allReviewTexts= Array.isArray(allReviews) ? allReviews.map(review=>review.review): []
+    allReviews= Array.isArray(allReviews) ? allReviews.map(review=>review): []
 
 
-    console.log('allReviewsTexts', allReviewTexts)
+    console.log('allReviewsTexts', allReviews)
 
     const sessionUser = useSelector(state=>state.session.user)
     console.log('&&sessionUser', sessionUser)
@@ -33,9 +33,9 @@ const ReviewsSingleSpot = ({spotId}) => {
     <div>
       <h1>Reviews single spot</h1>
       { 
-      allReviewTexts.map(review=>(
+      allReviews.map(review=>(
           <ReviewsCard key={review.id} 
-          review={review} spotId={spotId}/>
+          review={review} />
           ))
       }
     {/* <ReviewsCard allReviews={allReviews}/> */}

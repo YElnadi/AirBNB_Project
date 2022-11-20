@@ -39,8 +39,10 @@ const SpotDetails = () => {
   //   setButton(true)
   // }
   const avg = () =>{
-    if(`$spot.avgStarRating` === null)
-    return 'new'
+    if(spot.avgStarRating === null)
+      return 'new'
+    else
+      return spot.avgStarRating.toFixed(2)
   }
 
   console.log('spot', spot)
@@ -51,7 +53,7 @@ const SpotDetails = () => {
         <h1>Spot Details</h1>
         <h1 style={{ marginLeft: 20 }}>{spot.name}</h1>
         <div className='rating--location'>
-          <div style={{ marginLeft: 10 }}><i class="fa-solid fa-star" ></i>{`${spot.avgStarRating}`} </div>
+          <div style={{ marginLeft: 10 }}><i class="fa-solid fa-star" ></i>{avg()} </div>
           <div>
             <h4 style={{ marginLeft: 20 }}>{spot.city}, {spot.state}, {spot.country} </h4>
           </div>
@@ -69,7 +71,6 @@ const SpotDetails = () => {
       </div>
       <button onClick={reviewForm} className='button'>Rate your stay</button>
       <ReviewsSingleSpot spotId={spotId} />
-      <RemoveReview />
 
 
 
