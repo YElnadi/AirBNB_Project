@@ -123,8 +123,8 @@ export default function ReviewReducers (state= {spot:{}, user:{}}, action){
 
         }
 
-        case LOAD_REVIEWS:{
-            console.log('actionreviews',action.reviews)
+        case LOAD_REVIEWS:
+           console.log('actionreviews+++++',action.reviews)
             let newState=
             {
                  
@@ -133,7 +133,7 @@ export default function ReviewReducers (state= {spot:{}, user:{}}, action){
             }
            return newState;
             
-        }
+        
             
             
     

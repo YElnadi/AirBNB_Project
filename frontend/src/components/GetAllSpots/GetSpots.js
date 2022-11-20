@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { getSpots } from '../../store/spots'
 import SpotCard from "./SpotCard";
 import './GetAllSpots.css'
+import ReviewsCard from "../Reviews/ReviewsCard";
 
 
 const GetSpots = () => {

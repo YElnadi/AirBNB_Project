@@ -24,7 +24,8 @@ const SpotCard = ({ spot }) => {
           <h3>{spot.city},{spot.state}</h3>
         </div>
         <div>
-          <p><i class="fa-solid fa-star"></i>{`${spot.avgRating}`}</p>
+          <div><i class="fa-solid fa-star" style={{marginLeft:85}}></i>
+          {spot.avgRating ? parseFloat(spot.avgRating).toFixed(2) :'New'}</div>
         </div>
       </div>
       <div>

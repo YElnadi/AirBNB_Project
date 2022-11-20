@@ -8,11 +8,12 @@ display: inline;
     flex-direction: row;
     align-items: center;
     height: 300px;
-    width: 300px;
+    width: 600px;
     border-radius: 10px;
     background-color:white;
     color: white;
     object-fit:cover;
+    margin-left: 20px;
   }
   .spot-card {
     display: inline-block;
@@ -25,4 +26,25 @@ display: inline;
     transition: transform 100ms ease-in;
     cursor:pointer;
     
+}
+.rating--location{
+  display:flex;
+  padding-left: 10px;
+  margin-bottom:20px
+}
+
+.button{
+  background-color: green;
+  border:none;
+  color:white;
+  margin:20px;
+  padding:15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display:inline-block;
+  font-size: 16px;
+
+}
+.names{
+  font-weight: bold;
 }

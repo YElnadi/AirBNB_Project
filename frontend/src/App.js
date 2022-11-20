@@ -15,6 +15,9 @@ import SpotDetails from "./components/GetAllSpots/SpotDetails";
 import EditSpotForm from "./components/EditSpot/EditSpotForm";
 import SignupFormModal from "./components/SignUpFormModel";
 import ReviewsCard from "./components/Reviews/ReviewsCard";
+import CreateReviewForm from "./components/Reviews/CreateReviewForm";
+import ReviewsSingleSpot from "./components/Reviews/ReviewsSingleSpot";
+import RemoveReview from './components/Reviews/RemoveReview'
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +58,13 @@ function App() {
             <EditSpotForm/>
           </Route>
           <Route exact path='/spots/:spotId/reviews'>
-            <ReviewsCard/>
+            <CreateReviewForm/>
+          </Route>
+          <Route exact path='/spots/:spotId/reviews'>
+            <ReviewsSingleSpot/>
+          </Route>
+          <Route exact path='/spots/:spotId/reviews/:reviewId'>
+            <RemoveReview/>
           </Route>
           <Route>
             Page Not Found

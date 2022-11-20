@@ -26,12 +26,15 @@ ul{
 }
 
 .profile-button{
-  border: none;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  color:black;
   width: 60px;
   height: 60px;
   cursor: pointer;
   padding: 10px;
-  margin-left:95px
 }
 
 .dropdown {
@@ -50,3 +53,48 @@ ul{
     z-index: 1;
     float:right;
   }
+
+  .nav--home{
+    text-decoration: none;
+    color:red
+  }
+
+  .bars{
+    display:flex;
+    justify-content:flex-end;
+    width:100%
+  
+  }
+  .navbar{
+    display:flex;
+    align-items: flex-end;
+    height:12%;
+  }
+nav{
+  flex:1;
+  text-align:right
+
+}
+.container{
+  width:100%;
+  padding-left:4%;
+  padding-right:4%;
+  box-sizing:border-box;
+  height:auto
+}
+
+.airbnb--your--home{
+  text-decoration: none;
+  color:black;
+  font-size:17px;  
+  border:1px solid white;
+  cursor: pointer;
+  padding:20px;
+  border-top: 30px;
+  height:70px
+}
+
+.airbnb--your--home:hover{
+  background-color: rgb(209, 207, 207);
+}
+

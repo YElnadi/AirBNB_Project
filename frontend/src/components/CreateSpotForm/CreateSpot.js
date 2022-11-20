@@ -117,7 +117,7 @@ const CreateSpot = () => {
             placeholder='Enter Price'
             />
             <input
-            type='text'
+            type='url'
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}
             required

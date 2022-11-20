@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import './Navigation.css'
+import {useHistory} from 'react-router-dom'
 
 function ProfileButton({ user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   
@@ -28,17 +30,17 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
 
   return (
     <>
       <div >
-      <NavLink to ='/'><img 
-        src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg"
-        alt='Airbnb logo' className='logo'/></NavLink>
+      
         <div class='drop-down'>
-        <div className='profile-button'>
-      <i className="fa-solid fa-circle-user "  onClick={openMenu} ></i>
+        <div className='profile-button  navbar' >
+      <i className="fa-solid fa-circle-user" 
+      onClick={openMenu} style={{position:'absolute'}}></i>
       </div>
       {showMenu && (
         <ul className="">
@@ -47,9 +49,7 @@ function ProfileButton({ user }) {
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
-          <li>
-            <NavLink to='/spots'> Create a Spot</NavLink>
-          </li>
+
           <li>
             <NavLink to='/spots/current'>Your Spots</NavLink>
           </li>
