@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { fetchSingleSpot, updateASpot } from "../../store/spots";
+import './EditSpotForm.css'
 
 
 const EditSpotForm = () => {
@@ -62,6 +63,21 @@ const EditSpotForm = () => {
     setValidationError(err)
   },[name, price,description,address,city,country,state])
 
+  useEffect(() => {
+    dispatch(fetchSingleSpot(spotId))
+}, [dispatch, spotId])
+
+useEffect(() => {
+    setAddress(currentSpot?.address)
+    setCity(currentSpot?.city)
+    setState(currentSpot?.state)
+    setCountry(currentSpot?.country)
+    setName(currentSpot?.name)
+    setDescription(currentSpot?.description)
+    setPrice(currentSpot?.price)
+
+}, [currentSpot])
+
   const handleSubmit = async(e) =>{
     e.preventDefault();
     const payload = {
@@ -95,62 +111,81 @@ const EditSpotForm = () => {
     setState('')
   }
 
+  const cancel = () =>{
+    history.push('/spots/current')
+  }
+
 
   return (
-    <div>
-      <h1>Edit Page</h1>
+    <div className='form--main--container'>
+      <h1>Edit Your Spot</h1>
       <form onSubmit={handleSubmit}>
+        <div className='input--field'>
             <input
             type='text'
             value={address}
             onChange={updateAddress}
             required
-            placeholder='Address'
             />
+          </div>
+
+          <div className='input--field'>
             <input
             type='text'
             value={state}
             onChange={updateState}
             required
-            placeholder='State'
             />
+          </div>
+
+          <div className='input--field'>
             <input
             type='text'
             value={city}
             onChange={updateCity}
             required
-            placeholder='City'
             />
+          </div>
+
+          <div className='input--field'>
             <input
             type='text'
             value={country}
             onChange={updateCountry}
             required
-            placeholder='Country'
             />
+          </div>
+
+          <div className='input--field'>
             <input
             type='text'
             value={name}
             onChange={updateName}
             required
-            placeholder='Name'
             />
+          </div>
+
+          <div className='input--field'>
             <input
             type='text'
             value={description}
             onChange={updateDescription}
             required
-            placeholder='Description'
             />
+          </div>
+
+          <div className='input--field'>
             <input
             type='number'
             value={price}
             onChange={updatePrice}
             required
-            placeholder='Price'
             />
-            <button type='submit'> Update</button>
-            <button onClick={reset}>Cancel</button>
+          </div>
+          <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+            <button className='button--editForm' style={{margin:20}} type='submit'> Update</button>
+            <button className='button--editForm' style={{margin:20}} onClick={cancel}>Cancel</button>
+          </div>
 
 
       </form>
