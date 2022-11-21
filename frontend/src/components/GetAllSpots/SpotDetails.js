@@ -41,6 +41,8 @@ const SpotDetails = () => {
   const avg = () =>{
     if(spot.avgStarRating === null)
       return 'new'
+    else if (typeof spot.avgStarRating === 'string' || spot.avgStarRating instanceof String)
+      return parseFloat(spot.avgStarRating).toFixed(2)
     else
       return spot.avgStarRating.toFixed(2)
   }
