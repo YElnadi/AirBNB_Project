@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
         <nav>
           <div>
             <div  >
-              <NavLink to='/spots' className='airbnb--your--home' >Airbnb your home</NavLink>
+              <NavLink to='/spots' className='airbnb--your--home'  >Airbnb your home</NavLink>
             </div>
           </div>
         </nav>

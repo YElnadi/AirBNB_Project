@@ -70,7 +70,7 @@ const CreateSpot = () => {
         <h1 style={{alignText:'center'}}>Create your Spots</h1>
         <form onSubmit={handleSubmit}>
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='text'
             placeholder="Enter Address"
             value={address}
@@ -80,7 +80,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
@@ -90,7 +90,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='text'
             value={city}
             onChange={(e)=>setCity(e.target.value)}
@@ -100,7 +100,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
@@ -110,7 +110,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
@@ -120,7 +120,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
@@ -130,7 +130,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
@@ -140,7 +140,7 @@ const CreateSpot = () => {
             </div>
 
             <div className='create--spot--field'>
-            <input
+            <input style={{border:'none'}}
             type='url'
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}

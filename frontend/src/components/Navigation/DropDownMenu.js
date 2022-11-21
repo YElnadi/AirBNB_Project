@@ -15,13 +15,15 @@ const DropDownMenu = () => {
   return (
     <div style={{marginBottom:20, marginRight:20,border:1, border:'solid' ,border:'black'}}>
       <div style={{position:'absolute'}} onClick={showDropdown} onMouseLeave={hideDropdown}>
-        <div className='nav--bar'>
+        <div className='nav--bar '>
+          <button style={{ position:'absolute',alignSelf: 'flex-end'}}>
       <i class="fa-solid fa-bars"></i>
+      </button>
       </div>
         {state? <div onMouseEnter={showDropdown} >
-          <div className='menu--select'>
-            <div style={{paddingBottom:5, paddingTop:20}} ><LoginFormModal /></div>
-            <div style={{paddingBottom:5, paddingTop:20}}><SignupFormModal /></div>
+          <div className='dropdown-content dropdown'>
+            <div style={{paddingBottom:20, paddingTop:20}} ><LoginFormModal /></div>
+            <div style={{paddingBottom:20, paddingTop:20}}><SignupFormModal /></div>
           </div>
            
 

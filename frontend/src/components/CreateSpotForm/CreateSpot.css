@@ -1,6 +1,6 @@
 .create--spot--container{
 position: absolute;
-  top:50%;
+  top:60%;
   left:50%;
   transform:translate(-50%, -50%);
   width:400px;
@@ -23,6 +23,7 @@ position: absolute;
     position: relative;
     border-bottom: 2px solid #adadad;
     margin:30px 0;
+    height:40px
   }
 
   .create--spot--field input{
