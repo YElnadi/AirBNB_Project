@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import {createSpot} from '../../store/spots'
+import './CreateSpot.css'
 
 const CreateSpot = () => {
     
@@ -65,8 +66,10 @@ const CreateSpot = () => {
     
 
   return (
-    <section>
+    <div className='create--spot--container'>
+        <h1 style={{alignText:'center'}}>Create your Spots</h1>
         <form onSubmit={handleSubmit}>
+            <div className='create--spot--field'>
             <input
             type='text'
             placeholder="Enter Address"
@@ -74,6 +77,9 @@ const CreateSpot = () => {
             onChange={(e)=>setAddress(e.target.value)}
             required
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='text'
             value={state}
@@ -81,6 +87,9 @@ const CreateSpot = () => {
             required
             placeholder='Enter State'
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='text'
             value={city}
@@ -88,6 +97,9 @@ const CreateSpot = () => {
             required
             placeholder='Enter City'
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='text'
             value={country}
@@ -95,6 +107,9 @@ const CreateSpot = () => {
             required
             placeholder='Enter Country'
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='text'
             value={name}
@@ -102,6 +117,9 @@ const CreateSpot = () => {
             required
             placeholder='Enter Name'
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='text'
             value={description}
@@ -109,6 +127,9 @@ const CreateSpot = () => {
             required
             placeholder='Enter Description'
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='number'
             value={price}
@@ -116,18 +137,24 @@ const CreateSpot = () => {
             required
             placeholder='Enter Price'
             />
+            </div>
+
+            <div className='create--spot--field'>
             <input
             type='url'
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}
             required
-            placeholder='Enter an Image'
+            placeholder='Enter Image Url'
             />
-            <button type='submit'> Create a Spot</button>
+            </div>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+            <button className='button--create--spot'style={{margin:20}}type='submit'> Create a Spot</button>
+            </div>
 
         </form>
       
-    </section>
+    </div>
   );
 }
 
