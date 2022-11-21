@@ -395,7 +395,7 @@ router.post('/:spotId/reviews',requireAuth,validateReview, async(req,res)=>{
 
 
 //Get all Reviews by a Spot's id
-router.get('/:spotId/reviews',requireAuth, async (req, res)=>{
+router.get('/:spotId/reviews', async (req, res)=>{
     const spot = await Spot.findByPk(req.params.spotId)
     if(!spot){
         res.status(404)
