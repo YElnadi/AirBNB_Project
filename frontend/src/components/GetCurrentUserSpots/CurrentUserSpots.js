@@ -52,7 +52,7 @@ const CurrentUserSpots = () => {
         ))
         
       }
-     <ReviewsSingleSpot userSpots={userSpots}/> 
+     {/* <ReviewsSingleSpot userSpots={userSpots}/>  */}
     </div>
   );
 }

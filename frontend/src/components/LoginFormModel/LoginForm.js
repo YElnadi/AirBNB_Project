@@ -21,7 +21,8 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        console.log('data: ', data)
+        window.alert('Not able to login! ' + data.message)
       });
   }
   const handleDemo = async (e) => {

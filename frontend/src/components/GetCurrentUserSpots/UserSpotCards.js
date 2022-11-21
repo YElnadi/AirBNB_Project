@@ -2,6 +2,7 @@ import './UserSpotCards.css'
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteASpot } from '../../store/spots';
+import ReviewsSingleSpot from '../Reviews/ReviewsSingleSpot'
 import EditSpotForm from '../EditSpot/EditSpotForm';
 import './UserSpotCards.css'
 
@@ -45,6 +46,7 @@ const UserSpotCards = ({ userSpot }) => {
                 </div>
                 </div>
             </div>
+     <ReviewsSingleSpot spotId={userSpot.id}/> 
 
 
 

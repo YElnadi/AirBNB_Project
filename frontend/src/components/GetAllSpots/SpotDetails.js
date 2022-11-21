@@ -69,7 +69,8 @@ const SpotDetails = () => {
           </div>
         </div>
       </div>
-      <button onClick={reviewForm} className='button'>Rate your stay</button>
+      {sessionUser && sessionUser.id !== spot.ownerId &&(<button onClick={reviewForm}  className='button'>Rate your stay</button>)}
+      
       <ReviewsSingleSpot spotId={spotId} />
 
 

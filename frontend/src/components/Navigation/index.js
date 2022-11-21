@@ -13,25 +13,28 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
 
+  console.log("from nav sessionUser: ", sessionUser)
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
   } else {
-    sessionLinks = (
-     <div className='navbar'>
-        <div style={{padding:10 }}> <DropDownMenu/> </div> 
+    sessionLinks = (<DropDownMenu/>)
+  //    (
+  //    <div className='navbar'>
+  //       <div style={{padding:10 }}> <DropDownMenu/> </div> 
         
-        </div>
+  //       </div>
    
-   )}
+  //  )
+  }
 
   return (
     <div className='container'>
       <div className='navbar'>
         <NavLink exact to="/"><div><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png' style={{ height: 30, cursor: 'pointer', marginTop: 10 }} /></div></NavLink>
-        {isLoaded && sessionLinks}
 
         <nav>
           <div>
@@ -42,6 +45,7 @@ function Navigation({ isLoaded }) {
         </nav>
         {/* <i class="fa-solid fa-bars" style={{cursor:'pointer', width:30, marginRight:20}} ></i> */}
        {/* <div className='menu'> <DropDownMenu/> </div>   */}
+       {isLoaded && sessionLinks}
 
       </div>
     </div>
