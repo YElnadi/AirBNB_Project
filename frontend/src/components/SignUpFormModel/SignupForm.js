@@ -32,68 +32,83 @@ function SignupFormPage({setShowModal}) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="signup-modal">
+    <div className="center--signup">
+      <h1>Signup</h1>
+    <form onSubmit={handleSubmit} >
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        <input
+
+      <div className="text_field">
+        <input style={{border:'none'}}
           type="text"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
-        <input
+        <span></span>
+      <label>Email</label>
+      </div>
+
+      <div className="text_field">
+        <input style={{border:'none'}}
           type="text"
           value={firstName}
-          placeholder="First name"
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-      </label>
-      <label>
-        <input
+        <span></span>
+      <label>First Name</label>
+      </div>
+
+      <div className="text_field">
+        <input style={{border:'none'}}
           type="text"
-          placeholder="Last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
-      </label>
-      <label>
+        <span></span>
+       <label>Last Name</label>
+      </div>
 
-        <input
+      <div className="text_field">
+      
+         <input style={{border:'none'}}
           type="text"
-          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </label>
-      <label>
-        <input
+                <span></span>
+      <label>Username</label>
+      </div>
+
+      <div className="text_field">
+        <input style={{border:'none'}}
           type="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <label>
-
+        <label>Password</label>
+      </div>
+        <div className="text_field">
         <input
           type="password"
-          placeholder="Confirm password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Sign Up</button>
+                <span></span>
+        <label>Confirm Password</label>
+        </div>
+
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+      <button className="button--signup" style={{margin:20}}type="submit">Sign Up</button>
+      </div>
     </form>
+    </div>
   );
 }
 
