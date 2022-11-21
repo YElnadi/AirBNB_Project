@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './LoginForm.css'
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -31,37 +32,40 @@ function LoginForm() {
   return (
    
     <>
-      <form  onSubmit={handleSubmit} className='center'>
+    <div className='center'>
+      <h1>Login</h1>
+      <form  onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        {/* <div>
-        <img src='img_avatar2.png' alt='Avatar' class='avatar'></img>
-      </div> */}
-        <div className='text_field'>
-          <label>Username or Email
-          <input
+    
+        <div className='txt_field'>
+          <input style={{border:'none'}}
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-           </label>
+          <span></span>
+           <label>Username or Email</label>
         </div>
 
-        <div className='text_field'>
-          <label>Password</label>
+        <div className='txt_field'>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
+          <span></span>
+           <label>Password</label>
         </div>
-        <button type="submit">Log In</button>
-        <button type="submit" onClick={handleDemo}>Demo User</button>
+        <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+        <button className='button--login' style={{margin:20}}type="submit">Log In</button>
+        <button className='button--login' style={{margin:20}}type="submit" onClick={handleDemo}>Demo User</button>
+        </div>
       </form>
+      </div>
       </>
  
   );
