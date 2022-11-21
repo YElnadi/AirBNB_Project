@@ -65,7 +65,7 @@ export const deleteSpotReview = (reviewId) => async (dispatch) =>{
     });
     if(response.ok){
         const deletedReview = await response.json();
-        dispatch(deleteReview(deletedReview))
+        dispatch(deleteReview(reviewId))
         return deletedReview
     }
 }
@@ -100,17 +100,20 @@ export default function ReviewReducers (state= {spot:{}, user:{}}, action){
             return newState;
         }
         case CREATE_REVIEW:{
+            console.log("In CREATE_REVIEW, state: ", state)
             const newState = {
                 ...state, 
-                Spot:{...state.spot},
-                User:{...state.user}
+                spot:{...state.spot},
+                user:{...state.user}
             }
-            newState.Spot[action.review.id] = action.review
-            newState.User[action.review.id] = action.review
+            newState.spot[action.review.id] = action.review
+            newState.user[action.review.id] = action.review
+            console.log("In CREATE_REVIEW, newState: ", newState)
             return newState;
 
         }
         case DELETE_REVIEW:{
+            console.log("In DELETE_REVIEW, state: ", state)
             const newState=
             {
                 ...state, 
@@ -119,18 +122,26 @@ export default function ReviewReducers (state= {spot:{}, user:{}}, action){
             }
             delete newState.user[action.reviewId]
             delete newState.spot[action.reviewId]
+            console.log("In DELETE_REVIEW, action: ", action)
+            console.log("In DELETE_REVIEW, newState: ", newState)
             return newState;
 
         }
 
         case LOAD_REVIEWS:
-           console.log('actionreviews+++++',action.reviews)
+            console.log("In LOAD_REVIEWS, state: ", state)
+            console.log('actionreviews+++++',action.reviews)
             let newState=
             {
                  
-                spot:action.reviews.Reviews,
-                user:[]
+                spot:{},
+                user:{}
             }
+
+            action.reviews.Reviews.forEach(review => {
+                newState.spot[review.id] = review
+            })
+            console.log("In LOAD_REVIEWS, newState: ", newState)
            return newState;
             
         

@@ -25,7 +25,7 @@ const RemoveReview = ({review}) => {
     const deleteReview =(e)=>{
         e.preventDefault();
         dispatch(deleteSpotReview(review.id))
-        history.go(0)
+        // history.go(0)
     }
 
   return (

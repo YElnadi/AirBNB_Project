@@ -15,7 +15,7 @@ const ReviewsSingleSpot = ({spotId}) => {
     var allReviews = useSelector(state=>state.reviews.spot)
     console.log('allReviews in single',allReviews)
     
-    allReviews= Array.isArray(allReviews) ? allReviews.map(review=>review): []
+    allReviews= allReviews.constructor == Object ? Object.values(allReviews): []
 
 
     console.log('allReviewsTexts', allReviews)
