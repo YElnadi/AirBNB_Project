@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
-function SignupFormPage({ setShowModal }) {
+function SignupFormPage({setShowModal}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ function SignupFormPage({ setShowModal }) {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
+      return dispatch(sessionActions.signup({firstName, lastName, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -32,85 +32,68 @@ function SignupFormPage({ setShowModal }) {
   };
 
   return (
-    <>
-      <div className='center'>
-        <h1 >Signup</h1>
-        <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          <div className='txt_field'>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <span></span>
-            <label>Email</label>
-          </div>
+    <form onSubmit={handleSubmit} className="signup-modal">
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
+      <label>
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <input
+          type="text"
+          value={firstName}
+          placeholder="First name"
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <input
+          type="text"
+          placeholder="Last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
+      </label>
+      <label>
 
-          <div className='txt_field'>
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-            <span></span>
-            <label>First Name</label>
-          </div>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+      <label>
 
-          <div className='txt_field'>
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-            <span></span>
-            <label> Last Name</label>
-          </div>
-
-          <div className='txt_field'>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            <span></span>
-            <label>Username</label>
-          </div>
-
-          <div className='txt_field'>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <span></span>
-            <label>Password </label>
-          </div>
-
-          <div className='txt_field'>
-            <input 
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-            <span></span>
-            <label>Confirm Password</label>
-          </div>
-          <div style={{display:'flex', flexDirection:'column' ,padding:20, margin:20}}>
-
-          <button style={{padding:5, margin:10, borderRadius:25, background:'red'}}type="submit">Sign Up</button>
-          </div>
-        </form>
-      </div>
-    </>
+        <input
+          type="password"
+          placeholder="Confirm password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+      </label>
+      <button type="submit">Sign Up</button>
+    </form>
   );
 }
 

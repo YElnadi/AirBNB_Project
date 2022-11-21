@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './LoginForm.css'
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -30,46 +29,41 @@ function LoginForm() {
     return
   }
   return (
-
+   
     <>
-      
-      <div className='center'>
-      <h1 >Login</h1>
-      <form onSubmit={handleSubmit} >
+      <form  onSubmit={handleSubmit} className='center'>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <div className='txt_field'>
-          <input style={{border:'none', outline:'none', background:'none'}}
+        {/* <div>
+        <img src='img_avatar2.png' alt='Avatar' class='avatar'></img>
+      </div> */}
+        <div className='text_field'>
+          <label>Username or Email
+          <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-          <span></span>
-          <label>Username or Email</label>
+           </label>
         </div>
 
-        <div className='txt_field'>
+        <div className='text_field'>
+          <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <span></span>
-          <label>Password</label>
-        </div>
-        <div style={{display:'flex', flexDirection:'column' ,padding:20, margin:20}}>
-        
-          <button style={{padding:5, margin:10, borderRadius:25, background:'red'}}type="submit">LogIn</button>
-          <button  style={{padding:5, margin:10, borderRadius:25, background:'red'}} type="submit" onClick={handleDemo}>Demo User</button>
-       
-        </div>
-      </form>
-      </div>
-    </>
 
+        </div>
+        <button type="submit">Log In</button>
+        <button type="submit" onClick={handleDemo}>Demo User</button>
+      </form>
+      </>
+ 
   );
 }
 
