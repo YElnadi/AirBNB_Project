@@ -41,7 +41,9 @@ const CurrentUserSpots = () => {
 
   return (
     <div>
-      <h1>current user spots</h1>
+      <h1 style={{marginLeft:30
+      
+      }}>Your Spots</h1>
 
       {
         Object.values(userSpots).map(userSpot=>(
