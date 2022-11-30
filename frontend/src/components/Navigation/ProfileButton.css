@@ -1,0 +1,31 @@
+i{
+    color:rgb(145, 143, 143)
+}
+
+.button{
+    border-radius: 20;
+    margin-right: 50px;
+    border: solid rgb(234, 227, 227);
+    border-radius: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: white;
+}
+
+
+.list-content{
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    width: 150px;
+    height:100px;
+    margin-top: 10px;
+    
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.button:hover{
+    transform: scale(1.07);
+
+}

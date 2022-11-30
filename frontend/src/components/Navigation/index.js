@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
     <ul style={{display:'flex',justifyContent:'space-between' }}>
       <li style={{listStyle:'none'}}>
         <NavLink exact to="/" style={{textDecoration:'none'}} >
-          <img src ={image} style={{width:120, marginButton:20, marginRight:0, cursor:'pointer'}}/>
+          <img src ={image} style={{width:120, marginTop:0, cursor:'pointer'}} alt='logo'/>
         </NavLink>
       </li>
       {isLoaded && (
