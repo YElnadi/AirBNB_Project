@@ -67,6 +67,7 @@ function ProfileButton({ user }) {
                 modalComponent={<SignupFormModal />}
               />
             </li>
+          
           </>
         )}
       </ul>
