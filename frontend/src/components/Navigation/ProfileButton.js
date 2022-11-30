@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} style={{borderRadius:20}}>
+      <button onClick={openMenu} style={{borderRadius:20, marginRight:50, position:'relative'}}>
       <i class="fa-solid fa-bars" style={{padding:10}}></i>
       <i className="fas fa-user-circle" />
       </button>
