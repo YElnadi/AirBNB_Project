@@ -40,42 +40,42 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className='button'>
-      <i class="fa-solid fa-bars " style={{padding:0, fontSize:20}}></i>
-      <i className="fas fa-user-circle" style={{fontSize:25, padding:5}}/>
-      </button>
-      <div className='list'>
-      <div className='list-content'>
-      <div className={ulClassName} ref={ulRef}>
-        {user ? (
-          <div >
-            <div >Hello,{user.username}</div>
-            <div >{user.email}</div>
-            <div >
-              <button onClick={logout}>Log Out</button>
-            </div>
+      <div className='container'>
+        <button onClick={openMenu} className='button'>
+          <i class="fa-solid fa-bars " style={{ padding: 0, fontSize: 20 }}></i>
+          <i className="fas fa-user-circle" style={{ fontSize: 25, padding: 5 }} />
+        </button>
+
+        <div  className=''>
+          <div className={ulClassName} ref={ulRef}>
+            {user ? (
+              <>
+                <div style={{ padding: 10 }} >Hello,{user.username}</div>
+                <div style={{ padding: 10 }}>{user.email}</div>
+                <div style={{ padding: 10 }}>
+                  <button onClick={logout}>Log Out</button>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* <div style={{ padding: 10, cursor: 'pointer' }}>
+                  <OpenModalMenuItem
+                    itemText="Log In"
+                    onItemClick={closeMenu}
+                    modalComponent={<LoginFormModal />}
+                  />
+                </div>
+                <div style={{ padding: 10, cursor: 'pointer' }}>
+                  <OpenModalMenuItem
+                    itemText="Sign Up"
+                    onItemClick={closeMenu}
+                    modalComponent={<SignupFormModal />}
+                  />
+                </div> */}
+                </>
+            )}
           </div>
-        ) : (
-          <div>
-            <div>
-              <OpenModalMenuItem
-                itemText="Log In"
-                onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
-              />
-            </div>
-            <div>
-              <OpenModalMenuItem
-                itemText="Sign Up"
-                onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
-              />
-            </div>
-          
-          </div>
-        )}
-      </div>
-      </div>
+        </div>
       </div>
     </>
   );

@@ -9,18 +9,21 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul style={{display:'flex',justifyContent:'space-between' }}>
+    <div className='nav'>
+    <ul style={{display:'flex',justifyContent:'space-between'}}>
       <li style={{listStyle:'none'}}>
         <NavLink exact to="/" style={{textDecoration:'none'}} >
-          <img src ={image} style={{width:120, marginTop:0, cursor:'pointer'}} alt='logo'/>
+          <img src ={image} style={{width:120, marginTop:10, cursor:'pointer'}} alt='logo'/>
         </NavLink>
       </li>
+      <li style={{marginTop:10, marginLeft:900, listStyle:'none'}} className='yasbnbBut'><strong>Yasbnb your home</strong></li>
       {isLoaded && (
-        <li style={{listStyle:'none'}}>
+        <li style={{listStyle:'none', marginTop:10}}>
           <ProfileButton user={sessionUser} />
         </li>
       )}
     </ul>
+    </div>
   );
 }
 

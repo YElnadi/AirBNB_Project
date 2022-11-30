@@ -9,6 +9,7 @@ i{
     border-radius: 30px;
     margin-top: 10px;
     cursor: pointer;
+    width:70px;
     background-color: white;
 }
 
@@ -17,15 +18,25 @@ i{
     background-color: #f9f9f9;
     border-radius: 20px;
     width: 150px;
-    height:100px;
+    height:120px;
     margin-top: 10px;
-    
+    margin-right: 10px;
+    text-indent: 10px;
     /* min-width: 160px; */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
+.list-content:hover{
+    background-color: #f9f9f9;
+}
+
 .button:hover{
     transform: scale(1.07);
 
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
 }

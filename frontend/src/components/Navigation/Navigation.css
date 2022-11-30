@@ -1,0 +1,23 @@
+.nav{
+
+    border: 1px solid rgb(224,224,224);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  
+}
+
+.yasbnbBut{
+    border: 1px  rgb(185, 183, 183);
+    padding: 20px;
+    border-radius: 50px;
+    height:15px;
+
+
+}
+
+.yasbnbBut:hover{
+    background-color:rgb(245,245,245);
+    cursor: pointer;
+
+}
