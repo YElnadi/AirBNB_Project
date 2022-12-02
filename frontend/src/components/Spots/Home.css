@@ -1,0 +1,60 @@
+/* .body{
+    padding-left:40px;
+    padding-right:40px;
+} */
+
+.spot-card{
+    margin:20px;
+    border-radius: 10px;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.spot-card-image{
+    height:300px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: white;
+    object-fit: cover;
+    color:white 
+}
+
+/* .spot-card-container{
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+/* *{
+    box-sizing: border-box;
+} */
+
+/* .column{
+    float:left;
+    width:25%;
+    padding:0 10px;
+} */
+
+/* .row{
+    margin: 0 -5px;;
+} */
+/* .row:after{
+    content:'';
+    clear:both;
+
+} */
+/* @media screen and (max-width:600px){
+    .column{
+        width:100%;
+        display:block;
+        margin-bottom: 20px;
+    }
+} */
+
+/* .card{
+    padding:16px;
+    text-align: center;
+    background-color:white;
+ 
+} */
