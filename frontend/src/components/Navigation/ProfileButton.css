@@ -3,6 +3,8 @@ i{
 }
 
 .button{
+    display: flex;
+    align-items: center;
     border-radius: 20;
     margin-right: 50px;
     border: solid rgb(234, 227, 227);
