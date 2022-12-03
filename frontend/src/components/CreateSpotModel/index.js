@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import * as sessionActions from "../../store/session";
 import { useModal } from "../../context/Modal";
+import { createNewSpot } from '../../store/spots';
 
 
 const CreateSpotModel = () => {
@@ -21,20 +21,20 @@ const CreateSpotModel = () => {
 
     const sessionUser = useSelector(state => state.session.user);
     
-    const cancel = () =>{
+    const cancel = async (e) =>{
+        closeModal() 
+        reset()
         history.push('/')
-        return;
+     
       }
 
-    // if(!sessionUser){
-    //     history.push('/')
-    //     window.alert('must be logged in')
-    //     return;
-    // }
+    if(!sessionUser){
+        window.alert('must be logged in')
+        history.push('/')
+    }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-
         const spotDetails={
             address,
             state,
@@ -48,13 +48,10 @@ const CreateSpotModel = () => {
             imageUrl
         }
 
-        // let createdSpot;
-        // createdSpot = await dispatch((spotDetails))
-        // .then(closeModal)
-        // if(createdSpot){
-        //    history.push(`/`)
-        //     reset();
-        // }
+        let createdSpot;
+        createdSpot = await dispatch(createNewSpot(spotDetails))
+        .then(closeModal)
+        
     }
 
     const reset = ()=>{
@@ -74,90 +71,90 @@ const CreateSpotModel = () => {
     <div>
         <h2>Create your spot</h2>
         <form onSubmit={handleSubmit}>
-            <div>
+            <label>
+              Address
             <input 
             type='text'
-            placeholder="Enter Address"
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
             required
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              State
             <input 
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
             required
-            placeholder='Enter State'
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              City
             <input 
             type='text'
             value={city}
             onChange={(e)=>setCity(e.target.value)}
             required
-            placeholder='Enter City'
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              Country
             <input 
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
             required
-            placeholder='Enter Country'
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              Name
             <input 
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
             required
-            placeholder='Enter Name'
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              Description
             <input
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
             required
-            placeholder='Enter Description'
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              Price
             <input 
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
             required
-            placeholder='Enter Price'
             />
-            </div>
+            </label>
 
-            <div >
+            <label >
+              Image
             <input 
             type='url'
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}
             required
-            placeholder='Enter Image Url'
             />
-            </div>
+            </label>
 
-            <div>
+            
             <button type='submit'> Save</button>
             <button onClick={cancel}> Cancel</button>
-            </div>
+            
 
         </form>
 

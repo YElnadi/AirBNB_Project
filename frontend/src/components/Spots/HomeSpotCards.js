@@ -41,6 +41,8 @@ const HomeSpotCards = ({ spot }) => {
             </div>
             
         </div>
+
+        
         
         
         </>
