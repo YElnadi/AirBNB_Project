@@ -29,8 +29,9 @@ const CreateSpotModel = () => {
       }
 
     if(!sessionUser){
-        window.alert('must be logged in')
-        history.push('/')
+      history.push('/')
+      window.alert('must be logged in')
+      closeModal()
     }
 
     const handleSubmit = async (e) =>{
