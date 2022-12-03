@@ -5,6 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import {Route} from 'react-router-dom'
 import Home from "./components/Spots/Home";
+import SingleSpotDetails from "./components/Spots/SingleSpotDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,10 +19,12 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
             <Home />
-
           </Route>
+          <Route exact path='/spots/:spotId'>
+            <SingleSpotDetails />
+            </Route>
         </Switch>
       )}
     </>
