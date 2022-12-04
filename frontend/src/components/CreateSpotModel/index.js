@@ -52,6 +52,8 @@ const CreateSpotModel = () => {
         let createdSpot;
         createdSpot = await dispatch(createNewSpot(spotDetails))
         .then(closeModal)
+        history.push('/')
+
         
     }
 
@@ -79,6 +81,7 @@ const CreateSpotModel = () => {
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
             required
+            min
             />
             </label>
 
