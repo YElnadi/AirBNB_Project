@@ -18,7 +18,8 @@ function LoginFormModal() {
       .catch(
         async (res) => {
           const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
+          window.alert('Not able to login!' + " " +data.message)
+          //if (data && data.errors) setErrors(data.errors);
         }
       );
   };
