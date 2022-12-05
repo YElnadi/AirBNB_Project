@@ -36,11 +36,12 @@ const CreateSpotModel = () => {
       if(country.length<2) errors.push('Please enter a country name not less than 1 character')
       if(!name) errors.push('Spot must have a name')
       if(name.length>50) errors.push('Please enter a name that is less than 50 characters')
+      if(name.length<=1) errors.push('Please enter a name that is greater than 10 characters')
       if(!description) errors.push('Spot must have a description')
       if(description.length<10) errors.push('Please descripe your spot not less than 10 characters')
       if(description.length>5000) errors.push('Please descripe your spot not greather than 5000 characters')
       if(!price) errors.push('Spot must have a price')
-      if(price<0) errors.push('Please enter a price that is greater than 0')
+      if(price<=0) errors.push('Please enter a price that is greater than 0')
       if(imageUrl.length === 0) errors.push('Please provide images for yout sopt so that your renters know how your spot looks like')
       
       setValidationErrors(errors)
@@ -65,12 +66,13 @@ const CreateSpotModel = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setHasSubmited(true);
+        if(validationErrors.length>0) return alert('cannot submit')
         const spotDetails={
+            name,
             address,
             state,
             city,
             country,
-            name,
             description,
             price,
             lng:1,
@@ -115,6 +117,15 @@ const CreateSpotModel = () => {
           </div>
         )}
         <form onSubmit={handleSubmit}>
+        <label >
+              Name
+            <input 
+            type='text'
+            value={name}
+            onChange={(e)=>setName(e.target.value)}
+            required
+            />
+            </label>
             <label>
               Address
             <input 
@@ -122,7 +133,7 @@ const CreateSpotModel = () => {
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
             required
-            min
+            
             />
             </label>
 
@@ -156,15 +167,7 @@ const CreateSpotModel = () => {
             />
             </label>
 
-            <label >
-              Name
-            <input 
-            type='text'
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            required
-            />
-            </label>
+            
 
             <label >
               Description
@@ -193,12 +196,13 @@ const CreateSpotModel = () => {
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}
             required
+            
             />
             </label>
 
             
             <button type='submit' 
-            disabled= {validationErrors.length>0}
+            // disabled= {validationErrors.length>0}
             > Save</button>
             <button onClick={cancel}> Cancel</button>
             

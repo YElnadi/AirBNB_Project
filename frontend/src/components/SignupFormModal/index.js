@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
@@ -13,10 +13,21 @@ function SignupFormModal() {
   const [lastName, setLastName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+  //const [validationErrors, setValidationErrors] = useState([])
+  
   const { closeModal } = useModal();
+
+  useEffect(()=>{
+    const err = []
+    if(!email) err.push('Please enter an email in oreder to sign up')
+    if(!email.includes('@')) err.push('Please provide a valid email address')
+    setErrors(err)
+  },[email])
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password,firstName, lastName }))
@@ -33,9 +44,14 @@ function SignupFormModal() {
     <>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
+        {hasSubmitted && errors.length>0 && (
+          <div>
+            The following errors were found:
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+        </div>
+        )}
         <label>
           Email
           <input
