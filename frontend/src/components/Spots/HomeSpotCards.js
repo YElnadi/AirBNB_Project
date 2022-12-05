@@ -20,7 +20,7 @@ const HomeSpotCards = ({ spot }) => {
             <div >
                 <div>
                     <div className="spot-card">
-                        <img onClick={openSpot} className='spot-card-image' src={spot.previewImage} alt='preview' />
+                        <img onClick={openSpot} className='spot-card-image' src={spot.previewImage}></img>
                     </div>
                 </div>
                 <div style={{display:'flex', flexDirection:'row',}}>
