@@ -22,20 +22,30 @@ function SignupFormModal() {
     const err = []
     if(!email) err.push('Please enter an email in oreder to sign up')
     if(!email.includes('@')) err.push('Please provide a valid email address')
+    if(!username) err.push('Please enter user name')
+    if(username.length<=4) err.push('Please enter a username not less than 4 characters')
+    if(username.includes('@')) err.push('Username cannot be an email')
+    if(!firstName) err.push('Please provide first name')
+    if(firstName.length<=2) err.push('Please provide first name not less than 4 characters')
+    if(!lastName) err.push('Please provide last name')
+    if(lastName.length<=2) err.push('Please provide last name not less than 4 characters')
+    if(!password) err.push('Please enter valid password')
+    if(password.length<6) err.push('Please enter a password that is not less than 6 characters')
     setErrors(err)
-  },[email])
+  },[email, username, firstName, lastName, password])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true)
+    if(errors.length>0) return alert('Cannot submit')
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password,firstName, lastName }))
         .then(closeModal)
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+        // .catch(async (res) => {
+        //   const data = await res.json();
+        //   if (data && data.errors) setErrors(data.errors);
+        // });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
@@ -48,7 +58,8 @@ function SignupFormModal() {
           <div>
             The following errors were found:
         <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
+          {errors.map(error =>(<li key={error}>{error}</li>))}
         </ul>
         </div>
         )}
