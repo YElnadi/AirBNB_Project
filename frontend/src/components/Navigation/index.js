@@ -44,15 +44,17 @@ function Navigation({ isLoaded }){
           <img src ={image} style={{width:120, marginTop:10, cursor:'pointer'}} alt='logo'/>
         </NavLink>
       </li>
-      <li style={{marginTop:10, marginLeft:900, listStyle:'none'}} className='yasbnbBut'>
-        <NavLink to ='/spots' style={{textDecoration:'none', color:'black', fontWeight:'bold'}}>
+      
+      <li style={{marginTop:10, marginLeft:900, listStyle:'none',fontWeight:'bold'}} className='yasbnbBut'>
+        {/* <NavLink to ='/spots' style={{textDecoration:'none', color:'black', fontWeight:'bold'}}> */}
         <OpenModalMenuItem
                     itemText="Yasbnb your home"
                     onItemClick={closeMenu}
                     modalComponent={<CreateSpotModel />}
                   /> 
-       </NavLink>
+       {/* </NavLink> */}
         </li>
+
       {isLoaded && (
         <li style={{listStyle:'none', marginTop:10}}>
           <ProfileButton user={sessionUser} />
