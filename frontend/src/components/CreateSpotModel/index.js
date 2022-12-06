@@ -15,7 +15,7 @@ const CreateSpotModel = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
-    const [imageUrl, setImageUrl] = useState('')
+    const [previewImage, setPreviewImage] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmited] = useState(false)
     const { closeModal } = useModal();
@@ -42,11 +42,11 @@ const CreateSpotModel = () => {
       if(description.length>5000) errors.push('Please descripe your spot not greather than 5000 characters')
       if(!price) errors.push('Spot must have a price')
       if(price<=0) errors.push('Please enter a price that is greater than 0')
-      if(imageUrl.length === 0) errors.push('Please provide images for yout sopt so that your renters know how your spot looks like')
+      if(previewImage.length === 0) errors.push('Please provide images for your sopt so that your renters know how your spot looks like')
       
       setValidationErrors(errors)
 
-    },[name,city,state,country,address,description,price,imageUrl])
+    },[name,city,state,country,address,description,price,previewImage])
 
    
     
@@ -77,13 +77,13 @@ const CreateSpotModel = () => {
             price,
             lng:1,
             lat:1,
-            imageUrl
+            previewImage
         }
 
         let createdSpot;
         createdSpot = await dispatch(createNewSpot(spotDetails))
         .then(closeModal)
-        // history.push('/')
+        history.push('/')
 
         
     }
@@ -96,7 +96,7 @@ const CreateSpotModel = () => {
         setDescription('');
         setName('');
         setPrice('');
-        setImageUrl('');
+        setPreviewImage('');
         setValidationErrors([]);
         setHasSubmited(false);
 
@@ -193,8 +193,8 @@ const CreateSpotModel = () => {
               Image
             <input 
             type='url'
-            value={imageUrl}
-            onChange={(e)=>setImageUrl(e.target.value)}
+            value={previewImage}
+            onChange={(e)=>setPreviewImage(e.target.value)}
             required
             
             />

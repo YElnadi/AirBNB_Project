@@ -93,6 +93,9 @@ const SingleSpotDetails = () => {
                     <span style={{ color: 'black' }}>r</span>
                     <p style={{ fontSize: 17, fontWeight: 'normal', color: 'rgb(80,80,80)', inlineSize: 700, overflowWrap: 'break-word' }}>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
                 </div>
+                <div>
+                    {spot.description}
+                </div>
 
                 {sessionUser && sessionUser.id === spot.ownerId &&(<DeleteSpot spotId={spotId}/>)}
 

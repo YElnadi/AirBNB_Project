@@ -57,16 +57,21 @@ export const createNewSpot = (data) =>async (dispatch) =>{
         body: JSON.stringify(data)
     })
     if(response.ok){
+        console.log('in response ok ######')
         const newSpot = await response.json();
         const res = await csrfFetch(`/api/spots/${newSpot.id}/images`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json' 
             },
-            body:JSON.stringify({url:data.imageUrl, preview:true})
+            body:JSON.stringify({url:data.previewImage, preview:true})
         })
         if(res.ok){
+            console.log('newSpot2######',newSpot)
+            console.log('in res ok ######')
+            newSpot.previewImage=data.previewImage;
             dispatch(createSpot(newSpot));
+            console.log('newSpot####',newSpot)
             return newSpot;
         }
     }
@@ -84,16 +89,19 @@ export const deleteSpotbySpotId = (spotId) =>async(dispatch) =>{
 
 //REDUCERS
 const initialState = {spots:{}, singleSpot:{}}
-export default function spotReducers (state = initialState, action){
+export default function spotReducers (state = {spots:{}, singleSpot:{}}, action){
     switch (action.type) {
         case LOAD_SPOTS:{
             const newState = {
                 spots:{}, 
                 singleSpot:{}
             }
+            //console.log('singleSpot',state.singleSpot)
             action.spots.forEach(spot =>{
                 newState.spots[spot.id] = spot
             });
+            console.log('newState',newState)
+
             return newState
         }
 
@@ -105,8 +113,27 @@ export default function spotReducers (state = initialState, action){
             return newState
         }
         case CREATE_SPOT:{
-            const newState = {...state}
+            // console.log('action from create spot reducers', action.newSpotDetails)
+            // console.log('spots',state.spots)
+            const newState = {
+                ...state,
+                spots:{...state.spots},
+                //singleSpot:[action.newSpotDetails]
+                
+            }
+            console.log('newState####',newState)
+            //const output = Object.assign({},state,action.newSpotDetails)
+            
+            // const newStateArr = [Object.values(newState)]
+            // console.log('newStateArr', newStateArr)
+             //console.log('newstate from reducers',newState)
+           
             newState.spots[action.newSpotDetails.id] = action.newSpotDetails
+            //console.log('########', newState.spots[action.newSpotDetails.id])
+            // if(newState.spots[action.newSpotDetails.id].SpotImages){
+            //     newState.spots[action.newSpotDetails.id].previewImage = newState.spots[action.newSpotDetails.id].SpotImages[0].url
+            // }
+            //console.log('output from reducer', output)
             return newState
         }
         default:

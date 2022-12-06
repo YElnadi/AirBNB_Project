@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 
 const HomeSpotCards = ({ spot }) => {
     //console.log('spot from home spot cards', spot)
-    console.log('spot#####', spot)
-    console.log('spotId###', spot.id)
-    //const {spotId} = useParams();
+    //console.log('spot#####', spot)
+    //console.log('spotId###', spot.id)
+    const {spotId} = useParams();
     //console.log('spotId#####',spotId)
     const history = useHistory();
 
@@ -20,7 +20,7 @@ const HomeSpotCards = ({ spot }) => {
             <div >
                 <div>
                     <div className="spot-card">
-                        <img onClick={openSpot} className='spot-card-image' src={spot.previewImage}></img>
+                        <img onClick={openSpot} className='spot-card-image'   src={spot.previewImage} ></img>
                     </div>
                 </div>
                 <div style={{display:'flex', flexDirection:'row',}}>
