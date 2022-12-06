@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { getSingleSpotDetails } from "../../store/spots";
 import LoadReviews from "../Reviews/LoadReviews";
 import DeleteSpot from "./DeleteSpot";
+import './SingleSpotDetails.css'
 
 
 const SingleSpotDetails = () => {
@@ -35,9 +36,9 @@ const SingleSpotDetails = () => {
 
     return (
 
-        <div>
+        <div id='main'>
             {/* <h1>Spot Details</h1> */}
-            <div style={{ margin: 0, position: 'absolute', top: 150, left: 350 }}>
+            <div  style={{ margin: 0, position: 'absolute', top: 150, left: 350 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
                     <div style={{ fontSize: 40, fontFamily: 'sans-serif' }}>{spot.name}</div>
                     <div style={{ display: 'flex', gap: 8, fontFamily: 'sans-serif', }}>
@@ -60,7 +61,7 @@ const SingleSpotDetails = () => {
                         <div><i className="fa-solid fa-desktop" style={{ color: "black" }}></i></div>
                         <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: 30, fontFamily: 'sans-serif' }}>
                             <div><strong>Dedicated workspace</strong></div>
-                            <div style={{ color:'rgb(120,120,120)' }}>A common area with wifi that's well-suited for working</div>
+                            <div style={{ color: 'rgb(120,120,120)' }}>A common area with wifi that's well-suited for working</div>
                         </div>
 
 
@@ -70,7 +71,7 @@ const SingleSpotDetails = () => {
                         <div><i className="fa-solid fa-door-open" style={{ color: "black" }}></i> </div>
                         <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: 30, fontFamily: 'sans-serif' }}>
                             <div><strong>Self check-in</strong></div>
-                            <div style={{ color:'rgb(120,120,120)' }}>Check yourself in with the keypad.</div>
+                            <div style={{ color: 'rgb(120,120,120)' }}>Check yourself in with the keypad.</div>
                         </div>
                     </div>
 
@@ -78,11 +79,11 @@ const SingleSpotDetails = () => {
                         <div><i className="fa-regular fa-user" style={{ color: "black" }}></i> </div>
                         <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: 30, fontFamily: 'sans-serif' }}>
                             <div><strong>Kia And Rob is a Superhost</strong></div>
-                            <div style={{ color:'rgb(120,120,120)', inlineSize: 700, overflowWrap: 'break-word' }}>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</div>
+                            <div style={{ color: 'rgb(120,120,120)', inlineSize: 700, overflowWrap: 'break-word' }}>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</div>
                         </div>
                     </div>
                 </div>
-                <div style={{ paddingBottom: 30, paddingTop: 30, fontWeight: 'bold', fontSize: 50, fontFamily: 'sans-serif', lineHeight: 1,border: 'solid 1px black', borderRight: 0, borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20  }}>
+                <div style={{ paddingBottom: 30, paddingTop: 30, fontWeight: 'bold', fontSize: 50, fontFamily: 'sans-serif', lineHeight: 1, border: 'solid 1px black', borderRight: 0, borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20 }}>
                     <span style={{ color: 'red' }}>a</span>
                     <span style={{ color: 'red' }}>i</span>
                     <span style={{ color: 'red' }}>r</span>
@@ -97,14 +98,14 @@ const SingleSpotDetails = () => {
                     {spot.description}
                 </div>
 
-                {sessionUser && sessionUser.id === spot.ownerId &&(<DeleteSpot spotId={spotId}/>)}
+                {sessionUser && sessionUser.id === spot.ownerId && (<DeleteSpot spotId={spotId} />)}
 
-                
 
-                
-                <div style={{display:'flex', gap:8,paddingBottom: 50, paddingTop: 50, fontSize:25}}>
-                <div style={{ fontWeight: 'bold' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </div>
-                <div style={{ fontWeight: 'bold' }}>{spot.numReviews} reviews</div>
+
+
+                <div style={{ display: 'flex', gap: 8, paddingBottom: 50, paddingTop: 50, fontSize: 25 }}>
+                    <div style={{ fontWeight: 'bold' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </div>
+                    <div style={{ fontWeight: 'bold' }}>{spot.numReviews} reviews</div>
                 </div>
 
                 <LoadReviews spotId={spotId} />

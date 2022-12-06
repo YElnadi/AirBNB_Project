@@ -2,6 +2,21 @@
     padding-left:40px;
     padding-right:40px;
 } */
+@media screen and (min-width:2250px) {
+    .spots-container{
+        margin-left: 50px;
+    }
+    
+}
+
+/* @media screen and (min-width:768px) {
+    .spots-container{
+        /* margin-left:20px; */
+        /* width:738px; */
+        /* margin:0px;
+    }
+    
+} */ 
 
 .spot-card{
     display:flex;
@@ -11,6 +26,8 @@
     overflow: hidden;
     flex-wrap: wrap;
     cursor: pointer;
+    position: relative;
+    
 }
 
 .spot-card-image{
@@ -19,7 +36,8 @@
     border-radius: 10px;
     background-color: white;
     object-fit: cover;
-    color:white 
+    color:white;
+    
 }
 
 /* .spot-card-container{
@@ -62,17 +80,18 @@
 
 .spots-container{
     display:flex;
-    /* justify-content:space-between;  */
     flex-wrap: wrap;
-    width:100%;
-    margin-left:20px;
-
-    /* padding-left:0px;
-    padding-right: 0px;
-    margin-left:30px; */
+    padding:0 20px 0 20px;
     height: auto;
     width:auto;
     background-color: white;
+    /* width:100%; */
+    /* margin:0 auto;
+    /* justify-content:space-between;  */
+    /* width:50%;  */
+    /* padding-left:0px;
+    padding-right: 0px;
+    margin-left:30px; */
     /* flex-direction:row;
     flex-wrap:wrap;
     padding-left:0px;

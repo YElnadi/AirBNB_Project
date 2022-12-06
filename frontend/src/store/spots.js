@@ -67,11 +67,11 @@ export const createNewSpot = (data) =>async (dispatch) =>{
             body:JSON.stringify({url:data.previewImage, preview:true})
         })
         if(res.ok){
-            console.log('newSpot2######',newSpot)
-            console.log('in res ok ######')
+            //console.log('newSpot2######',newSpot)
+            //console.log('in res ok ######')
             newSpot.previewImage=data.previewImage;
             dispatch(createSpot(newSpot));
-            console.log('newSpot####',newSpot)
+            //console.log('newSpot####',newSpot)
             return newSpot;
         }
     }
