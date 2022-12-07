@@ -5,6 +5,8 @@ import { getSingleSpotDetails } from "../../store/spots";
 import LoadReviews from "../Reviews/LoadReviews";
 import DeleteSpot from "./DeleteSpot";
 import './SingleSpotDetails.css'
+import EditSpotModel from "./EditSpotModel";
+import CreateReview from "../Reviews/CreateReview";
 
 
 const SingleSpotDetails = () => {
@@ -98,7 +100,14 @@ const SingleSpotDetails = () => {
                     {spot.description}
                 </div>
 
-                {sessionUser && sessionUser.id === spot.ownerId && (<DeleteSpot spotId={spotId} />)}
+                {sessionUser && sessionUser.id === spot.ownerId &&
+                (<DeleteSpot spotId={spotId}/>)}
+
+                {sessionUser && sessionUser.id === spot.ownerId && (<EditSpotModel spotId={spotId}/>)}
+
+                {sessionUser && sessionUser.id !== spot.ownerId && (<CreateReview spotId={spotId}/>)}
+
+
 
 
 

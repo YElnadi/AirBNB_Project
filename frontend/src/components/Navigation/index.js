@@ -38,14 +38,14 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='nav'>
-    <ul style={{display:'flex',justifyContent:'space-between'}}>
-      <li style={{listStyle:'none'}}>
-        <NavLink exact to="/" style={{textDecoration:'none'}} >
-          <img src ={image} style={{width:120, marginTop:10, cursor:'pointer'}} alt='logo'/>
+    <div style={{display:'flex',justifyContent:'space-between'}}>
+      <div style={{listStyle:'none'}}>
+        <NavLink exact to="/" style={{textDecoration:'none'}} id='logo' >
+          <img src ={image} style={{width:120, marginTop:10, cursor:'pointer',marginLeft:30}} alt='logo'/>
         </NavLink>
-      </li>
+      </div>
       
-      <li style={{marginTop:10, marginLeft:900, listStyle:'none',fontWeight:'bold'}} className='yasbnbBut'>
+      <div style={{marginTop:10, marginLeft:900, listStyle:'none',fontWeight:'bold'}} className='yasbnbBut' postion='absolute' id='btn'>
         {/* <NavLink to ='/spots' style={{textDecoration:'none', color:'black', fontWeight:'bold'}}> */}
         <OpenModalMenuItem
                     itemText="Yasbnb your home"
@@ -53,14 +53,14 @@ function Navigation({ isLoaded }){
                     modalComponent={<CreateSpotModel />}
                   /> 
        {/* </NavLink> */}
-        </li>
+        </div>
 
       {isLoaded && (
-        <li style={{listStyle:'none', marginTop:10}}>
+        <div id='profBtn' style={{listStyle:'none', marginTop:10,postion:'absolute'}}>
           <ProfileButton user={sessionUser} />
-        </li>
+        </div>
       )}
-    </ul>
+    </div>
     </div>
   );
 }

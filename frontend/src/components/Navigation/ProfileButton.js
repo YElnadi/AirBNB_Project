@@ -46,46 +46,46 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div className='container'>
-        <button onClick={openMenu} className='button'>
+      <div className='container'  >
+        <button  style={{postion:'absolute'}} onClick={openMenu} className='button'>
           <i className="fa-solid fa-bars " style={{ padding: 5, fontSize: 20 }}></i>
           <i className="fas fa-user-circle" style={{ fontSize: 25, padding:0}} />
         </button>
 
 
 
-        <div >
+        <div  >
           {showMenu && 
-          <div className={ulClassName} ref={ulRef}>
+          <ul  className={ulClassName} ref={ulRef}>
 
             {user ? (
               <>
 
-                <div style={{ padding: 10 }} >Hello,{user.username}</div>
-                <div style={{ padding: 10 }}>{user.email}</div>
+                <li style={{ padding: 10 }} >Hello,{user.username}</li>
+                <li style={{ padding: 10 }}>{user.email}</li>
                 <div style={{ padding: 10 }}>
                   <button onClick={logout}>Log Out</button>
                 </div>
               </>
             ) : (
               <>
-                <div style={{ padding: 10, cursor: 'pointer' }}>
+                <li style={{ padding: 10, cursor: 'pointer'}}>
                   <OpenModalMenuItem
-                    itemText="Log In"
+                    itemText="Log In"po
                     onItemClick={closeMenu}
                     modalComponent={<LoginFormModal />}
                   />
-                </div>
-                <div style={{ padding: 10, cursor: 'pointer' }}>
+                </li>
+                <li style={{ paddingTop: 40,paddingLeft:10, cursor: 'pointer'}}>
                   <OpenModalMenuItem
                     itemText="Sign Up"
                     onItemClick={closeMenu}
                     modalComponent={<SignupFormModal />}
                   />
-                </div>
+                </li>
                 </>
             )}
-          </div>
+          </ul>
           } 
         </div>
       </div>
