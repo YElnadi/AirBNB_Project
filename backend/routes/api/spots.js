@@ -8,6 +8,11 @@ const booking = require('../../db/models/booking');
 const user = require('../../db/models/user');
 
 
+if (process.env.NODE_ENV === 'production') {
+    LITERAL_SCHEMA_PREFIX = `"${process.env.SCHEMA}".`
+} else {
+    LITERAL_SCHEMA_PREFIX = ""
+}
 
 const validateSpotData = [
     check('address')
@@ -130,9 +135,9 @@ let { page, size} = req.query;
         attributes: {
             include:
                 [
-                    [sequelize.literal('(CAST((SELECT avg ("Reviews".stars) from "Reviews" where "Reviews"."spotId"="Spot".id) AS DECIMAL(7,2)))'), 'avgRating'],
+                    [sequelize.literal(`(CAST((SELECT avg ("Reviews".stars) from ${LITERAL_SCHEMA_PREFIX}"Reviews" where ${LITERAL_SCHEMA_PREFIX}"Reviews"."spotId"="Spot".id) AS DECIMAL(7,2)))`), 'avgRating'],
 
-                    [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage'],
+                    [sequelize.literal(`(SELECT MAX("SpotImages".url) from ${LITERAL_SCHEMA_PREFIX}"SpotImages" where ${LITERAL_SCHEMA_PREFIX}"SpotImages"."spotId"="Spot".id)`), 'previewImage'],
                 ]
 
         },
@@ -237,9 +242,9 @@ router.get('/current', requireAuth, async (req, res) => {
         attributes: {
             include:
                 [
-                    [sequelize.literal('(SELECT avg(reviews.stars) from "Reviews" reviews where reviews."spotId"="Spot".id)'), 'avgRating'],
+                    [sequelize.literal(`(SELECT avg(reviews.stars) from ${LITERAL_SCHEMA_PREFIX}"Reviews" reviews where reviews."spotId"="Spot".id)`), 'avgRating'],
 
-                    [sequelize.literal('(SELECT MAX(spotimages.url) from "SpotImages" spotimages  where spotimages."spotId"="Spot".id)'), 'previewImage'],
+                    [sequelize.literal(`(SELECT MAX(spotimages.url) from ${LITERAL_SCHEMA_PREFIX}"SpotImages" spotimages  where spotimages."spotId"="Spot".id)`), 'previewImage'],
 
                     // [
                     //     sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'
@@ -287,9 +292,9 @@ router.get('/:spotId', async (req, res) => {
         ],
         attributes:{
             include:[
-                [sequelize.literal('(SELECT avg(reviews.stars) from "Reviews" reviews where reviews."spotId"="Spot".id)'), 'avgStarRating'],
+                [sequelize.literal(`(SELECT avg(reviews.stars) from ${LITERAL_SCHEMA_PREFIX}"Reviews" reviews where reviews."spotId"="Spot".id)`), 'avgStarRating'],
 
-                [sequelize.literal('(SELECT COUNT(reviews.review) from "Reviews" reviews  where reviews."spotId"="Spot".id)'), 'numReviews'],
+                [sequelize.literal(`(SELECT COUNT(reviews.review) from ${LITERAL_SCHEMA_PREFIX}"Reviews" reviews  where reviews."spotId"="Spot".id)`), 'numReviews'],
              ]
          }
 
