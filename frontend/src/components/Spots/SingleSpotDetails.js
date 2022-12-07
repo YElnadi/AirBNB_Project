@@ -1,24 +1,58 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { getSingleSpotDetails } from "../../store/spots";
 import LoadReviews from "../Reviews/LoadReviews";
 import DeleteSpot from "./DeleteSpot";
 import './SingleSpotDetails.css'
 import EditSpotModel from "./EditSpotModel";
-import CreateReview from "../Reviews/CreateReview";
+import CreateReview from "../Reviews/CreateReviewModel";
+import CreateReviewModel from "../Reviews/CreateReviewModel";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
 
 const SingleSpotDetails = () => {
     const { spotId } = useParams()
-    console.log('spotId', spotId)
+    console.log('spotId++++++', spotId)
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     console.log('sessionUser####', sessionUser)
     const spot = useSelector(state => state.spots.singleSpot)
     console.log('####spot####', spot)
+    //////////////////////////
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
+  
+    const openMenu = () => {
+      if (showMenu) return;
+      setShowMenu(true);
+    };
+  
+    useEffect(() => {
+      if (!showMenu) return;
+  
+      const closeMenu = (e) => {
+        if (!ulRef.current.contains(e.target)) {
+          setShowMenu(false);
+        }
+      };
+  
+      document.addEventListener('click', closeMenu);
+  
+      return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+    const closeMenu = () => setShowMenu(false);
+  
 
+
+
+
+
+
+
+
+////////////////////////////////////////
     useEffect(() => {
         dispatch(getSingleSpotDetails(spotId))
     }, [dispatch, spotId])
@@ -105,7 +139,13 @@ const SingleSpotDetails = () => {
 
                 {sessionUser && sessionUser.id === spot.ownerId && (<EditSpotModel spotId={spotId}/>)}
 
-                {sessionUser && sessionUser.id !== spot.ownerId && (<CreateReview spotId={spotId}/>)}
+                {sessionUser && sessionUser.id !== spot.ownerId && (
+                <OpenModalMenuItem
+                itemText={<button>Leave a review</button>}
+                onItemClick={closeMenu}
+                modalComponent={<CreateReviewModel key={spotId} spotId={spotId}/>}
+                /> 
+                )}
 
 
 

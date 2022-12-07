@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 //ACTIONS/////////////////
 const LOAD_REVIEWS = 'GET/ReviewsBySpotId'
 const DELETE_REVIEW = 'DELETE/Review'
+const CREATE_REVIEW = 'POST/Review'
 
 
 export const loadReviews = reviews =>({
@@ -14,6 +15,10 @@ export const deleteReview = reviewId =>({
     reviewId
 })
 
+export const actionCreateReview = (review)=>({
+    type:CREATE_REVIEW,
+    review
+})
 
 
 //THUNK ACTIONS ////////////
@@ -39,6 +44,26 @@ export const deleteSpotReview = (reviewId) => async (dispatch) =>{
     }
 }
 
+export const thunkCreateReview = (spotId, payload)=> async (dispatch) =>{
+
+    console.log('create review thunk########')
+    const response = await csrfFetch(`/api/spots/${spotId}/reviews`,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(payload)
+        
+    })
+    console.log('crate review thunk response', response)
+
+    if(response.ok){
+        const newReview = await response.json()
+        dispatch(actionCreateReview(newReview))
+        console.log('newReview from thunk',newReview)
+        return newReview
+    }
+}
 
 
 
@@ -78,6 +103,17 @@ export default function reviewReducers(state={spot:{}, user:{}}, action){
             return newState;
 
         }
+         case CREATE_REVIEW:{
+             console.log('in create review reducer')
+             const newState = {
+                 ...state,
+                 spot:{...state.spot},
+                 user:{...state.user}
+                }
+                newState.spot[action.review.id] = action.review
+                newState.user[action.review.id] =action.review
+                return newState
+         }
             
             
     
