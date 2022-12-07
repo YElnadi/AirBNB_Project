@@ -1,4 +1,9 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+options.tableName = "Reviews"
 const {Review, Spot, User} =require('../models')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,7 +17,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   return queryInterface.bulkInsert("Reviews",[
+   return queryInterface.bulkInsert(options,[
      {
       spotId:1,
       userId:2,
@@ -53,7 +58,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return queryInterface.bulkDelete("Reviews",{
+    return queryInterface.bulkDelete(options,{
       review:["This was an awesome spot!"],
       stars:[5]
     },{});

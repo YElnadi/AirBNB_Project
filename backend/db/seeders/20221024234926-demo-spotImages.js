@@ -1,4 +1,9 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+options.tableName = "SpotImages"
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,7 +17,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     return queryInterface.bulkInsert('SpotImages', [
+     return queryInterface.bulkInsert(options, [
        {
          spotId:1,
          url:"https://a0.muscache.com/im/pictures/miso/Hosting-49924321/original/f0da72bc-28b2-44bd-b3dc-9cb1e1ba946b.jpeg?im_w=1200",
@@ -124,7 +129,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     return queryInterface.bulkDelete('SpotImages',{
+     return queryInterface.bulkDelete(options,{
        url:['image url'],
        preview:[true]
      },{})

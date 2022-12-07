@@ -1,4 +1,9 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+options.tableName = "Bookings"
 const {Spot, User} = require('../models')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,7 +17,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   return queryInterface.bulkInsert('Bookings',[
+   return queryInterface.bulkInsert(options,[
      {
       spotId:1,
       userId:1,
@@ -54,7 +59,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Bookings',{
+    return queryInterface.bulkDelete(options,{
       startDate:["2021-11-19"],
       endDate:["2021-11-20"]
     },{});
