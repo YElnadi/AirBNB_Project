@@ -83,7 +83,7 @@ router.get('/current', async (req, res) => {
                             //         ],
                             //     ]
                             // }
-                            [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage']
+                            [sequelize.literal(`(SELECT MAX(${LITERAL_SCHEMA_PREFIX}"SpotImages".url) from ${LITERAL_SCHEMA_PREFIX}"SpotImages" where ${LITERAL_SCHEMA_PREFIX}"SpotImages"."spotId"="Spot".id)`), 'previewImage']
                         ],
                         exclude:["createdAt","updatedAt","description"]
 

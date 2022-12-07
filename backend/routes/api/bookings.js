@@ -6,6 +6,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const booking = require('../../db/models/booking');
 const user = require('../../db/models/user');
+const { LITERAL_SCHEMA_PREFIX } = require('./common.js')
 
 
 //Get all of the Current User's Bookings
@@ -23,7 +24,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 }],
                 attributes: {
                     include: [
-                        [sequelize.literal('(SELECT MAX("SpotImages".url) from "SpotImages" where "SpotImages"."spotId"="Spot".id)'), 'previewImage']
+                        [sequelize.literal(`(SELECT MAX(${LITERAL_SCHEMA_PREFIX}"SpotImages".url) from ${LITERAL_SCHEMA_PREFIX}"SpotImages" where ${LITERAL_SCHEMA_PREFIX}"SpotImages"."spotId"="Spot".id)`), 'previewImage']
                     ],
                     exclude:["createdAt","updatedAt","description"]
 

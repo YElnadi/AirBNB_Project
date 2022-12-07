@@ -6,13 +6,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const booking = require('../../db/models/booking');
 const user = require('../../db/models/user');
-
-
-if (process.env.NODE_ENV === 'production') {
-    LITERAL_SCHEMA_PREFIX = `"${process.env.SCHEMA}".`
-} else {
-    LITERAL_SCHEMA_PREFIX = ""
-}
+const { LITERAL_SCHEMA_PREFIX } = require('./common.js')
 
 const validateSpotData = [
     check('address')
