@@ -134,7 +134,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
             id: req.params.reviewId
         }
     })
-    console.log('review:',review)
+    //console.log('review:',review)
 
     if (!review) {
         res.status(404)

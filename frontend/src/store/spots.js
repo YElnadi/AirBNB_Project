@@ -31,7 +31,7 @@ export const deleteSpot = (spotId) =>({
 //THUNK ACTIONS
 export const getAllSpots =() => async(dispatch) =>{
     const response = await csrfFetch('/api/spots')
-    console.log('response from getAllSpots', response)
+    //console.log('response from getAllSpots', response)
     if(response.ok){
         const spotsList = await response.json();
         dispatch(loadSpots(spotsList.Spots))
@@ -100,7 +100,7 @@ export default function spotReducers (state = {spots:{}, singleSpot:{}}, action)
             action.spots.forEach(spot =>{
                 newState.spots[spot.id] = spot
             });
-            console.log('newState',newState)
+            //console.log('newState',newState)
 
             return newState
         }

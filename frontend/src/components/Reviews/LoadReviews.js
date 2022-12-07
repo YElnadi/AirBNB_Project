@@ -7,9 +7,9 @@ import ReviewCards from "./ReviewCards";
 
 const LoadReviews = ({spotId}) => {
 const dispatch = useDispatch()
-console.log('spotId++++++++',spotId)
+//console.log('spotId++++++++',spotId)
 let allReviews = useSelector(state=>state.reviews.spot)
-    console.log('allReviews in single',allReviews)
+    //console.log('allReviews in single',allReviews)
 
     allReviews= allReviews.constructor == Object ? Object.values(allReviews): []
 

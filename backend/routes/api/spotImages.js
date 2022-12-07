@@ -30,7 +30,7 @@ router.delete('/:imageId',requireAuth, async(req, res)=> {
         return
     }
 
-    console.log(image);
+    //console.log(image);
 
     const spot = await Spot.findOne({
         where: {

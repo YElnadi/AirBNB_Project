@@ -13,13 +13,13 @@ import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
 const SingleSpotDetails = () => {
     const { spotId } = useParams()
-    console.log('spotId++++++', spotId)
+    //console.log('spotId++++++', spotId)
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
-    console.log('sessionUser####', sessionUser)
+    //console.log('sessionUser####', sessionUser)
     const spot = useSelector(state => state.spots.singleSpot)
-    console.log('####spot####', spot)
+    //console.log('####spot####', spot)
     //////////////////////////
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();

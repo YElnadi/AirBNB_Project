@@ -10,14 +10,14 @@ const CreateReviewModel = ({spotId}) => {
   const [review, setReview] =useState('')
   const [stars, setStars] = useState('')
   //const {spotId} = useParams();
-  console.log('###spotId###',spotId)
+  //console.log('###spotId###',spotId)
   const dispatch = useDispatch();
   const history = useHistory();
   const [validationErrors, setValidationErrors] = useState([])
   const [hasSubmitted, setHasSubmited] = useState(false)
   const { closeModal } = useModal();
 const sessionUser = useSelector(state => state.session.user);
-console.log('sessionuser', sessionUser)
+//console.log('sessionuser', sessionUser)
 const spot = useSelector(state=>state.spots.singleSpot)
 console.log('####spot###', spot)
 
@@ -43,15 +43,21 @@ console.log('####spot###', spot)
       stars
     }
     let newReview
-    newReview = await dispatch(thunkCreateReview(payload, spotId))
-    if(newReview){
-      dispatch(getReviewsBySpotId(spotId))
-      dispatch(getSingleSpotDetails(spotId))
+    newReview = await dispatch(thunkCreateReview(spotId,payload,sessionUser))
+    //if(newReview){
+      // dispatch(getReviewsBySpotId(spotId))
+      // dispatch(getSingleSpotDetails(spotId))
       .then(closeModal)
+      // .catch(
+      //   async (res) => {
+      //     const data = await res.json();
+      //     window.alert('Not able to submit' + " "+ data.message)
+      //   }
+      // )
       history.push(`/spots/${spotId}`)
-      return
+      
 
-    }
+    //}
     
   }
 
