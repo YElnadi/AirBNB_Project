@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import './Navigation.css';
 import image from '../../logo/Yasbnb-3.png'
-import CreateSpotModel from '../CreateSpotModel';
+import CreateSpotModal from '../CreateSpotModal';
  
 
 function Navigation({ isLoaded }){
@@ -50,7 +50,7 @@ function Navigation({ isLoaded }){
         <OpenModalMenuItem
                     itemText="Yasbnb your home"
                     onItemClick={closeMenu}
-                    modalComponent={<CreateSpotModel />}
+                    modalComponent={<CreateSpotModal />}
                   /> 
        {/* </NavLink> */}
         </div>

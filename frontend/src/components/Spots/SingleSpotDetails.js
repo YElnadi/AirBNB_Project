@@ -5,7 +5,7 @@ import { getSingleSpotDetails } from "../../store/spots";
 import LoadReviews from "../Reviews/LoadReviews";
 import DeleteSpot from "./DeleteSpot";
 import './SingleSpotDetails.css'
-import EditSpotModel from "./EditSpotModel";
+import EditSpotModal from '../EditSpotModal'
 import CreateReview from "../Reviews/CreateReviewModel";
 import CreateReviewModel from "../Reviews/CreateReviewModel";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
@@ -130,14 +130,14 @@ const SingleSpotDetails = () => {
                     <span style={{ color: 'black' }}>r</span>
                     <p style={{ fontSize: 17, fontWeight: 'normal', color: 'rgb(80,80,80)', inlineSize: 700, overflowWrap: 'break-word' }}>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
                 </div>
-                <div>
+                <div style={{inlineSize: 700,overflowWrap: 'break-word'}}>
                     {spot.description}
                 </div>
 
                 {sessionUser && sessionUser.id === spot.ownerId &&
                 (<DeleteSpot spotId={spotId}/>)}
 
-                {sessionUser && sessionUser.id === spot.ownerId && (<EditSpotModel spotId={spotId}/>)}
+                {sessionUser && sessionUser.id === spot.ownerId && (<EditSpotModal spotId={spotId}/>)}
 
                 {sessionUser && sessionUser.id !== spot.ownerId && (
                 <OpenModalMenuItem

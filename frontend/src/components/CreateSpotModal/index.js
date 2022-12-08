@@ -168,16 +168,17 @@ const CreateSpotModel = () => {
             </label>
 
             
-
+            <div >
             <label >
               Description
-            <textarea
+            <textarea 
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
             required
             />
             </label>
+            </div>
 
             <label >
               Price
