@@ -86,10 +86,10 @@
   li{
     padding: 16px;
   } */
-  .navBar li:first-child{
+  .navBar > li:first-child{
     margin-right: auto;
   }
-  .navBar li:not(:first-child) a:hover{
+  .navBar > li:not(:first-child) a:hover{
     border-bottom: 2px solid black;
   }
   
