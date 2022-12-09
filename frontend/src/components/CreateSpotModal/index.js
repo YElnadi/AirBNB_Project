@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { createNewSpot } from '../../store/spots';
+import './CreateSpotModal.css'
 
 
 const CreateSpotModel = () => {
@@ -105,10 +106,7 @@ const CreateSpotModel = () => {
 
   return (
     <>
-    <div style={{maxWidth:'500px',width:'100%',background:'white',margin:'20px auto', boxShadow:'1px 1px 2px rgba(0,0,0,0.125)',
-    padding:'30px'
-      }}>
-        <h2 style={{textAlign:'center',padding:'0 0 20px 0', borderBottom:'1px solid silver'}}>Create your spot </h2>
+    
         {hasSubmitted && validationErrors.length>0 && (
           <div>
             the following errors were found:
@@ -119,24 +117,24 @@ const CreateSpotModel = () => {
             </ul>
           </div>
         )}
-        <form style={{ padding: '0 40px', boxSizing: 'bordar-box' }} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+        <h2 style={{textAlign:'center', marginBottom:'20px'}}>Create your spot </h2>
 
-        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0', height:'40px'}}>
         <label >
               Name
-            <input style={{ width: '100%', padding: '5 5px', height: '20px', fontSize: '12px', border: 'none', background: 'none', outline: 'none' }}
+            <input 
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
             required
             />
             </label>
-            </div>
+          
 
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label>
               Address
-            <input style={{ width: '100%', padding: '5 5px', height: '20px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <input 
             type='text'
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
@@ -144,73 +142,73 @@ const CreateSpotModel = () => {
             
             />
             </label>
-            </div>
+            
 
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label >
               State
-            <input style={{ width: '100%', padding: '5 5px', height: '20px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <input 
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
             required
             />
             </label>
-            </div>
+          
 
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label >
               City
-            <input style={{ width: '100%', padding: '5 5px', height: '20px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <input
             type='text'
             value={city}
             onChange={(e)=>setCity(e.target.value)}
             required
             />
             </label>
-            </div>
+            
 
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label >
               Country
-            <input style={{ width: '100%', padding: '5 5px', height: '20px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <input 
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
             required
             />
             </label>
-            </div>
+          
 
             
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label >
               Description
-            <textarea style={{ width: '100%', padding: '5 5px', height: '30px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <textarea 
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
             required
             />
             </label>
-            </div>
+            
 
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label >
               Price
-            <input style={{ width: '100%', padding: '5 5px', height: '20px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <input 
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
             required
             />
             </label>
-            </div>
+            
 
-            <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+            
             <label >
               Image
-            <input style={{ width: '100%', padding: '5 5px', height: '10px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <input 
             type='url'
             value={previewImage}
             onChange={(e)=>setPreviewImage(e.target.value)}
@@ -218,19 +216,17 @@ const CreateSpotModel = () => {
             
             />
             </label>
-            </div>
+            
 
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '10px', gap: '8px' }}>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }}  type='submit' 
-            // disabled= {validationErrors.length>0}
-            > Save</button>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }}   onClick={cancel}> Cancel</button>
+            <div className='Btn'>
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }} type='submit'> Save</button>
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }}onClick={cancel}> Cancel</button>
             </div>
 
         </form>
 
       
-    </div>
+  
     </>
   );
 }
