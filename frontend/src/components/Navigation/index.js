@@ -65,7 +65,7 @@ function Navigation({ isLoaded }){
     <div>
           <ul className="navBar">
       <li>
-           <NavLink exact to="/" style={{textDecoration:'none'}} id='logo' >
+           <NavLink exact to="/" style={{textDecoration:'none'}}  >
             {/* TODO: move logo styling to CSS */}
             <img src ={image} style={{width:120, marginTop:10, cursor:'pointer',marginLeft:30}} alt='logo'/>
          </NavLink>
