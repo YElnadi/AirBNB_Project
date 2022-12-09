@@ -54,7 +54,8 @@ router.post(  //api/users
         }
       })
       if (checkEmailExist) {
-        res.json({
+        res.status(403)
+        return res.json({
           "message": "User already exists",
           "statusCode": 403,
           "errors": {
@@ -64,7 +65,8 @@ router.post(  //api/users
       }
     }
     else {
-      res.json(
+      res.status(400)
+      return res.json(
         {
           "message": "Validation error",
           "statusCode": 400,
@@ -74,14 +76,17 @@ router.post(  //api/users
         }
       )
     }
+
     if (username !== null) {
+      console.log("username is not null")
       const checkUserName = await User.findOne({
         where: {
           username: username
         }
       })
       if (checkUserName) {
-        res.json({
+        res.status(403)
+        return res.json({
           "message": "User already exists",
           "statusCode": 403,
           "errors": {
