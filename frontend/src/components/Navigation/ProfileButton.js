@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <div className='container'  >
-        <button  style={{postion:'absolute'}} onClick={openMenu} className='button'>
+        <button onClick={openMenu} className='button'>
           <i className="fa-solid fa-bars " style={{ padding: 5, fontSize: 20 }}></i>
           <i className="fas fa-user-circle" style={{ fontSize: 25, padding:0}} />
         </button>
@@ -61,22 +61,22 @@ function ProfileButton({ user }) {
             {user ? (
               <>
 
-                <li style={{ padding: 10 }} >Hello,{user.username}</li>
-                <li style={{ padding: 10 }}>{user.email}</li>
-                <div style={{ padding: 10 }}>
+                <li  >Hello,{user.username}</li>
+                <li >{user.email}</li>
+                <div >
                   <button onClick={logout}>Log Out</button>
                 </div>
               </>
             ) : (
               <>
-                <li style={{ padding: 10, cursor: 'pointer'}}>
+                <li style={{ cursor: 'pointer'}}>
                   <OpenModalMenuItem
-                    itemText="Log In"po
+                    itemText="Log In"
                     onItemClick={closeMenu}
                     modalComponent={<LoginFormModal />}
                   />
                 </li>
-                <li style={{ paddingTop: 40,paddingLeft:10, cursor: 'pointer'}}>
+                <li style={{ cursor: 'pointer'}}>
                   <OpenModalMenuItem
                     itemText="Sign Up"
                     onItemClick={closeMenu}

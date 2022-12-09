@@ -63,7 +63,7 @@ function Navigation({ isLoaded }){
     // </div>
     // </div>
     <div>
-          <ul>
+          <ul className="navBar">
       <li>
            <NavLink exact to="/" style={{textDecoration:'none'}} id='logo' >
             {/* TODO: move logo styling to CSS */}
@@ -82,7 +82,7 @@ function Navigation({ isLoaded }){
         </li>
       <li>
          {isLoaded && (
-         <div className="profileMenuBtn">
+         <div>
            <ProfileButton user={sessionUser} />
          </div>)}
         </li>
