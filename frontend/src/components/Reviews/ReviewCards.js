@@ -3,7 +3,16 @@ import RemoveReview from "./RemoveReview";
 
 
 const ReviewCards = ({ review }) => {
-    //console.log('review from reviews card', review)
+    // console.log('review from reviews card', review)
+    // console.log(typeof(review.createdAt))
+    // console.log(review.createdAt)
+    var dt = new Date(review.createdAt)
+    const month = dt.toLocaleString('default', { month: 'long' });
+    const year = dt.getFullYear();
+    //console.log(dt)
+    //console.log(dt.getMonth())
+    //console.log(dt.getFullYear())
+    //console.log(month)
 
     const sessionUser = useSelector(state => state.session.user)
     //console.log('sessionUser', sessionUser)
@@ -17,7 +26,7 @@ const ReviewCards = ({ review }) => {
                 <div style={{ marginTop: 10, textTransform: 'capitalize' }}>
                     {review.User.firstName}
                     </div>
-                <div style={{color:'rgb(120,120,120)'}}>October 2022</div>
+                <div style={{color:'rgb(120,120,120)'}}>{month} {year}</div>
                 </div>
             </div>
 

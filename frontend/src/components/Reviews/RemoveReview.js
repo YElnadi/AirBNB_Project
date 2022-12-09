@@ -11,12 +11,12 @@ import {getSingleSpotDetails} from '../../store/spots'
 function RemoveReview({review}) {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log('review',review)
+  console.log('review from review cards',review)
 
   const deleteReview =(e)=>{
     e.preventDefault();
     dispatch(deleteSpotReview(review.id))
-   dispatch(getSingleSpotDetails(review.spotId))
+    dispatch(getSingleSpotDetails(review.spotId))
 
     // history.go(0)
 }
