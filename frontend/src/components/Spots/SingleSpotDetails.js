@@ -74,7 +74,9 @@ const SingleSpotDetails = () => {
 
         <div id='main'>
             {/* <h1>Spot Details</h1> */}
-            <div  style={{ margin: 0, position: 'absolute', top: 150, left: 350 }}>
+            <div  
+            // style={{ margin: 0, position: 'absolute', top: 150, left: 350 }}
+            >
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
                     <div style={{ fontSize: 40, fontFamily: 'sans-serif' }}>{spot.name}</div>
                     <div style={{ display: 'flex', gap: 8, fontFamily: 'sans-serif', }}>
