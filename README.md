@@ -19,6 +19,7 @@ in the live site you can start exploring the website through demo user login but
 
 ## Hosting
 ![image](https://user-images.githubusercontent.com/103335728/203048741-4ad33bbf-3163-4684-9d6f-69569239b6b8.png)
+ [render](https://ml.globenewswire.com/Resource/Download/19618237-eb42-4ed2-b7a1-1f56419d1279?size=2)
 
 
 
