@@ -22,7 +22,7 @@ const spot = useSelector(state=>state.spots.singleSpot)
 //console.log('####spot###', spot)
 
   useEffect(()=>{
-    dispatch(getReviewsBySpotId(spotId))
+   // dispatch(getReviewsBySpotId(spotId))
     let errors =[];
     if(!review) errors.push('Please tell us your experiance')
     if(review.length<10) errors.push('Please your review must be longer than 10 characters')
