@@ -53,8 +53,13 @@ function SignupFormModal() {
 
   return (
     <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <div style={{
+        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+        width: '400px', background: 'white', borderRadius: '10px'
+      }}>
+      <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver' }}>Sign Up</h1>
+
+      <form style={{ padding: '0 40px', boxSizing: 'bordar-box' }}  onSubmit={handleSubmit}>
         {hasSubmitted && errors.length>0 && (
           <div>
             The following errors were found:
@@ -64,62 +69,83 @@ function SignupFormModal() {
         </ul>
         </div>
         )}
+        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
         <label>
           Email
-          <input
+          <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
+        </div>
+
+        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
         <label>
           Username
-          <input
+          <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
+        </div>
+
+        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
         <label>
           First Name
-          <input
+          <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
         </label>
+        </div>
+
+        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
         <label>
           Last Name
-          <input
+          <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
         </label>
+        </div>
+
+        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
         <label>
           Password
-          <input
+          <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
+        </div>
+
+        <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
         <label>
           Confirm Password
-          <input
+          <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '10px', gap: '8px'}}>
+        <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }} type="submit">Sign Up</button>
+        </div>
       </form>
+      </div>
     </>
   );
 }
