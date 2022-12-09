@@ -4,10 +4,10 @@ in the live site you can start exploring the website through demo user login but
 
 
 ## Wiki Links
-1.[Database schema](https://github.com/YElnadi/airBnB_ProjectClone/wiki#database-schema)
-![Feature List](https://github.com/YElnadi/airBnB_ProjectClone/wiki/Feature-List)
-![API Documentation](https://github.com/YElnadi/airBnB_ProjectClone/wiki/API-Documentation)
-![redux Store States](https://github.com/YElnadi/airBnB_ProjectClone/wiki/Redux-Store-State)
+[Database schema](https://github.com/YElnadi/airBnB_ProjectClone/wiki#database-schema)<p>
+[Feature List](https://github.com/YElnadi/airBnB_ProjectClone/wiki/Feature-List)<p>
+[API Documentation](https://github.com/YElnadi/airBnB_ProjectClone/wiki/API-Documentation)<p>
+[redux Store States](https://github.com/YElnadi/airBnB_ProjectClone/wiki/Redux-Store-State)<p>
 
 
 ## TECH STACK
