@@ -19,7 +19,7 @@ const CreateReviewModel = ({spotId}) => {
 const sessionUser = useSelector(state => state.session.user);
 //console.log('sessionuser', sessionUser)
 const spot = useSelector(state=>state.spots.singleSpot)
-console.log('####spot###', spot)
+//console.log('####spot###', spot)
 
   useEffect(()=>{
     dispatch(getReviewsBySpotId(spotId))
@@ -45,16 +45,16 @@ console.log('####spot###', spot)
     let newReview
     newReview = await dispatch(thunkCreateReview(spotId,payload,sessionUser))
     //if(newReview){
-      // dispatch(getReviewsBySpotId(spotId))
-      // dispatch(getSingleSpotDetails(spotId))
-      .then(closeModal)
+      dispatch(getReviewsBySpotId(spotId))
+      dispatch(getSingleSpotDetails(spotId))
+      closeModal()
       // .catch(
       //   async (res) => {
       //     const data = await res.json();
       //     window.alert('Not able to submit' + " "+ data.message)
       //   }
       // )
-      history.push(`/spots/${spotId}`)
+      //history.push(`/spots/${spotId}`)
       
 
     //}

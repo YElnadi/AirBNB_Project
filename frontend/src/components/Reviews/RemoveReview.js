@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {deleteSpotReview} from '../../store/reviews'
 import './Reviews.css'
+import {getSingleSpotDetails} from '../../store/spots'
 
 
 
@@ -10,10 +11,13 @@ import './Reviews.css'
 function RemoveReview({review}) {
   const dispatch = useDispatch();
   const history = useHistory();
+  console.log('review',review)
 
   const deleteReview =(e)=>{
     e.preventDefault();
     dispatch(deleteSpotReview(review.id))
+   dispatch(getSingleSpotDetails(review.spotId))
+
     // history.go(0)
 }
 
