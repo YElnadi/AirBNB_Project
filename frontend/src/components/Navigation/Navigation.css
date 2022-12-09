@@ -17,7 +17,7 @@
 
 
 
-.nav{
+/* .nav{
 
     border: 1px solid rgb(224,224,224);
     border-top: none;
@@ -34,11 +34,62 @@
     height:15px;
 
 
+} */
+
+
+.bnbYourHomeBtn {
+    border: 1px  rgb(185, 183, 183);
+    padding: 10px;
+    border-radius: 50px;
+    margin-top:10px;
+    margin-right:10px;
 }
 
-.yasbnbBut:hover{
+.bnbYourHomeBtn:hover{
+    background-color:rgb(245,245,245);
+    cursor: pointer;
+}
+
+/* .yasbnbBut:hover{
     background-color:rgb(245,245,245);
     cursor: pointer;
 
-}
+} */
 
+
+/* img{
+    width: 32px;
+    height: 32px;
+  } */
+  ul{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  /* li a{
+    text-decoration: none;
+  }
+  li a:link{
+    color: black;
+  }
+  
+  li a:visited{
+    color: black;
+  }
+  
+  li a:active{
+    color: black;
+  }
+  
+  li{
+    padding: 16px;
+  } */
+  li:first-child{
+    margin-right: auto;
+  }
+  li:not(:first-child) a:hover{
+    border-bottom: 2px solid black;
+  }
+  
