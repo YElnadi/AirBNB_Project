@@ -4,6 +4,7 @@ const LOAD_SPOTS = 'GET/allSpots';
 const SINGLE_SPOT = 'GET/singleSpotById';
 const CREATE_SPOT = 'POST/createSingleSpot';
 const DELETE = 'DELETE/spot'
+const UPDATE = 'PUT/spot'
 
 
 
@@ -28,6 +29,12 @@ export const deleteSpot = (spotId) =>({
     type:DELETE,
     spotId
 })
+
+export const actionUpdateSpot = (payload) =>({
+    type:UPDATE,
+    payload
+})
+
 //THUNK ACTIONS
 export const getAllSpots =() => async(dispatch) =>{
     const response = await csrfFetch('/api/spots')
@@ -87,6 +94,24 @@ export const deleteSpotbySpotId = (spotId) =>async(dispatch) =>{
     }
 }
 
+
+export const thunkUpdateSpot = (spotId, payload) =>async (dispatch) =>{
+    console.log('thunk spotId ', spotId)
+    console.log('payload ',payload)
+    const response = await csrfFetch(`/api/spots/${spotId}`,{
+        method:'PUT',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(payload)
+    })
+    if(response.ok){
+        const updatedSpot= await response.json();
+        dispatch(actionUpdateSpot(updatedSpot))
+        return updatedSpot
+    }
+}
+
 //REDUCERS
 const initialState = {spots:{}, singleSpot:{}}
 export default function spotReducers (state = {spots:{}, singleSpot:{}}, action){
@@ -117,26 +142,40 @@ export default function spotReducers (state = {spots:{}, singleSpot:{}}, action)
             // console.log('spots',state.spots)
             const newState = {
                 ...state,
-                spots:{...state.spots},
-                //singleSpot:[action.newSpotDetails]
-                
+                spots:{...state.spots}, 
             }
             console.log('newState####',newState)
-            //const output = Object.assign({},state,action.newSpotDetails)
-            
-            // const newStateArr = [Object.values(newState)]
-            // console.log('newStateArr', newStateArr)
-             //console.log('newstate from reducers',newState)
-           
             newState.spots[action.newSpotDetails.id] = action.newSpotDetails
-            //console.log('########', newState.spots[action.newSpotDetails.id])
-            // if(newState.spots[action.newSpotDetails.id].SpotImages){
-            //     newState.spots[action.newSpotDetails.id].previewImage = newState.spots[action.newSpotDetails.id].SpotImages[0].url
-            // }
-            //console.log('output from reducer', output)
             return newState
         }
+        case UPDATE:{
+            // const newState = {
+            //    spots:{},
+            //    singleSpot:action.payload // TODO: check this spots
+                
+            // }
+            // console.log("in reducer UPDATE state.singleSpot ", state.singleSpot)
+            // console.log("in reducer UPDATE action.payload ", action.payload)
+            // //newState.singleSpot = action.payload
+            // console.log("in reducer UPDATE newState.singleSpot ", newState.singleSpot)
+            // return newState;
+
+            const newState ={
+                ...state,
+                singleSpot:action.payload
+                // ,
+                // [action.payload.id]:{
+                //     ...state[action.payload.id],
+                //     ...action.payload
+                // }
+            }
+            return newState
+
+
+        }
+
         default:
             return state;
     }
 }
+

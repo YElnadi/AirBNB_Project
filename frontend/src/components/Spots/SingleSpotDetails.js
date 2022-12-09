@@ -137,7 +137,14 @@ const SingleSpotDetails = () => {
                 {sessionUser && sessionUser.id === spot.ownerId &&
                 (<DeleteSpot spotId={spotId}/>)}
 
-                {sessionUser && sessionUser.id === spot.ownerId && (<EditSpotModal spotId={spotId}/>)}
+                {sessionUser && sessionUser.id === spot.ownerId && 
+                (<OpenModalMenuItem
+                    itemText={<button>Edit your spot</button>}
+                    onItemClick={closeMenu}
+                    modalComponent={<EditSpotModal key={spotId}/>}
+                    /> 
+                )}
+                
 
                 {sessionUser && sessionUser.id !== spot.ownerId && (
                 <OpenModalMenuItem
