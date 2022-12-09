@@ -3,9 +3,9 @@
     padding-right:40px;
 } */
 @media screen and (min-width:2250px) {
-    .spots-container{
+    /* .spots-container{
         margin-left: 50px;
-    }
+    } */
     
 }
 
@@ -85,6 +85,9 @@
     height: auto;
     width:auto;
     background-color: white;
+    /* align-items: center; */
+    justify-content: center;
+
     /* width:100%; */
     /* margin:0 auto;
     /* justify-content:space-between;  */
