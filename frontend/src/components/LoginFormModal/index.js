@@ -34,14 +34,19 @@ function LoginFormModal() {
 
   return (
     <>
+    <div style={{
+        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+        width: '400px', background: 'white', borderRadius: '10px', padding: '30px'
+      }}>     
+      
       <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
-
-        <form className='form' onSubmit={handleSubmit} >
+        <form  onSubmit={handleSubmit} >
         <h1 style={{textAlign:'center', marginBottom:'20px'}}>Login</h1>
+
             <label className='label'>
               Username or Email
               <input className="input"
@@ -68,7 +73,7 @@ function LoginFormModal() {
           </div>
 
         </form>
-      
+        </div>
     </>
   );
 }

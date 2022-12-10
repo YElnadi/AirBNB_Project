@@ -26,17 +26,6 @@ padding:0 0 20px 0;
     overflow: scroll;
     max-height: 500px;
 } */
-.form{
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
-   box-sizing:border-box;
-   width:500px;
-   border:2px solid #ccc;
-   padding:30px;
-   background: #fff;
-   border-radius: 15px;
-}
 
 .input{
     display:block;
