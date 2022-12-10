@@ -58,24 +58,24 @@ function ProfileButton({ user }) {
             {user ? (
               <>
 
-                <li  >Hello,{user.username}</li>
-                <li >{user.email}</li>
-                <div >
-                  <button onClick={logout}>Log Out</button>
-                </div>
+                <li  ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Hello,{user.username}</span></li>
+                <li ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>{user.email}</span></li>
+                <li >
+                  <button style= {{border:'none', background:'#f9f9f9', fontSize:16}}onClick={logout}>Log Out</button>
+                </li>
               </>
             ) : (
               <>
                 <li style={{ cursor: 'pointer'}}>
                   <OpenModalMenuItem
-                    itemText="Log In"
+                    itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Log In</spam>}
                     onItemClick={closeMenu}
                     modalComponent={<LoginFormModal />}
                   />
                 </li>
                 <li style={{ cursor: 'pointer'}}>
                   <OpenModalMenuItem
-                    itemText="Sign Up"
+                    itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Sign up</spam>}
                     onItemClick={closeMenu}
                     modalComponent={<SignupFormModal />}
                   />

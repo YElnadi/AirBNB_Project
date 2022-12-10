@@ -23,7 +23,7 @@ const ReviewCards = ({ review }) => {
             <div style={{ display: 'flex', gap: 8 }}>
                 <div><i className="fa-solid fa-circle-user" style={{ fontSize: 60 }}></i></div>
                 <div>
-                <div style={{ marginTop: 10, textTransform: 'capitalize' }}>
+                <div style={{ marginTop: 10, textTransform: 'capitalize',fontFamily:'Geneva, Verdana, sans-serif' }}>
                     {review.User.firstName}
                     </div>
                 <div style={{color:'rgb(120,120,120)'}}>{month} {year}</div>
@@ -31,7 +31,7 @@ const ReviewCards = ({ review }) => {
             </div>
 
          
-            <div style={{paddingBottom:50, marginTop:20}} >{review.review}</div>
+            <div style={{paddingBottom:50, marginTop:20, fontFamily:'Geneva, Verdana, sans-serif'}} >{review.review}</div>
             </div>
             {sessionUser && sessionUser.id === review.userId &&(<RemoveReview review={review}/>)}
          

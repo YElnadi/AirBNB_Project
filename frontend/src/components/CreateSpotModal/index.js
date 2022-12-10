@@ -106,7 +106,13 @@ const CreateSpotModel = () => {
 
   return (
     <>
+    <div style={{
+        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+        width: '400px', background: 'white', borderRadius: '10px'
+      }}>
+        <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Create your spot</h1>
     
+        <form style={{ padding: '0 40px', boxSizing: 'bordar-box' }} onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
           <div>
             the following errors were found:
@@ -117,11 +123,8 @@ const CreateSpotModel = () => {
             </ul>
           </div>
         )}
-        <form className='form' onSubmit={handleSubmit}>
-        <h2 style={{textAlign:'center', marginBottom:'20px'}}>Create your spot </h2>
-
         <label className='label'>
-              Name
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Name</spam> 
             <input className='input'
             type='text'
             value={name}
@@ -133,7 +136,7 @@ const CreateSpotModel = () => {
 
             
             <label className='label'>
-              Address
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Address</spam> 
             <input className='input'
             type='text'
             value={address}
@@ -146,7 +149,7 @@ const CreateSpotModel = () => {
 
             
             <label className='label'>
-              State
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>State</spam> 
             <input className='input'
             type='text'
             value={state}
@@ -158,7 +161,7 @@ const CreateSpotModel = () => {
 
             
             <label className='label'>
-              City
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>City</spam> 
             <input className='input'
             type='text'
             value={city}
@@ -170,7 +173,7 @@ const CreateSpotModel = () => {
 
             
             <label className='label'>
-              Country
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Country</spam> 
             <input className='input'
             type='text'
             value={country}
@@ -183,8 +186,7 @@ const CreateSpotModel = () => {
             
             
             <label className='label'>
-              Description
-            <textarea className='textarea'
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Description</spam>             <textarea className='textarea'
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
@@ -195,7 +197,7 @@ const CreateSpotModel = () => {
 
             
             <label className='label'>
-              Price
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Price</spam> 
             <input className='input'
             type='number'
             value={price}
@@ -207,7 +209,7 @@ const CreateSpotModel = () => {
 
             
             <label className='label'>
-              Image
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Image</spam> 
             <input className='input'
             type='url'
             value={previewImage}
@@ -220,12 +222,12 @@ const CreateSpotModel = () => {
 
             <div className='Btn'>
             <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }} type='submit'> Save</button>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }}onClick={cancel}> Cancel</button>
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' , marginBottom:'20px'}}onClick={cancel}> Cancel</button>
             </div>
 
         </form>
 
-      
+        </div>
   
     </>
   );
