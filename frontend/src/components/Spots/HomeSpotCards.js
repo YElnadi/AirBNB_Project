@@ -26,7 +26,7 @@ const HomeSpotCards = ({ spot }) => {
                 <div style={{display:'flex', flexDirection:'row',}}>
                     <div>
                         <div>
-                            <h4 style={{ marginLeft: 20, fontSize:16,marginTop:10,lineHeight: 0,fontFamily: 'sans-serif',fontWeigh:'normal' }}>{spot.city}, {spot.state}</h4>
+                            <h4 style={{ marginLeft: 20, fontSize:16,marginTop:10,lineHeight: 0,fontFamily: 'Geneva, Verdana, sans-serif',fontWeigh:'normal' }}>{spot.city}, {spot.state}</h4>
                         </div>
                         <div style={{ marginLeft: 20, lineHeight: 0, color:'rgb(169,169,169)', fontFamily: 'Geneva, Verdana, sans-serif' }}>
                             <h4>159 miles away</h4>
@@ -34,8 +34,8 @@ const HomeSpotCards = ({ spot }) => {
                         </div>
 
                         <div>
-                            <h4 style={{ marginLeft: 20, lineHeight: 0,fontFamily: 'sans-serif' }}>${spot.price} 
-                            <span style={{fontWeight:'normal'}}> night</span>
+                            <h4 style={{ marginLeft: 20, lineHeight: 0,fontFamily: 'Geneva, Verdana, sans-serif',fontWeight:'bolder' }}>${spot.price} 
+                            <span style={{fontWeight:'normal', color:'rgb(96,96,96)'}}> night</span>
                             </h4>
                         </div>
                     </div>
