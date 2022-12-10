@@ -117,12 +117,12 @@ const CreateSpotModel = () => {
             </ul>
           </div>
         )}
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
         <h2 style={{textAlign:'center', marginBottom:'20px'}}>Create your spot </h2>
 
-        <label >
+        <label className='label'>
               Name
-            <input 
+            <input className='input'
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
@@ -132,9 +132,9 @@ const CreateSpotModel = () => {
           
 
             
-            <label>
+            <label className='label'>
               Address
-            <input 
+            <input className='input'
             type='text'
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
@@ -145,9 +145,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label >
+            <label className='label'>
               State
-            <input 
+            <input className='input'
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
@@ -157,9 +157,9 @@ const CreateSpotModel = () => {
           
 
             
-            <label >
+            <label className='label'>
               City
-            <input
+            <input className='input'
             type='text'
             value={city}
             onChange={(e)=>setCity(e.target.value)}
@@ -169,9 +169,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label >
+            <label className='label'>
               Country
-            <input 
+            <input className='input'
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
@@ -182,9 +182,9 @@ const CreateSpotModel = () => {
 
             
             
-            <label >
+            <label className='label'>
               Description
-            <textarea 
+            <textarea className='textarea'
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
@@ -194,9 +194,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label >
+            <label className='label'>
               Price
-            <input 
+            <input className='input'
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
@@ -206,9 +206,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label >
+            <label className='label'>
               Image
-            <input 
+            <input className='input'
             type='url'
             value={previewImage}
             onChange={(e)=>setPreviewImage(e.target.value)}

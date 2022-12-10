@@ -39,12 +39,12 @@ function LoginFormModal() {
               <li key={idx}>{error}</li>
             ))}
           </ul>
-          
-        <form onSubmit={handleSubmit} >
+
+        <form className='form' onSubmit={handleSubmit} >
         <h1 style={{textAlign:'center', marginBottom:'20px'}}>Login</h1>
-            <label>
+            <label className='label'>
               Username or Email
-              <input
+              <input className="input"
                 type="text"
                 value={credential}
                 onChange={(e) => setCredential(e.target.value)}
@@ -52,9 +52,9 @@ function LoginFormModal() {
               />
             </label>
 
-            <label>
+            <label className='label'>
               Password
-              <input
+              <input className="input"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

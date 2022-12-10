@@ -46,15 +46,12 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div className='container'  >
+      
         <button onClick={openMenu} className='button'>
           <i className="fa-solid fa-bars " style={{ padding: 5, fontSize: 20 }}></i>
           <i className="fas fa-user-circle" style={{ fontSize: 25, padding:0}} />
         </button>
 
-
-
-        <div  >
           {showMenu && 
           <ul  className={ulClassName} ref={ulRef}>
 
@@ -87,8 +84,8 @@ function ProfileButton({ user }) {
             )}
           </ul>
           } 
-        </div>
-      </div>
+        
+      
     </>
   );
 }
