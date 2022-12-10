@@ -34,17 +34,14 @@ function LoginFormModal() {
 
   return (
     <>
-      <div>
-
-        <form onSubmit={handleSubmit} >
-        <h1 style={{textAlign:'center', marginBottom:'20px'}}>Login</h1>
-
-          <ul>
+      <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
-          <div>
+          
+        <form onSubmit={handleSubmit} >
+        <h1 style={{textAlign:'center', marginBottom:'20px'}}>Login</h1>
             <label>
               Username or Email
               <input
@@ -54,8 +51,7 @@ function LoginFormModal() {
                 required
               />
             </label>
-          </div>
-          <div>
+
             <label>
               Password
               <input
@@ -65,14 +61,14 @@ function LoginFormModal() {
                 required
               />
             </label>
-          </div>
-          <div className='Btn'>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }} type="submit">Log In</button>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }} type="submit" onClick={handleDemo}>Log in as demo user</button>
+          
+          <div className="Btn">
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px',width:'98%' }} type="submit">Log In</button>
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px',width:'98%', fontWeight: '700px' }} type="submit" onClick={handleDemo}>Log in as demo user</button>
           </div>
 
         </form>
-      </div>
+      
     </>
   );
 }

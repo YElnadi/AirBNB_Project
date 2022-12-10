@@ -41,7 +41,7 @@ form{
 input{
     display:block;
     border:2px solid #ccc;
-    width:95%;
+    width:93%;
     padding:10px;
     border-radius: 15px;
 }
@@ -63,8 +63,8 @@ label{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    padding:10px;
-    gap:10px;
+    margin-top:10px;
+    gap:10px; 
 }
 /* form input {
     border-width: 1px;
