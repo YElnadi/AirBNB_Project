@@ -132,7 +132,7 @@ const SingleSpotDetails = () => {
                     <span style={{ color: 'black' }}>r</span>
                     <p style={{ fontSize: 17, fontWeight: 'normal', color: 'rgb(80,80,80)', inlineSize: 700, overflowWrap: 'break-word',fontFamily:'Geneva, Verdana, sans-serif' }}>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
                 </div>
-                <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily:'Geneva, Verdana, sans-serif', lineHeight: 1, border: 'solid 1px black', borderRight: 0, borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20,inlineSize: 800,overflowWrap: 'break-word'}}>
+                <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily:'Geneva, Verdana, sans-serif', border: 'solid 1px black', borderRight: 0,color: 'rgb(80,80,80)',borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20,inlineSize: 800,overflowWrap: 'break-word'}}>
                     {spot.description}
                 </div>
 

@@ -221,8 +221,8 @@ const CreateSpotModel = () => {
             
 
             <div className='Btn'>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' }} type='submit'> Save</button>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700px' , marginBottom:'20px'}}onClick={cancel}> Cancel</button>
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' }} type='submit'> Save</button>
+            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' , marginBottom:'20px'}}onClick={cancel}> Cancel</button>
             </div>
 
         </form>

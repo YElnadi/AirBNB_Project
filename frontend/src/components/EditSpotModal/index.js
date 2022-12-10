@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { getSingleSpotDetails, thunkUpdateSpot } from '../../store/spots';
+import '../CreateSpotModal/CreateSpotModal.css'
 
 const EditSpotModel = ({}) => {
   const history = useHistory()
@@ -87,8 +88,13 @@ const EditSpotModel = ({}) => {
 
 
   return (
-    <div>
-      <h1>Edit Your Spot</h1>
+    <div style={{
+      position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+      width: '400px', background: 'white', borderRadius: '10px'
+    }}>
+      <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Edit Your Spot</h1>
+
+      <form style={{ padding: '0 40px', boxSizing: 'bordar-box' }}onSubmit={handleSubmit}>
       {hasSubmitted && validationErrors.length>0 && (
         <div>
           the following errors were found:
@@ -99,19 +105,18 @@ const EditSpotModel = ({}) => {
             </ul>
         </div>
       )}
-      <form onSubmit={handleSubmit}>
-        <label >
-          Name
-          <input
+        <label className='label'>
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Name</spam> 
+          <input className='input'
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </label>
-        <label>
-          Address
-          <input
+        <label className='label'>
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Address</spam> 
+          <input className='input'
             type='text'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -120,9 +125,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        <label >
-          State
-          <input
+        <label className='label'>
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>State</spam> 
+          <input className='input'
             type='text'
             value={state}
             onChange={(e) => setState(e.target.value)}
@@ -130,9 +135,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        <label >
-          City
-          <input
+        <label className='label'>
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>City</spam> 
+          <input className='input'
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
@@ -140,9 +145,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        <label >
-          Country
-          <input
+        <label className='label'>
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Country</spam> 
+          <input className='input'
             type='text'
             value={country}
             onChange={(e) => setCountry(e.target.value)}
@@ -152,9 +157,9 @@ const EditSpotModel = ({}) => {
 
 
         
-          <label >
-            Description
-            <textarea
+          <label className='label'>
+          <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Description</spam> 
+            <textarea className='textarea'
               type='text'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -163,9 +168,9 @@ const EditSpotModel = ({}) => {
           </label>
         
 
-        <label >
-          Price
-          <input
+        <label className='label'>
+        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>price</spam> 
+          <input className='input'
             type='number'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -184,9 +189,11 @@ const EditSpotModel = ({}) => {
           />
         </label> */}
 
-        <button type='submit'>Save Updates</button>
-        <button onClick={cancel}>Cancel</button>
 
+        <div className='Btn'>
+        <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' }}type='submit'>Save Updates</button>
+        <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' , marginBottom:'20px'}} onClick={cancel}>Cancel</button>
+        </div>
 
       </form>
     </div>
