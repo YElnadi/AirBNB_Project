@@ -19,6 +19,13 @@ const SingleSpotDetails = () => {
     const sessionUser = useSelector(state => state.session.user)
     //console.log('sessionUser####', sessionUser)
     const spot = useSelector(state => state.spots.singleSpot)
+    let reviews = useSelector(state=>state.reviews.spot)
+
+    const didUserAlreadyReview = (reviewsDict, userId)=>{
+        const reviewsList = Object.values(reviewsDict)
+        return reviewsList.filter(review => review.userId === userId).length > 0
+    }
+
     //console.log('####spot####', spot)
     //////////////////////////
     const [showMenu, setShowMenu] = useState(false);
@@ -149,7 +156,7 @@ const SingleSpotDetails = () => {
 
                 
                 <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal',fontFamily: 'sans-serif', lineHeight: 1,  paddingTop: 20, paddingBottom: 20,inlineSize: 700,overflowWrap: ''}}>
-                {sessionUser && sessionUser.id !== spot.ownerId && (
+                {sessionUser && sessionUser.id !== spot.ownerId && !didUserAlreadyReview(reviews, sessionUser.id) && (
                 <OpenModalMenuItem
                 itemText={<button>Leave a review</button>}
                 onItemClick={closeMenu}
