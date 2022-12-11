@@ -18,14 +18,16 @@ const Home = () => {
     }, [dispatch])
 
   return (
-    <div>
+    // <div 
+    // className="tmp"
+    // >
     <div className='spots-container'>
         {spotsList.map(spot =>(
             <HomeSpotCards key={spot.id} spot={spot}/>
         ))}
       
     </div>
-    </div>
+    // </div>
   );
 }
 
