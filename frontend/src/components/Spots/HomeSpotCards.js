@@ -24,7 +24,7 @@ const HomeSpotCards = ({ spot }) => {
                     </div>
                 </div>
                 <div style={{display:'flex', flexDirection:'row',}}>
-                    <div>
+                    <div  style={{width:'255px'}}>
                         <div>
                             <h4 style={{ marginLeft: 20, fontSize:16,marginTop:10,lineHeight: 0,fontFamily: 'Geneva, Verdana, sans-serif',fontWeigh:'normal' }}>{spot.city}, {spot.state}</h4>
                         </div>
@@ -39,8 +39,8 @@ const HomeSpotCards = ({ spot }) => {
                             </h4>
                         </div>
                     </div>
-                    <div>
-                        <i style={{ marginLeft: 70, color: 'black', lineHeight: 0,  }} className="fa-solid fa-star"></i>
+                    <div style={{width:'60px',textAlign:'right'}}>
+                        <i style={{ color: 'black', lineHeight: 0  }} className="fa-solid fa-star"></i>
                         {spot.avgRating ? parseFloat(spot.avgRating).toFixed(1) : 'New'}
                     </div>
                 </div>
