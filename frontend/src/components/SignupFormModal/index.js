@@ -44,7 +44,7 @@ function SignupFormModal() {
         .then(closeModal)
         .catch(async (res) => {
           const data = await res.json();
-          window.alert('Not able to login!' + " " + data.message)
+          window.alert('Not able to signup!' + " " + data.message)
           //          if (data && data.errors) setErrors(data.errors);
         });
     }
@@ -53,13 +53,10 @@ function SignupFormModal() {
 
   return (
     <>
-      <div style={{
-        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-        width: '400px', background: 'white', borderRadius: '10px'
-      }}>
-        <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Sign Up</h1>
+      <div className='main-singup-form'>
+        <h1 className='form-title'>Sign Up</h1>
 
-        <form style={{ padding: '0 40px', boxSizing: 'bordar-box' }} onSubmit={handleSubmit}>
+        <form className='form-signup' onSubmit={handleSubmit}>
           {hasSubmitted && errors.length > 0 && (
             <div>
               The following errors were found:
@@ -69,10 +66,10 @@ function SignupFormModal() {
               </ul>
             </div>
           )}
-          <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+          <div >
             <label>
              <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Email</spam> 
-              <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+              <input className='input'
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -81,10 +78,10 @@ function SignupFormModal() {
             </label>
           </div>
 
-          <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+          <div >
             <label>
             <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Username</spam> 
-              <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+              <input  className='input'
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -93,10 +90,10 @@ function SignupFormModal() {
             </label>
           </div>
 
-          <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+          <div>
             <label>
             <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>First Name</spam> 
-              <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+              <input  className='input'
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -105,10 +102,10 @@ function SignupFormModal() {
             </label>
           </div>
 
-          <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+          <div >
             <label>
             <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Last Name</spam> 
-              <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+              <input  className='input'
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -117,10 +114,10 @@ function SignupFormModal() {
             </label>
           </div>
 
-          <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+          <div>
             <label>
             <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Password</spam> 
-              <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+              <input  className='input'
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -129,9 +126,9 @@ function SignupFormModal() {
             </label>
           </div>
 
-          <div style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0' }}>
+          <div >
             <label>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Confirm Password</spam>               <input style={{ width: '100%', padding: '5 5px', height: '40px', fontSize: '16px', border: 'none', background: 'none', outline: 'none' }}
+            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Confirm Password</spam>               <input  className='input'
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -140,8 +137,8 @@ function SignupFormModal() {
             </label>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '10px', gap: '8px' }}>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '10px', fontWeight: '700', fontFamily:'Geneva, Verdana, sans-serif' }} type="submit">Sign Up</button>
+          <div className='Btn'>
+            <button className ='signup-btn' type="submit">Sign Up</button>
           </div>
         </form>
       </div>

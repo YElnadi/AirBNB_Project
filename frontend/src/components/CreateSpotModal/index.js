@@ -112,7 +112,7 @@ const CreateSpotModel = () => {
       }}>
         <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Create your spot</h1>
     
-        <form style={{ padding: '0 40px', boxSizing: 'bordar-box' }} onSubmit={handleSubmit}>
+        <form style={{ padding: '0 40px', boxSizing: 'bordar-box', overflowY:'auto', height:'550px' }} onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
           <div>
             the following errors were found:

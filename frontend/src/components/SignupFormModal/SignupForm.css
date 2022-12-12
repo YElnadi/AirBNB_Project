@@ -1,0 +1,51 @@
+.input{
+    display:block;
+    border:2px solid #ccc;
+    width:93%;
+    padding:10px;
+    border-radius: 15px;
+}
+
+.Btn{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top:10px;
+    gap:10px; 
+}
+
+.signup-btn{
+    background: rgb(236, 72, 72);
+    padding:10px;
+    border-radius: 15px;
+    font-weight: 700px;
+    width: 100%;
+    font-family: 'Geneva, Verdana, sans-serif';
+    margin-bottom: 20px;
+    cursor: pointer;
+
+}
+
+.main-singup-form{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 400px;
+background: white;
+border-radius: 15px;
+}
+
+.form-title{
+    text-align: center;
+    padding:0 0 20px 0;
+    border-bottom: 1px solid silver;
+    font-family: 'Geneva, Verdana, sans-serif';
+}
+
+.form-signup{
+    padding:0 40px;
+    box-sizing: border-box;
+    overflow-y:auto;
+    height: 550px;
+}
