@@ -21,8 +21,9 @@ function LoginFormModal() {
       .catch(
         async (res) => {
           const data = await res.json();
-          window.alert('Not able to login!' + " " + data.message)
-          //if (data && data.errors) setErrors(data.errors);
+          // window.alert('Not able to login!' + " " + data.message)
+          if (data && data.message) setErrors([data.message]);
+          else setErrors(["Unknown failure"])
         }
       );
   };
@@ -38,12 +39,17 @@ function LoginFormModal() {
     <>
       <div className='main-login-form'>
         <form onSubmit={handleSubmit} >
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
+
           <h1 className='login-title'>Login</h1>
+          {errors.length > 0 && (
+            <div>
+              The following errors were found:
+              <ul>
+                {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
+                {errors.map(error => (<li key={error}>{error}</li>))}
+              </ul>
+            </div>
+          )}
 
           <label className='label-login-form'>
             Username or Email

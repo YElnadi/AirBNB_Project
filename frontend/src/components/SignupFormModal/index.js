@@ -37,18 +37,20 @@ function SignupFormModal() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true)
-    if (errors.length > 0) return alert('Cannot submit')
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
-        .then(closeModal)
-        .catch(async (res) => {
-          const data = await res.json();
-          window.alert('Not able to signup!' + " " + data.message)
-          //          if (data && data.errors) setErrors(data.errors);
-        });
+    // if (errors.length > 0) return alert('Cannot submit')
+    if (errors.length > 0) return;
+    if (password !== confirmPassword) {
+      return setErrors(['Confirm Password field must be the same as the Password field']);
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    setErrors([]);
+    return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        // window.alert('Not able to signup!' + " " + data.message)
+        if (data && data.message) setErrors([data.message]);
+        else setErrors(["Unknown failure"])
+      });
   };
 
   return (
