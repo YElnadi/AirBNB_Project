@@ -67,7 +67,7 @@ const CreateSpotModel = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setHasSubmited(true);
-        if(validationErrors.length>0) return alert('cannot submit')
+        if(validationErrors.length>0) return;
         const spotDetails={
             name,
             address,
@@ -112,7 +112,7 @@ const CreateSpotModel = () => {
         <form className='create-spot-form' onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
           <div>
-            the following errors were found:
+            The following errors were found:
             <ul>
               {validationErrors.map((error)=>(
                 <li key={error}>{error}</li>

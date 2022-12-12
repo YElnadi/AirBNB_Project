@@ -81,8 +81,7 @@ const EditSpotModel = ({}) => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     setHasSubmited(true)
-    if(validationErrors.length>0) return alert('cannot submit')
-
+    if(validationErrors.length>0) return;
     const payload = {
       address,
       state,
@@ -122,7 +121,7 @@ const EditSpotModel = ({}) => {
       <form style={{ padding: '0 40px', boxSizing: 'bordar-box',overflowY:'auto', height:'550px' }}onSubmit={handleSubmit}>
       {hasSubmitted && validationErrors.length>0 && (
         <div>
-          the following errors were found:
+          The following errors were found:
             <ul>
               {validationErrors.map((error)=>(
                 <li key={error}>{error}</li>

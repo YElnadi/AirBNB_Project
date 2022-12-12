@@ -14,7 +14,7 @@ const CreateReviewModel = ({ spotId }) => {
   //console.log('###spotId###',spotId)
   const dispatch = useDispatch();
   const history = useHistory();
-  const [validationErrors, setValidationErrors] = useState([])
+  const [errors, setErrors] = useState([]);
   const [hasSubmitted, setHasSubmited] = useState(false)
   const { closeModal } = useModal();
   const sessionUser = useSelector(state => state.session.user);
@@ -29,7 +29,7 @@ const CreateReviewModel = ({ spotId }) => {
     if (review.length < 10) errors.push('Please your review must be longer than 10 characters')
     if (!stars) errors.push('Review must have a rating stars')
     if (stars > 5 || stars < 1) errors.push('Please enter a value between 1 and 5 ')
-    setValidationErrors(errors)
+    setErrors(errors)
   }, [review, stars])
 
   // useEffect(()=>{
@@ -39,6 +39,8 @@ const CreateReviewModel = ({ spotId }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setHasSubmited(true)
+    if (errors.length > 0) return;
+
     const payload = {
       review,
       stars
@@ -73,7 +75,15 @@ const CreateReviewModel = ({ spotId }) => {
 
         <form style={{ padding: '0 40px', boxSizing: 'bordar-box', display:'flex', flexDirection:'column' }} onSubmit={onSubmit}>
 
-          <ul>{hasSubmitted && validationErrors.map(e => (<li>{e}</li>))}</ul>
+        {hasSubmitted && errors.length > 0 && (
+            <div>
+              The following errors were found:
+              <ul>
+                {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
+                {errors.map(error => (<li key={error}>{error}</li>))}
+              </ul>
+            </div>
+          )}
 
         
           <label>
