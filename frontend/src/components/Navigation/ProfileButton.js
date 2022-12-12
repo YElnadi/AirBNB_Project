@@ -5,6 +5,8 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useHistory } from "react-router-dom";
+import { useModal } from '../../context/Modal'
+
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
@@ -12,6 +14,8 @@ function ProfileButton({ user }) {
   const history= useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const { closeModal } = useModal();
+
 
   const openMenu = () => {
     if (showMenu) return;
@@ -43,6 +47,14 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
+  
+  const handleDemo = async (e) => {
+    e.preventDefault();
+    await dispatch(sessionActions.login({ credential: 'Ali-G', password: 'password' }))
+      .then(closeModal)
+    return
+  }
+
 
   return (
     <>
@@ -61,7 +73,7 @@ function ProfileButton({ user }) {
                 <li  ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Hello,{user.username}</span></li>
                 <li ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>{user.email}</span></li>
                 <li >
-                  <button style= {{border:'none', background:'#f9f9f9', fontSize:16}}onClick={logout}>Log Out</button>
+                  <button style= {{border:'none', background:'transparent', fontSize:16}}onClick={logout}>Log Out</button>
                 </li>
               </>
             ) : (
@@ -79,6 +91,9 @@ function ProfileButton({ user }) {
                     onItemClick={closeMenu}
                     modalComponent={<SignupFormModal />}
                   />
+                </li>
+                <li>
+                  <button style={{cursor: 'pointer', border:'none', background:'transparent', marginBottom:'0px', fontFamily:'Geneva, Verdana, sans-serif', fontSize:16}}onClick={handleDemo} type='submit'>Log in as demo user</button>
                 </li>
                 </>
             )}

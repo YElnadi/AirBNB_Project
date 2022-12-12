@@ -27,12 +27,12 @@ function LoginFormModal() {
       );
   };
 
-  const handleDemo = async (e) => {
-    e.preventDefault();
-    await dispatch(sessionActions.login({ credential: 'FakeUser4', password: 'password4' }))
-      .then(closeModal)
-    return
-  }
+  // const handleDemo = async (e) => {
+  //   e.preventDefault();
+  //   await dispatch(sessionActions.login({ credential: 'Ali-G', password: 'password' }))
+  //     .then(closeModal)
+  //   return
+  // }
 
   return (
     <>
@@ -67,7 +67,7 @@ function LoginFormModal() {
 
           <div className="Btn-login-form">
             <button className='Btn-login-Demo' type="submit">Log In</button>
-            <button className='Btn-login-Demo' type="submit" onClick={handleDemo}>Log in as demo user</button>
+            {/* <button className='Btn-login-Demo' type="submit" onClick={handleDemo}>Log in as demo user</button> */}
           </div>
 
         </form>
