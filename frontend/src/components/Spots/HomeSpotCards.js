@@ -29,8 +29,6 @@ const HomeSpotCards = ({ spot }) => {
                             <h4 style={{ marginLeft: 20, fontSize:16,marginTop:10,lineHeight: 0,fontFamily: 'Geneva, Verdana, sans-serif',fontWeigh:'normal' }}>{spot.city}, {spot.state}</h4>
                         </div>
                         <div style={{ marginLeft: 20, lineHeight: 0, color:'rgb(169,169,169)', fontFamily: 'Geneva, Verdana, sans-serif' }}>
-                            <h4>159 miles away</h4>
-                            <h4>Dec 6 - 11</h4>
                         </div>
 
                         <div>

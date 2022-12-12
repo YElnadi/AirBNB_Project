@@ -94,7 +94,7 @@ const SingleSpotDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={spot.SpotImages[0].url} style={{ width: 800 }} />
+                    <img src={spot.SpotImages[0].url} style={{ width: 800, borderRadius:'15px' }} />
                 </div>
                 <div className="host">
                     <div style={{display:'flex', justifyContent:'space-between'}}>

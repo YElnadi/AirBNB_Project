@@ -23,7 +23,7 @@ function SignupFormModal() {
     if (!email) err.push('Please enter an email in oreder to sign up')
     if (!email.includes('@')) err.push('Please provide a valid email address')
     if (!username) err.push('Please enter user name')
-    if (username.length <= 4) err.push('Please enter a username not less than 4 characters')
+    if (username.length <= 4) err.push('Please enter a username not less than  5 characters')
     if (username.includes('@')) err.push('Username cannot be an email')
     if (!firstName) err.push('Please provide first name')
     if (firstName.length <= 2) err.push('Please provide first name not less than 4 characters')

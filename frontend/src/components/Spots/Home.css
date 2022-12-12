@@ -27,13 +27,14 @@
     flex-wrap: wrap;
     cursor: pointer;
     position: relative;
+
     
 }
 
 .spot-card-image{
     height:300px;
     width: 300px;
-    border-radius: 10px;
+     border-radius: 15px; 
     background-color: white;
     object-fit: cover;
     color:white;
