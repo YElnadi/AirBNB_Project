@@ -1,5 +1,4 @@
 'use strict';
-const {User,Spot} = require('../models')
 let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
@@ -265,9 +264,8 @@ const spots = [
 
 ]
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) =>{
+  up: async (queryInterface, Sequelize) => {
     /**
      * Add seed commands here.
      *
@@ -277,7 +275,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-  return queryInterface.bulkInsert(options,spots,{})
+  return queryInterface.bulkInsert(options,spots)
 
   // for (let spotInfo of spots) {
   //   const { ownerId,address,city,state,country,lat,lng,name,description,price} = spotInfo;
@@ -309,6 +307,6 @@ module.exports = {
     return queryInterface.bulkDelete(options,{
      city:{[Op.in]:['San Francisco']}
 
-    },{})
+    })
   }
 };
