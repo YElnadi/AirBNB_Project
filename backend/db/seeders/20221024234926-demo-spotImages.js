@@ -35,37 +35,37 @@ module.exports = {
        },
        {
         spotId:4,
-        url:"https://a0.muscache.com/im/pictures/prohost-api/Hosting-624018740377905048/original/0f9f7471-ddc1-4eed-a25a-2df69f5bae0e.jpeg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/d6a7e301-d1cb-40ee-ac9f-c802d20895da.jpg?im_w=1200",
         preview:true
        },
        {
         spotId:5,
-        url:"https://a0.muscache.com/im/pictures/2e5ce6c9-4935-49ce-891e-e6f7251a8590.jpg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/prohost-api/Hosting-53109080/original/61715bf6-3b87-4a2c-a85c-3f8c49004c93.jpeg?im_w=1200",
         preview:true
        },
        {
         spotId:6,
-        url:"https://a0.muscache.com/im/pictures/miso/Hosting-48246773/original/22a2c42e-108b-4809-b274-ada4f3d6da28.jpeg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/1e16f2f4-1256-44cb-a0f2-85aa57672a45.jpg?im_w=1200",
         preview:true
        },
        {
        spotId:7,
-       url:"https://a0.muscache.com/im/pictures/monet/Luxury-53719772/original/17b49e69-a3b4-4f80-8068-868a3892d6cc?im_w=1200",
+       url:"https://a0.muscache.com/im/pictures/401452fe-f779-47aa-a3f6-07875799995b.jpg?im_w=720",
        preview:true
       },
       {
         spotId:8,
-        url:"https://a0.muscache.com/im/pictures/miso/Hosting-51165983/original/3a6e9b62-da6b-4a76-af0b-003eafc7b8ec.jpeg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/28c1bd57-9833-4f31-8bcf-52a6dc1d9c06.jpg?im_w=720",
         preview:true
        },
        {
          spotId:9,
-        url:"https://a0.muscache.com/im/pictures/miso/Hosting-51234810/original/13adc83e-212b-4471-b6e9-221a464cfc05.jpeg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/712a31dd-fad0-4882-ba33-783e5e8620e4.jpg?im_w=720",
         preview:true
        },
        {
         spotId:10,
-        url:"https://a0.muscache.com/im/pictures/miso/Hosting-51067890/original/832b807f-f8bc-4e5f-8192-713782fc6073.jpeg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/miso/Hosting-44205205/original/191a4a25-0c1d-4405-93dc-21c043c3ccb1.jpeg?im_w=720",
         preview:true
        },
        {
