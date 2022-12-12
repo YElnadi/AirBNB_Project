@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import '../CreateSpotModal/CreateSpotModal.css'
+import './LoginForm.css'
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -36,24 +36,18 @@ function LoginFormModal() {
 
   return (
     <>
-      <div style={{
-        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-        width: '400px', background: 'white', borderRadius: '10px', padding: '30px'
-      }}>
-
-
+      <div className='main-login-form'>
         <form onSubmit={handleSubmit} >
           <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul>
+          <h1 className='login-title'>Login</h1>
 
-          <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Login</h1>
-
-          <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif'}}>Username or Email</spam>
-            <input className="input"
+          <label className='label-login-form'>
+            Username or Email
+            <input className="input-login-form"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
@@ -61,9 +55,9 @@ function LoginFormModal() {
             />
           </label>
 
-          <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif'}}>Password</spam>
-            <input className="input"
+          <label className='label-login-form'>
+            Password
+            <input className="input-login-form"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -71,9 +65,9 @@ function LoginFormModal() {
             />
           </label>
 
-          <div className="Btn">
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px', width: '98%',fontFamily:'Geneva, Verdana, sans-serif' }} type="submit">Log In</button>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', width: '98%', fontWeight: '700', fontFamily:'Geneva, Verdana, sans-serif' }} type="submit" onClick={handleDemo}>Log in as demo user</button>
+          <div className="Btn-login-form">
+            <button className='Btn-login-Demo' type="submit">Log In</button>
+            <button className='Btn-login-Demo' type="submit" onClick={handleDemo}>Log in as demo user</button>
           </div>
 
         </form>

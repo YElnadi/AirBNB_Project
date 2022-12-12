@@ -1,36 +1,23 @@
-.modal{
-    /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+/* .modal{
+     Hidden by default 
+   position: fixed; /* Stay in place
+  z-index: 1; /* Sit on top 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
+  width: 100%; /* Full width 
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+  /* overflow: auto;  Enable scroll if needed 
+  background-color: rgb(0,0,0); /* Fallback color  */
+  /* background-color: rgba(0,0,0,0.4); /* Black w/ opacity 
+  padding-top: 60px; */
+ 
 
 
 
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
+ 
   
   /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
+  /* @media screen and (max-width: 300px) {
     span.psw {
        display: block;
        float: none;
@@ -42,11 +29,67 @@
 
   .container {
     padding: 16px;
-  }
+  } */
 
   
 
   /* style={{width:'100%', padding:'12px 20px', margin:'8px 0', display:'inline-block', border:'1px solid #ccc',boxSizing:'border-box'}} */
 
 
+  .main-login-form{
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform:translate(-50%, -50%) ;
+    width: 400px;
+    background: white;
+    border-radius: 15px;
+    padding:30px; 
+  }
+
+  .login-title{
+    text-align: center;
+    padding:0 0 20px 0;
+    border-bottom: 1px solid silver;
+    font-family: Geneva, Verdana, sans-serif;
+
+  }
+
   
+
+  .label-login-form{
+    color:#888;
+    font-size:18px;
+    font-family: Geneva, Verdana, sans-serif;
+    
+}
+
+.input-login-form{
+  display:block;
+  border:2px solid #ccc;
+  width:94%;
+  padding:10px;
+  border-radius: 15px;
+  margin-top:10px;
+
+}
+
+.Btn-login-form{
+  display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top:10px;
+    gap:10px; 
+}
+
+.Btn-login-Demo{
+  background: rgb(236, 72, 72);
+  padding:10px;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 100%;
+  font-family: Geneva, Verdana, sans-serif;
+  cursor: pointer;
+
+
+}

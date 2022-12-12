@@ -67,8 +67,8 @@ function SignupFormModal() {
             </div>
           )}
           <div >
-            <label>
-             <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Email</spam> 
+            <label className='label-signup'>
+             Email
               <input className='input'
                 type="text"
                 value={email}
@@ -79,8 +79,8 @@ function SignupFormModal() {
           </div>
 
           <div >
-            <label>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Username</spam> 
+            <label className='label-signup'>
+           Username
               <input  className='input'
                 type="text"
                 value={username}
@@ -91,8 +91,8 @@ function SignupFormModal() {
           </div>
 
           <div>
-            <label>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>First Name</spam> 
+            <label className='label-signup'>
+            First Name
               <input  className='input'
                 type="text"
                 value={firstName}
@@ -103,8 +103,8 @@ function SignupFormModal() {
           </div>
 
           <div >
-            <label>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Last Name</spam> 
+            <label className='label-signup'>
+           Last Name
               <input  className='input'
                 type="text"
                 value={lastName}
@@ -115,8 +115,8 @@ function SignupFormModal() {
           </div>
 
           <div>
-            <label>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Password</spam> 
+            <label className='label-signup'>
+           Password
               <input  className='input'
                 type="password"
                 value={password}
@@ -127,8 +127,9 @@ function SignupFormModal() {
           </div>
 
           <div >
-            <label>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Confirm Password</spam>               <input  className='input'
+            <label className='label-signup'>
+            Confirm Password               
+            <input  className='input'
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}

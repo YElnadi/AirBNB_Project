@@ -4,6 +4,7 @@
     width:93%;
     padding:10px;
     border-radius: 15px;
+    margin-top:10px;
 }
 
 .Btn{
@@ -20,9 +21,10 @@
     border-radius: 15px;
     font-weight: 700px;
     width: 100%;
-    font-family: 'Geneva, Verdana, sans-serif';
+    font-family: Geneva, Verdana, sans-serif;
     margin-bottom: 20px;
     cursor: pointer;
+    margin-top:20px
 
 }
 
@@ -40,7 +42,7 @@ border-radius: 15px;
     text-align: center;
     padding:0 0 20px 0;
     border-bottom: 1px solid silver;
-    font-family: 'Geneva, Verdana, sans-serif';
+    font-family: Geneva, Verdana, sans-serif;
 }
 
 .form-signup{
@@ -48,4 +50,10 @@ border-radius: 15px;
     box-sizing: border-box;
     overflow-y:auto;
     height: 550px;
+}
+
+.label-signup{
+    color:#888;
+    font-size:18px;
+    font-family: Geneva, Verdana, sans-serif;
 }
