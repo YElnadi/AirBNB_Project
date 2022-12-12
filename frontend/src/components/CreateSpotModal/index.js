@@ -106,13 +106,10 @@ const CreateSpotModel = () => {
 
   return (
     <>
-    <div style={{
-        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-        width: '400px', background: 'white', borderRadius: '10px'
-      }}>
-        <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Create your spot</h1>
+    <div className='main-create-spot'>
+        <h1 className='create-spot-title'>Create your spot</h1>
     
-        <form style={{ padding: '0 40px', boxSizing: 'bordar-box', overflowY:'auto', height:'550px' }} onSubmit={handleSubmit}>
+        <form className='create-spot-form' onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
           <div>
             the following errors were found:
@@ -123,9 +120,9 @@ const CreateSpotModel = () => {
             </ul>
           </div>
         )}
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Name</spam> 
-            <input className='input'
+        <label className='create-spot-label'>
+        Name
+            <input className='create-form-input'
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
@@ -135,9 +132,9 @@ const CreateSpotModel = () => {
           
 
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Address</spam> 
-            <input className='input'
+            <label className='create-spot-label'>
+            Address
+            <input className='create-form-input'
             type='text'
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
@@ -148,9 +145,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>State</spam> 
-            <input className='input'
+            <label className='create-spot-label'>
+            State
+            <input className='create-form-input'
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
@@ -160,8 +157,8 @@ const CreateSpotModel = () => {
           
 
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>City</spam> 
+            <label className='create-spot-label'>
+            City
             <input className='input'
             type='text'
             value={city}
@@ -172,9 +169,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Country</spam> 
-            <input className='input'
+            <label className='create-spot-label'>
+           Country
+            <input className='create-form-input'
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
@@ -185,8 +182,9 @@ const CreateSpotModel = () => {
 
             
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Description</spam>             <textarea className='textarea'
+            <label className='create-spot-label'>
+            Description            
+            <textarea className='textarea'
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
@@ -196,9 +194,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Price</spam> 
-            <input className='input'
+            <label className='create-spot-label'>
+             Price
+            <input className='create-form-input'
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
@@ -208,9 +206,9 @@ const CreateSpotModel = () => {
             
 
             
-            <label className='label'>
-            <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Image</spam> 
-            <input className='input'
+            <label className='create-spot-label'>
+            Image
+            <input className='create-form-input'
             type='url'
             value={previewImage}
             onChange={(e)=>setPreviewImage(e.target.value)}
@@ -220,9 +218,9 @@ const CreateSpotModel = () => {
             </label>
             
 
-            <div className='Btn'>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' }} type='submit'> Save</button>
-            <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' , marginBottom:'20px'}}onClick={cancel}> Cancel</button>
+            <div className='Btn-create-form'>
+            <button className='save-cancel-Btn' type='submit'> Save</button>
+            <button className='save-cancel-Btn'onClick={cancel}> Cancel</button>
             </div>
 
         </form>
