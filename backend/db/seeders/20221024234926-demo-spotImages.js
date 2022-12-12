@@ -30,7 +30,7 @@ module.exports = {
        },
        {
         spotId:3,
-        url:"https://a0.muscache.com/im/pictures/9c6f8dd9-9758-4ef3-80b0-16cdbbda5118.jpg?im_w=1440",
+        url:"https://a0.muscache.com/im/pictures/monet/Select-6603376/original/4fc04ea2-5689-44f5-b7ac-fc39ce8cc32e?im_w=720",
         preview:true
        },
        {

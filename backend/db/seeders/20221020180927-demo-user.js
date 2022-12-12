@@ -20,144 +20,144 @@ module.exports = {
     */
      return queryInterface.bulkInsert(options, [
       {
-        email: 'demo@user.io',
-        username: 'Demo-lition',
+        email: 'Ali@gmail.com',
+        username: 'Ali-G',
         hashedPassword: bcrypt.hashSync('password'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Ali',
+        lastName: 'Ghoneim'
       },
       {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
+        email: 'Yasmine@gmail.com',
+        username: 'Yasminaaa',
         hashedPassword: bcrypt.hashSync('password1'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Yasmine',
+        lastName: 'Elnadi'
       },
       {
-        email: 'user2@user.io',
-        username: 'FakeUser2',
+        email: 'Mohamed@gmail.com',
+        username: 'Ghooo',
         hashedPassword: bcrypt.hashSync('password2'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Mohamed',
+        lastName: 'Ghoneim'
       },
       {
-        email: 'user3@user.io',
-        username: 'FakeUser3',
+        email: 'Omar@gmail.com',
+        username: 'OmaR',
         hashedPassword: bcrypt.hashSync('password3'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Omar',
+        lastName: 'Elnadi'
       },
       {
-        email: 'user4@user.io',
-        username: 'FakeUser4',
+        email: 'Mahmoud@gmail.com',
+        username: 'Mido',
         hashedPassword: bcrypt.hashSync('password4'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Mahmoud',
+        lastName: 'Elnadi'
       },
       {
-        email: 'user5@user.io',
-        username: 'FakeUser5',
+        email: 'Hend@gmail.com',
+        username: 'Hendoo',
         hashedPassword: bcrypt.hashSync('password5'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Hend',
+        lastName: 'Zayed'
       },
       {
-        email: 'user6@user.io',
-        username: 'FakeUser6',
+        email: 'Amal@gmail.com',
+        username: 'Amoula',
         hashedPassword: bcrypt.hashSync('password6'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Amal',
+        lastName: 'Nour'
       },
       {
-        email: 'user7@user.io',
-        username: 'FakeUser7',
+        email: 'Adel@gmail.com',
+        username: 'Adell',
         hashedPassword: bcrypt.hashSync('password7'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Adel',
+        lastName: 'Elnadi'
       },
       {
-        email: 'user8@user.io',
-        username: 'FakeUser8',
+        email: 'Faten@gmail.com',
+        username: 'Tuna',
         hashedPassword: bcrypt.hashSync('password8'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Faten',
+        lastName: 'Nour'
       },
       {
-        email: 'user9@user.io',
-        username: 'FakeUser9',
+        email: 'Hadeel@gmail.com',
+        username: 'dodo',
         hashedPassword: bcrypt.hashSync('password9'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Hadeel',
+        lastName: 'Elsaadany'
       },
       {
-        email: 'user10@user.io',
-        username: 'FakeUser10',
+        email: 'Nourhan@gmail.com',
+        username: 'Nory',
         hashedPassword: bcrypt.hashSync('password10'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Nourhan',
+        lastName: 'Anwar'
       },
       {
-        email: 'user11@user.io',
-        username: 'FakeUser11',
+        email: 'Basma@gmail.com',
+        username: 'Basoma',
         hashedPassword: bcrypt.hashSync('password11'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Basma',
+        lastName: 'Khalaf'
       },
       {
-        email: 'user12@user.io',
-        username: 'FakeUser12',
+        email: 'Menna@gmail.com',
+        username: 'Manona',
         hashedPassword: bcrypt.hashSync('password12'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Menna',
+        lastName: 'Hammad'
       },
       {
-        email: 'user13@user.io',
-        username: 'FakeUser13',
+        email: 'Sarah@gmail.com',
+        username: 'Soso',
         hashedPassword: bcrypt.hashSync('password13'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Sarah',
+        lastName: 'Shawky'
       },
       {
-        email: 'user14@user.io',
-        username: 'FakeUser14',
+        email: 'Dina@gmail.com',
+        username: 'Dinaaa',
         hashedPassword: bcrypt.hashSync('password14'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Dina',
+        lastName: 'Hagag'
       },
       {
-        email: 'user15@user.io',
-        username: 'FakeUser15',
+        email: 'Malak@gmail.com',
+        username: 'MalokaaHanem',
         hashedPassword: bcrypt.hashSync('password15'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Malak',
+        lastName: 'Yousry'
       },
       {
-        email: 'user16@user.io',
-        username: 'FakeUser16',
+        email: 'Mariam',
+        username: 'Maryouma',
         hashedPassword: bcrypt.hashSync('password16'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Mariam',
+        lastName: 'Gamal'
       },
       {
-        email: 'user17@user.io',
-        username: 'FakeUser17',
+        email: 'Safi@gmail.com',
+        username: 'Safsofaa',
         hashedPassword: bcrypt.hashSync('password17'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Safi',
+        lastName: 'Mohamed'
       },
       {
-        email: 'user18@user.io',
-        username: 'FakeUser18',
+        email: 'Mariamm@gmail.com',
+        username: 'Maryouma1',
         hashedPassword: bcrypt.hashSync('password18'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'mariam',
+        lastName: 'Elhussany'
       },
       {
-        email: 'user19@user.io',
-        username: 'FakeUser19',
+        email: 'Mossad@gmail.com',
+        username: 'Mossad123',
         hashedPassword: bcrypt.hashSync('password19'),
-        firstName: 'demo',
-        lastName: 'user'
+        firstName: 'Ahmed',
+        lastName: 'Mossad'
       },
      
 

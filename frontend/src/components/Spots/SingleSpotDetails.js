@@ -85,8 +85,8 @@ const SingleSpotDetails = () => {
             // style={{ margin: 0, position: 'absolute', top: 150, left: 350 }}
             >
                 <div className='above-spot-image'>
-                    <div style={{ fontSize: 40, fontFamily: 'Geneva, Verdana, sans-serif' }}>{spot.name}</div>
-                    <div style={{ display: 'flex', gap: 8, fontFamily: 'Geneva, Verdana, sans-serif', }}>
+                    <div className='spot-name'>{spot.name}</div>
+                    <div className="before-image">
                         <h4 style={{ fontWeight: 'normal' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </h4>
                         <h4 style={{ fontWeight: 'normal', textDecoration: 'underline' }}>{spot.numReviews} reviews</h4>
                         <h4 style={{ fontWeight: 'normal' }}>. Superhost .</h4>
@@ -96,8 +96,11 @@ const SingleSpotDetails = () => {
                 <div>
                     <img src={spot.SpotImages[0].url} style={{ width: 800 }} />
                 </div>
-                <div style={{ lineHeight: 0.5, border: 'solid 1px black', borderRight: 0, borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20 }}>
+                <div className="host">
+                    <div style={{display:'flex', justifyContent:'space-between'}}>
                     <h2 style={{ fontWeight: 'normal', fontSize: 25, fontFamily: 'Geneva, Verdana, sans-serif' }}>Entire home hosted by Kia And Rob</h2>
+                    <h2>${spot.price}</h2>
+                    </div>
                     <h3 style={{ fontWeight: 'normal', fontFamily: 'Geneva, Verdana, sans-serif', color: 'rgb(80,80,80)', fontSize: 17 }}>14 guests . 5 bedrooms . 9 beds . 3.5 baths</h3>
                 </div>
                 <div style={{ border: 'solid 1px black', borderTop: 'none', borderLeft: 'none', borderRight: 'none', paddingTop: 20, paddingBottom: 20 }}>
@@ -143,22 +146,23 @@ const SingleSpotDetails = () => {
                     {spot.description}
                 </div>
 
+                <div style={{display:'flex', marginTop:'20px', gap:'10px'}}>
                 {sessionUser && sessionUser.id === spot.ownerId &&
                 (<DeleteSpot spotId={spotId}/>)}
 
                 {sessionUser && sessionUser.id === spot.ownerId && 
                 (<OpenModalMenuItem
-                    itemText={<button>Edit your spot</button>}
+                    itemText={<button className='edit-spot-Btn'>Edit your spot</button>}
                     onItemClick={closeMenu}
                     modalComponent={<EditSpotModal key={spotId}/>}
                     /> 
                 )}
-
+                 </div>
                 
-                <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal',fontFamily: 'sans-serif', lineHeight: 1,  paddingTop: 20, paddingBottom: 20,inlineSize: 700,overflowWrap: ''}}>
+                <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal',fontFamily: 'sans-serif',   paddingTop: 20, paddingBottom: 20,inlineSize: 700,overflowWrap: ''}}>
                 {sessionUser && sessionUser.id !== spot.ownerId && !didUserAlreadyReview(reviews, sessionUser.id) && (
                 <OpenModalMenuItem
-                itemText={<button>Leave a review</button>}
+                itemText={<button className="leave-review-Btn">Leave a review</button>}
                 onItemClick={closeMenu}
                 modalComponent={<CreateReviewModel key={spotId} spotId={spotId}/>}
                 /> 

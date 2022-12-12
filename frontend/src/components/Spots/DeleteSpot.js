@@ -14,7 +14,7 @@ const DeleteSpot = ({spotId}) => {
     }
   return (
     <div>
-      <button type='button' onClick={deleteSpot}>Delete your spot</button>
+      <button className="delete-spot-Btn" type='button' onClick={deleteSpot}>Delete your spot</button>
     </div>
   );
 }

@@ -51,13 +51,38 @@ const EditSpotModel = ({}) => {
     setValidationErrors(errors)
   },[name, price,description,address,city,country,state])
 
-  
+  useEffect(()=>{
+    const errors = []
+    if(!address) errors.push('Spot must have an address')
+    if(address.length<10) errors.push('please enter full address')
+    if(!state) errors.push('Spot must have a state')
+    if(state.length<2) errors.push('Please enter state name not less than 1 characters')
+    if(!city) errors.push('Spot must have a city')
+    if(city.length<2) errors.push('Please enter the city name not less than 1 character')
+    if(!country) errors.push('Spot must have a country')
+    if(country.length<2) errors.push('Please enter a country name not less than 1 character')
+    if(!name) errors.push('Spot must have a name')
+    if(name.length>50) errors.push('Please enter a name that is less than 50 characters')
+    if(name.length<=1) errors.push('Please enter a name that is greater than 10 characters')
+    if(!description) errors.push('Spot must have a description')
+    if(description.length<10) errors.push('Please descripe your spot not less than 10 characters')
+    if(description.length>5000) errors.push('Please descripe your spot not greather than 5000 characters')
+    if(!price) errors.push('Spot must have a price')
+    if(price<=0) errors.push('Please enter a price that is greater than 0')
+    // if(previewImage.length === 0) errors.push('Please provide images for your sopt so that your renters know how your spot looks like')
+    
+    setValidationErrors(errors)
+
+  },[name,city,state,country,address,description,price])
+
 
  
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
     setHasSubmited(true)
+    if(validationErrors.length>0) return alert('cannot submit')
+
     const payload = {
       address,
       state,
