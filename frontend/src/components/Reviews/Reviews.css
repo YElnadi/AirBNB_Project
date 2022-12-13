@@ -2,6 +2,23 @@
     background-color: rgb(240, 90, 90);
 }
 
+.delete-review-Btn{
+    padding:10px;
+    margin-bottom:90px;
+    line-height:1;
+    border-radius:15px;
+    cursor:'pointer';
+    background: rgb(230, 30, 77);
+    transition: background-color 0.5s ease 0s;
+    color:white
+
+}
+
+.delete-review-Btn:hover{
+    background-position: right center; 
+    background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
+  }
+
 .main-review-container{
     position:absolute;
     top: 50%;

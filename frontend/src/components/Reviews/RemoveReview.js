@@ -24,8 +24,7 @@ function RemoveReview({review}) {
 
   return (
     <div>
-      {/* <h2>Delete review</h2> */}
-      <button type='button' onClick={deleteReview} className="delete-button" style={{padding:10, marginBottom:90, lineHeight:1, borderRadius:10, cursor:'pointer'}}>Delete your review</button>
+      <button className="delete-review-Btn" type='button' onClick={deleteReview} >Delete your review</button>
     </div>
   );
 }
