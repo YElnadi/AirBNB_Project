@@ -10,7 +10,7 @@
 
 #main {
     margin: 0 auto;
-    width: 800px;
+    width: 1250px;
     padding-top: 20px;
 }
 
@@ -89,4 +89,19 @@
 .edit-spot-Btn:hover{
     background:rgb(236, 72, 72);
 
+}
+
+.image-container{
+    width: 300px;
+    height: 200px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }

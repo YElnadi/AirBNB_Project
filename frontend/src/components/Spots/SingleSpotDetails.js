@@ -94,7 +94,7 @@ const SingleSpotDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={spot.SpotImages[0].url} style={{ width: 800, borderRadius:'15px' }} />
+                    <img src={spot.SpotImages[0].url} style={{ width: '100%', borderRadius:'15px' }} />
                 </div>
                 <div className="host">
                     <div style={{display:'flex', justifyContent:'space-between'}}>
@@ -103,6 +103,7 @@ const SingleSpotDetails = () => {
                     </div>
                     <h3 style={{ fontWeight: 'normal', fontFamily: 'Geneva, Verdana, sans-serif', color: 'rgb(80,80,80)', fontSize: 17 }}>14 guests . 5 bedrooms . 9 beds . 3.5 baths</h3>
                 </div>
+                <div className="price-box">
                 <div style={{ border: 'solid 1px black', borderTop: 'none', borderLeft: 'none', borderRight: 'none', paddingTop: 20, paddingBottom: 20 }}>
                     <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 20, marginTop: 20, gap: 8, paddingBottom: 0 }}>
 
@@ -131,6 +132,8 @@ const SingleSpotDetails = () => {
                         </div>
                     </div>
                 </div>
+                {/* <div className='price-box2'>Price here</div> */}
+                </div>
                 <div style={{ paddingBottom: 30, paddingTop: 30, fontWeight: 'bold', fontSize: 50, fontFamily: 'sans-serif', lineHeight: 1, border: 'solid 1px black', borderRight: 0, borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20 }}>
                     <span style={{ color: 'red' }}>a</span>
                     <span style={{ color: 'red' }}>i</span>
@@ -142,7 +145,7 @@ const SingleSpotDetails = () => {
                     <span style={{ color: 'black' }}>r</span>
                     <p style={{ fontSize: 17, fontWeight: 'normal', color: 'rgb(80,80,80)', inlineSize: 700, overflowWrap: 'break-word',fontFamily:'Geneva, Verdana, sans-serif' }}>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
                 </div>
-                <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily:'Geneva, Verdana, sans-serif', border: 'solid 1px black', borderRight: 0,color: 'rgb(80,80,80)',borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20,inlineSize: 800,overflowWrap: 'break-word'}}>
+                <div style={{paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily:'Geneva, Verdana, sans-serif', border: 'solid 1px black', borderRight: 0,color: 'rgb(80,80,80)',borderLeft: 0, borderTop: 0, paddingTop: 20, paddingBottom: 20,inlineSize: 1200,overflowWrap: 'break-word'}}>
                     {spot.description}
                 </div>
 
