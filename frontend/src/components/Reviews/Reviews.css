@@ -1,3 +1,66 @@
 .delete-button:hover{
     background-color: rgb(240, 90, 90);
 }
+
+.main-review-container{
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background:white;
+    border-radius: 10px;
+}
+
+.review-title{
+    text-align: center;
+     padding: 0 0 20px 0;
+     border-bottom: 1px solid silver; font-family: Geneva, Verdana, sans-serif;
+}
+
+.review-form{
+    padding: 0 40px;
+    box-sizing: bordar-box;
+    display:flex;
+    flex-direction:column ;
+}
+
+.review-label{
+    font-family: Geneva, Verdana, sans-serif;
+    color: #888; 
+}
+
+.review-textarea{
+    display:block;
+    border:2px solid #ccc;
+    width:93%;
+    padding:10px;
+    margin:10px auto;
+    border-radius: 15px;
+}
+
+.review-input{
+    display:block;
+    border:2px solid #ccc;
+    width:93%;
+    padding:10px;
+    border-radius: 15px;
+}
+
+.review-save-Btn{
+    background: rgb(230, 30, 77);
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: 700px ; 
+    margin-bottom:20px;
+    margin-top:30px;
+    font-family: Geneva, Verdana, sans-serif;
+    transition : background-color 0.5s ease 0s;
+    color:white
+}
+
+.review-save-Btn:hover{
+    background-position: right center; 
+   background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
+}
+

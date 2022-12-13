@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 import { thunkCreateReview } from "../../store/reviews";
 import { getReviewsBySpotId } from "../../store/reviews";
 import { getSingleSpotDetails } from "../../store/spots";
-import '../CreateSpotModal/CreateSpotModal.css'
+import './Reviews.css'
 
 const CreateReviewModel = ({ spotId }) => {
   const [review, setReview] = useState('')
@@ -67,13 +67,10 @@ const CreateReviewModel = ({ spotId }) => {
 
   return (
     <>
-      <div style={{
-        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-        width: '400px', background: 'white', borderRadius: '10px'
-      }}>
-        <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver', fontFamily: 'Geneva, Verdana, sans-serif' }}>Leave a review</h1>
+      <div className='main-review-container'>
+        <h1 className='review-title'>Leave a review</h1>
 
-        <form style={{ padding: '0 40px', boxSizing: 'bordar-box', display:'flex', flexDirection:'column' }} onSubmit={onSubmit}>
+        <form className='review-form' onSubmit={onSubmit}>
 
         {hasSubmitted && errors.length > 0 && (
             <div>
@@ -86,9 +83,9 @@ const CreateReviewModel = ({ spotId }) => {
           )}
 
         
-          <label>
-            <spam style={{ fontFamily: 'Geneva, Verdana, sans-serif', color: '#888' }}>Review</spam>
-            <textarea className='textarea'
+          <label className='review-label'>
+            Review
+            <textarea className='review-textarea'
               type='text'
               value={review}
               onChange={(e) => setReview(e.target.value)}
@@ -98,9 +95,9 @@ const CreateReviewModel = ({ spotId }) => {
           </label>
           
 
-          <label>
-            <spam style={{ fontFamily: 'Geneva, Verdana, sans-serif', color: '#888' }}>Stars</spam>
-            <input className='input'
+          <label className='review-label'>
+            Stars
+            <input className='review-input'
               type='number'
               value={stars}
               max={5}
@@ -111,10 +108,9 @@ const CreateReviewModel = ({ spotId }) => {
           </label>
 
 
-          <div className='Btn'>
+          
 
-          <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' , marginBottom:'20px',fontFamily: 'Geneva, Verdana, sans-serif'}}type='submit'>Save</button>
-          </div>
+          <button className='review-save-Btn' type='submit'>Save</button>
         </form>
       </div>
     </>
