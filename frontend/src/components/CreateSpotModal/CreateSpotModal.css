@@ -52,7 +52,8 @@ padding:0 0 20px 0;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top:10px;
+    margin-top:20px;
+    margin-bottom:10px;
     gap:10px; 
 }
 .main-create-spot{
@@ -95,7 +96,7 @@ padding:0 0 20px 0;
 }
 
 .save-cancel-Btn{
-    background: rgb(236, 72, 72);
+    background: rgb(230, 30, 77);
     padding:10px;
     border-radius: 15px;
     font-weight: 700px;
@@ -103,7 +104,15 @@ padding:0 0 20px 0;
     font-family: Geneva, Verdana, sans-serif;
     margin-bottom: 20px;
     cursor: pointer;
+    transition : background-color 0.5s ease 0s;
 }
+
+.save-cancel-Btn:hover{
+    background-position: right center; 
+   background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
+}
+
+
 /* form input {
     border-width: 1px;
     border-color: rgba(104, 104, 104, 0.388);

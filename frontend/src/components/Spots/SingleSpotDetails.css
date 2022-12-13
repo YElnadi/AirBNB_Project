@@ -71,29 +71,37 @@
 }
 
 .delete-spot-Btn{
+   background: rgb(230, 30, 77);
    padding:10px;
    border-radius: 15px;
    font-weight: 700; 
    margin-bottom: 20px;
    font-family:Geneva, Verdana, sans-serif ;
    cursor: pointer;
+   transition : background-color 0.5s ease 0s;
+   color:white
+
 }
 .delete-spot-Btn:hover{
-    background:rgb(236, 72, 72);
-
+    background-position: right center; 
+    background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
 }
 
 .edit-spot-Btn{
+    background: rgb(230, 30, 77);
     padding:10px;
     border-radius: 15px;
     font-weight: 700; 
     margin-bottom: 20px;
     font-family:Geneva, Verdana, sans-serif ;
     cursor: pointer;
+    transition : background-color 0.5s ease 0s;
+    color:white
+
 }
 .edit-spot-Btn:hover{
-    background:rgb(236, 72, 72);
-
+    background-position: right center; 
+    background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
 }
 
 .image-container{
