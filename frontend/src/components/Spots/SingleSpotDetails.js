@@ -151,7 +151,8 @@ const SingleSpotDetails = () => {
                         </div>
                     </div>
                     <div className='price-box'>
-                        <div style={{ display: 'flex',  alignItems:'baseline', gap:'160px' }}>
+                        <div style={{ display: 'flex',  alignItems:'baseline', borderBottom: '1px silver solid', gap:'95px'}}>
+                            
 
                             <div style={{display:'flex', gap:'8px',alignItems:'baseline'}}>
                               <spam style={{fontWeight:'bold',fontSize:'27px'}}>${spot.price} </spam> 
@@ -159,10 +160,11 @@ const SingleSpotDetails = () => {
 
                             </div>
 
-                            <div >
+                            <div style={{display:'flex', flexDirection:'row'}}>
                                 <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </div>
-                                <h4>{spot.numReviews} reviews</h4>
+                                <div>{spot.numReviews} reviews</div>
                             </div>
+                          
                         </div>
                         <div className='edit-delete-spot-Btns'>
                             {sessionUser && sessionUser.id === spot.ownerId &&
