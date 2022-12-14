@@ -151,18 +151,20 @@ const SingleSpotDetails = () => {
                         </div>
                     </div>
                     <div className='price-box'>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems:'baseline', gap:'160px' }}>
+                        <div style={{ display: 'flex',  alignItems:'baseline', gap:'160px' }}>
 
-                            <div>
-                                <spam style={{ fontWeight: 'bold', fontSize: '27px', marginBottom: '20px' }}>${spot.price}</spam> night
+                            <div style={{display:'flex', gap:'8px',alignItems:'baseline'}}>
+                              <spam style={{fontWeight:'bold',fontSize:'27px'}}>${spot.price} </spam> 
+                              <spam>night </spam> 
+
                             </div>
 
-                            <div className="before-image">
-                                <h4 style={{ fontWeight: 'normal' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </h4>
-                                <h4 style={{ fontWeight: 'normal', textDecoration: 'underline' }}>{spot.numReviews} reviews</h4>
+                            <div >
+                                <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </div>
+                                <h4>{spot.numReviews} reviews</h4>
                             </div>
                         </div>
-                        <div style={{ display: 'flex',flexDirection:'column', gap: '10px', alignSelf:'center',marginBottom:'100px' }}>
+                        <div className='edit-delete-spot-Btns'>
                             {sessionUser && sessionUser.id === spot.ownerId &&
                                 (<DeleteSpot spotId={spotId} />)}
 
@@ -175,7 +177,7 @@ const SingleSpotDetails = () => {
                                 )}
                         </div>
 
-                        <div style={{ paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily: 'sans-serif', paddingTop: 20, paddingBottom: 20, inlineSize: 700, }}>
+                        <div style={{ paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily: 'sans-serif', paddingTop: 20, paddingBottom: 20, inlineSize: 700, display:'block', textAlign:''}}>
                     {sessionUser && sessionUser.id !== spot.ownerId && !didUserAlreadyReview(reviews, sessionUser.id) && (
                         <OpenModalMenuItem
                             itemText={<button className="leave-review-Btn">Leave a review</button>}

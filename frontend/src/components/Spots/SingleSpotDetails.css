@@ -37,8 +37,10 @@
 }
 .before-image{
     display: flex;
+    flex-direction: column;
     gap:8px;
     font-family:Geneva, Verdana, sans-serif ;
+   
 
 }
 .host{
@@ -63,11 +65,12 @@
    transition : background-color 0.5s ease 0s;
    color:white;
    margin-bottom: 200px;
+   margin:0 auto;
    
 
 
 }
-.leave-review-Btn{ width: 400px;}
+.leave-review-Btn{ width: 200px}
 .leave-review-Btn:hover{
     background-position: right center; 
    background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
@@ -85,11 +88,17 @@
    cursor: pointer;
    transition : background-color 0.5s ease 0s;
    color:white;
-
-   
-
+   margin-top: 60px;
 }
-.delete-spot-Btn {width:400px}
+
+.edit-delete-spot-Btns{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+
+.delete-spot-Btn {width:300px}
 .delete-spot-Btn:hover{
     background-position: right center; 
     background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
@@ -97,17 +106,16 @@
 
 .edit-spot-Btn{
     background: rgb(230, 30, 77);
-    padding:10px;
+    padding:10px 32px;
     border-radius: 15px;
     font-weight: 700; 
-    margin-bottom: 20px;
     font-family:Geneva, Verdana, sans-serif ;
     cursor: pointer;
     transition : background-color 0.5s ease 0s;
     color:white
 
 }
-.edit-spot-Btn{width:400px}
+.edit-spot-Btn{width:300px}
 .edit-spot-Btn:hover{
     background-position: right center; 
     background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
@@ -131,9 +139,9 @@
 .price-box{
   
   background-color: white;
-  height: 400px;
-  width: 400px;
-  border:solid 1px black;
+  height: 300px;
+  width: 300px;
+  border: 1px black;
   padding:10px;
   border-radius: 15px;
   display:flex;
@@ -142,6 +150,8 @@
   align-self: center;
   align-items: baseline;
   margin: 0 auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
   
 }
 
