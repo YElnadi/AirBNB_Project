@@ -151,21 +151,26 @@ const SingleSpotDetails = () => {
                         </div>
                     </div>
                     <div className='price-box'>
-                        <div style={{ display: 'flex',  alignItems:'baseline', borderBottom: '1px silver solid', gap:'95px'}}>
+                        <div style={{ display: 'flex',  alignItems:'baseline', borderBottom: '1px silver solid', gap:'120px'}}>
                             
 
                             <div style={{display:'flex', gap:'8px',alignItems:'baseline'}}>
-                              <spam style={{fontWeight:'bold',fontSize:'27px'}}>${spot.price} </spam> 
+                              <spam style={{fontWeight:'bold',fontSize:'27px', fontFamily:'Geneva, Verdana, sans-serif'}}>${spot.price} </spam> 
                               <spam>night </spam> 
 
                             </div>
 
-                            <div style={{display:'flex', flexDirection:'row'}}>
-                                <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </div>
-                                <div>{spot.numReviews} reviews</div>
+                            <div style={{display:'flex', flexDirection:'row', fontFamily:'Geneva, Verdana, sans-serif'}}>
+                                {/* <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()}</div> */}
+                                <div> {spot.numReviews} reviews</div>
                             </div>
+
+                            
                           
                         </div>
+                        <div>
+                                <h4 style={{fontFamily:'Geneva, Verdana, sans-serif'}}>{spot.name} that is hosted by Kia and Rob is located at {spot.address}, {spot.city}, {spot.state}, {spot.country}.</h4>
+                            </div>
                         <div className='edit-delete-spot-Btns'>
                             {sessionUser && sessionUser.id === spot.ownerId &&
                                 (<DeleteSpot spotId={spotId} />)}
@@ -204,9 +209,9 @@ const SingleSpotDetails = () => {
 
 
 
-                <div style={{ display: 'flex', gap: 8, paddingBottom: 50, paddingTop: 50, fontSize: 25 }}>
-                    <div style={{ fontWeight: 'bold' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </div>
-                    <div style={{ fontWeight: 'bold' }}>{spot.numReviews} reviews</div>
+                <div style={{ display: 'flex', gap: 8, paddingBottom: 50, paddingTop: 50, fontSize: 25, alignItems:'baseline'  }}>
+                    <div style={{ fontWeight: 'bold',fontFamily:'Geneva, Verdana, sans-serif' }}><i className="fa-solid fa-star" style={{ color: 'black', }}></i>{avg()} . </div>
+                    <div style={{ fontWeight: 'bold',fontFamily:'Geneva, Verdana, sans-serif' }}>{spot.numReviews} reviews</div>
                 </div>
 
                 <LoadReviews spotId={spotId} />

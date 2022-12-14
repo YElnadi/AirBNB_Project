@@ -88,17 +88,17 @@
    cursor: pointer;
    transition : background-color 0.5s ease 0s;
    color:white;
-   margin-top: 60px;
 }
 
 .edit-delete-spot-Btns{
     display: flex;
     flex-direction: column;
     gap:10px;
+    margin: 0 auto;
 }
 
 
-.delete-spot-Btn {width:300px}
+.delete-spot-Btn {width:200px}
 .delete-spot-Btn:hover{
     background-position: right center; 
     background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
@@ -115,7 +115,7 @@
     color:white
 
 }
-.edit-spot-Btn{width:300px}
+.edit-spot-Btn{width:200px}
 .edit-spot-Btn:hover{
     background-position: right center; 
     background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) 
