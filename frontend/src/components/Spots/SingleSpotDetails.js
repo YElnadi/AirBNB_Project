@@ -151,26 +151,29 @@ const SingleSpotDetails = () => {
                         </div>
                     </div>
                     <div className='price-box'>
-                        <div style={{ display: 'flex',  alignItems:'baseline', borderBottom: '1px silver solid', gap:'120px'}}>
-                            
+                        <div style={{ display: 'flex', alignItems: 'baseline', borderBottom: '1px silver solid', gap: '30px' }}>
 
-                            <div style={{display:'flex', gap:'8px',alignItems:'baseline'}}>
-                              <spam style={{fontWeight:'bold',fontSize:'27px', fontFamily:'Geneva, Verdana, sans-serif'}}>${spot.price} </spam> 
-                              <spam style={{fontFamily:'Geneva, Verdana, sans-serif'}}>night </spam> 
+
+                            <div style={{ display: 'flex', gap: '1px', alignItems: 'baseline' }}>
+                                <spam style={{ fontWeight: 'bold', fontSize: '27px', fontFamily: 'Geneva, Verdana, sans-serif' }}>${spot.price} </spam>
+                                <spam style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>night </spam>
 
                             </div>
 
-                            <div style={{display:'flex', flexDirection:'row', fontFamily:'Geneva, Verdana, sans-serif'}}>
-                                {/* <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()}</div> */}
-                                <div> {spot.numReviews} reviews</div>
+                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'baseline', fontFamily: 'Geneva, Verdana, sans-serif' , marginLeft:'10px'}}>
+                                <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i></div>
+                                <div style={{display:'flex', gap:'10px'}}>
+                                <div >{avg()}</div>
+                                <div>{'.'}{' '}{spot.numReviews}{' '}reviews</div>
+                                </div> 
                             </div>
 
-                            
-                          
+
+
                         </div>
                         <div>
-                                <h4 style={{fontFamily:'Geneva, Verdana, sans-serif'}}>{spot.name} that is hosted by Kia and Rob is located at {spot.address}, {spot.city}, {spot.state}, {spot.country}.</h4>
-                            </div>
+                            <h4 style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>{spot.name} that is hosted by Kia and Rob is located at {spot.address}, {spot.city}, {spot.state}, {spot.country}.</h4>
+                        </div>
                         <div className='edit-delete-spot-Btns'>
                             {sessionUser && sessionUser.id === spot.ownerId &&
                                 (<DeleteSpot spotId={spotId} />)}
@@ -184,16 +187,16 @@ const SingleSpotDetails = () => {
                                 )}
                         </div>
 
-                        <div style={{ paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily: 'sans-serif', paddingTop: 20, paddingBottom: 20, inlineSize: 700, display:'block', textAlign:''}}>
-                    {sessionUser && sessionUser.id !== spot.ownerId && !didUserAlreadyReview(reviews, sessionUser.id) && (
-                        <OpenModalMenuItem
-                            itemText={<button className="leave-review-Btn">Leave a review</button>}
-                            onItemClick={closeMenu}
-                            modalComponent={<CreateReviewModel key={spotId} spotId={spotId} />}
-                        />
+                        <div style={{ paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily: 'sans-serif', paddingTop: 20, paddingBottom: 20, inlineSize: 700, display: 'block', textAlign: '' }}>
+                            {sessionUser && sessionUser.id !== spot.ownerId && !didUserAlreadyReview(reviews, sessionUser.id) && (
+                                <OpenModalMenuItem
+                                    itemText={<button className="leave-review-Btn">Leave a review</button>}
+                                    onItemClick={closeMenu}
+                                    modalComponent={<CreateReviewModel key={spotId} spotId={spotId} />}
+                                />
 
-                    )}
-                </div>
+                            )}
+                        </div>
 
 
                     </div>
@@ -202,16 +205,16 @@ const SingleSpotDetails = () => {
 
 
 
-                
 
 
 
 
 
 
-                <div style={{ display: 'flex', gap: 8, paddingBottom: 50, paddingTop: 50, fontSize: 25, alignItems:'baseline'  }}>
-                    <div style={{ fontWeight: 'bold',fontFamily:'Geneva, Verdana, sans-serif' }}><i className="fa-solid fa-star" style={{ color: 'black', }}></i>{avg()} . </div>
-                    <div style={{ fontWeight: 'bold',fontFamily:'Geneva, Verdana, sans-serif' }}>{spot.numReviews} reviews</div>
+
+                <div style={{ display: 'flex', gap: 8, paddingBottom: 50, paddingTop: 50, fontSize: 25, alignItems: 'baseline' }}>
+                    <div style={{ fontWeight: 'bold', fontFamily: 'Geneva, Verdana, sans-serif' }}><i className="fa-solid fa-star" style={{ color: 'black', }}></i>{avg()} . </div>
+                    <div style={{ fontWeight: 'bold', fontFamily: 'Geneva, Verdana, sans-serif' }}>{spot.numReviews} reviews</div>
                 </div>
 
                 <LoadReviews spotId={spotId} />
