@@ -13,12 +13,11 @@ function RemoveReview({review}) {
   const history = useHistory();
   console.log('review from review cards',review)
 
-  const deleteReview =(e)=>{
+  const deleteReview =async(e)=>{
     e.preventDefault();
-    dispatch(deleteSpotReview(review.id))
-    dispatch(getSingleSpotDetails(review.spotId))
+    await dispatch(deleteSpotReview(review.id))
+    await dispatch(getSingleSpotDetails(review.spotId))
 
-    // history.go(0)
 }
 
 

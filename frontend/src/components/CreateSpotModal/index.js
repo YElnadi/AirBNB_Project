@@ -43,13 +43,11 @@ const CreateSpotModel = () => {
       if(description.length>5000) errors.push('Please descripe your spot not greather than 5000 characters')
       if(!price) errors.push('Spot must have a price')
       if(price<=0) errors.push('Please enter a price that is greater than 0')
-      if(previewImage.length === 0) errors.push('Please provide images for your sopt so that your renters know how your spot looks like')
+      if(previewImage.length === 0) errors.push('Please provide images for your spot so that your renters know how your spot looks like')
       
       setValidationErrors(errors)
 
     },[name,city,state,country,address,description,price,previewImage])
-
-   
     
     const cancel = async (e) =>{
         closeModal() 
