@@ -72,8 +72,8 @@ function ProfileButton({ user }) {
 
                 <li  ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Hello,{user.username}</span></li>
                 <li ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>{user.email}</span></li>
-                <li >
-                  <button style= {{border:'none', background:'transparent', fontSize:16, textIndent:'-5px'}}onClick={logout}>Log Out</button>
+                <li onClick={logout}>
+                  <span style= {{border:'none', background:'transparent', fontSize:16, textIndent:'-5px',fontFamily: 'Geneva, Verdana, sans-serif'}}>Log Out</span>
                 </li>
               </>
             ) : (
@@ -92,8 +92,8 @@ function ProfileButton({ user }) {
                     modalComponent={<SignupFormModal />}
                   />
                 </li>
-                <li>
-                  <button style={{cursor: 'pointer', border:'none', background:'transparent', marginBottom:'0px', fontFamily:'Geneva, Verdana, sans-serif', fontSize:16,textIndent:'-5px'}}onClick={handleDemo} type='submit'>Log in as demo user</button>
+                <li onClick={handleDemo}>
+                  <span style={{cursor: 'pointer', border:'none', background:'transparent', marginBottom:'0px', fontFamily:'Geneva, Verdana, sans-serif', fontSize:16,textIndent:'-5px'}} type='submit'>Log in as demo user</span>
                 </li>
                 </>
             )}
