@@ -52,14 +52,18 @@ const CreateSpotModel = () => {
     const cancel = async (e) =>{
         closeModal() 
         reset()
-        history.push('/')
+        // history.push('/')
      
       }
 
     if(!sessionUser){
-      window.alert('must be logged in')
-      history.push('/')
-      closeModal()
+      return <>
+        <div className='must-login-box'>
+          <span>
+          Please login first.
+          </span>
+        </div>
+      </>
     }
 
     const handleSubmit = async (e) =>{

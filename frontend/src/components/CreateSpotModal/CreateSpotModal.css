@@ -134,7 +134,22 @@ padding:0 0 20px 0;
 } */
 
 
-
+.must-login-box{
+  
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform:translate(-50%, -50%) ;
+    width: 400px;
+    background: white;
+    border-radius: 15px;
+    padding:30px; 
+    text-align: center;
+  
+    
+  }
+  
+  
 
 
 /* style={{ position: 'relative', borderBottom: '2px solid silver', margin: '30px 0', height:'40px'}} */
