@@ -155,8 +155,8 @@ const SingleSpotDetails = () => {
 
 
                             <div style={{ display: 'flex', gap: '1px', alignItems: 'baseline' }}>
-                                <spam style={{ fontWeight: 'bold', fontSize: '27px', fontFamily: 'Geneva, Verdana, sans-serif' }}>${spot.price} </spam>
-                                <spam style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>night </spam>
+                                <span style={{ fontWeight: 'bold', fontSize: '27px', fontFamily: 'Geneva, Verdana, sans-serif' }}>${spot.price} </span>
+                                <span style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>night </span>
 
                             </div>
 

@@ -80,14 +80,14 @@ function ProfileButton({ user }) {
               <>
                 <li style={{ cursor: 'pointer'}}>
                   <OpenModalMenuItem
-                    itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Log In</spam>}
+                    itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Log In</span>}
                     onItemClick={closeMenu}
                     modalComponent={<LoginFormModal />}
                   />
                 </li>
                 <li style={{ cursor: 'pointer', borderBotton:'1px silver solid'}}>
                   <OpenModalMenuItem
-                    itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Sign up</spam>}
+                    itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Sign up</span>}
                     onItemClick={closeMenu}
                     modalComponent={<SignupFormModal />}
                   />

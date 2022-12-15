@@ -74,7 +74,7 @@ function Navigation({ isLoaded }){
       <li>
         <div className="bnbYourHomeBtn">
            <OpenModalMenuItem
-                     itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Yasbnb your home</spam>}
+                     itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Yasbnb your home</span>}
                      onItemClick={closeMenu}
                      modalComponent={<CreateSpotModal />}
                    /> 
