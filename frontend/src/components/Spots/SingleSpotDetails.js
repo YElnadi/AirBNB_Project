@@ -87,10 +87,10 @@ const SingleSpotDetails = () => {
                 <div className='above-spot-image'>
                     <div className='spot-name'>{spot.name}</div>
                     <div className="before-image">
-                        <h4 style={{ fontWeight: 'normal' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} . </h4>
+                        <h4 style={{ fontWeight: 'normal' }}><i className="fa-solid fa-star" style={{ color: 'black' }}></i>{avg()} &middot; </h4>
                         <h4 style={{ fontWeight: 'normal', textDecoration: 'underline' }}>{spot.numReviews} reviews</h4>
-                        <h4 style={{ fontWeight: 'normal' }}>. Superhost .</h4>
-                        <h4 style={{ textDecoration: 'underline', fontWeight: 'normal' }}>{spot.city}.{spot.state}.{spot.country}</h4>
+                        <h4 style={{ fontWeight: 'normal' }}>&middot; Superhost &middot;</h4>
+                        <h4 style={{ textDecoration: 'underline', fontWeight: 'normal' }}>{spot.city},{spot.state},{spot.country}</h4>
                     </div>
                 </div>
                 <div>
@@ -102,7 +102,7 @@ const SingleSpotDetails = () => {
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <h2 style={{ fontWeight: 'normal', fontSize: 25, fontFamily: 'Geneva, Verdana, sans-serif', inlineSize: 700, overflowWrap: 'break-word' }}>Entire home hosted by Kia And Rob</h2>
                             </div>
-                            <h3 style={{ fontWeight: 'normal', fontFamily: 'Geneva, Verdana, sans-serif', color: 'rgb(80,80,80)', fontSize: 17 }}>14 guests . 5 bedrooms . 9 beds . 3.5 baths</h3>
+                            <h3 style={{ fontWeight: 'normal', fontFamily: 'Geneva, Verdana, sans-serif', color: 'rgb(80,80,80)', fontSize: 17 }}>14 guests &middot; 5 bedrooms &middot; 9 beds &middot; 3.5 baths</h3>
                         </div>
                         <div style={{ borderBottom: 'solid 1px black', paddingTop: 20, paddingBottom: 20 }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 20, marginTop: 20, gap: 8, paddingBottom: 0 }}>
@@ -164,7 +164,7 @@ const SingleSpotDetails = () => {
                                 <div ><i className="fa-solid fa-star" style={{ color: 'black' }}></i></div>
                                 <div style={{display:'flex', gap:'10px'}}>
                                 <div >{avg()}</div>
-                                <div>{'.'}{' '}{spot.numReviews}{' '}reviews</div>
+                                <div>&middot;{' '}{spot.numReviews}{' '}reviews</div>
                                 </div> 
                             </div>
 
@@ -213,7 +213,7 @@ const SingleSpotDetails = () => {
 
 
                 <div style={{ display: 'flex', gap: 8, paddingBottom: 50, paddingTop: 50, fontSize: 25, alignItems: 'baseline' }}>
-                    <div style={{ fontWeight: 'bold', fontFamily: 'Geneva, Verdana, sans-serif' }}><i className="fa-solid fa-star" style={{ color: 'black', }}></i>{avg()} . </div>
+                    <div style={{ fontWeight: 'bold', fontFamily: 'Geneva, Verdana, sans-serif' }}><i className="fa-solid fa-star" style={{ color: 'black', }}></i>{avg()} &middot; </div>
                     <div style={{ fontWeight: 'bold', fontFamily: 'Geneva, Verdana, sans-serif' }}>{spot.numReviews} reviews</div>
                 </div>
 
