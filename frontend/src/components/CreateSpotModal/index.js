@@ -83,12 +83,9 @@ const CreateSpotModel = () => {
             previewImage
         }
 
-        let createdSpot;
-        createdSpot = await dispatch(createNewSpot(spotDetails))
-        .then(closeModal)
-        history.push('/')
-
-        
+        await dispatch(createNewSpot(spotDetails))
+          .then(spot => history.push(`/spots/${spot.id}`))
+          .then(closeModal)
     }
 
     const reset = ()=>{
