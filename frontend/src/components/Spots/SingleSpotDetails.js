@@ -60,8 +60,8 @@ const SingleSpotDetails = () => {
 
 
     ////////////////////////////////////////
-    useEffect(() => {
-        dispatch(getSingleSpotDetails(spotId))
+    useEffect(async() => {
+       await dispatch(getSingleSpotDetails(spotId))
     }, [dispatch, spotId])
 
     const avg = () => {
