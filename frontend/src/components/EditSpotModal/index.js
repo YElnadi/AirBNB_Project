@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { getSingleSpotDetails, thunkUpdateSpot } from '../../store/spots';
-import '../CreateSpotModal/CreateSpotModal.css'
+import './EditSpotModal.css'
 
 const EditSpotModel = ({}) => {
   const history = useHistory()
@@ -112,13 +112,10 @@ const EditSpotModel = ({}) => {
 
 
   return (
-    <div style={{
-      position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-      width: '400px', background: 'white', borderRadius: '10px'
-    }}>
-      <h1 style={{ textAlign: 'center', padding: '0 0 20px 0', borderBottom: '1px solid silver',fontFamily:'Geneva, Verdana, sans-serif' }}>Edit Your Spot</h1>
+    <div className='main-edit-spot'>
+      <h1 className='edit-spot-title'>Edit Your Spot</h1>
 
-      <form style={{ padding: '0 40px', boxSizing: 'bordar-box',overflowY:'auto', height:'550px' }}onSubmit={handleSubmit}>
+      <form className='edit-spot-form' onSubmit={handleSubmit}>
       {hasSubmitted && validationErrors.length>0 && (
         <div>
           The following errors were found:
@@ -129,18 +126,18 @@ const EditSpotModel = ({}) => {
             </ul>
         </div>
       )}
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Name</spam> 
-          <input className='input'
+        <label className='edit-spot-label'>
+        Name
+          <input className='edit-spot-input'
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </label>
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Address</spam> 
-          <input className='input'
+        <label className='edit-spot-label'>
+        Address
+          <input className='edit-spot-input'
             type='text'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -149,9 +146,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>State</spam> 
-          <input className='input'
+        <label className='edit-spot-label'>
+        State
+          <input className='edit-spot-input'
             type='text'
             value={state}
             onChange={(e) => setState(e.target.value)}
@@ -159,9 +156,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>City</spam> 
-          <input className='input'
+        <label className='edit-spot-label'>
+        City
+          <input className='edit-spot-input'
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
@@ -169,9 +166,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Country</spam> 
-          <input className='input'
+        <label className='edit-spot-label'>
+        Country
+          <input className='edit-spot-input'
             type='text'
             value={country}
             onChange={(e) => setCountry(e.target.value)}
@@ -181,9 +178,9 @@ const EditSpotModel = ({}) => {
 
 
         
-          <label className='label'>
-          <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>Description</spam> 
-            <textarea className='textarea'
+          <label className='edit-spot-label'>
+         Description
+            <textarea className='edit-spot-textarea'
               type='text'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -192,9 +189,9 @@ const EditSpotModel = ({}) => {
           </label>
         
 
-        <label className='label'>
-        <spam style={{fontFamily:'Geneva, Verdana, sans-serif', color:'#888'}}>price</spam> 
-          <input className='input'
+        <label className='edit-spot-label'>
+        price
+          <input className='edit-spot-input'
             type='number'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -202,21 +199,9 @@ const EditSpotModel = ({}) => {
           />
         </label>
 
-        {/* <label >
-          Image
-          <input
-            type='url'
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
-            required
-
-          />
-        </label> */}
-
-
         <div className='Btn'>
-        <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' }}type='submit'>Save Updates</button>
-        <button style={{ background: 'rgb(236, 72, 72)', padding: '10px', borderRadius: '15px', fontWeight: '700px' , marginBottom:'20px'}} onClick={cancel}>Cancel</button>
+        <button style={{marginTop:'20px'}} className='edit-Btns' type='submit'>Save Updates</button>
+        <button className='edit-Btns' onClick={cancel}>Cancel</button>
         </div>
 
       </form>

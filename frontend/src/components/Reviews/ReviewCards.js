@@ -31,7 +31,7 @@ const ReviewCards = ({ review }) => {
             </div>
 
          
-            <div style={{paddingBottom:50, marginTop:20, fontFamily:'Geneva, Verdana, sans-serif'}} >{review.review}</div>
+            <div style={{paddingBottom:50, marginTop:20, fontFamily:'Geneva, Verdana, sans-serif',inlineSize: 500, overflowWrap: 'break-word'}} >{review.review}</div>
             </div>
             {sessionUser && sessionUser.id === review.userId &&(<RemoveReview review={review}/>)}
          

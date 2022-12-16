@@ -13,19 +13,17 @@ function RemoveReview({review}) {
   const history = useHistory();
   console.log('review from review cards',review)
 
-  const deleteReview =(e)=>{
+  const deleteReview =async(e)=>{
     e.preventDefault();
-    dispatch(deleteSpotReview(review.id))
-    dispatch(getSingleSpotDetails(review.spotId))
+    await dispatch(deleteSpotReview(review.id))
+    await dispatch(getSingleSpotDetails(review.spotId))
 
-    // history.go(0)
 }
 
 
   return (
     <div>
-      {/* <h2>Delete review</h2> */}
-      <button type='button' onClick={deleteReview} className="delete-button" style={{padding:10, marginBottom:90, lineHeight:1, borderRadius:10, cursor:'pointer'}}>Delete your review</button>
+      <button className="delete-review-Btn" type='button' onClick={deleteReview} >Delete your review</button>
     </div>
   );
 }

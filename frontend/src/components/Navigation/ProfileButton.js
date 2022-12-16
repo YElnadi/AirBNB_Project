@@ -39,9 +39,9 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
+  const logout = async (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    await dispatch(sessionActions.logout());
     history.push('/')
   };
 
@@ -72,28 +72,28 @@ function ProfileButton({ user }) {
 
                 <li  ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Hello,{user.username}</span></li>
                 <li ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>{user.email}</span></li>
-                <li >
-                  <button style= {{border:'none', background:'transparent', fontSize:16}}onClick={logout}>Log Out</button>
+                <li onClick={logout}>
+                  <span style= {{border:'none', background:'transparent', fontSize:16, textIndent:'-5px',fontFamily: 'Geneva, Verdana, sans-serif'}}>Log Out</span>
                 </li>
               </>
             ) : (
               <>
                 <li style={{ cursor: 'pointer'}}>
                   <OpenModalMenuItem
-                    itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Log In</spam>}
+                    itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Log In</span>}
                     onItemClick={closeMenu}
                     modalComponent={<LoginFormModal />}
                   />
                 </li>
-                <li style={{ cursor: 'pointer'}}>
+                <li style={{ cursor: 'pointer', borderBotton:'1px silver solid'}}>
                   <OpenModalMenuItem
-                    itemText={<spam style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Sign up</spam>}
+                    itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Sign up</span>}
                     onItemClick={closeMenu}
                     modalComponent={<SignupFormModal />}
                   />
                 </li>
-                <li>
-                  <button style={{cursor: 'pointer', border:'none', background:'transparent', marginBottom:'0px', fontFamily:'Geneva, Verdana, sans-serif', fontSize:16}}onClick={handleDemo} type='submit'>Log in as demo user</button>
+                <li onClick={handleDemo}>
+                  <span style={{cursor: 'pointer', border:'none', background:'transparent', marginBottom:'0px', fontFamily:'Geneva, Verdana, sans-serif', fontSize:16,textIndent:'-5px'}} type='submit'>Log in as demo user</span>
                 </li>
                 </>
             )}

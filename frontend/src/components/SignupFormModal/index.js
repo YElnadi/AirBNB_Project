@@ -141,7 +141,7 @@ function SignupFormModal() {
           </div>
 
           <div className='Btn'>
-            <button className ='signup-btn' type="submit">Sign Up</button>
+            <button className ='signup-btn' type="submit">Continue</button>
           </div>
         </form>
       </div>

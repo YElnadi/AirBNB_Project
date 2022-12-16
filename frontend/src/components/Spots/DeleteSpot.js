@@ -6,9 +6,9 @@ const DeleteSpot = ({spotId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const deleteSpot = (e)=>{
+    const deleteSpot = async (e)=>{
         e.preventDefault();
-        dispatch(deleteSpotbySpotId(spotId))
+        await dispatch(deleteSpotbySpotId(spotId))
         history.push('/')
         return;
     }
