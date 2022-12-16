@@ -71,7 +71,7 @@ function SignupFormModal() {
             </div>
           )}
           
-            
+            <div className="yasbnb-inputs-div">
               <input className='yasbnb-input'
                 type="text"
                 value={email}
@@ -136,6 +136,7 @@ function SignupFormModal() {
                 required
               />
            
+           </div>
 
           <div className='yasbnb-btns-div'>
             <button className ='yasbnb-btn' type="submit">Continue</button>

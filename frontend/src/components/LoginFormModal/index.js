@@ -12,7 +12,7 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,41 +39,44 @@ function LoginFormModal() {
   return (
     <>
       <div className='yasbnb-modal-main-div'>
-        <form className='yasbnb-form' style={{height:'340px'
-}} onSubmit={handleSubmit} >
+        <form className='yasbnb-form' style={{
+          height: '340px'
+        }} onSubmit={handleSubmit} >
 
           <h1 className='yasbnb-form-title'>Login</h1>
-          <h2 style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Welcome to Yasbnb</h2>
+          <h2 style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>Welcome to Yasbnb</h2>
           {errors.length > 0 && (
             <div>
-              <span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>The following errors were found:</span>
-              <ul style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
+              <span style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>The following errors were found:</span>
+              <ul style={{ fontFamily: 'Geneva, Verdana, sans-serif' }}>
                 {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
                 {errors.map(error => (<li key={error}>{error}</li>))}
               </ul>
             </div>
           )}
 
-          
-            <input className="yasbnb-input"
-              type="text"
-              value={credential}
-              onChange={(e) => setCredential(e.target.value)}
-              placeholder='Username or Email'
-              required
-            />
-          
+          <div className="yasbnb-inputs-div">
+            <div>
+              <input className="yasbnb-input"
+                type="text"
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                placeholder='Username or Email'
+                required
+              />
+            </div>
 
-          
-            <input className="yasbnb-input"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Password'
-              required
-            />
-          
 
+            <div>
+              <input className="yasbnb-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Password'
+                required
+              />
+            </div>
+          </div>
           <div className="yasbnb-btns-div">
             <button className='yasbnb-btn' type="submit">Continue</button>
             {/* <button className='Btn-login-Demo' type="submit" onClick={handleDemo}>Log in as demo user</button> */}

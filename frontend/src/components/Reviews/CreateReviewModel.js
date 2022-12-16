@@ -84,7 +84,8 @@ const CreateReviewModel = ({ spotId }) => {
           )}
 
         
-          
+          <div className="yasbnb-inputs-div">
+
             <textarea className='yasbnb-input'
               type='text'
               value={review}
@@ -105,7 +106,7 @@ const CreateReviewModel = ({ spotId }) => {
               placeholder='Stars'
               required
             />
-          
+          </div>
 
           
           <div className="yasbnb-btns-div">

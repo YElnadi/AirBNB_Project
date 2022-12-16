@@ -120,6 +120,7 @@ const CreateSpotModel = () => {
             </ul>
           </div>
         )}
+            <div className="yasbnb-inputs-div">
 
             <input className='yasbnb-input'
             type='text'
@@ -208,7 +209,7 @@ const CreateSpotModel = () => {
             required
             
             />
-            
+            </div>
 
             <div className='yasbnb-btns-div'>
             <button className='yasbnb-btn' type='submit'> Save</button>

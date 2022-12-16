@@ -127,7 +127,7 @@ const EditSpotModel = ({}) => {
             </ul>
         </div>
       )}
-        
+         <div className="yasbnb-inputs-div">
           <input className='yasbnb-input'
             type='text'
             value={name}
@@ -197,7 +197,7 @@ const EditSpotModel = ({}) => {
             placeholder='Price'
             required
           />
-      
+      </div>
 
         <div className='yasbnb-btns-div'>
         <button  className='yasbnb-btn' type='submit'>Save Updates</button>
