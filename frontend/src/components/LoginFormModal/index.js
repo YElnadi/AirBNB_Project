@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import './LoginForm.css'
+import '../Common/FormCommon.css'
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -37,10 +38,11 @@ function LoginFormModal() {
 
   return (
     <>
-      <div className='main-login-form'>
-        <form onSubmit={handleSubmit} >
+      <div className='yasbnb-modal-main-div'>
+        <form className='yasbnb-form' style={{height:'340px'}} onSubmit={handleSubmit} >
 
-          <h1 className='login-title'>Login</h1>
+          <h1 className='yasbnb-form-title'>Login</h1>
+          <h2 style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Welcome to Yasbnb</h2>
           {errors.length > 0 && (
             <div>
               The following errors were found:
@@ -51,28 +53,28 @@ function LoginFormModal() {
             </div>
           )}
 
-          <label className='label-login-form'>
-            Username or Email
-            <input className="input-login-form"
+          
+            <input className="yasbnb-input"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
+              placeholder='Username or Email'
               required
             />
-          </label>
+          
 
-          <label className='label-login-form'>
-            Password
-            <input className="input-login-form"
+          
+            <input className="yasbnb-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder='Password'
               required
             />
-          </label>
+          
 
-          <div className="Btn-login-form">
-            <button className='Btn-login' type="submit">Continue</button>
+          <div className="yasbnb-btns-div">
+            <button className='yasbnb-btn' type="submit">Continue</button>
             {/* <button className='Btn-login-Demo' type="submit" onClick={handleDemo}>Log in as demo user</button> */}
           </div>
 
