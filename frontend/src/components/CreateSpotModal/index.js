@@ -4,6 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { createNewSpot } from '../../store/spots';
 import './CreateSpotModal.css'
+import '../Common/FormCommon.css'
 
 
 const CreateSpotModel = () => {
@@ -105,10 +106,10 @@ const CreateSpotModel = () => {
 
   return (
     <>
-    <div className='main-create-spot'>
-        <h1 className='create-spot-title'>Create New Spot</h1>
+    <div className='yasbnb-modal-main-div'>
+        <h1 className='yasbnb-form-title'>Create New Spot</h1>
     
-        <form className='create-spot-form' onSubmit={handleSubmit}>
+        <form className='yasbnb-form' onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
           <div>
             The following errors were found:
@@ -120,7 +121,7 @@ const CreateSpotModel = () => {
           </div>
         )}
 
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
@@ -132,7 +133,7 @@ const CreateSpotModel = () => {
           
 
             
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='text'
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
@@ -144,7 +145,7 @@ const CreateSpotModel = () => {
 
             
 
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
@@ -155,7 +156,7 @@ const CreateSpotModel = () => {
 
             
 
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='text'
             value={city}
             onChange={(e)=>setCity(e.target.value)}
@@ -166,7 +167,7 @@ const CreateSpotModel = () => {
 
             
 
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
@@ -179,7 +180,7 @@ const CreateSpotModel = () => {
             
 
             <textarea 
-            className='create-form-input'
+            className='yasbnb-input'
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
@@ -189,7 +190,7 @@ const CreateSpotModel = () => {
             
 
             
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
@@ -199,7 +200,7 @@ const CreateSpotModel = () => {
             
 
             
-            <input className='create-form-input'
+            <input className='yasbnb-input'
             type='url'
             value={previewImage}
             onChange={(e)=>setPreviewImage(e.target.value)}
@@ -209,9 +210,9 @@ const CreateSpotModel = () => {
             />
             
 
-            <div className='Btn-create-form'>
-            <button className='save-cancel-Btn' type='submit'> Save</button>
-            <button className='save-cancel-Btn'onClick={cancel}> Cancel</button>
+            <div className='yasbnb-btns-div'>
+            <button className='yasbnb-btn' type='submit'> Save</button>
+            <button className='yasbnb-btn'onClick={cancel}> Cancel</button>
             </div>
 
         </form>
