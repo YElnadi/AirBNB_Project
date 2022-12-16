@@ -71,12 +71,12 @@ const CreateReviewModel = ({ spotId }) => {
       <div className='yasbnb-modal-main-div'>
         <h1 className='yasbnb-form-title'>Leave a review</h1>
 
-        <form className='yasbnb-form' style={{height:'280px'}} onSubmit={onSubmit}>
+        <form className='yasbnb-form' style={{height:'200px'}} onSubmit={onSubmit}>
 
         {hasSubmitted && errors.length > 0 && (
             <div>
-              The following errors were found:
-              <ul>
+             <span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>The following errors were found:</span>
+              <ul style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
                 {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
                 {errors.map(error => (<li key={error}>{error}</li>))}
               </ul>

@@ -112,8 +112,8 @@ const CreateSpotModel = () => {
         <form className='yasbnb-form' onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
           <div>
-            The following errors were found:
-            <ul>
+<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>The following errors were found:</span>           
+ <ul style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
               {validationErrors.map((error)=>(
                 <li key={error}>{error}</li>
               ))}

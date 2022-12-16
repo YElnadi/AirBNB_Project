@@ -63,8 +63,8 @@ function SignupFormModal() {
         <h2 style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Welcome to Yasbnb</h2>
           {hasSubmitted && errors.length > 0 && (
             <div>
-              The following errors were found:
-              <ul>
+             <span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>The following errors were found:</span>
+              <ul style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
                 {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
                 {errors.map(error => (<li key={error}>{error}</li>))}
               </ul>
