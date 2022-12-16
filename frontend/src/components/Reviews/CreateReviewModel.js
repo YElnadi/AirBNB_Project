@@ -6,6 +6,7 @@ import { thunkCreateReview } from "../../store/reviews";
 import { getReviewsBySpotId } from "../../store/reviews";
 import { getSingleSpotDetails } from "../../store/spots";
 import './Reviews.css'
+import '../Common/FormCommon.css'
 
 const CreateReviewModel = ({ spotId }) => {
   const [review, setReview] = useState('')
@@ -67,10 +68,10 @@ const CreateReviewModel = ({ spotId }) => {
 
   return (
     <>
-      <div className='main-review-container'>
-        <h1 className='review-title'>Leave a review</h1>
+      <div className='yasbnb-modal-main-div'>
+        <h1 className='yasbnb-form-title'>Leave a review</h1>
 
-        <form className='review-form' onSubmit={onSubmit}>
+        <form className='yasbnb-form' style={{height:'200px'}} onSubmit={onSubmit}>
 
         {hasSubmitted && errors.length > 0 && (
             <div>
@@ -83,34 +84,33 @@ const CreateReviewModel = ({ spotId }) => {
           )}
 
         
-          <label className='review-label'>
-            Review
-            <textarea className='review-textarea'
+          
+            <textarea className='yasbnb-input'
               type='text'
               value={review}
               onChange={(e) => setReview(e.target.value)}
               required
-              placeholder="Your experiance ..."
+              placeholder="Descripe your experiance with Yasbnb ..."
             />
-          </label>
+          
           
 
-          <label className='review-label'>
-            Stars
-            <input className='review-input'
+          
+            <input className='yasbnb-input'
               type='number'
               value={stars}
               max={5}
               min={1}
               onChange={(e) => setStars(e.target.value)}
+              placeholder='Stars'
               required
             />
-          </label>
-
-
           
 
-          <button className='review-save-Btn' type='submit'>Save</button>
+          
+          <div className="yasbnb-btns-div">
+          <button className='yasbnb-btn' type='submit'>Save</button>
+          </div>
         </form>
       </div>
     </>
