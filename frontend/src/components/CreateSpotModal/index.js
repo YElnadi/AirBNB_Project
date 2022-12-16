@@ -59,7 +59,7 @@ const CreateSpotModel = () => {
     if(!sessionUser){
       return <>
         <div className='must-login-box'>
-          <span>
+          <span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
           Please login first.
           </span>
         </div>
