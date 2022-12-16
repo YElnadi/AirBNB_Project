@@ -106,7 +106,7 @@ const CreateSpotModel = () => {
   return (
     <>
     <div className='main-create-spot'>
-        <h1 className='create-spot-title'>Create your spot</h1>
+        <h1 className='create-spot-title'>Create New Spot</h1>
     
         <form className='create-spot-form' onSubmit={handleSubmit}>
         {hasSubmitted && validationErrors.length>0 && (
@@ -119,103 +119,94 @@ const CreateSpotModel = () => {
             </ul>
           </div>
         )}
-        <label className='create-spot-label'>
-        Name
+
             <input className='create-form-input'
             type='text'
             value={name}
             onChange={(e)=>setName(e.target.value)}
+            placeholder="Name"
             required
             />
-            </label>
+
             
           
 
             
-            <label className='create-spot-label'>
-            Address
             <input className='create-form-input'
             type='text'
             value={address}
             onChange={(e)=>setAddress(e.target.value)}
+            placeholder="Address"
             required
             
             />
-            </label>
             
 
             
-            <label className='create-spot-label'>
-            State
+
             <input className='create-form-input'
             type='text'
             value={state}
             onChange={(e)=>setState(e.target.value)}
+            placeholder="State"
             required
             />
-            </label>
           
 
             
-            <label className='create-spot-label'>
-            City
-            <input className='input'
+
+            <input className='create-form-input'
             type='text'
             value={city}
             onChange={(e)=>setCity(e.target.value)}
+            placeholder="City"
             required
             />
-            </label>
             
 
             
-            <label className='create-spot-label'>
-           Country
+
             <input className='create-form-input'
             type='text'
             value={country}
             onChange={(e)=>setCountry(e.target.value)}
+            placeholder="Country"
             required
             />
-            </label>
           
 
             
             
-            <label className='create-spot-label'>
-            Description            
-            <textarea className='textarea'
+
+            <textarea 
+            className='create-form-input'
             type='text'
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
+            placeholder="Description"
             required
             />
-            </label>
             
 
             
-            <label className='create-spot-label'>
-             Price
             <input className='create-form-input'
             type='number'
             value={price}
             onChange={(e)=>setPrice(e.target.value)}
+            placeholder="Price"
             required
             />
-            </label>
             
 
             
-            <label className='create-spot-label'>
-            Image
             <input className='create-form-input'
             type='url'
             value={previewImage}
             onChange={(e)=>setPreviewImage(e.target.value)}
+            placeholder="Image URL"
             required
             
             />
-            </label>
             
 
             <div className='Btn-create-form'>
