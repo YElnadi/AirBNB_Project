@@ -4,6 +4,7 @@ import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { getSingleSpotDetails, thunkUpdateSpot } from '../../store/spots';
 import './EditSpotModal.css'
+import '../Common/FormCommon.css'
 
 const EditSpotModel = ({}) => {
   const history = useHistory()
@@ -112,10 +113,10 @@ const EditSpotModel = ({}) => {
 
 
   return (
-    <div className='main-edit-spot'>
-      <h1 className='edit-spot-title'>Edit Your Spot</h1>
+    <div className='yasbnb-modal-main-div'>
+      <h1 className='yasbnb-form-title'>Edit Your Spot</h1>
 
-      <form className='edit-spot-form' onSubmit={handleSubmit}>
+      <form className='yasbnb-form' onSubmit={handleSubmit}>
       {hasSubmitted && validationErrors.length>0 && (
         <div>
           The following errors were found:
@@ -126,82 +127,81 @@ const EditSpotModel = ({}) => {
             </ul>
         </div>
       )}
-        <label className='edit-spot-label'>
-        Name
-          <input className='edit-spot-input'
+        
+          <input className='yasbnb-input'
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder='Name'
             required
           />
-        </label>
-        <label className='edit-spot-label'>
-        Address
-          <input className='edit-spot-input'
+        
+        
+          <input className='yasbnb-input'
             type='text'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            placeholder='Address'
             required
 
           />
-        </label>
+       
 
-        <label className='edit-spot-label'>
-        State
-          <input className='edit-spot-input'
+        
+          <input className='yasbnb-input'
             type='text'
             value={state}
             onChange={(e) => setState(e.target.value)}
+            placeholder='State'
             required
           />
-        </label>
 
-        <label className='edit-spot-label'>
-        City
-          <input className='edit-spot-input'
+        
+          <input className='yasbnb-input'
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            placeholder='City'
             required
           />
-        </label>
+       
 
-        <label className='edit-spot-label'>
-        Country
-          <input className='edit-spot-input'
+       
+          <input className='yasbnb-input'
             type='text'
             value={country}
             onChange={(e) => setCountry(e.target.value)}
+            placeholder='Country'
             required
           />
-        </label>
+       
 
 
         
-          <label className='edit-spot-label'>
-         Description
-            <textarea className='edit-spot-textarea'
+          
+            <textarea className='yasbnb-input'
               type='text'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              placeholder='Description'
               required
             />
-          </label>
+        
         
 
-        <label className='edit-spot-label'>
-        price
-          <input className='edit-spot-input'
+        
+          <input className='yasbnb-input'
             type='number'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            placeholder='Price'
             required
           />
-        </label>
+      
 
-        <div className='Btn'>
-        <button style={{marginTop:'20px'}} className='edit-Btns' type='submit'>Save Updates</button>
-        <button className='edit-Btns' onClick={cancel}>Cancel</button>
+        <div className='yasbnb-btns-div'>
+        <button  className='yasbnb-btn' type='submit'>Save Updates</button>
+        <button className='yasbnb-btn' onClick={cancel}>Cancel</button>
         </div>
 
       </form>
