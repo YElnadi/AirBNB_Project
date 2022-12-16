@@ -62,7 +62,7 @@ function Navigation({ isLoaded }){
     //   )}
     // </div>
     // </div>
-    <div>
+    <div style={{position:'sticky', top:'0px', zIndex:'1'}}>
           <ul className="navBar">
       <li>
            <NavLink exact to="/" style={{textDecoration:'none'}}  >
