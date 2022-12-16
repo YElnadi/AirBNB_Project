@@ -71,7 +71,7 @@ const CreateReviewModel = ({ spotId }) => {
       <div className='yasbnb-modal-main-div'>
         <h1 className='yasbnb-form-title'>Leave a review</h1>
 
-        <form className='yasbnb-form' style={{height:'200px'}} onSubmit={onSubmit}>
+        <form className='yasbnb-form' style={{height:'280px'}} onSubmit={onSubmit}>
 
         {hasSubmitted && errors.length > 0 && (
             <div>

@@ -94,7 +94,7 @@ const SingleSpotDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={spot.SpotImages[0].url} style={{ width: '100%', borderRadius: '15px' }} />
+                    <img src={spot.SpotImages[0].url} style={{ width: '100%', borderRadius: '15px' , height:'550px', objectPosition:'50% 50%',objectFit:'fill'}} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <div>

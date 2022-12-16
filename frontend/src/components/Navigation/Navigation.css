@@ -70,6 +70,9 @@
     margin: 0;
     padding: 0;
     border-bottom: 1px solid rgb(224, 221, 221);
+    background: white;
+    
+
   }
   /* li a{
     text-decoration: none;
