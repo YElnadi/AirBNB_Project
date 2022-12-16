@@ -5,9 +5,9 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
-  async up(queryInterface, Sequelize) {
+   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Spots', {
       id: {
         allowNull: false,
@@ -47,7 +47,8 @@ module.exports = {
         allowNull:false,
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull:false
       },
       price: {
         type: Sequelize.DECIMAL
@@ -66,8 +67,7 @@ module.exports = {
       }
     },options);
   },
-  async down(queryInterface, Sequelize) {
-    options.tableName = "Spots"
-    await queryInterface.dropTable(options);
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Spots', options);
   }
 };

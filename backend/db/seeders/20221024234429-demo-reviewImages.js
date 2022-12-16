@@ -4,11 +4,9 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 options.tableName = "ReviewImages"
-const {Review} = require('../models')
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     /**
      * Add seed commands here.
      *
@@ -42,7 +40,7 @@ module.exports = {
      ])
   },
 
-  async down (queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     /**
      * Add commands to revert seed here.
      *
@@ -51,6 +49,6 @@ module.exports = {
      */
     return queryInterface.bulkDelete(options,{
       url:["image url"]
-    },{});
+    });
   }
 };
