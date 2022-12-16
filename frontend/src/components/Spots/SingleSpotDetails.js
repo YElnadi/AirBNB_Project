@@ -187,7 +187,7 @@ const SingleSpotDetails = () => {
                                 )}
                         </div>
 
-                        <div style={{ paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily: 'sans-serif', paddingTop: 20, paddingBottom: 20, inlineSize: 700, display: 'block', textAlign: '' }}>
+                        <div style={{ paddingBottom: 30, paddingTop: 30, fontSize: 17, fontWeight: 'normal', fontFamily: 'sans-serif', paddingTop: 20, paddingBottom: 20, display: 'block', textAlign: '' }}>
                             {sessionUser && sessionUser.id !== spot.ownerId && !didUserAlreadyReview(reviews, sessionUser.id) && (
                                 <OpenModalMenuItem
                                     itemText={<button className="leave-review-Btn">Leave a review</button>}
