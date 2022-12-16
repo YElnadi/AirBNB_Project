@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import '../Common/FormCommon.css'
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -55,10 +56,11 @@ function SignupFormModal() {
 
   return (
     <>
-      <div className='main-singup-form'>
-        <h1 className='form-title'>Sign Up</h1>
+      <div className='yasbnb-modal-main-div'>
+        <h1 className='yasbnb-form-title'>Sign Up</h1>
 
-        <form className='form-signup' onSubmit={handleSubmit}>
+        <form className='yasbnb-form' style={{height:'400px'}} onSubmit={handleSubmit}>
+        <h2 style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Welcome to Yasbnb</h2>
           {hasSubmitted && errors.length > 0 && (
             <div>
               The following errors were found:
@@ -68,80 +70,75 @@ function SignupFormModal() {
               </ul>
             </div>
           )}
-          <div >
-            <label className='label-signup'>
-             Email
-              <input className='input'
+          
+            
+              <input className='yasbnb-input'
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder='Email'
                 required
               />
-            </label>
-          </div>
-
-          <div >
-            <label className='label-signup'>
-           Username
-              <input  className='input'
+            
+         
+            
+              <input  className='yasbnb-input'
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                placeholder='Username'
                 required
               />
-            </label>
-          </div>
+            
+          
 
-          <div>
-            <label className='label-signup'>
-            First Name
-              <input  className='input'
+        
+           
+              <input  className='yasbnb-input'
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                placeholder='First Name'
                 required
               />
-            </label>
-          </div>
+          
+        
 
-          <div >
-            <label className='label-signup'>
-           Last Name
-              <input  className='input'
+         
+            
+              <input  className='yasbnb-input'
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
+                placeholder='last Name'
                 required
               />
-            </label>
-          </div>
+            
 
-          <div>
-            <label className='label-signup'>
-           Password
-              <input  className='input'
+          
+           
+              <input  className='yasbnb-input'
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder='Password'
                 required
               />
-            </label>
-          </div>
+           
+         
 
-          <div >
-            <label className='label-signup'>
-            Confirm Password               
-            <input  className='input'
+                      
+            <input  className='yasbnb-input'
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder='Confirm Password'
                 required
               />
-            </label>
-          </div>
+           
 
-          <div className='Btn'>
-            <button className ='signup-btn' type="submit">Continue</button>
+          <div className='yasbnb-btns-div'>
+            <button className ='yasbnb-btn' type="submit">Continue</button>
           </div>
         </form>
       </div>
