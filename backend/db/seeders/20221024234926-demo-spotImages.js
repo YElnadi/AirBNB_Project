@@ -35,7 +35,7 @@ module.exports = {
        },
        {
         spotId:4,
-        url:"https://a0.muscache.com/im/pictures/d6a7e301-d1cb-40ee-ac9f-c802d20895da.jpg?im_w=1200",
+        url:"https://a0.muscache.com/im/pictures/miso/Hosting-48089233/original/32e6234f-2f32-4b7c-8137-ee81e9f6c7d1.jpeg?im_w=960",
         preview:true
        },
        {
