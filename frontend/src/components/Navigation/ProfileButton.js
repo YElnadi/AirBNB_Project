@@ -33,9 +33,7 @@ function ProfileButton({ user }) {
         setShowMenu(false);
       //}
     };
-
     document.addEventListener('click', closeMenu);
-
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
@@ -54,8 +52,6 @@ function ProfileButton({ user }) {
       .then(closeModal)
     return
   }
-
-
   return (
     <>
       
