@@ -363,17 +363,15 @@ const SingleSpotDetails = () => {
                 {spot.address}, {spot.city}, {spot.state}, {spot.country}.
               </h4>
             </div> */}
-            <div className="checkin_box">
-                enter the date
-
-            </div>
+            <div className="checkin_box">enter the date</div>
 
             {sessionUser &&
-                sessionUser.id !== spot.ownerId &&
-                !didUserAlreadyReview(reviews, sessionUser.id) && (
-                    <button >Reserve</button>
-                 
-                )}
+              sessionUser.id !== spot.ownerId &&
+              !didUserAlreadyReview(reviews, sessionUser.id) && (
+                <NavLink to="/newbooking">
+                  <button>Reserve</button>
+                </NavLink>
+              )}
 
             <div className="edit-delete-spot-Btns">
               {sessionUser && sessionUser.id === spot.ownerId && (
@@ -402,7 +400,6 @@ const SingleSpotDetails = () => {
                 paddingBottom: 20,
                 display: "block",
                 textAlign: "",
-                
               }}
             >
               {sessionUser &&
@@ -410,7 +407,7 @@ const SingleSpotDetails = () => {
                 !didUserAlreadyReview(reviews, sessionUser.id) && (
                   <OpenModalMenuItem
                     itemText={
-                      <button className="leave-review-Btn" >
+                      <button className="leave-review-Btn">
                         Leave a review
                       </button>
                     }
