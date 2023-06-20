@@ -9,6 +9,8 @@ import EditSpotModal from "../EditSpotModal";
 import CreateReview from "../Reviews/CreateReviewModel";
 import CreateReviewModel from "../Reviews/CreateReviewModel";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import Reserve from "../Reserve/Reserve";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const SingleSpotDetails = () => {
   const { spotId } = useParams();
@@ -354,12 +356,25 @@ const SingleSpotDetails = () => {
                 </div>
               </div>
             </div>
-            <div>
+
+            {/* <div>
               <h4 style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>
                 {spot.name} that is hosted by Kia and Rob is located at{" "}
                 {spot.address}, {spot.city}, {spot.state}, {spot.country}.
               </h4>
+            </div> */}
+            <div className="checkin_box">
+                enter the date
+
             </div>
+
+            {sessionUser &&
+                sessionUser.id !== spot.ownerId &&
+                !didUserAlreadyReview(reviews, sessionUser.id) && (
+                    <button >Reserve</button>
+                 
+                )}
+
             <div className="edit-delete-spot-Btns">
               {sessionUser && sessionUser.id === spot.ownerId && (
                 <DeleteSpot spotId={spotId} />

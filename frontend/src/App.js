@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import {Route} from 'react-router-dom'
 import Home from "./components/Spots/Home";
 import SingleSpotDetails from "./components/Spots/SingleSpotDetails";
+import Reserve from "./components/Reserve/Reserve";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Home />
+          </Route>
+          <Route exact path='/newbooking'>
+            <Reserve/>
           </Route>
           <Route exact path='/spots/:spotId'>
             <SingleSpotDetails />
