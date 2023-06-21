@@ -12,6 +12,7 @@ import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import Reserve from "../Reserve/Reserve";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import SearchDate from "../SearchDate";
+import DisplayDate from "../DisplayDate";
 
 const SingleSpotDetails = () => {
   const { spotId } = useParams();
@@ -32,6 +33,10 @@ const SingleSpotDetails = () => {
   //////////////////////////
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+
+  const [startData, setStartDate] = useState(new Date());
+  const [endData, setEndDate] = useState(new Date());
+
 
   const openMenu = () => {
     if (showMenu) return;
@@ -365,10 +370,11 @@ const SingleSpotDetails = () => {
               </h4>
             </div> */}
             <div className="big_box">
+              <DisplayDate/>
             <OpenModalMenuItem
                     itemText={
                       <button className="search-date-btn">
-                        Search Date
+                        Search Date 
                       </button>
                     }
                     onItemClick={closeMenu}
