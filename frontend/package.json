@@ -6,8 +6,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@wojtekmaj/react-daterange-picker": "^5.2.0",
+    "date-fns": "^2.30.0",
     "js-cookie": "^3.0.1",
     "react": "^17.0.0",
+    "react-date-picker": "^10.2.0",
+    "react-date-range": "^1.4.0",
     "react-dom": "^17.0.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^5.3.4",
@@ -40,5 +44,4 @@
     "redux-logger": "^3.0.6"
   },
   "proxy": "http://localhost:8000"
-
 }

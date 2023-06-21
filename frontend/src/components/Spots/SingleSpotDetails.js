@@ -11,6 +11,7 @@ import CreateReviewModel from "../Reviews/CreateReviewModel";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import Reserve from "../Reserve/Reserve";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import SearchDate from "../SearchDate";
 
 const SingleSpotDetails = () => {
   const { spotId } = useParams();
@@ -363,13 +364,25 @@ const SingleSpotDetails = () => {
                 {spot.address}, {spot.city}, {spot.state}, {spot.country}.
               </h4>
             </div> */}
-            <div className="checkin_box">enter the date</div>
-
+            <div className="big_box">
+            <OpenModalMenuItem
+                    itemText={
+                      <button className="search-date-btn">
+                        Search Date
+                      </button>
+                    }
+                    onItemClick={closeMenu}
+                    modalComponent={
+                      <SearchDate key={spotId} spotId={spotId} />
+                    }
+                  />
+            </div>
+           
             {sessionUser &&
               sessionUser.id !== spot.ownerId &&
               !didUserAlreadyReview(reviews, sessionUser.id) && (
-                <NavLink to="/newbooking">
-                  <button>Reserve</button>
+                <NavLink to={`/newbooking/${spotId}`}>
+                  <button className="reserve_btn">Reserve</button>
                 </NavLink>
               )}
 
