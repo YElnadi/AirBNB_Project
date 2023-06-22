@@ -13,15 +13,16 @@ import DisplayDate from "../DisplayDate";
 
 
 // DATE PICKER COMPONENT
-const SearchDate = () => {
-    const dispatch = useDispatch()
+const SearchDate = ({onSearchDateChange}) => {
+  const dispatch = useDispatch()
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const { closeModal } = useModal();
 
 
   const selectionRange = {
-    startDate: startDate,
+    
+    startDate: startDate ,
     endDate: endDate,
     key: "selection",
   };
@@ -35,7 +36,7 @@ const SearchDate = () => {
   function handleSelect(ranges) {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
-    <DisplayDate startDate={ranges.selection.startDate} endDate={ranges.selection.endDate} />
+    onSearchDateChange(ranges)
   }
 
 //   const startDate_day = startDate.getUTCDate()
@@ -51,7 +52,7 @@ const SearchDate = () => {
     <div>
       <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
     </div>
-    <div> <button onClick={confirm}>Confirm</button> </div>
+    <div><button onClick={confirm}>Confirm</button> </div>
     </>
   );
 };

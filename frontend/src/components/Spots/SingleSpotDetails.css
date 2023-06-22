@@ -166,7 +166,8 @@
     width: 174px;
     height: 50px;
     border-radius: 15px;
-    justify-content:center;
+    display: flex;
+    justify-content: space-between;
    
 }
 

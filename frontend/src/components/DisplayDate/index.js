@@ -1,12 +1,13 @@
 import React from 'react';
 
 const DisplayDate = ({startDate, endDate}) => {
-    console.log('start date dispaly date', startDate)
+  console.log('startdate display date', startDate)
+    console.log('end date dispaly date', endDate)
     
   return (
     <div>
-      <p>Start Date: {startDate}</p>
-      
+      <p>Check-in: {startDate}</p>
+      <p>Checkout: {startDate}</p>
     </div>
   );
 }

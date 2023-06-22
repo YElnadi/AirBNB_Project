@@ -34,9 +34,16 @@ const SingleSpotDetails = () => {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const [startData, setStartDate] = useState(new Date());
-  const [endData, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
+  const handleSearchDate = (ranges) =>{
+    console.log("in spot details, ranges: ", ranges)
+    setStartDate(ranges.selection.startDate.toLocaleDateString());
+    setEndDate (ranges.selection.endDate.toLocaleDateString());
+  }
+
+  console.log('start date spot', startDate)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -370,20 +377,24 @@ const SingleSpotDetails = () => {
               </h4>
             </div> */}
             <div className="big_box">
-              <DisplayDate/>
-            <OpenModalMenuItem
-                    itemText={
-                      <button className="search-date-btn">
-                        Search Date 
-                      </button>
-                    }
-                    onItemClick={closeMenu}
-                    modalComponent={
-                      <SearchDate key={spotId} spotId={spotId} />
-                    }
-                  />
+              <div>
+                <h5>Check-in:{startDate}</h5>
+                <h5>Checkout:{endDate}</h5>
+              </div>
+
+              <div>
+                 <OpenModalMenuItem
+                itemText={
+                  <button className="search-date-btn">Search Date</button>
+                }
+                onItemClick={closeMenu}
+                modalComponent={<SearchDate key={spotId} spotId={spotId} onSearchDateChange = {handleSearchDate} />}
+              />
+              </div>
+
+             
             </div>
-           
+
             {sessionUser &&
               sessionUser.id !== spot.ownerId &&
               !didUserAlreadyReview(reviews, sessionUser.id) && (
