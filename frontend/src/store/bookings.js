@@ -52,6 +52,21 @@ export const thunkCreateNewBooking =
     }
   };
 
+export const thunkUpdateBooking = (bookingId, data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+    method: "PUT",
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(data)
+  })
+  if (response.ok){
+    const updatedBooking = await response.json()
+    dispatch(actionUpdateBooking(updatedBooking))
+    return updatedBooking
+  }
+};
+
 /////REDUCERS
 let initalState = {
   spot: {},
@@ -70,6 +85,13 @@ export default function bookingReducers(
       };
       newState.booking[action.newBooking.id] = action.newBooking;
       return newState;
+    }
+    case UPDATE_BOOKING:{
+      const newState = {
+        ...state,
+        booking: action.data
+      }
+      return newState
     }
     default:
       return state;
