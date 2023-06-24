@@ -29,6 +29,15 @@ const SingleSpotDetails = () => {
     return reviewsList.filter((review) => review.userId === userId).length > 0;
   };
 
+  const formateDate = (date) => {
+
+const year = date.getFullYear();
+const month = String(date.getMonth() + 1).padStart(2, '0');
+const day = String(date.getDate()).padStart(2, '0');
+
+return `${year}-${month}-${day}`;
+
+ }
   //console.log('####spot####', spot)
   //////////////////////////
   const [showMenu, setShowMenu] = useState(false);
@@ -37,13 +46,13 @@ const SingleSpotDetails = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
-  const handleSearchDate = (ranges) =>{
-    console.log("in spot details, ranges: ", ranges)
-    setStartDate(ranges.selection.startDate.toLocaleDateString());
-    setEndDate (ranges.selection.endDate.toLocaleDateString());
-  }
+  const handleSearchDate = (ranges) => {
+    console.log("in spot details, ranges: ", ranges);
+    setStartDate(formateDate(ranges.selection.startDate));
+    setEndDate(formateDate(ranges.selection.endDate));
+  };
 
-  console.log('start date spot', startDate)
+  console.log("start date spot", startDate);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -383,22 +392,26 @@ const SingleSpotDetails = () => {
               </div>
 
               <div>
-                 <OpenModalMenuItem
-                itemText={
-                  <button className="search-date-btn">Search Date</button>
-                }
-                onItemClick={closeMenu}
-                modalComponent={<SearchDate key={spotId} spotId={spotId} onSearchDateChange = {handleSearchDate} />}
-              />
+                <OpenModalMenuItem
+                  itemText={
+                    <button className="search-date-btn">Search Date</button>
+                  }
+                  onItemClick={closeMenu}
+                  modalComponent={
+                    <SearchDate
+                      key={spotId}
+                      spotId={spotId}
+                      onSearchDateChange={handleSearchDate}
+                    />
+                  }
+                />
               </div>
-
-             
             </div>
 
             {sessionUser &&
               sessionUser.id !== spot.ownerId &&
               !didUserAlreadyReview(reviews, sessionUser.id) && (
-                <NavLink to={`/newbooking/${spotId}`}>
+                <NavLink to={`/newbooking/${spotId}/${startDate}/${endDate}`}>
                   <button className="reserve_btn">Reserve</button>
                 </NavLink>
               )}
