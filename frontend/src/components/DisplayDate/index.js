@@ -1,13 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 
-const DisplayDate = ({startDate, endDate}) => {
-  console.log('startdate display date', startDate)
-    console.log('end date dispaly date', endDate)
+const DisplayDate = ({start, end}) => {
+  const [startDate, setStartDate] = useState(start)
     
   return (
     <div>
-      <p>Check-in: {startDate}</p>
-      <p>Checkout: {startDate}</p>
+      <p>Checkn: {start}</p>
+      <p>Checkout: {end}</p>
     </div>
   );
 }

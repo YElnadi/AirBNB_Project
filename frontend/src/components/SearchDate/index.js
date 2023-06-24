@@ -1,14 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-// import DatePicker from "react-date-picker"
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { useModal } from "../../context/Modal";
-import { getSingleSpotDetails } from "../../store/spots";
-import DisplayDate from "../DisplayDate";
+
 
 
 
@@ -21,7 +18,6 @@ const SearchDate = ({onSearchDateChange}) => {
 
 
   const selectionRange = {
-    
     startDate: startDate ,
     endDate: endDate,
     key: "selection",
@@ -29,8 +25,6 @@ const SearchDate = ({onSearchDateChange}) => {
 
   const confirm = async (e) =>{
     closeModal() 
-    
-    // history.push('/')
   }
   
   function handleSelect(ranges) {
@@ -38,6 +32,8 @@ const SearchDate = ({onSearchDateChange}) => {
     setEndDate(ranges.selection.endDate);
     onSearchDateChange(ranges)
   }
+
+  
 
 //   const startDate_day = startDate.getUTCDate()
 //   const endDate_day = endDate.getUTCDate()

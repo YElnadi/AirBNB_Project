@@ -29,7 +29,7 @@ const SingleSpotDetails = () => {
     return reviewsList.filter((review) => review.userId === userId).length > 0;
   };
 
-  const formateDate = (date) => {
+  const formatDate = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
@@ -41,14 +41,36 @@ const SingleSpotDetails = () => {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useState(localStorage.getItem("startDate") || "");
+  const [endDate, setEndDate] = useState(localStorage.getItem("endDate") || "");
+  const [datesSelected, setDatesSelected] = useState(false);
 
   const handleSearchDate = (ranges) => {
     console.log("in spot details, ranges: ", ranges);
-    setStartDate(formateDate(ranges.selection.startDate));
-    setEndDate(formateDate(ranges.selection.endDate));
+    // setStartDate(formateDate(ranges.selection.startDate));
+    // setEndDate(formateDate(ranges.selection.endDate));
+    // setDatesSelected(true);
+    const formattedStartDate = ranges.selection.startDate ? formatDate(ranges.selection.startDate) : null;
+    const formattedEndDate = ranges.selection.endDate ? formatDate(ranges.selection.endDate) : null;
+
+
+    setStartDate(formattedStartDate);
+    setEndDate(formattedEndDate);
+    setDatesSelected(true);
+
+    ///store the selected date in local storage
+    localStorage.setItem("startDate", formattedStartDate);
+    localStorage.setItem("endDate", formattedEndDate);
   };
+
+
+  // Clear the stored dates when the component unmounts
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("startDate");
+      localStorage.removeItem("endDate");
+    };
+  }, []);
 
   console.log("start date spot", startDate);
 
@@ -387,6 +409,7 @@ const SingleSpotDetails = () => {
               <div>
                 <h5>Check-in:{startDate}</h5>
                 <h5>Checkout:{endDate}</h5>
+                
               </div>
 
               <div>
@@ -406,9 +429,9 @@ const SingleSpotDetails = () => {
               </div>
             </div>
 
-            {sessionUser &&
+            {sessionUser && 
               sessionUser.id !== spot.ownerId &&
-              !didUserAlreadyReview(reviews, sessionUser.id) && (
+              !didUserAlreadyReview(reviews, sessionUser.id) &&  (
                 <NavLink to={`/newbooking/${spotId}/${startDate}/${endDate}`}>
                   <button className="reserve_btn">Reserve</button>
                 </NavLink>
