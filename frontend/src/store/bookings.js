@@ -46,6 +46,7 @@ export const thunkCreateNewBooking =
     });
     if (response.ok) {
       const newBooking = await response.json();
+      newBooking.User = user;
       dispatch(actionCreateBooking(newBooking));
       return newBooking;
     }
@@ -58,20 +59,19 @@ let initalState = {
 };
 
 export default function bookingReducers(
-  state = { spot: {}, user: {}},
+  state = { spot: {}, user: {}, booking: {} },
   action
 ) {
   switch (action.type) {
-    case CREATE_BOOKING:{
-        const newState = {
-            ...state,
-            spot:{...state.spot},
-            user:{...state.user},
-        }
-        newState.booking[action.newBooking.id] = action.newBooking
-        return newState
+    case CREATE_BOOKING: {
+      const newState = {
+        ...state,
+        booking: { ...state.booking },
+      };
+      newState.booking[action.newBooking.id] = action.newBooking;
+      return newState;
     }
     default:
-        return state;
+      return state;
   }
 }
