@@ -51,6 +51,7 @@ const UserBookings = () => {
             <p>End Date: {formatDate(booking.endDate)}</p>
             <p>Total Cost for  {calculateNights(booking.startDate, booking.endDate)} nights: ${calculateTotalCost(booking.Spot.price, calculateNights(booking.startDate, booking.endDate))}
             </p>
+            <button>Cancel Booking</button>
           </div>
         ))}
     </div>

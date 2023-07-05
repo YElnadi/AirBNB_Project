@@ -67,6 +67,16 @@ export const thunkUpdateBooking = (bookingId, data) => async (dispatch) => {
   }
 };
 
+
+export const deleteBookingByIdThunk = (bookingId) =>async(dispatch) =>{
+  const response = await csrfFetch(`/api/bookings/${bookingId}`,{
+    method:'DELETE'
+  })
+  if(response.ok){
+    dispatch(actionDeleteBooking(bookingId))
+  }
+}
+
 /////REDUCERS
 let initalState = {
   spot: {},
