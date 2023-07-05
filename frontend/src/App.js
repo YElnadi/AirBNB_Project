@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import { Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import {Route} from 'react-router-dom'
+import { Route } from "react-router-dom";
 import Home from "./components/Spots/Home";
 import SingleSpotDetails from "./components/Spots/SingleSpotDetails";
 import Reserve from "./components/Reserve/Reserve";
+import User_bookings from "./components/Bookings/User_bookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,15 +21,18 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route  path='/newbooking/:spotId/:startDate/:endDate'>
-            <Reserve/>
+          <Route path="/newbooking/:spotId/:startDate/:endDate">
+            <Reserve />
           </Route>
-          <Route exact path='/spots/:spotId'>
+          <Route exact path="/spots/:spotId">
             <SingleSpotDetails />
-            </Route>
+          </Route>
+          <Route exact path="/bookings/:userId">
+            <User_bookings/>
+          </Route>
         </Switch>
       )}
     </>

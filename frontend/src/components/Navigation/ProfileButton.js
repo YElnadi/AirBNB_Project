@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
-import OpenModalMenuItem from './OpenModalMenuItem';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
+import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
+import OpenModalMenuItem from "./OpenModalMenuItem";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
-import { useModal } from '../../context/Modal'
+import { useModal } from "../../context/Modal";
 
-import './ProfileButton.css'
+import "./ProfileButton.css";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const history= useHistory();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const { closeModal } = useModal();
-
 
   const openMenu = () => {
     if (showMenu) return;
@@ -30,73 +30,132 @@ function ProfileButton({ user }) {
     }
     const closeMenu = (e) => {
       //if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
+      setShowMenu(false);
       //}
     };
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(sessionActions.logout());
-    history.push('/')
+    history.push("/");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
-  
+
   const handleDemo = async (e) => {
     e.preventDefault();
-    await dispatch(sessionActions.login({ credential: 'Ali-G', password: 'password' }))
-      .then(closeModal)
-    return
-  }
+    await dispatch(
+      sessionActions.login({ credential: "Ali-G", password: "password" })
+    ).then(closeModal);
+    return;
+  };
   return (
     <>
-      
-        <button onClick={openMenu} className='button'>
-          <i className="fa-solid fa-bars " style={{ padding: 5, fontSize: 20 }}></i>
-          <i className="fas fa-user-circle" style={{ fontSize: 25, padding:0}} />
-        </button>
+      <button onClick={openMenu} className="button">
+        <i
+          className="fa-solid fa-bars "
+          style={{ padding: 5, fontSize: 20 }}
+        ></i>
+        <i
+          className="fas fa-user-circle"
+          style={{ fontSize: 25, padding: 0 }}
+        />
+      </button>
 
-          {showMenu && 
-          <ul  className={ulClassName} ref={ulRef}>
+      {showMenu && (
+        <ul className={ulClassName} ref={ulRef}>
+          {user ? (
+            <>
+              <li>
+                <span style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>
+                  Hello,{user.username}
+                </span>
+              </li>
+              <li>
+                <span style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>
+                  {user.email}
+                </span>
+              </li>
 
-            {user ? (
-              <>
+              <li >
+                <span >
+                  <NavLink
+                    to={`/bookings/${user.id}`}
+                     style={{
+                      fontFamily: "Geneva, Verdana, sans-serif",
+                      textDecoration:"none",
+                      color: "black",
+                    }}
+                  >
+                    Your Bookings
+                  </NavLink>
+                </span>
+              </li>
 
-                <li  ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Hello,{user.username}</span></li>
-                <li ><span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>{user.email}</span></li>
-                <li onClick={logout}>
-                  <span style= {{border:'none', background:'transparent', fontSize:16, textIndent:'-5px',fontFamily: 'Geneva, Verdana, sans-serif'}}>Log Out</span>
-                </li>
-              </>
-            ) : (
-              <>
-                <li style={{ cursor: 'pointer'}}>
-                  <OpenModalMenuItem
-                    itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Log In</span>}
-                    onItemClick={closeMenu}
-                    modalComponent={<LoginFormModal />}
-                  />
-                </li>
-                <li style={{ cursor: 'pointer', borderBotton:'1px silver solid'}}>
-                  <OpenModalMenuItem
-                    itemText={<span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>Sign up</span>}
-                    onItemClick={closeMenu}
-                    modalComponent={<SignupFormModal />}
-                  />
-                </li>
-                <li onClick={handleDemo}>
-                  <span style={{cursor: 'pointer', border:'none', background:'transparent', marginBottom:'0px', fontFamily:'Geneva, Verdana, sans-serif', fontSize:16,textIndent:'-5px'}} type='submit'>Log in as demo user</span>
-                </li>
-                </>
-            )}
-          </ul>
-          } 
-        
-      
+              <li onClick={logout}>
+                <span
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    fontSize: 16,
+                    textIndent: "-5px",
+                    fontFamily: "Geneva, Verdana, sans-serif",
+                  }}
+                >
+                  Log Out
+                </span>
+              </li>
+            </>
+          ) : (
+            <>
+              <li style={{ cursor: "pointer" }}>
+                <OpenModalMenuItem
+                  itemText={
+                    <span style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>
+                      Log In
+                    </span>
+                  }
+                  onItemClick={closeMenu}
+                  modalComponent={<LoginFormModal />}
+                />
+              </li>
+              <li
+                style={{ cursor: "pointer", borderBotton: "1px silver solid" }}
+              >
+                <OpenModalMenuItem
+                  itemText={
+                    <span style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>
+                      Sign up
+                    </span>
+                  }
+                  onItemClick={closeMenu}
+                  modalComponent={<SignupFormModal />}
+                />
+              </li>
+              <li onClick={handleDemo}>
+                <span
+                  style={{
+                    cursor: "pointer",
+                    border: "none",
+                    background: "transparent",
+                    marginBottom: "0px",
+                    fontFamily: "Geneva, Verdana, sans-serif",
+                    fontSize: 16,
+                    textIndent: "-5px",
+                  }}
+                  type="submit"
+                >
+                  Log in as demo user
+                </span>
+              </li>
+            </>
+          )}
+        </ul>
+      )}
     </>
   );
 }
