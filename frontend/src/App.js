@@ -8,6 +8,7 @@ import Home from "./components/Spots/Home";
 import SingleSpotDetails from "./components/Spots/SingleSpotDetails";
 import Reserve from "./components/Reserve/Reserve";
 import User_bookings from "./components/Bookings/User_bookings";
+import { useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();

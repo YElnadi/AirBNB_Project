@@ -26,8 +26,8 @@ export const actionUpdateBooking = (data) => ({
 });
 
 //THUNK ACTIONS
-export const getAllBookingsForCurrentUser = () => async (dispatch) => {
-  const response = await csrfFetch("/api/bookings");
+export const getAllBookingsForCurrentUser = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/bookings/${userId}`);
   if (response.ok) {
     const bookingsList = await response.json();
     dispatch(actionLoadBookings(bookingsList.Bookings));
