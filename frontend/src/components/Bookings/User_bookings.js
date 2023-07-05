@@ -17,6 +17,20 @@ const UserBookings = () => {
     return formattedDate;
   };
 
+  const calculateNights = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const timeDifference = end.getTime() - start.getTime();
+    const numberOfNights = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    return numberOfNights;
+  };
+
+  const calculateTotalCost = (price, numberOfNights) => {
+    const totalCost = price * numberOfNights;
+    return totalCost;
+  };
+
+
   return (
     <div>
       <h2>Your Current Bookings</h2>
@@ -35,6 +49,8 @@ const UserBookings = () => {
             <p>Country: {booking.Spot.country}</p>
             <p>Start Date: {formatDate(booking.startDate)}</p>
             <p>End Date: {formatDate(booking.endDate)}</p>
+            <p>Total Cost for  {calculateNights(booking.startDate, booking.endDate)} nights: ${calculateTotalCost(booking.Spot.price, calculateNights(booking.startDate, booking.endDate))}
+            </p>
           </div>
         ))}
     </div>
