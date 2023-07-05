@@ -1,12 +1,12 @@
 import { csrfFetch } from "./csrf";
 //ACTIONS
 const CREATE_BOOKING = "POST/creatBookingForSingleSpot";
-const LOAD_BOOKINGS = "GET/allBookingsForCurrentUser";
+const LOAD_MY_BOOKINGS = "GET/allBookingsForCurrentUser";
 const DELETE_BOOKING = "DELETE/bookingById";
 const UPDATE_BOOKING = "PUT/bookingById";
 
-export const actionLoadBookings = (bookings) => ({
-  type: LOAD_BOOKINGS,
+export const actionLoadMyBookings = (bookings) => ({
+  type: LOAD_MY_BOOKINGS,
   bookings,
 });
 
@@ -26,11 +26,12 @@ export const actionUpdateBooking = (data) => ({
 });
 
 //THUNK ACTIONS
-export const getAllBookingsForCurrentUser = (userId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/bookings/${userId}`);
+export const loadMyBookings = () => async (dispatch) => {
+  const response = await csrfFetch('/api/bookings/current');
   if (response.ok) {
     const bookingsList = await response.json();
-    dispatch(actionLoadBookings(bookingsList.Bookings));
+    console.log('booking list from thunk', bookingsList)
+    dispatch(actionLoadMyBookings(bookingsList.Bookings));
     return bookingsList;
   }
 };
@@ -74,7 +75,7 @@ let initalState = {
 };
 
 export default function bookingReducers(
-  state = { spot: {}, user: {}, booking: {} },
+  state = { spot: {}, user: {}, booking: {}, myBookings:{} },
   action
 ) {
   switch (action.type) {
@@ -92,6 +93,14 @@ export default function bookingReducers(
         booking: action.data
       }
       return newState
+    }
+    case LOAD_MY_BOOKINGS:{
+      const newState = {
+        ...state,
+        bookings: action.bookings
+      };
+      return newState
+        
     }
     default:
       return state;
