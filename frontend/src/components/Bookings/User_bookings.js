@@ -3,15 +3,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadMyBookings } from "../../store/bookings";
 
 const UserBookings = () => {
-  const sessionUser = useSelector((state) => state.session.user.id);
-  const spot = useSelector((state)=>state.spot)
+  
   const bookings = useSelector((state) => state.bookings.bookings); // Retrieve bookings from Redux store
-  console.log("booking", bookings);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadMyBookings());
   }, [dispatch]);
+
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    const formattedDate = new Date(date).toLocaleDateString(undefined, options);
+    return formattedDate;
+  };
 
   return (
     <div>
@@ -29,8 +33,8 @@ const UserBookings = () => {
             <p>City: {booking.Spot.city}</p>
             <p>State: {booking.Spot.state}</p>
             <p>Country: {booking.Spot.country}</p>
-            <p>Start Date: {booking.startDate}</p>
-            <p>End Date: {booking.endDate}</p>
+            <p>Start Date: {formatDate(booking.startDate)}</p>
+            <p>End Date: {formatDate(booking.endDate)}</p>
           </div>
         ))}
     </div>

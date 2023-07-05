@@ -30,7 +30,6 @@ export const loadMyBookings = () => async (dispatch) => {
   const response = await csrfFetch('/api/bookings/current');
   if (response.ok) {
     const bookingsList = await response.json();
-    console.log('booking list from thunk', bookingsList)
     dispatch(actionLoadMyBookings(bookingsList.Bookings));
     return bookingsList;
   }
