@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadMyBookings } from "../../store/bookings";
+import { deleteBookingByIdThunk } from "../../store/bookings";
 
 const UserBookings = () => {
   
   const bookings = useSelector((state) => state.bookings.bookings); // Retrieve bookings from Redux store
+  console.log('bookings', bookings)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,6 +32,10 @@ const UserBookings = () => {
     return totalCost;
   };
 
+  const deleteBooking = async (bookingId) => {
+    await dispatch(deleteBookingByIdThunk(bookingId))
+    dispatch(loadMyBookings())
+  };
 
   return (
     <div>
@@ -51,7 +57,7 @@ const UserBookings = () => {
             <p>End Date: {formatDate(booking.endDate)}</p>
             <p>Total Cost for  {calculateNights(booking.startDate, booking.endDate)} nights: ${calculateTotalCost(booking.Spot.price, calculateNights(booking.startDate, booking.endDate))}
             </p>
-            <button>Cancel Booking</button>
+            <button onClick={() => deleteBooking(booking.id)}>Cancel Booking</button>
           </div>
         ))}
     </div>
