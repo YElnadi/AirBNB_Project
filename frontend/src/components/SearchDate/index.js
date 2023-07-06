@@ -7,16 +7,19 @@ import "react-date-range/dist/theme/default.css";
 import { useModal } from "../../context/Modal";
 import { NavLink } from "react-router-dom";
 import Reserve from "../Reserve/Reserve";
+import { useHistory } from "react-router-dom";
 
 
 
 
 // DATE PICKER COMPONENT
-const SearchDate = ({onSearchDateChange}) => {
+const SearchDate = ({onSearchDateChange, spotId}) => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const { closeModal } = useModal();
+  console.log('spotid search date', spotId)
 
 
   const selectionRange = {
@@ -27,8 +30,7 @@ const SearchDate = ({onSearchDateChange}) => {
 
   const confirm = async (e) =>{
     closeModal();
-    // <NavLink><Reserve/></NavLink>
-    
+    history.push(`/newbooking/${spotId}/${startDate}/${endDate}`)
   }
   
   function handleSelect(ranges) {

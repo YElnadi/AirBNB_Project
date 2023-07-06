@@ -24,14 +24,13 @@ const Reserve = () => {
 
   const { startDate } = useParams();
   console.log("startdate reserve", startDate); //06-03-2027
-  const startDay = startDate.split("-")[1];
-
   const { endDate } = useParams();
-  const endDay = endDate.split("-")[1];
 
-  //console.log("enddate reserve", endDate);
+  const startDay = new Date(startDate).getDate();
+  console.log("startDay#####", startDay);
+  const endDay = new Date(endDate).getDate();
 
-  const total = (endDay - startDay) * spot.price;
+  const total = (endDay - startDay + 1) * spot.price;
 
   ///////////////////////Modal//////////////
   const [showMenu, setShowMenu] = useState(false);
