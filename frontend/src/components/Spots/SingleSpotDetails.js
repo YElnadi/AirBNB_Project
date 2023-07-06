@@ -429,14 +429,6 @@ const SingleSpotDetails = () => {
               </div>
             </div>
 
-            {sessionUser && 
-              sessionUser.id !== spot.ownerId &&
-              !didUserAlreadyReview(reviews, sessionUser.id) &&  (
-                <NavLink to={`/newbooking/${spotId}/${startDate}/${endDate}`}>
-                  <button className="reserve_btn">Reserve</button>
-                </NavLink>
-              )}
-
             <div className="edit-delete-spot-Btns">
               {sessionUser && sessionUser.id === spot.ownerId && (
                 <DeleteSpot spotId={spotId} />
