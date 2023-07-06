@@ -51,11 +51,10 @@ const UserBookings = () => {
   };
 
   const backToSpot = async (spotId) => {
-    await dispatch(getSingleSpotDetails(spotId)).then(history.push(`/spots/${spotId}`))
-    
+    await dispatch(getSingleSpotDetails(spotId)).then(
+      history.push(`/spots/${spotId}`)
+    );
   };
-
-  
 
   return (
     <div>
@@ -71,7 +70,7 @@ const UserBookings = () => {
       <div className="trips">
         {bookings &&
           bookings.map((booking) => (
-            <div key={booking.id} className='trips_data'>
+            <div key={booking.id} className="trips_data">
               <div>
                 <img
                   className="user_bookings"
@@ -91,10 +90,16 @@ const UserBookings = () => {
                     calculateNights(booking.startDate, booking.endDate)
                   )}
                 </p>
-                <button style={{ cursor: 'pointer'}}onClick={() => deleteBooking(booking.id)}>
+                <button
+                  style={{ cursor: "pointer" }}
+                  onClick={() => deleteBooking(booking.id)}
+                >
                   Cancel Booking
                 </button>
-                <button style={{ cursor: 'pointer'}} onClick={() => backToSpot(booking.spotId)}>
+                <button
+                  style={{ cursor: "pointer" }}
+                  onClick={() => backToSpot(booking.spotId)}
+                >
                   Edit Booking
                 </button>
               </div>

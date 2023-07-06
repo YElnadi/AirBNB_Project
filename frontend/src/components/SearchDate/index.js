@@ -5,6 +5,8 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { useModal } from "../../context/Modal";
+import { NavLink } from "react-router-dom";
+import Reserve from "../Reserve/Reserve";
 
 
 
@@ -24,7 +26,9 @@ const SearchDate = ({onSearchDateChange}) => {
   };
 
   const confirm = async (e) =>{
-    closeModal() 
+    closeModal();
+    // <NavLink><Reserve/></NavLink>
+    
   }
   
   function handleSelect(ranges) {
