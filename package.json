@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/YElnadi/AirBNB_Project/issues"
   },
-  "homepage": "https://github.com/YElnadi/AirBNB_Project#readme"
+  "homepage": "https://github.com/YElnadi/AirBNB_Project#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1411.0"
+  }
 }
