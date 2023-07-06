@@ -81,17 +81,18 @@ function ProfileButton({ user }) {
                 </span>
               </li>
 
-              <li >
-                <span >
+              <li>
+                <span>
                   <NavLink
                     to={`/bookings/${user.id}`}
-                     style={{
-                      fontFamily: "Geneva, Verdana, sans-serif",
+                    style={{
+                      fontFamily:"Geneva, Verdana, sans-serif",
                       textDecoration:"none",
-                      color: "black",
+                      color:"black",
+                      borderBottom: "none"
                     }}
                   >
-                    Your Bookings
+                    Trips
                   </NavLink>
                 </span>
               </li>

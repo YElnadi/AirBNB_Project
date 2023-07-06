@@ -41,6 +41,15 @@
     
 }
 
+.user_bookings{
+    height:200px;
+    width: 200px;
+     border-radius: 15px; 
+    background-color: white;
+    object-fit: cover;
+    color:white;
+}
+
 /* .spot-card-container{
     display: flex;
     justify-content: space-evenly;
