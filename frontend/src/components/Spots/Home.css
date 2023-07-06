@@ -58,7 +58,20 @@
 /* *{
     box-sizing: border-box;
 } */
+.trips{
+    margin-left:50px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
 
+.trips_data{
+    display: grid;
+    grid-template-columns: 2fr 3fr; /* Two columns with equal width */
+    grid-gap: 20px; /* Space of 20 pixels between grid items */
+    cursor: pointer;
+    
+}
 .column{
     float:left;
     width:25%;

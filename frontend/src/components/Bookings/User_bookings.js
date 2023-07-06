@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadMyBookings } from "../../store/bookings";
 import { deleteBookingByIdThunk } from "../../store/bookings";
+import { useHistory } from "react-router-dom";
+import { getSingleSpotDetails } from "../../store/spots";
 
 const UserBookings = () => {
   const bookings = useSelector((state) => state.bookings.bookings); // Retrieve bookings from Redux store
   console.log("bookings", bookings);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(loadMyBookings());
@@ -15,12 +18,20 @@ const UserBookings = () => {
   const formatDate = (startDate, endDate) => {
     const startOptions = { month: "long", day: "numeric" };
     const endOptions = { day: "numeric" };
-    const formattedStartDate = new Date(startDate).toLocaleDateString(undefined, startOptions);
-    const formattedEndDate = new Date(endDate).toLocaleDateString(undefined, endOptions);
-  
-    return `${formattedStartDate}-${formattedEndDate}, ${new Date(endDate).getFullYear()}`;
+    const formattedStartDate = new Date(startDate).toLocaleDateString(
+      undefined,
+      startOptions
+    );
+    const formattedEndDate = new Date(endDate).toLocaleDateString(
+      undefined,
+      endOptions
+    );
+
+    return `${formattedStartDate}-${formattedEndDate}, ${new Date(
+      endDate
+    ).getFullYear()}`;
   };
-  
+
   const calculateNights = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -39,38 +50,57 @@ const UserBookings = () => {
     dispatch(loadMyBookings());
   };
 
+  const backToSpot = async (spotId) => {
+    await dispatch(getSingleSpotDetails(spotId)).then(history.push(`/spots/${spotId}`))
+    
+  };
+
+  
+
   return (
     <div>
-      <h2 style={{fontFamily:'Geneva, Verdana, sans-serif'}}>Trips</h2>
-      {bookings &&
-        bookings.map((booking) => (
-          <div key={booking.id}>
-            <h3 style={{fontFamily:'Geneva, Verdana, sans-serif'}}>{booking.Spot.name}</h3>
-            <img
-              className="user_bookings"
-              src={booking.Spot.previewImage}
-            ></img>
-            {/* <h3>Booking ID: {booking.id}</h3> */}
-            {/* <p>Address: {booking.Spot.address}</p> */}
-            <p>{booking.Spot.city}</p>
-            {/* <p>State: {booking.Spot.state}</p>
-            <p>Country: {booking.Spot.country}</p> */}
-            <p>Date: {formatDate(booking.startDate, booking.endDate)}</p>
-            {/* <p>Start Date: {formatDate(booking.startDate)}</p>
-            <p>End Date: {formatDate(booking.endDate)}</p> */}
-            <p>
-              Total Cost for{" "}
-              {calculateNights(booking.startDate, booking.endDate)} nights: $
-              {calculateTotalCost(
-                booking.Spot.price,
-                calculateNights(booking.startDate, booking.endDate)
-              )}
-            </p>
-            <button onClick={() => deleteBooking(booking.id)}>
-              Cancel Booking
-            </button>
-          </div>
-        ))}
+      <h2
+        style={{
+          fontFamily: "Geneva, Verdana, sans-serif",
+          marginLeft: "50px",
+        }}
+      >
+        Trips
+      </h2>
+
+      <div className="trips">
+        {bookings &&
+          bookings.map((booking) => (
+            <div key={booking.id} className='trips_data'>
+              <div>
+                <img
+                  className="user_bookings"
+                  src={booking.Spot.previewImage}
+                ></img>
+              </div>
+              <div>
+                <p>{booking.Spot.city}</p>
+                <p>Hosted by {booking.userFirstName}</p>
+                <p>{formatDate(booking.startDate, booking.endDate)}</p>
+                <p>
+                  Total Cost for{" "}
+                  {calculateNights(booking.startDate, booking.endDate)} nights:
+                  $
+                  {calculateTotalCost(
+                    booking.Spot.price,
+                    calculateNights(booking.startDate, booking.endDate)
+                  )}
+                </p>
+                <button style={{ cursor: 'pointer'}}onClick={() => deleteBooking(booking.id)}>
+                  Cancel Booking
+                </button>
+                <button style={{ cursor: 'pointer'}} onClick={() => backToSpot(booking.spotId)}>
+                  Edit Booking
+                </button>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
