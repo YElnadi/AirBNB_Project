@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/YElnadi/AirBNB_Project#readme",
   "dependencies": {
-    "aws-sdk": "^2.1411.0"
+    "aws-sdk": "^2.1411.0",
+    "date-fns": "^2.30.0"
   }
 }
