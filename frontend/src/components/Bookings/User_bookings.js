@@ -4,6 +4,7 @@ import { loadMyBookings } from "../../store/bookings";
 import { deleteBookingByIdThunk } from "../../store/bookings";
 import { useHistory } from "react-router-dom";
 import { getSingleSpotDetails } from "../../store/spots";
+import "./User_bookings.css"
 
 const UserBookings = () => {
   const bookings = useSelector((state) => state.bookings.bookings); // Retrieve bookings from Redux store
@@ -68,7 +69,9 @@ const UserBookings = () => {
       </h2>
 
       <div className="trips">
-        {bookings &&
+        {bookings.length===0? (<h2>No trips booked...yet!
+</h2>):
+        (
           bookings.map((booking) => (
             <div key={booking.id} className="trips_data">
               <div>
@@ -79,7 +82,7 @@ const UserBookings = () => {
               </div>
               <div>
                 <p>{booking.Spot.city}</p>
-                <p>Hosted by {booking.userFirstName}</p>
+                {/* <p>Hosted by {booking.userFirstName}</p> */}
                 <p>{formatDate(booking.startDate, booking.endDate)}</p>
                 <p>
                   Total Cost for{" "}
@@ -90,20 +93,22 @@ const UserBookings = () => {
                     calculateNights(booking.startDate, booking.endDate)
                   )}
                 </p>
-                <button
+                <button className="cancel-booking"
                   style={{ cursor: "pointer" }}
                   onClick={() => deleteBooking(booking.id)}
                 >
                   Cancel Booking
                 </button>
-                <button
+                {/* <button
                   style={{ cursor: "pointer" }}
                   onClick={() => backToSpot(booking.spotId)}
                 >
                   Edit Booking
-                </button>
+                </button> */}
               </div>
             </div>
+        ) 
+          
           ))}
       </div>
     </div>

@@ -41,7 +41,9 @@ const SingleSpotDetails = () => {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const [startDate, setStartDate] = useState(localStorage.getItem("startDate") || "");
+  const [startDate, setStartDate] = useState(
+    localStorage.getItem("startDate") || ""
+  );
   const [endDate, setEndDate] = useState(localStorage.getItem("endDate") || "");
   const [datesSelected, setDatesSelected] = useState(false);
 
@@ -50,9 +52,12 @@ const SingleSpotDetails = () => {
     // setStartDate(formateDate(ranges.selection.startDate));
     // setEndDate(formateDate(ranges.selection.endDate));
     // setDatesSelected(true);
-    const formattedStartDate = ranges.selection.startDate ? formatDate(ranges.selection.startDate) : null;
-    const formattedEndDate = ranges.selection.endDate ? formatDate(ranges.selection.endDate) : null;
-
+    const formattedStartDate = ranges.selection.startDate
+      ? formatDate(ranges.selection.startDate)
+      : null;
+    const formattedEndDate = ranges.selection.endDate
+      ? formatDate(ranges.selection.endDate)
+      : null;
 
     setStartDate(formattedStartDate);
     setEndDate(formattedEndDate);
@@ -62,7 +67,6 @@ const SingleSpotDetails = () => {
     localStorage.setItem("startDate", formattedStartDate);
     localStorage.setItem("endDate", formattedEndDate);
   };
-
 
   // Clear the stored dates when the component unmounts
   useEffect(() => {
@@ -406,26 +410,32 @@ const SingleSpotDetails = () => {
               </h4>
             </div> */}
             <div className="big_box">
-              <div>
-                <h5>Check-in:{startDate}</h5>
-                <h5>Checkout:{endDate}</h5>
-                
-              </div>
-
-              <div>
-                <OpenModalMenuItem
-                  itemText={
-                    <button className="search-date-btn">Search Date</button>
-                  }
-                  onItemClick={closeMenu}
-                  modalComponent={
-                    <SearchDate
-                      key={spotId}
-                      spotId={spotId}
-                      onSearchDateChange={handleSearchDate}
-                    />
-                  }
-                />
+              <div className="date-container">
+                <div style={{display:'flex', gap:'70px', border:'black 1px solid', padding:'30px'}}>
+                  <div>
+                    <h5>Checkin</h5>
+                    <p>{startDate}</p>
+                  </div>
+                  <div>
+                    <h5>Checkout</h5>
+                    <p>{endDate}</p>
+                  </div>
+                </div>
+                <div className="search-date-container">
+                  <OpenModalMenuItem
+                    itemText={
+                      <button className="search-date-btn">Search Date</button>
+                    }
+                    onItemClick={closeMenu}
+                    modalComponent={
+                      <SearchDate
+                        key={spotId}
+                        spotId={spotId}
+                        onSearchDateChange={handleSearchDate}
+                      />
+                    }
+                  />
+                </div>
               </div>
             </div>
 

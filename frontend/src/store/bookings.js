@@ -78,10 +78,10 @@ export const deleteBookingByIdThunk = (bookingId) =>async(dispatch) =>{
 }
 
 /////REDUCERS
-let initalState = {
-  spot: {},
-  user: {},
-};
+// let initalState = {
+//   spot: {},
+//   user: {},
+// };
 
 export default function bookingReducers(
   state = { spot: {}, user: {}, booking: {}, myBookings:{} },

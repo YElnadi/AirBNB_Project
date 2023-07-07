@@ -160,17 +160,70 @@
 
 
 .big_box{
-    border: 1px black solid;
+    /* border: 1px black solid;
     padding: 50px;
     margin: 20px;
     width: 174px;
     height: 50px;
     border-radius: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; */
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  width: 240px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  margin: 20px;
    
 }
 
+.date-container {
+    display: flex;
+    flex-direction: column;
+
+    
+  }
+  
+  .date-container > div {
+    
+    margin-right: 10px;
+    
+  }
+   
+  .search-date-container {
+    margin-top: 10px;
+  }
+  
+  .big_box h5 {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .big_box button {
+    padding: 10px 20px;
+    background: rgb(230, 30, 77);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left:55px;
+    margin-top:60px;
+    position: relative;
+    
+  }
+  
+  .big_box button:hover {
+    background-position: right center; 
+    background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%)   }
+  
+  .big_box button:focus {
+    outline: none;
+  }
 
 .reserve_btn{
     display: flex;

@@ -9,6 +9,7 @@ import {
 import SearchDate from "../SearchDate";
 import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import "./Reserve.css"
 
 const Reserve = () => {
   const [error, setError] = useState(null);
@@ -132,7 +133,7 @@ const Reserve = () => {
           </p>
           <p>${total}</p>
           <div>
-            <button onClick={handleConfirmBooking}>Confirm Your Booking</button>
+            <button className='confirm-btn'onClick={handleConfirmBooking}>Confirm Your Booking</button>
           </div>
         </div>
       </div>
