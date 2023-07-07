@@ -6,9 +6,12 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
+import { useSelector } from "react-redux";
+
 
 import "./ProfileButton.css";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { loadMyBookings } from "../../store/bookings";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -16,6 +19,8 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const { closeModal } = useModal();
+  const sessionUser = useSelector(state=>state.session.user)
+  //console.log('user' , sessionUser)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -42,6 +47,12 @@ function ProfileButton({ user }) {
     await dispatch(sessionActions.logout());
     history.push("/");
   };
+
+  const toTrips = async(e) =>{
+    e.preventDefault();
+    history.push(`/bookings/${sessionUser.id}`)
+
+  }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
@@ -81,19 +92,14 @@ function ProfileButton({ user }) {
                 </span>
               </li>
 
-              <li>
-                <span>
-                  <NavLink
-                    to={`/bookings/${user.id}`}
-                    style={{
+              <li onClick={toTrips}>
+                <span style={{
                       fontFamily:"Geneva, Verdana, sans-serif",
                       textDecoration:"none",
                       color:"black",
                       borderBottom: "none"
-                    }}
-                  >
-                    Trips
-                  </NavLink>
+                    }}>
+                 Trips
                 </span>
               </li>
 
