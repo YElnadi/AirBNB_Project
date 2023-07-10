@@ -411,7 +411,7 @@ const SingleSpotDetails = () => {
             </div> */}
             <div className="big_box">
               <div className="date-container">
-                <div style={{display:'flex', gap:'70px', border:'black 1px solid', padding:'30px'}}>
+                <div>
                   <div>
                     <h5>Checkin</h5>
                     <p>{startDate}</p>
@@ -421,10 +421,10 @@ const SingleSpotDetails = () => {
                     <p>{endDate}</p>
                   </div>
                 </div>
-                <div className="search-date-container">
+                <div >
                   <OpenModalMenuItem
                     itemText={
-                      <button className="search-date-btn">Search Date</button>
+                      <button >Search Date</button>
                     }
                     onItemClick={closeMenu}
                     modalComponent={
