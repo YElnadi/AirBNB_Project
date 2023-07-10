@@ -66,7 +66,11 @@ const Reserve = () => {
       );
 
       if (newBooking) {
-        window.alert("Congrats");
+        <div >
+        <span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
+        Congrates
+        </span>
+      </div>
       }
     } catch (error) {
       if (error.response && error.response.data) {
