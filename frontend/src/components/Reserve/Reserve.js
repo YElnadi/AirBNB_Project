@@ -9,10 +9,10 @@ import {
 import SearchDate from "../SearchDate";
 import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import "./Reserve.css"
+import "./Reserve.css";
 
 const Reserve = () => {
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user.id);
   const spot = useSelector((state) => state.spots.singleSpot);
@@ -56,37 +56,32 @@ const Reserve = () => {
 
   const handleConfirmBooking = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const bookingDetails = {
       startDate,
       endDate,
     };
-    try {
-      let newBooking = await dispatch(
-        thunkCreateNewBooking(spotId, bookingDetails, sessionUser)
-      );
-
-      if (newBooking) {
-        <div >
-        <span style={{fontFamily: 'Geneva, Verdana, sans-serif'}}>
-        Congrates
-        </span>
-      </div>
-      }
-    } catch (error) {
-      if (error.response && error.response.data) {
-        const { message, errors } = error.response.data;
-        const errorMessage = message || "An error occurred";
-        setError(errorMessage);
-        console.log("errorrrrrr", errorMessage);
-
-        if (errors) {
-          // Handle specific errors
-          console.error("Errors:", errors);
-        }
-      } else {
-        setError("An error occurred");
-      }
-    }
+    return dispatch(thunkCreateNewBooking(spotId, bookingDetails, sessionUser)
+    ).then(() => {
+      // Handle successful booking
+      setErrors(["Reservation confirmed. Enjoy your stay! "]);
+    })
+    .catch(
+      async(res) =>{
+        const data = await res.json();
+        if(data && data.message) setErrors([data.message]);
+        else setErrors(["unkonww failure"])
+      },
+    
+    )
+  
+    // if (newBooking && newBooking.errors) {
+    //   // Handle the error response
+    //   setError(newBooking.message);
+    // } else {
+    //   // Handle successful booking
+    //   setError("Booking confirmed!");
+    // }
   };
 
   const formatDate = (startDate, endDate) => {
@@ -108,16 +103,28 @@ const Reserve = () => {
 
   return (
     <div>
-      {/* {error && <p className="error-message">{error}</p>} */}
-      <div >
-        <div className='res_container'>
+      {/* {errors && <p className="error-message">{errors}</p>} */}
+      <div>
+      {errors.map(error => (<p className='error_message_style' key={error} style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>{error}</p>))}
+      </div>
+      <div>
+        <div className="res_container">
           <NavLink exact to={`/spots/${spotId}`}>
             <i className="fa-solid fa-chevron-left icon"></i>
           </NavLink>
-          <h1 style={{fontFamily: "Geneva, Verdana, sans-serif"}}>Request to Book</h1>
+          <h1 style={{ fontFamily: "Geneva, Verdana, sans-serif" }}>
+            Request to Book
+          </h1>
         </div>
       </div>
-      <h2 style={{marginLeft:'80px', fontFamily: "Geneva, Verdana, sans-serif"}}>Your Trip</h2>
+      <h2
+        style={{
+          marginLeft: "80px",
+          fontFamily: "Geneva, Verdana, sans-serif",
+        }}
+      >
+        Your Trip
+      </h2>
       <div>
         {/* {spot && spot.SpotImages.length > 0 && (
           <div>
@@ -128,8 +135,13 @@ const Reserve = () => {
             />
           </div>
         )} */}
-        <div style={{marginLeft:'80px', fontFamily: "Geneva, Verdana, sans-serif"}}>
-          <h3 >Dates</h3>
+        <div
+          style={{
+            marginLeft: "80px",
+            fontFamily: "Geneva, Verdana, sans-serif",
+          }}
+        >
+          <h3>Dates</h3>
           <p>{formatDate(startDate, endDate)}</p>
           <h3>Price Details</h3>
           <p>
@@ -137,7 +149,9 @@ const Reserve = () => {
           </p>
           <p>${total}</p>
           <div>
-            <button className='confirm-btn'onClick={handleConfirmBooking}>Confirm Your Booking</button>
+            <button className="confirm-btn" onClick={handleConfirmBooking}>
+              Confirm Your Booking
+            </button>
           </div>
         </div>
       </div>

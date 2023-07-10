@@ -9,10 +9,14 @@ import "./User_bookings.css";
 const UserBookings = () => {
   const user = useSelector((state)=>state.session.user)
   const bookings = useSelector((state) => state.bookings.bookings); // Retrieve bookings from Redux store
+  // console.log('spot', spotId)
   console.log("user id", user)
   console.log("bookings", bookings);
   const dispatch = useDispatch();
   const history = useHistory();
+
+//   const spotId = bookings.map((booking) => booking.Spot.id);
+// console.log(spotId); // Output: [2, ...]
 
   useEffect(() => {
     dispatch(loadMyBookings());

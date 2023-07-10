@@ -27,7 +27,7 @@ export const actionUpdateBooking = (data) => ({
 
 //THUNK ACTIONS
 export const loadMyBookings = () => async (dispatch) => {
-  const response = await csrfFetch('/api/bookings/current');
+  const response = await csrfFetch("/api/bookings/current");
   if (response.ok) {
     const bookingsList = await response.json();
     dispatch(actionLoadMyBookings(bookingsList.Bookings));
@@ -36,46 +36,58 @@ export const loadMyBookings = () => async (dispatch) => {
 };
 
 export const thunkCreateNewBooking =
-  (spotId, data, user) => async (dispatch) => {
+  (spotId, details, user) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`, {
       method: "POST",
       headers: {
-        Content_Type: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(details),
     });
+    console.log("in the create booking thunk");
+
     if (response.ok) {
       const newBooking = await response.json();
-      newBooking.User = user;
+       newBooking.User = user;
       dispatch(actionCreateBooking(newBooking));
+      console.log("######## 2");
       return newBooking;
-    }
+      
+    // } else if (response.status < 500) {
+    //   console.log("######## 3");
+    //   const data = await response.json();
+    //   if (data.errors) {
+    //     console.log("daata ", data);
+    //     return data.errors;
+    //   } else {
+    //     return ["An error occurred. Please try again."];
+    //   }
+     }
   };
 
 export const thunkUpdateBooking = (bookingId, data) => async (dispatch) => {
   const response = await csrfFetch(`/api/bookings/${bookingId}`, {
     method: "PUT",
     headers: {
-      'Content-Type':'application/json'
+      "Content-Type": "application/json",
     },
-    body:JSON.stringify(data)
-  })
-  if (response.ok){
-    const updatedBooking = await response.json()
-    dispatch(actionUpdateBooking(updatedBooking))
-    return updatedBooking
+    body: JSON.stringify(data),
+  });
+  if (response.ok) {
+    const updatedBooking = await response.json();
+    dispatch(actionUpdateBooking(updatedBooking));
+    return updatedBooking;
   }
 };
 
-
-export const deleteBookingByIdThunk = (bookingId) =>async(dispatch) =>{
-  const response = await csrfFetch(`/api/bookings/${bookingId}`,{
-    method:'DELETE'
-  })
-  if(response.ok){
-    dispatch(actionDeleteBooking(bookingId))
+export const deleteBookingByIdThunk = (bookingId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(actionDeleteBooking(bookingId));
   }
-}
+};
 
 /////REDUCERS
 // let initalState = {
@@ -84,7 +96,7 @@ export const deleteBookingByIdThunk = (bookingId) =>async(dispatch) =>{
 // };
 
 export default function bookingReducers(
-  state = { spot: {}, user: {}, booking: {}, myBookings:{} },
+  state = { spot: {}, user: {}, booking: {}, myBookings: {} },
   action
 ) {
   switch (action.type) {
@@ -96,20 +108,19 @@ export default function bookingReducers(
       newState.booking[action.newBooking.id] = action.newBooking;
       return newState;
     }
-    case UPDATE_BOOKING:{
+    case UPDATE_BOOKING: {
       const newState = {
         ...state,
-        booking: action.data
-      }
-      return newState
-    }
-    case LOAD_MY_BOOKINGS:{
-      const newState = {
-        ...state,
-        bookings: action.bookings
+        booking: action.data,
       };
-      return newState
-        
+      return newState;
+    }
+    case LOAD_MY_BOOKINGS: {
+      const newState = {
+        ...state,
+        bookings: action.bookings,
+      };
+      return newState;
     }
     default:
       return state;

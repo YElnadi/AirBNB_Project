@@ -11,3 +11,15 @@
 .confirm-btn:hover {
     background-position: right center; 
     background-image: linear-gradient(to right, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%)   }
+
+
+
+.error_message_style{
+    margin-left: 60px;
+    margin-top:30px;
+    border: 1px black solid;
+    padding:30px 40px;
+    border-radius: 10px;
+    font-family:" Geneva, Verdana, sans-serif";
+    background-color: pink;
+}
