@@ -61,11 +61,15 @@ const UserBookings = () => {
     history.push(`/spots/${spotId}`);
    }
 
-  // const backToSpot = async (spotId) => {
-  //   await dispatch(getSingleSpotDetails(spotId)).then(
-  //     history.push(`/spots/${spotId}`)
-  //   );
+  //  const getFirstName = (spotId) => {
+  //   const spot = bookings.find((booking) => booking.Spot.id === spotId)?.Spot;
+  //   if (spot) {
+  //     dispatch(getSingleSpotDetails(spotId));
+  //   }
+  //   return spot?.Owner?.firstName;
   // };
+
+
 
   return (
     <div>
@@ -96,6 +100,7 @@ const UserBookings = () => {
             </div>
             <div>
               <p>{booking.Spot.city}</p>
+              {/* <p>Hosted by {getFirstName(booking.Spot.id)}</p> */}
 
               <p>{formatDate(booking.startDate, booking.endDate)}</p>
               <p>
