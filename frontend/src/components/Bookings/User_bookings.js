@@ -9,8 +9,6 @@ import "./User_bookings.css";
 const UserBookings = () => {
   const user = useSelector((state)=>state.session.user)
   const bookings = useSelector((state) => state.bookings.bookings); // Retrieve bookings from Redux store
-  // console.log('spot', spotId)
-  console.log("user id", user)
   console.log("bookings", bookings);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -57,6 +55,12 @@ const UserBookings = () => {
     dispatch(loadMyBookings());
   };
 
+ 
+  const goSpotDetail = async (spotId) => {
+    await dispatch(getSingleSpotDetails(spotId));
+    history.push(`/spots/${spotId}`);
+   }
+
   // const backToSpot = async (spotId) => {
   //   await dispatch(getSingleSpotDetails(spotId)).then(
   //     history.push(`/spots/${spotId}`)
@@ -88,10 +92,11 @@ const UserBookings = () => {
               <img
                 className="user_bookings"
                 src={booking.Spot.previewImage}
-              ></img>
+                onClick={() => goSpotDetail(booking.Spot.id)}              ></img>
             </div>
             <div>
               <p>{booking.Spot.city}</p>
+
               <p>{formatDate(booking.startDate, booking.endDate)}</p>
               <p>
                 Total Cost for{" "}

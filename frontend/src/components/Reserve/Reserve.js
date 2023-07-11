@@ -10,12 +10,18 @@ import SearchDate from "../SearchDate";
 import { useModal } from "../../context/Modal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import "./Reserve.css";
+import UserBookings from "../Bookings/User_bookings";
 
 const Reserve = () => {
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user.id);
   const spot = useSelector((state) => state.spots.singleSpot);
+ 
+  const firstName = spot?.User?.firstName;
+    console.log('owner name', firstName)
+
+
   console.log("spott in reserve", spot);
   //const bookingId = useSelector(state => state.bookings.booking.id)
   // console.log('booking id reserve', bookingId)
@@ -156,6 +162,7 @@ const Reserve = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };
