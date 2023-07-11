@@ -126,15 +126,16 @@ const Reserve = () => {
         Your Trip
       </h2>
       <div>
-        {/* {spot && spot.SpotImages.length > 0 && (
+        {spot && spot.SpotImages.length > 0 && (
           <div>
             <img
               className="user_bookings"
+              style={{ marginLeft: "80px"}}
               src={spot.SpotImages[0].url}
               alt="Spot Image"
             />
           </div>
-        )} */}
+        )}
         <div
           style={{
             marginLeft: "80px",
